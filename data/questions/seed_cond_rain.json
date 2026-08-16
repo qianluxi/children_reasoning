@@ -1,0 +1,60 @@
+{
+  "id": "seed_cond_rain",
+  "type": "conditional",
+  "story": {
+    "title": "想一想，会发生吗？",
+    "text": "根据规则判断事情会不会一定发生。",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [
+    {
+      "name": "e0",
+      "type": "boolean"
+    },
+    {
+      "name": "e1",
+      "type": "boolean"
+    },
+    {
+      "name": "e2",
+      "type": "boolean"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "如果下雨了，那么地面会变湿",
+      "logic": "!e0 || e1"
+    },
+    {
+      "text": "如果地面会变湿，那么小草会喝饱水",
+      "logic": "!e1 || e2"
+    },
+    {
+      "text": "现在：下雨了",
+      "logic": "e0"
+    }
+  ],
+  "question_prompt": "那么，“小草会喝饱水”一定会发生吗？",
+  "options": [
+    "一定会发生",
+    "一定不会发生",
+    "其实没有下雨"
+  ],
+  "option_logic": [
+    "e2",
+    "!e2",
+    "!e0"
+  ],
+  "answer": 0,
+  "hints": [
+    "从“下雨了”开始往下推。",
+    "下雨 → 地面湿 → 小草喝饱水。"
+  ],
+  "explanation": "下雨了，所以地面会变湿；地面变湿，所以小草会喝饱水。一定会发生。",
+  "difficulty": 2,
+  "difficulty_score": 2.43,
+  "source": "seed",
+  "created_at": ""
+}

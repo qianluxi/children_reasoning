@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小小推理家 · 儿童逻辑训练</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">🧩 小小推理家</div>
+    <div class="top-right">
+      <span id="who" class="who"></span>
+      <a href="/profile" class="linkbtn">📊 我的画像</a>
+    </div>
+  </header>
+
+  <!-- 选择/创建儿童 -->
+  <section id="login" class="card center">
+    <h1>你好呀！👋</h1>
+    <p class="sub">选一个名字开始今天的逻辑冒险吧～</p>
+    <div id="childList" class="child-list"></div>
+    <div class="newchild">
+      <input id="newName" type="text" placeholder="或者输入你的名字…" maxlength="12">
+      <button id="createBtn" class="btn primary">开始 →</button>
+    </div>
+  </section>
+
+  <!-- 答题区 -->
+  <section id="quiz" class="card hidden">
+    <div class="q-head">
+      <span id="qType" class="chip"></span>
+      <span id="qDiff" class="chip gold"></span>
+      <span id="qStars" class="starcount"></span>
+    </div>
+    <h2 id="qTitle"></h2>
+    <p id="qStory" class="story"></p>
+
+    <div id="statements" class="statements"></div>
+    <div id="constraints" class="constraints"></div>
+
+    <p id="qPrompt" class="prompt"></p>
+    <div id="options" class="options"></div>
+
+    <div class="actions">
+      <button id="hintBtn" class="btn ghost">💡 提示</button>
+      <button id="nextBtn" class="btn primary hidden">下一题 →</button>
+    </div>
+    <div id="hints" class="hints"></div>
+    <div id="feedback" class="feedback hidden"></div>
+  </section>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+{
+  "id": "truth_81dd16dded",
+  "type": "truth_statements",
+  "story": {
+    "title": "谁有面包？",
+    "text": "5个小伙伴在一起，他们可能藏了🍞面包。每个人都说了一句话。已知他们里面恰好有 4 句是真话。到底谁有面包呢？",
+    "roles": {
+      "A": "棉棉",
+      "B": "旺旺",
+      "C": "小猫咪",
+      "D": "云云",
+      "E": "奶糖"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "variables": [
+    {
+      "name": "A_bread",
+      "type": "boolean"
+    },
+    {
+      "name": "B_bread",
+      "type": "boolean"
+    },
+    {
+      "name": "C_bread",
+      "type": "boolean"
+    },
+    {
+      "name": "D_bread",
+      "type": "boolean"
+    },
+    {
+      "name": "E_bread",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "小猫咪或奶糖至少有一个有面包",
+      "logic": "C_bread || E_bread",
+      "speaker": "A"
+    },
+    {
+      "text": "小猫咪和云云都有面包",
+      "logic": "C_bread && D_bread",
+      "speaker": "B"
+    },
+    {
+      "text": "棉棉或奶糖至少有一个有面包",
+      "logic": "A_bread || E_bread",
+      "speaker": "C"
+    },
+    {
+      "text": "我没有面包",
+      "logic": "!D_bread",
+      "speaker": "D"
+    },
+    {
+      "text": "恰好有1个人有面包",
+      "logic": "COUNT(bread) == 1",
+      "speaker": "E"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "恰好有 4 句是真话",
+      "logic": "TRUTH_COUNT == 4"
+    }
+  ],
+  "question_prompt": "到底谁有面包？",
+  "options": [
+    "只有旺旺、小猫咪、云云有面包",
+    "只有旺旺有面包",
+    "只有奶糖有面包",
+    "只有棉棉有面包"
+  ],
+  "option_logic": [
+    "B_bread && C_bread && D_bread && !A_bread && !E_bread",
+    "B_bread && COUNT(bread) == 1",
+    "E_bread && COUNT(bread) == 1",
+    "A_bread && COUNT(bread) == 1"
+  ],
+  "answer": 2,
+  "hints": [
+    "先数一数：题目说恰好有 4 句是真话。",
+    "试着假设某句话是真的，看看其它话会不会矛盾。",
+    "把每句话的真假列出来，凑出恰好 4 句真话的那种情况就是答案。"
+  ],
+  "explanation": "· 棉棉 说“小猫咪或奶糖至少有一个有面包”——这是真话 ✔\n· 旺旺 说“小猫咪和云云都有面包”——这是假话 ✘\n· 小猫咪 说“棉棉或奶糖至少有一个有面包”——这是真话 ✔\n· 云云 说“我没有面包”——这是真话 ✔\n· 奶糖 说“恰好有1个人有面包”——这是真话 ✔\n正好有 4 句真话（棉棉、小猫咪、云云、奶糖），所以有面包的是：奶糖。",
+  "difficulty": 3,
+  "difficulty_score": 5.45,
+  "source": "generated",
+  "created_at": "2026-08-16 11:39:46"
+}

@@ -1,0 +1,79 @@
+{
+  "id": "truth_9f307ef66c",
+  "type": "truth_statements",
+  "story": {
+    "title": "谁有小鱼？",
+    "text": "3个小伙伴在一起，他们可能藏了🐟小鱼。每个人都说了一句话。已知他们里面恰好有 2 句是真话。到底谁有小鱼呢？",
+    "roles": {
+      "A": "壮壮",
+      "B": "小熊",
+      "C": "跳跳"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "A_fish",
+      "type": "boolean"
+    },
+    {
+      "name": "B_fish",
+      "type": "boolean"
+    },
+    {
+      "name": "C_fish",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "我们每个人都有小鱼",
+      "logic": "ALL(fish)",
+      "speaker": "A"
+    },
+    {
+      "text": "我们谁都没有小鱼",
+      "logic": "NONE(fish)",
+      "speaker": "B"
+    },
+    {
+      "text": "至少有2个人有小鱼",
+      "logic": "COUNT(fish) >= 2",
+      "speaker": "C"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "恰好有 2 句是真话",
+      "logic": "TRUTH_COUNT == 2"
+    }
+  ],
+  "question_prompt": "到底谁有小鱼？",
+  "options": [
+    "所有人都有小鱼",
+    "只有小熊有小鱼",
+    "只有壮壮、小熊有小鱼",
+    "只有小熊、跳跳有小鱼"
+  ],
+  "option_logic": [
+    "ALL(fish)",
+    "B_fish && COUNT(fish) == 1",
+    "A_fish && B_fish && !C_fish",
+    "B_fish && C_fish && !A_fish"
+  ],
+  "answer": 0,
+  "hints": [
+    "先数一数：题目说恰好有 2 句是真话。",
+    "试着假设某句话是真的，看看其它话会不会矛盾。",
+    "把每句话的真假列出来，凑出恰好 2 句真话的那种情况就是答案。"
+  ],
+  "explanation": "· 壮壮 说“我们每个人都有小鱼”——这是真话 ✔\n· 小熊 说“我们谁都没有小鱼”——这是假话 ✘\n· 跳跳 说“至少有2个人有小鱼”——这是真话 ✔\n正好有 2 句真话（壮壮、跳跳），所以有小鱼的是：壮壮、小熊、跳跳。",
+  "difficulty": 2,
+  "difficulty_score": 3.73,
+  "source": "generated",
+  "created_at": "2026-08-16 11:39:46"
+}

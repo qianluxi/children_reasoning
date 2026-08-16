@@ -1,0 +1,457 @@
+{
+  "seed_truth_mice": {
+    "type": "truth_statements",
+    "difficulty": 2,
+    "difficulty_score": 3.89,
+    "source": "seed",
+    "title": "四只偷食物的小老鼠"
+  },
+  "seed_order_height": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.41,
+    "source": "seed",
+    "title": "谁最高？"
+  },
+  "seed_cond_rain": {
+    "type": "conditional",
+    "difficulty": 2,
+    "difficulty_score": 2.43,
+    "source": "seed",
+    "title": "想一想，会发生吗？"
+  },
+  "seed_set_pets": {
+    "type": "set_logic",
+    "difficulty": 1,
+    "difficulty_score": 1.73,
+    "source": "seed",
+    "title": "谁有鱼？"
+  },
+  "seed_excl_race": {
+    "type": "exclusion",
+    "difficulty": 1,
+    "difficulty_score": 1.76,
+    "source": "seed",
+    "title": "跑步比赛的名次"
+  },
+  "truth_81dd16dded": {
+    "type": "truth_statements",
+    "difficulty": 3,
+    "difficulty_score": 5.45,
+    "source": "generated",
+    "title": "谁有面包？"
+  },
+  "order_42d95731ba": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 2.48,
+    "source": "generated",
+    "title": "排排队：谁在第1？"
+  },
+  "cond_f6a06a97b3": {
+    "type": "conditional",
+    "difficulty": 2,
+    "difficulty_score": 2.43,
+    "source": "generated",
+    "title": "想一想，会发生吗？"
+  },
+  "set_feb122f7c2": {
+    "type": "set_logic",
+    "difficulty": 2,
+    "difficulty_score": 2.59,
+    "source": "generated",
+    "title": "谁有胡萝卜？"
+  },
+  "excl_807e7719c2": {
+    "type": "exclusion",
+    "difficulty": 3,
+    "difficulty_score": 5.67,
+    "source": "generated",
+    "title": "跳绳比赛的名次"
+  },
+  "truth_180f53b088": {
+    "type": "truth_statements",
+    "difficulty": 2,
+    "difficulty_score": 3.73,
+    "source": "generated",
+    "title": "谁有胡萝卜？"
+  },
+  "order_21d4d67938": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 2.48,
+    "source": "generated",
+    "title": "排排队：谁在第1？"
+  },
+  "cond_858972de49": {
+    "type": "conditional",
+    "difficulty": 2,
+    "difficulty_score": 3.29,
+    "source": "generated",
+    "title": "想一想，会发生吗？"
+  },
+  "set_f7fcebed27": {
+    "type": "set_logic",
+    "difficulty": 2,
+    "difficulty_score": 2.59,
+    "source": "generated",
+    "title": "谁有小鱼？"
+  },
+  "excl_4f61fd49b9": {
+    "type": "exclusion",
+    "difficulty": 1,
+    "difficulty_score": 1.76,
+    "source": "generated",
+    "title": "跑步比赛的名次"
+  },
+  "truth_44a45b5912": {
+    "type": "truth_statements",
+    "difficulty": 3,
+    "difficulty_score": 5.45,
+    "source": "generated",
+    "title": "谁有樱桃？"
+  },
+  "order_17c3c7ddcf": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 2.48,
+    "source": "generated",
+    "title": "排排队：谁在第1？"
+  },
+  "cond_80f8bb5975": {
+    "type": "conditional",
+    "difficulty": 2,
+    "difficulty_score": 2.43,
+    "source": "generated",
+    "title": "想一想，会发生吗？"
+  },
+  "set_3423707bec": {
+    "type": "set_logic",
+    "difficulty": 2,
+    "difficulty_score": 3.45,
+    "source": "generated",
+    "title": "谁有奶酪？"
+  },
+  "excl_4a024c713a": {
+    "type": "exclusion",
+    "difficulty": 4,
+    "difficulty_score": 7.38,
+    "source": "generated",
+    "title": "跑步比赛的名次"
+  },
+  "truth_9f307ef66c": {
+    "type": "truth_statements",
+    "difficulty": 2,
+    "difficulty_score": 3.73,
+    "source": "generated",
+    "title": "谁有小鱼？"
+  },
+  "order_f2b5ddacf8": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.57,
+    "source": "generated",
+    "title": "排排队：谁在第1？"
+  },
+  "cond_8d37661a9a": {
+    "type": "conditional",
+    "difficulty": 2,
+    "difficulty_score": 3.29,
+    "source": "generated",
+    "title": "想一想，会发生吗？"
+  },
+  "set_45208c831f": {
+    "type": "set_logic",
+    "difficulty": 2,
+    "difficulty_score": 2.59,
+    "source": "generated",
+    "title": "谁有糖果？"
+  },
+  "excl_98298cba78": {
+    "type": "exclusion",
+    "difficulty": 5,
+    "difficulty_score": 8.47,
+    "source": "generated",
+    "title": "跑步比赛的名次"
+  },
+  "truth_a3558ddbff": {
+    "type": "truth_statements",
+    "difficulty": 2,
+    "difficulty_score": 3.73,
+    "source": "generated",
+    "title": "谁有小鱼？"
+  },
+  "order_1197ed1d77": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 2.48,
+    "source": "generated",
+    "title": "排排队：谁在第1？"
+  },
+  "cond_d6825acb26": {
+    "type": "conditional",
+    "difficulty": 2,
+    "difficulty_score": 3.29,
+    "source": "generated",
+    "title": "想一想，会发生吗？"
+  },
+  "set_9a47ad4ec8": {
+    "type": "set_logic",
+    "difficulty": 1,
+    "difficulty_score": 1.73,
+    "source": "generated",
+    "title": "谁有苹果？"
+  },
+  "excl_8ee9995bec": {
+    "type": "exclusion",
+    "difficulty": 4,
+    "difficulty_score": 6.02,
+    "source": "generated",
+    "title": "排队领点心的名次"
+  },
+  "truth_3b32b2facd": {
+    "type": "truth_statements",
+    "difficulty": 3,
+    "difficulty_score": 4.59,
+    "source": "generated",
+    "title": "谁有饼干？"
+  },
+  "order_0065037864": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.41,
+    "source": "generated",
+    "title": "排排队：谁在第1？"
+  },
+  "cond_b38bd7cc6b": {
+    "type": "conditional",
+    "difficulty": 2,
+    "difficulty_score": 3.29,
+    "source": "generated",
+    "title": "想一想，会发生吗？"
+  },
+  "set_6ef8d8bf12": {
+    "type": "set_logic",
+    "difficulty": 2,
+    "difficulty_score": 2.59,
+    "source": "generated",
+    "title": "谁有胡萝卜？"
+  },
+  "excl_52d1da8e64": {
+    "type": "exclusion",
+    "difficulty": 3,
+    "difficulty_score": 5.28,
+    "source": "generated",
+    "title": "跳绳比赛的名次"
+  },
+  "truth_4303d31522": {
+    "type": "truth_statements",
+    "difficulty": 2,
+    "difficulty_score": 3.73,
+    "source": "generated",
+    "title": "谁有苹果？"
+  },
+  "order_4a05a055d3": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 2.48,
+    "source": "generated",
+    "title": "排排队：谁在第1？"
+  },
+  "cond_f318890328": {
+    "type": "conditional",
+    "difficulty": 2,
+    "difficulty_score": 3.29,
+    "source": "generated",
+    "title": "想一想，会发生吗？"
+  },
+  "set_afa48d7ba6": {
+    "type": "set_logic",
+    "difficulty": 1,
+    "difficulty_score": 1.73,
+    "source": "generated",
+    "title": "谁有胡萝卜？"
+  },
+  "excl_71a2465710": {
+    "type": "exclusion",
+    "difficulty": 2,
+    "difficulty_score": 2.81,
+    "source": "generated",
+    "title": "跑步比赛的名次"
+  },
+  "truth_72131e633e": {
+    "type": "truth_statements",
+    "difficulty": 3,
+    "difficulty_score": 4.59,
+    "source": "generated",
+    "title": "谁有饼干？"
+  },
+  "order_9c50c7eab7": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 2.48,
+    "source": "generated",
+    "title": "排排队：谁在第1？"
+  },
+  "cond_0939cfb34f": {
+    "type": "conditional",
+    "difficulty": 2,
+    "difficulty_score": 3.29,
+    "source": "generated",
+    "title": "想一想，会发生吗？"
+  },
+  "set_5c9c93e983": {
+    "type": "set_logic",
+    "difficulty": 2,
+    "difficulty_score": 2.59,
+    "source": "generated",
+    "title": "谁有面包？"
+  },
+  "excl_773eb52bc9": {
+    "type": "exclusion",
+    "difficulty": 2,
+    "difficulty_score": 2.83,
+    "source": "generated",
+    "title": "排队领点心的名次"
+  },
+  "truth_18485ad5ab": {
+    "type": "truth_statements",
+    "difficulty": 3,
+    "difficulty_score": 4.59,
+    "source": "generated",
+    "title": "谁有胡萝卜？"
+  },
+  "order_cc51a8705a": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.57,
+    "source": "generated",
+    "title": "排排队：谁在第1？"
+  },
+  "cond_542a1d14b2": {
+    "type": "conditional",
+    "difficulty": 2,
+    "difficulty_score": 2.43,
+    "source": "generated",
+    "title": "想一想，会发生吗？"
+  },
+  "set_06fb2d381d": {
+    "type": "set_logic",
+    "difficulty": 2,
+    "difficulty_score": 2.59,
+    "source": "generated",
+    "title": "谁有樱桃？"
+  },
+  "excl_013ffe7105": {
+    "type": "exclusion",
+    "difficulty": 3,
+    "difficulty_score": 5.32,
+    "source": "generated",
+    "title": "跳绳比赛的名次"
+  },
+  "truth_58f5452d91": {
+    "type": "truth_statements",
+    "difficulty": 3,
+    "difficulty_score": 5.45,
+    "source": "generated",
+    "title": "谁有樱桃？"
+  },
+  "order_ca379793c0": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 2.48,
+    "source": "generated",
+    "title": "排排队：谁在第1？"
+  },
+  "cond_a0aff5a8e2": {
+    "type": "conditional",
+    "difficulty": 2,
+    "difficulty_score": 3.29,
+    "source": "generated",
+    "title": "想一想，会发生吗？"
+  },
+  "set_dad1c32606": {
+    "type": "set_logic",
+    "difficulty": 2,
+    "difficulty_score": 2.59,
+    "source": "generated",
+    "title": "谁有苹果？"
+  },
+  "excl_c02089e212": {
+    "type": "exclusion",
+    "difficulty": 2,
+    "difficulty_score": 2.48,
+    "source": "generated",
+    "title": "跑步比赛的名次"
+  },
+  "truth_876a3f80f5": {
+    "type": "truth_statements",
+    "difficulty": 2,
+    "difficulty_score": 3.73,
+    "source": "generated",
+    "title": "谁有苹果？"
+  },
+  "order_ad59987a0a": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.57,
+    "source": "generated",
+    "title": "排排队：谁在第1？"
+  },
+  "cond_42b90acf89": {
+    "type": "conditional",
+    "difficulty": 2,
+    "difficulty_score": 2.43,
+    "source": "generated",
+    "title": "想一想，会发生吗？"
+  },
+  "set_7083fac123": {
+    "type": "set_logic",
+    "difficulty": 1,
+    "difficulty_score": 1.73,
+    "source": "generated",
+    "title": "谁有樱桃？"
+  },
+  "excl_34603f4070": {
+    "type": "exclusion",
+    "difficulty": 5,
+    "difficulty_score": 9.87,
+    "source": "generated",
+    "title": "排队领点心的名次"
+  },
+  "truth_ef45aa3ffc": {
+    "type": "truth_statements",
+    "difficulty": 3,
+    "difficulty_score": 4.59,
+    "source": "generated",
+    "title": "谁有胡萝卜？"
+  },
+  "order_cd73dd7193": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 2.48,
+    "source": "generated",
+    "title": "排排队：谁在第1？"
+  },
+  "cond_37cb5dec96": {
+    "type": "conditional",
+    "difficulty": 2,
+    "difficulty_score": 2.43,
+    "source": "generated",
+    "title": "想一想，会发生吗？"
+  },
+  "set_00685fb5a2": {
+    "type": "set_logic",
+    "difficulty": 2,
+    "difficulty_score": 2.59,
+    "source": "generated",
+    "title": "谁有糖果？"
+  },
+  "excl_9b2f5e598e": {
+    "type": "exclusion",
+    "difficulty": 3,
+    "difficulty_score": 4.93,
+    "source": "generated",
+    "title": "跳绳比赛的名次"
+  }
+}

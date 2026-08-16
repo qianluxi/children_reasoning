@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的能力画像 · 小小推理家</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">🧩 小小推理家</div>
+    <div class="top-right">
+      <a href="/" class="linkbtn">🏠 回去答题</a>
+    </div>
+  </header>
+
+  <section class="card">
+    <div class="profile-pick">
+      <label>选择小朋友：</label>
+      <select id="childSel"></select>
+    </div>
+
+    <div id="summary" class="summary"></div>
+
+    <h2>各项本领</h2>
+    <div id="skills" class="skills"></div>
+  </section>
+
+  <script src="{{ url_for('static', filename='profile.js') }}"></script>
+</body>
+</html>

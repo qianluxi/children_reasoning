@@ -1,0 +1,79 @@
+{
+  "id": "set_06fb2d381d",
+  "type": "set_logic",
+  "story": {
+    "title": "谁有樱桃？",
+    "text": "看看下面的情况，想一想：哪一句话是对的？",
+    "roles": {
+      "A": "小猫咪",
+      "B": "小灰",
+      "C": "大黄",
+      "D": "飞飞"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "A_cherry",
+      "type": "boolean"
+    },
+    {
+      "name": "B_cherry",
+      "type": "boolean"
+    },
+    {
+      "name": "C_cherry",
+      "type": "boolean"
+    },
+    {
+      "name": "D_cherry",
+      "type": "boolean"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "小猫咪有🍒樱桃",
+      "logic": "A_cherry"
+    },
+    {
+      "text": "小灰有🍒樱桃",
+      "logic": "B_cherry"
+    },
+    {
+      "text": "大黄有🍒樱桃",
+      "logic": "C_cherry"
+    },
+    {
+      "text": "飞飞有🍒樱桃",
+      "logic": "D_cherry"
+    }
+  ],
+  "question_prompt": "关于樱桃，下面哪句话是对的？",
+  "options": [
+    "有些人有樱桃，有些人没有",
+    "谁都没有樱桃",
+    "所有人都有樱桃"
+  ],
+  "option_logic": [
+    "SOME(cherry) && SOME_NOT(cherry)",
+    "NONE(cherry)",
+    "ALL(cherry)"
+  ],
+  "answer": 2,
+  "hints": [
+    "先数一数：一共有几个人有樱桃。",
+    "“所有”表示一个不少；“都没有”表示一个也没有。",
+    "只要有人有、也有人没有，那就是“有些人有，有些人没有”。"
+  ],
+  "explanation": "有樱桃的是：小猫咪、小灰、大黄、飞飞。\n所以“所有人都有樱桃”是对的。",
+  "difficulty": 2,
+  "difficulty_score": 2.59,
+  "source": "generated",
+  "created_at": "2026-08-16 11:39:46"
+}

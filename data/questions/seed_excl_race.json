@@ -1,0 +1,69 @@
+{
+  "id": "seed_excl_race",
+  "type": "exclusion",
+  "story": {
+    "title": "跑步比赛的名次",
+    "text": "三个小伙伴跑步比赛。用排除法想想：小羊是第几名？",
+    "roles": {
+      "A": "小鹿",
+      "B": "小马",
+      "C": "小羊"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "小鹿不是第1名",
+      "logic": "RANK(A) != 1"
+    },
+    {
+      "text": "小羊不是第1名",
+      "logic": "RANK(C) != 1"
+    },
+    {
+      "text": "小鹿在小羊前面",
+      "logic": "RANK(A) < RANK(C)"
+    }
+  ],
+  "question_prompt": "小羊是第几名？",
+  "options": [
+    "第1名",
+    "第2名",
+    "第3名"
+  ],
+  "option_logic": [
+    "RANK(C) == 1",
+    "RANK(C) == 2",
+    "RANK(C) == 3"
+  ],
+  "answer": 2,
+  "hints": [
+    "谁可能是第1名？",
+    "小鹿不是第1，小羊不是第1，那第1只能是小马。",
+    "小鹿在小羊前面，想想小羊排第几。"
+  ],
+  "explanation": "小鹿和小羊都不是第1名，所以第1名是小马；小鹿在小羊前面，所以小鹿第2、小羊第3名。",
+  "difficulty": 1,
+  "difficulty_score": 1.76,
+  "source": "seed",
+  "created_at": ""
+}

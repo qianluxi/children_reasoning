@@ -1,0 +1,77 @@
+{
+  "id": "order_17c3c7ddcf",
+  "type": "ordering",
+  "story": {
+    "title": "排排队：谁在第1？",
+    "text": "4个小伙伴要排成一列。根据下面的线索，你能排出他们的顺序吗？",
+    "roles": {
+      "A": "小白兔",
+      "B": "小鸟",
+      "C": "憨憨",
+      "D": "花花"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    },
+    {
+      "name": "rank_D",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "小鸟排在小白兔前面",
+      "logic": "RANK(B) < RANK(A)"
+    },
+    {
+      "text": "小白兔排在憨憨前面",
+      "logic": "RANK(A) < RANK(C)"
+    },
+    {
+      "text": "憨憨排在花花前面",
+      "logic": "RANK(C) < RANK(D)"
+    }
+  ],
+  "question_prompt": "谁排在第 2 位？",
+  "options": [
+    "小鸟",
+    "小白兔",
+    "花花",
+    "憨憨"
+  ],
+  "option_logic": [
+    "RANK(B) == 2",
+    "RANK(A) == 2",
+    "RANK(D) == 2",
+    "RANK(C) == 2"
+  ],
+  "answer": 1,
+  "hints": [
+    "先把能确定的相邻关系连起来。",
+    "试着把所有人按线索串成一条链。",
+    "数一数：从第1位数到第2位，看看是谁。"
+  ],
+  "explanation": "完整顺序是：小鸟 → 小白兔 → 憨憨 → 花花。\n所以第 2 位是 小白兔。",
+  "difficulty": 2,
+  "difficulty_score": 2.48,
+  "source": "generated",
+  "created_at": "2026-08-16 11:39:46"
+}

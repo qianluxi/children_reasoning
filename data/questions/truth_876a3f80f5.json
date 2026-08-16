@@ -1,0 +1,79 @@
+{
+  "id": "truth_876a3f80f5",
+  "type": "truth_statements",
+  "story": {
+    "title": "谁有苹果？",
+    "text": "3个小伙伴在一起，他们可能藏了🍎苹果。每个人都说了一句话。已知他们里面恰好有 2 句是真话。到底谁有苹果呢？",
+    "roles": {
+      "A": "茸茸",
+      "B": "虎斑",
+      "C": "旺旺"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "A_apple",
+      "type": "boolean"
+    },
+    {
+      "name": "B_apple",
+      "type": "boolean"
+    },
+    {
+      "name": "C_apple",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "虎斑没有苹果",
+      "logic": "!B_apple",
+      "speaker": "A"
+    },
+    {
+      "text": "我有苹果",
+      "logic": "B_apple",
+      "speaker": "B"
+    },
+    {
+      "text": "我们每个人都有苹果",
+      "logic": "ALL(apple)",
+      "speaker": "C"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "恰好有 2 句是真话",
+      "logic": "TRUTH_COUNT == 2"
+    }
+  ],
+  "question_prompt": "到底谁有苹果？",
+  "options": [
+    "只有虎斑、旺旺有苹果",
+    "只有茸茸有苹果",
+    "只有虎斑有苹果",
+    "所有人都有苹果"
+  ],
+  "option_logic": [
+    "B_apple && C_apple && !A_apple",
+    "A_apple && COUNT(apple) == 1",
+    "B_apple && COUNT(apple) == 1",
+    "ALL(apple)"
+  ],
+  "answer": 3,
+  "hints": [
+    "先数一数：题目说恰好有 2 句是真话。",
+    "试着假设某句话是真的，看看其它话会不会矛盾。",
+    "把每句话的真假列出来，凑出恰好 2 句真话的那种情况就是答案。"
+  ],
+  "explanation": "· 茸茸 说“虎斑没有苹果”——这是假话 ✘\n· 虎斑 说“我有苹果”——这是真话 ✔\n· 旺旺 说“我们每个人都有苹果”——这是真话 ✔\n正好有 2 句真话（虎斑、旺旺），所以有苹果的是：茸茸、虎斑、旺旺。",
+  "difficulty": 2,
+  "difficulty_score": 3.73,
+  "source": "generated",
+  "created_at": "2026-08-16 11:39:46"
+}

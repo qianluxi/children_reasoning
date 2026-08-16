@@ -1,0 +1,117 @@
+{
+  "id": "excl_8ee9995bec",
+  "type": "exclusion",
+  "story": {
+    "title": "排队领点心的名次",
+    "text": "5个小伙伴参加排队领点心。根据下面的线索，用排除法想想：球球是第几个？",
+    "roles": {
+      "A": "乐乐",
+      "B": "球球",
+      "C": "跳跳",
+      "D": "飞飞",
+      "E": "咪咪"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    },
+    {
+      "name": "rank_D",
+      "type": "rank"
+    },
+    {
+      "name": "rank_E",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "飞飞不是第1个",
+      "logic": "RANK(D) != 1"
+    },
+    {
+      "text": "跳跳在飞飞前面",
+      "logic": "RANK(C) < RANK(D)"
+    },
+    {
+      "text": "乐乐不是第4个",
+      "logic": "RANK(A) != 4"
+    },
+    {
+      "text": "咪咪不是第1个",
+      "logic": "RANK(E) != 1"
+    },
+    {
+      "text": "乐乐在跳跳前面",
+      "logic": "RANK(A) < RANK(C)"
+    },
+    {
+      "text": "球球不是第1个",
+      "logic": "RANK(B) != 1"
+    },
+    {
+      "text": "飞飞不是第2个",
+      "logic": "RANK(D) != 2"
+    },
+    {
+      "text": "球球不是第3个",
+      "logic": "RANK(B) != 3"
+    },
+    {
+      "text": "乐乐不是第3个",
+      "logic": "RANK(A) != 3"
+    },
+    {
+      "text": "咪咪在球球前面",
+      "logic": "RANK(E) < RANK(B)"
+    },
+    {
+      "text": "飞飞比咪咪名次好",
+      "logic": "RANK(D) < RANK(E)"
+    }
+  ],
+  "question_prompt": "球球是第几个？",
+  "options": [
+    "第2个",
+    "第3个",
+    "第4个",
+    "第5个",
+    "第1个"
+  ],
+  "option_logic": [
+    "RANK(B) == 2",
+    "RANK(B) == 3",
+    "RANK(B) == 4",
+    "RANK(B) == 5",
+    "RANK(B) == 1"
+  ],
+  "answer": 3,
+  "hints": [
+    "先看看哪些名次被明确排除了。",
+    "把不可能的名次一个个划掉。",
+    "最后只剩下一个名次，那就是球球的。"
+  ],
+  "explanation": "把线索一条条对：球球不可能是第1个、第2个、第3个、第4个，剩下的只能是第5个。",
+  "difficulty": 4,
+  "difficulty_score": 6.02,
+  "source": "generated",
+  "created_at": "2026-08-16 11:39:46"
+}

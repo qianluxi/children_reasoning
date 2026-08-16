@@ -1,0 +1,61 @@
+{
+  "id": "cond_37cb5dec96",
+  "type": "conditional",
+  "story": {
+    "title": "想一想，会发生吗？",
+    "text": "根据下面的规则，判断问题里的事情会不会一定发生。",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [
+    {
+      "name": "e0",
+      "type": "boolean"
+    },
+    {
+      "name": "e1",
+      "type": "boolean"
+    },
+    {
+      "name": "e2",
+      "type": "boolean"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "如果风吹得很大，那么树叶飘落下来",
+      "logic": "!e0 || e1"
+    },
+    {
+      "text": "如果树叶飘落下来，那么地上铺满了落叶",
+      "logic": "!e1 || e2"
+    },
+    {
+      "text": "现在：“地上铺满了落叶”这件事没有发生",
+      "logic": "!e2"
+    }
+  ],
+  "question_prompt": "那么，“树叶飘落下来”一定会发生吗？",
+  "options": [
+    "其实“地上铺满了落叶”发生了",
+    "一定会发生",
+    "一定不会发生"
+  ],
+  "option_logic": [
+    "e2",
+    "e1",
+    "!e1"
+  ],
+  "answer": 2,
+  "hints": [
+    "先找到题目告诉你的那个已知事实。",
+    "顺着“如果…那么…”一步一步推。",
+    "注意：只有前面的事发生了，后面的事才一定发生；反过来不一定。"
+  ],
+  "explanation": "已知：地上铺满了落叶没有发生。\n要是树叶飘落下来发生了，地上铺满了落叶就会发生；可地上铺满了落叶没发生，所以树叶飘落下来也没发生。\n所以“树叶飘落下来”一定不会发生。",
+  "difficulty": 2,
+  "difficulty_score": 2.43,
+  "source": "generated",
+  "created_at": "2026-08-16 11:39:46"
+}

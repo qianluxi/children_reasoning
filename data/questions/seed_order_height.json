@@ -1,0 +1,64 @@
+{
+  "id": "seed_order_height",
+  "type": "ordering",
+  "story": {
+    "title": "谁最高？",
+    "text": "三个小朋友比身高。根据线索，想想谁最高。",
+    "roles": {
+      "A": "小明",
+      "B": "小红",
+      "C": "小刚"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "小明比小红高",
+      "logic": "RANK(A) < RANK(B)"
+    },
+    {
+      "text": "小红比小刚高",
+      "logic": "RANK(B) < RANK(C)"
+    }
+  ],
+  "question_prompt": "谁最高？",
+  "options": [
+    "小明",
+    "小红",
+    "小刚"
+  ],
+  "option_logic": [
+    "RANK(A) == 1",
+    "RANK(B) == 1",
+    "RANK(C) == 1"
+  ],
+  "answer": 0,
+  "hints": [
+    "把身高关系连成一条链。",
+    "小明比小红高，小红比小刚高，那小明比小刚也高。"
+  ],
+  "explanation": "小明比小红高，小红比小刚高，所以小明 > 小红 > 小刚，最高的是小明。",
+  "difficulty": 1,
+  "difficulty_score": 1.41,
+  "source": "seed",
+  "created_at": ""
+}

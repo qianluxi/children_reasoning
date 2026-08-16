@@ -1,0 +1,61 @@
+{
+  "id": "cond_f6a06a97b3",
+  "type": "conditional",
+  "story": {
+    "title": "想一想，会发生吗？",
+    "text": "根据下面的规则，判断问题里的事情会不会一定发生。",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [
+    {
+      "name": "e0",
+      "type": "boolean"
+    },
+    {
+      "name": "e1",
+      "type": "boolean"
+    },
+    {
+      "name": "e2",
+      "type": "boolean"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "如果太阳出来了，那么雪慢慢融化了",
+      "logic": "!e0 || e1"
+    },
+    {
+      "text": "如果雪慢慢融化了，那么小河的水变多了",
+      "logic": "!e1 || e2"
+    },
+    {
+      "text": "现在：太阳出来了",
+      "logic": "e0"
+    }
+  ],
+  "question_prompt": "那么，“雪慢慢融化了”一定会发生吗？",
+  "options": [
+    "一定不会发生",
+    "一定会发生",
+    "其实“太阳出来了”没有发生"
+  ],
+  "option_logic": [
+    "!e1",
+    "e1",
+    "!e0"
+  ],
+  "answer": 1,
+  "hints": [
+    "先找到题目告诉你的那个已知事实。",
+    "顺着“如果…那么…”一步一步推。",
+    "注意：只有前面的事发生了，后面的事才一定发生；反过来不一定。"
+  ],
+  "explanation": "已知：太阳出来了。\n因为“如果太阳出来了，那么雪慢慢融化了”，所以雪慢慢融化了。\n所以“雪慢慢融化了”一定会发生。",
+  "difficulty": 2,
+  "difficulty_score": 2.43,
+  "source": "generated",
+  "created_at": "2026-08-16 11:39:46"
+}

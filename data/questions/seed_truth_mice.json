@@ -1,0 +1,90 @@
+{
+  "id": "seed_truth_mice",
+  "type": "truth_statements",
+  "story": {
+    "title": "四只偷食物的小老鼠",
+    "text": "有四只小老鼠出去偷食物。它们每只都说了一句话，但只有一只老鼠说了真话。到底哪些老鼠偷了奶酪呢？",
+    "roles": {
+      "A": "小灰",
+      "B": "米粒",
+      "C": "吱吱",
+      "D": "团团"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "A_cheese",
+      "type": "boolean"
+    },
+    {
+      "name": "B_cheese",
+      "type": "boolean"
+    },
+    {
+      "name": "C_cheese",
+      "type": "boolean"
+    },
+    {
+      "name": "D_cheese",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "我们中有些老鼠没偷奶酪",
+      "logic": "SOME_NOT(cheese)",
+      "speaker": "A"
+    },
+    {
+      "text": "至少有一只老鼠偷了奶酪",
+      "logic": "SOME(cheese)",
+      "speaker": "B"
+    },
+    {
+      "text": "没有老鼠偷奶酪",
+      "logic": "NONE(cheese)",
+      "speaker": "C"
+    },
+    {
+      "text": "只有我偷了奶酪",
+      "logic": "D_cheese && COUNT(cheese) == 1",
+      "speaker": "D"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "只有一只老鼠说了真话",
+      "logic": "TRUTH_COUNT == 1"
+    }
+  ],
+  "question_prompt": "到底哪些老鼠偷了奶酪？",
+  "options": [
+    "所有老鼠都偷了奶酪",
+    "有些老鼠没偷奶酪",
+    "没有老鼠偷奶酪",
+    "只有团团偷了奶酪"
+  ],
+  "option_logic": [
+    "ALL(cheese)",
+    "SOME_NOT(cheese)",
+    "NONE(cheese)",
+    "D_cheese && COUNT(cheese) == 1"
+  ],
+  "answer": 0,
+  "hints": [
+    "只有一只老鼠说了真话，先假设某只说的是真话试试。",
+    "如果团团说的是真话（只有它偷了），那米粒说“至少一只偷了”也会是真的——就有两句真话了，矛盾。",
+    "试试假设米粒说的是真话，看看其它三句是不是都成了假话。"
+  ],
+  "explanation": "假设米粒说真话，也就是“至少有一只老鼠偷了奶酪”。\n· 小灰说“有些没偷”：如果四只都偷了，这句就是假话，符合。\n· 吱吱说“没有老鼠偷”：和“至少一只偷了”矛盾，是假话，符合。\n· 团团说“只有我偷了”：若是真的，米粒那句也对了，就有两句真话，所以它是假话，符合。\n这样恰好只有一句真话，此时四只老鼠都偷了奶酪。答案是：所有老鼠都偷了奶酪。",
+  "difficulty": 2,
+  "difficulty_score": 3.89,
+  "source": "seed",
+  "created_at": ""
+}

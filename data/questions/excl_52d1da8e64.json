@@ -1,0 +1,109 @@
+{
+  "id": "excl_52d1da8e64",
+  "type": "exclusion",
+  "story": {
+    "title": "跳绳比赛的名次",
+    "text": "4个小伙伴参加跳绳比赛。根据下面的线索，用排除法想想：米粒是第几名？",
+    "roles": {
+      "A": "旺旺",
+      "B": "米粒",
+      "C": "憨憨",
+      "D": "雪儿"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    },
+    {
+      "name": "rank_D",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "旺旺在憨憨前面",
+      "logic": "RANK(A) < RANK(C)"
+    },
+    {
+      "text": "雪儿不是第1名",
+      "logic": "RANK(D) != 1"
+    },
+    {
+      "text": "憨憨比雪儿名次好",
+      "logic": "RANK(C) < RANK(D)"
+    },
+    {
+      "text": "憨憨不是第1名",
+      "logic": "RANK(C) != 1"
+    },
+    {
+      "text": "旺旺在米粒前面",
+      "logic": "RANK(A) < RANK(B)"
+    },
+    {
+      "text": "憨憨在雪儿前面",
+      "logic": "RANK(C) < RANK(D)"
+    },
+    {
+      "text": "雪儿不是第1名",
+      "logic": "RANK(D) != 1"
+    },
+    {
+      "text": "旺旺在雪儿前面",
+      "logic": "RANK(A) < RANK(D)"
+    },
+    {
+      "text": "旺旺不是第3名",
+      "logic": "RANK(A) != 3"
+    },
+    {
+      "text": "米粒不是第2名",
+      "logic": "RANK(B) != 2"
+    },
+    {
+      "text": "米粒不是最后一名",
+      "logic": "RANK(B) != 4"
+    }
+  ],
+  "question_prompt": "米粒是第几名？",
+  "options": [
+    "第2名",
+    "第1名",
+    "第3名",
+    "第4名"
+  ],
+  "option_logic": [
+    "RANK(B) == 2",
+    "RANK(B) == 1",
+    "RANK(B) == 3",
+    "RANK(B) == 4"
+  ],
+  "answer": 2,
+  "hints": [
+    "先看看哪些名次被明确排除了。",
+    "把不可能的名次一个个划掉。",
+    "最后只剩下一个名次，那就是米粒的。"
+  ],
+  "explanation": "把线索一条条对：米粒不可能是第1名、第2名、第4名，剩下的只能是第3名。",
+  "difficulty": 3,
+  "difficulty_score": 5.28,
+  "source": "generated",
+  "created_at": "2026-08-16 11:39:46"
+}

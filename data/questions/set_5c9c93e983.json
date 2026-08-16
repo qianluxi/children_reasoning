@@ -1,0 +1,79 @@
+{
+  "id": "set_5c9c93e983",
+  "type": "set_logic",
+  "story": {
+    "title": "谁有面包？",
+    "text": "看看下面的情况，想一想：哪一句话是对的？",
+    "roles": {
+      "A": "啾啾",
+      "B": "小白兔",
+      "C": "小狗",
+      "D": "米粒"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "A_bread",
+      "type": "boolean"
+    },
+    {
+      "name": "B_bread",
+      "type": "boolean"
+    },
+    {
+      "name": "C_bread",
+      "type": "boolean"
+    },
+    {
+      "name": "D_bread",
+      "type": "boolean"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "啾啾没有🍞面包",
+      "logic": "!A_bread"
+    },
+    {
+      "text": "小白兔没有🍞面包",
+      "logic": "!B_bread"
+    },
+    {
+      "text": "小狗没有🍞面包",
+      "logic": "!C_bread"
+    },
+    {
+      "text": "米粒有🍞面包",
+      "logic": "D_bread"
+    }
+  ],
+  "question_prompt": "关于面包，下面哪句话是对的？",
+  "options": [
+    "谁都没有面包",
+    "所有人都有面包",
+    "有些人有面包，有些人没有"
+  ],
+  "option_logic": [
+    "NONE(bread)",
+    "ALL(bread)",
+    "SOME(bread) && SOME_NOT(bread)"
+  ],
+  "answer": 2,
+  "hints": [
+    "先数一数：一共有几个人有面包。",
+    "“所有”表示一个不少；“都没有”表示一个也没有。",
+    "只要有人有、也有人没有，那就是“有些人有，有些人没有”。"
+  ],
+  "explanation": "有面包的是：米粒；没有面包的是：啾啾、小白兔、小狗。\n所以“有些人有面包，有些人没有”是对的。",
+  "difficulty": 2,
+  "difficulty_score": 2.59,
+  "source": "generated",
+  "created_at": "2026-08-16 11:39:46"
+}
