@@ -112,6 +112,20 @@ h1 { color: var(--primary); }
 .level-card .lv-name { font-size: 1.25rem; font-weight: 700; color: var(--text); }
 .level-card .lv-tag { font-size: .85rem; color: var(--muted); }
 
+/* 外部题库语言切换 */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 4px 0 18px;
+}
+.lang-toggle .lang-lbl { color: var(--muted); font-weight: 600; }
+.lang-toggle .btn.active {
+  background: var(--primary);
+  color: #fff;
+}
+
 /* 按钮 */
 .btn {
   border: none;
@@ -138,6 +152,7 @@ h1 { color: var(--primary); }
   font-size: .95rem;
   font-weight: 600;
 }
+.chip.bank { background: #8e7cc3; }
 .chip.gold { background: var(--gold); }
 .starcount { color: var(--gold); font-size: 1.1rem; }
 .story { color: var(--muted); font-size: 1.05rem; }

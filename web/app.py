@@ -13,7 +13,7 @@ from pathlib import Path
 
 from flask import Flask, jsonify, render_template, request, session
 
-from logic_kids.bank import store, seed
+from logic_kids.bank import external, store, seed
 from logic_kids.difficulty import engine as difficulty_engine, levels as difficulty_levels
 from logic_kids.progress import store as progress
 from logic_kids.engine import adaptive
@@ -26,27 +26,41 @@ WEB_DIR = Path(__file__).resolve().parent
 _QID_RE = re.compile(r"^[A-Za-z0-9_-]+$")
 
 
-def _public_question(q) -> dict:
+def _public_question(q, lang: str = "zh") -> dict:
     """去掉答案与逻辑，只给儿童看的表现层。"""
-    return {
+    is_external = bool(q.source_info and q.source_info.type == "external")
+    zh = (q.translations or {}).get("zh") if q.translations else None
+    use_zh = lang == "zh" and zh is not None
+    constraints = (zh["constraints"] if use_zh
+                   else [c.text for c in q.constraints if c.text])
+    options = zh["options"] if use_zh else list(q.options)
+    story_title = zh["story_title"] if use_zh else q.story.title
+    story_text = zh["story_text"] if use_zh else q.story.text
+    prompt = zh.get("question_prompt", q.question_prompt) if use_zh \
+        else q.question_prompt
+    resp = {
         "id": q.id,
         "type": q.type,
         "type_name": TYPE_NAMES.get(q.type, q.type),
+        "bank": "external" if is_external else "builtin",
+        "source_name": q.source_info.name if is_external else "",
+        "lang": "zh" if use_zh else "en",
         "difficulty": q.difficulty,
         "difficulty_level": q.difficulty_level
         or difficulty_levels.level_for_score(q.difficulty_score),
         "level_label": q.level_label(),
         "stars": "★" * q.difficulty,
-        "story": {"title": q.story.title, "text": q.story.text},
+        "story": {"title": story_title, "text": story_text},
         "statements": [
             {"speaker": q.story.roles.get(s.speaker, s.speaker or ""), "text": s.text}
             for s in q.statements
         ],
-        "constraints": [c.text for c in q.constraints if c.text],
-        "question_prompt": q.question_prompt,
-        "options": list(q.options),
+        "constraints": constraints,
+        "question_prompt": prompt,
+        "options": options,
         "hint_count": len(q.hints),
     }
+    return resp
 
 
 def _ensure_bank():
@@ -104,6 +118,11 @@ def create_app() -> Flask:
         """难度等级清单（前端只拿等级名，不拿评分）。"""
         return jsonify({"levels": difficulty_levels.public_levels()})
 
+    @app.route("/api/external/sources")
+    def external_sources():
+        """外部题库来源清单（名称/许可证/题数），前端按来源选择。"""
+        return jsonify({"sources": external.list_sources()})
+
     @app.route("/api/next", methods=["POST"])
     def next_question():
         data = request.get_json(force=True) or {}
@@ -113,9 +132,20 @@ def create_app() -> Flask:
             return jsonify({"error": "child_id 必须是正整数"}), 400
         if not progress.child_exists(child_id):
             return jsonify({"error": "儿童不存在"}), 404
-        # 可选参数：用户选择的难度等级（1..4）与题型
+        # 可选参数：题库模式（内置/外部）、外部来源、难度等级（1..4）、题型
         level = data.get("level")
         category = data.get("category")
+        bank = data.get("bank", "builtin")
+        source = data.get("source")
+        lang = data.get("lang", "zh")
+        if lang not in ("zh", "en"):
+            return jsonify({"error": "lang 必须是 zh 或 en"}), 400
+        if bank not in ("builtin", "external"):
+            return jsonify({"error": "bank 必须是 builtin 或 external"}), 400
+        if bank == "external":
+            known = {s["slug"] for s in external.list_sources()}
+            if source is not None and source not in known:
+                return jsonify({"error": f"未知外部题库来源：{source}"}), 400
         if level is not None:
             try:
                 level = difficulty_levels.validate_level(level)
@@ -126,14 +156,19 @@ def create_app() -> Flask:
                 return jsonify({"error": f"未知题型，可选：{', '.join(TYPE_NAMES)}"}), 400
         # 身份绑定：本次浏览器的 session 只认这个儿童
         session["child_id"] = child_id
-        if level is not None:
+        session["lang"] = lang
+        if bank == "external":
+            pick = select_question(difficulty=level, child_id=child_id,
+                                   category=category, external_bank=True,
+                                   source=source)
+        elif level is not None:
             pick = select_question(difficulty=level, child_id=child_id,
                                    category=category)
         else:
             pick = adaptive.next_question(child_id)
         if pick is None:
-            return jsonify({"error": "题库空了"}), 404
-        resp = _public_question(pick["question"])
+            return jsonify({"error": "该题库暂无可用题目"}), 404
+        resp = _public_question(pick["question"], lang)
         resp["reason"] = pick["reason"]
         return jsonify(resp)
 
@@ -148,7 +183,7 @@ def create_app() -> Flask:
         qid = data.get("question_id")
         if not isinstance(qid, str) or not _QID_RE.fullmatch(qid):
             return jsonify({"error": "题目编号不合法"}), 400
-        q = store.load_question(qid)
+        q = store.load_question(qid) or external.load_question_any(qid)
         if q is None:
             return jsonify({"error": "题目不存在"}), 404
         choice = data.get("choice")
@@ -165,11 +200,16 @@ def create_app() -> Flask:
         progress.record_attempt(child_id, q.id, q.type, correct,
                                 time_ms=time_ms,
                                 difficulty_score=q.difficulty_score)
+        zh = (q.translations or {}).get("zh") if q.translations else None
+        explanation = zh["explanation"] if session.get("lang") == "zh" and zh \
+            else q.explanation
+        options = zh["options"] if session.get("lang") == "zh" and zh \
+            else q.options
         return jsonify({
             "correct": correct,
             "correct_index": q.answer,
-            "correct_text": q.options[q.answer],
-            "explanation": q.explanation,
+            "correct_text": options[q.answer],
+            "explanation": explanation,
         })
 
     # ---------- 提示（逐步） ----------
@@ -178,7 +218,7 @@ def create_app() -> Flask:
         if not _QID_RE.fullmatch(qid):
             return jsonify({"error": "题目编号不合法"}), 400
         step = request.args.get("step", 0, type=int)
-        q = store.load_question(qid)
+        q = store.load_question(qid) or external.load_question_any(qid)
         if q is None:
             return jsonify({"error": "题目不存在"}), 404
         if step < 0 or step >= len(q.hints):
@@ -193,7 +233,8 @@ def create_app() -> Flask:
         session_child = session.get("child_id")
         if session_child is not None and session_child != child_id:
             return jsonify({"error": "只能查看当前登录儿童的档案"}), 403
-        prof = progress.profile(child_id, list(TYPE_NAMES))
+        # 能力画像只展示 5 个核心题型（外部导入题不参与能力建模）
+        prof = progress.profile(child_id, list(GENERATORS))
         # 转成前端友好的列表
         rows = []
         for t, info in prof.items():

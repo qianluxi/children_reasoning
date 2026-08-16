@@ -18,6 +18,46 @@ def child_id(client):
     return r.get_json()["id"]
 
 
+@pytest.fixture(scope="module")
+def external_bank():
+    """往外部题库写入 3 道 BIG-bench 题（测试隔离数据目录）。
+
+    至少 3 道：答过的题会被"避重复"排除，1 道题的库答完即空。
+    """
+    from logic_kids.bank import external
+    from logic_kids.difficulty import levels
+    from logic_kids.models import (Question, Story, SourceInfo, Provenance)
+    external.clear()
+    for i in range(3):
+        q = Question(
+            id=f"ext_web_bigbench_{i}", type="ordering",
+            story=Story(title="外部测试题", text="external story",
+                        roles={"A": "a"}),
+            entities=["A", "B", "C"], variables=[], statements=[],
+            constraints=[], question_prompt="谁最左？",
+            options=["A", "B", "C"], option_logic=["TRUE", "FALSE", "FALSE"],
+            answer=0, hints=[], explanation="x",
+            difficulty=1, difficulty_score=1.5,
+            difficulty_level=levels.level_for_score(1.5),
+            source="bigbench",
+            source_info=SourceInfo(type="external", name="BIG-bench",
+                                   license="Apache-2.0"),
+            provenance=Provenance(imported_at="2026-01-01T00:00:00",
+                                  review_status="approved"),
+            translations={"zh": {
+                "story_title": "外部测试题",
+                "story_text": "中文题干",
+                "constraints": ["A 在 B 的左边。"],
+                "options": ["中文A", "中文B", "中文C"],
+                "question_prompt": "谁最左？",
+                "explanation": "中文解释",
+            }},
+        )
+        external.save_question(q)
+    yield
+    external.clear()
+
+
 def test_pages_render(client):
     assert client.get("/").status_code == 200
     assert client.get("/profile").status_code == 200
@@ -59,7 +99,7 @@ def test_answer_and_profile(client, child_id):
 
     prof = client.get(f"/api/profile/{child_id}").get_json()
     assert prof["total_attempts"] >= 1
-    assert len(prof["skills"]) == 5
+    assert len(prof["skills"]) == 6
 
 
 def test_hint_progressive(client, child_id):
@@ -210,3 +250,84 @@ def test_attempt_records_time_and_score(client, child_id):
     assert row is not None
     assert row[0] == 999
     assert row[1] is not None
+
+
+# ---------- 外部题库（独立存储、按来源选择） ----------
+
+def test_external_sources_api(client, external_bank):
+    r = client.get("/api/external/sources")
+    assert r.status_code == 200
+    srcs = r.get_json()["sources"]
+    assert any(s["slug"] == "bigbench" and s["total"] >= 1 for s in srcs)
+    assert any(s["license"] == "Apache-2.0" for s in srcs)
+
+
+def test_next_external_bank(client, child_id, external_bank):
+    r = client.post("/api/next", json={
+        "child_id": child_id, "level": 1,
+        "bank": "external", "source": "bigbench"})
+    assert r.status_code == 200
+    q = r.get_json()
+    assert q["bank"] == "external"
+    assert q["source_name"] == "BIG-bench"
+    assert "answer" not in q and "option_logic" not in q
+
+
+def test_next_external_unknown_source(client, child_id):
+    r = client.post("/api/next", json={
+        "child_id": child_id, "level": 1,
+        "bank": "external", "source": "不存在的来源"})
+    assert r.status_code == 400
+
+
+def test_next_bank_validation(client, child_id):
+    r = client.post("/api/next", json={"child_id": child_id, "bank": "evil"})
+    assert r.status_code == 400
+
+
+def test_answer_external_question(client, child_id, external_bank):
+    q = client.post("/api/next", json={
+        "child_id": child_id, "level": 1,
+        "bank": "external", "source": "bigbench"}).get_json()
+    r = client.post("/api/answer", json={
+        "question_id": q["id"], "choice": 0})
+    assert r.status_code == 200
+    assert "correct" in r.get_json()
+
+
+def test_next_external_zh_lang(client, child_id, external_bank):
+    r = client.post("/api/next", json={
+        "child_id": child_id, "level": 1,
+        "bank": "external", "source": "bigbench", "lang": "zh"})
+    assert r.status_code == 200
+    q = r.get_json()
+    assert q["lang"] == "zh"
+    assert q["options"] == ["中文A", "中文B", "中文C"]
+    assert q["story"]["text"] == "中文题干"
+
+
+def test_next_external_en_lang(client, child_id, external_bank):
+    r = client.post("/api/next", json={
+        "child_id": child_id, "level": 1,
+        "bank": "external", "source": "bigbench", "lang": "en"})
+    assert r.status_code == 200
+    q = r.get_json()
+    assert q["lang"] == "en"
+    assert q["options"] == ["A", "B", "C"]
+
+
+def test_answer_external_zh_explanation(client, child_id, external_bank):
+    q = client.post("/api/next", json={
+        "child_id": child_id, "level": 1,
+        "bank": "external", "source": "bigbench", "lang": "zh"}).get_json()
+    r = client.post("/api/answer", json={
+        "question_id": q["id"], "choice": 0})
+    data = r.get_json()
+    assert data["explanation"] == "中文解释"
+    assert data["correct_text"] == "中文A"
+
+
+def test_next_lang_validation(client, child_id):
+    r = client.post("/api/next", json={
+        "child_id": child_id, "bank": "external", "lang": "fr"})
+    assert r.status_code == 400

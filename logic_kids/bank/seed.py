@@ -196,10 +196,12 @@ def validated_seeds() -> list:
     返回通过 Validator 的种子题列表；不合格的打印警告并跳过。
     """
     from ..validator.validator import validate
+    from ..models import ensure_builtin_source
     result = []
     for q in all_seeds():
         report = validate(q)
         if report.ok:
+            ensure_builtin_source(q)
             result.append(q)
         else:
             print(f"[warn] 种子题 {q.id} 未通过 Validator，已跳过: {'; '.join(report.issues)}")

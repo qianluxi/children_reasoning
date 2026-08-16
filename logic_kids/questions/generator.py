@@ -8,8 +8,9 @@ from __future__ import annotations
 import random
 
 from ..difficulty import engine
+from ..models import ensure_builtin_source
 from ..validator.validator import validate
-from .templates import truth, ordering, conditional, set_logic, exclusion
+from .templates import truth, ordering, conditional, set_logic, exclusion, matching
 
 GENERATORS = {
     "truth_statements": truth.generate,
@@ -17,6 +18,7 @@ GENERATORS = {
     "conditional": conditional.generate,
     "set_logic": set_logic.generate,
     "exclusion": exclusion.generate,
+    "matching": matching.generate,
 }
 
 TYPE_NAMES = {
@@ -25,6 +27,8 @@ TYPE_NAMES = {
     "conditional": "条件推理",
     "set_logic": "集合关系",
     "exclusion": "排除推理",
+    "matching": "配对推理",
+    "external_text": "外部逻辑",
 }
 
 
@@ -40,6 +44,7 @@ def generate_one(qtype: str, rng: random.Random, **kwargs):
     if not report.ok:
         return None
     engine.apply(q)
+    ensure_builtin_source(q)
     return q
 
 

@@ -15,7 +15,7 @@ from pathlib import Path
 
 from ..config import QUESTIONS_DIR, BANK_INDEX_PATH, ensure_dirs
 from ..difficulty import levels
-from ..models import Question
+from ..models import Question, ensure_builtin_source
 
 
 def _atomic_write(path: Path, text: str) -> None:
@@ -44,6 +44,7 @@ def _save_index(index: dict) -> None:
 
 def save_question(q: Question) -> None:
     ensure_dirs()
+    ensure_builtin_source(q)  # 内置题缺省来源；外部题已有自己的 source_info
     path = QUESTIONS_DIR / f"{q.id}.json"
     _atomic_write(path, q.to_json())
     index = _index()

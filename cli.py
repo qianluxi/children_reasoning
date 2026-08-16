@@ -7,6 +7,13 @@
     python cli.py validate             # 校验题库全部题目
     python cli.py play --child 小明     # 命令行答题演示（自适应出题）
     python cli.py play --child 小明 --level 3   # 固定难度等级 3（困难）
+    python cli.py import bigbench --task logical_deduction/three_objects --limit 20
+    python cli.py import logiqa --task dev --limit 10
+    python cli.py review                # 查看外部题待审队列
+    python cli.py review --approve ext_bigbench_logical_deduction_three_objects_0000
+    python cli.py external list         # 列出外部题库来源
+    python cli.py external stats        # 外部题库统计
+    python cli.py external translate    # 给外部题生成中文版（机器翻译）
 """
 from __future__ import annotations
 
@@ -138,6 +145,100 @@ def cmd_play(args):
     return 0
 
 
+def cmd_import(args):
+    from logic_kids.bank import importer
+    from logic_kids.bank.sources import SOURCE_INFO
+    info = SOURCE_INFO.get(args.source, {})
+    license_name = info.get("license", "?")
+    print(f"导入源: {args.source}（许可证: {license_name}）")
+    if "NC" in license_name:
+        print("[warn] 该数据集使用 CC BY-NC-SA（非商业许可），仅限研究/非商业用途！")
+    report = importer.import_source(args.source, limit=args.limit,
+                                    approve=args.approve, task=args.task,
+                                    lang=args.lang)
+    print(f"共 {report['total']} 条：转换成功 {report['translated']}，"
+          f"跳过 {report['skipped']}，结构不过 {report['failed_schema']}，"
+          f"逻辑不过 {report['failed_logic']}。")
+    print(f"进入待审队列 {report['pending']} 条"
+          + (f"，审核入库 {report['approved']} 条" if args.approve else "。"))
+    if args.approve and report["approve_failed"]:
+        print(f"[warn] 有 {report['approve_failed']} 条未能直接审核入库"
+              f"（未通过逻辑验证的题必须人工改写后才能入库）。")
+        return 1
+    return 0
+
+
+def cmd_review(args):
+    from logic_kids.bank import importer, provenance
+    if args.approve_all:
+        ok_n, fail_n, failures = importer.approve_all_pending(force=args.force)
+        print(f"批量审核：通过 {ok_n}，失败 {fail_n}。")
+        for msg in failures[:10]:
+            print(f"  ✘ {msg}")
+        return 0 if fail_n == 0 else 1
+    if args.approve:
+        ok, msg = importer.approve_pending(args.approve, force=args.force)
+        print(msg)
+        return 0 if ok else 1
+    if args.reject:
+        ok, msg = importer.reject_pending(args.reject)
+        print(msg)
+        return 0 if ok else 1
+    items = provenance.list_pending()
+    if not items:
+        print("待审队列为空（先运行 python cli.py import ...）。")
+        return 0
+    marks = {"pending": "⏳", "approved": "✔", "rejected": "✘"}
+    for it in items:
+        mark = marks.get(it["review_status"], "?")
+        lv = "是" if it["logic_validated"] else "否"
+        print(f"  {mark} {it['qid']:48s} [{it['source']}] "
+              f"{it['title'][:28]:28s} 逻辑验证={lv}")
+    print(f"\n共 {len(items)} 条。")
+    return 0
+
+
+def cmd_external(args):
+    from logic_kids.bank import external
+    if args.action == "translate":
+        from logic_kids.bank.sources import bigbench
+        source = args.source or "bigbench"
+        qids = external.list_ids(source)
+        done = 0
+        for qid in qids:
+            q = external.load_question(source, qid)
+            if q is None:
+                continue
+            zh = bigbench.zh_translate_question(q)
+            q.translations = {"zh": zh}
+            external.save_question(q)
+            done += 1
+        print(f"已为外部来源 {source} 生成中文版：{done}/{len(qids)} 题"
+              "（机器翻译，建议人工校对后开放给儿童）。")
+        return 0
+    if args.action == "list":
+        sources = external.list_sources()
+        if not sources:
+            print("外部题库为空（先 import 并 review --approve 后才有题）。")
+            return 0
+        print("外部题库来源：")
+        for s in sources:
+            print(f"  {s['slug']:10s} {s['name']:10s} {s['license']:18s} {s['total']} 题")
+        return 0
+    st = external.stats(args.source)
+    print(f"外部题库总数: {st['total']}")
+    print("按来源:")
+    for s, n in st["by_source"].items():
+        print(f"  {s:10s} {n}")
+    print("按类型:")
+    for t, n in st["by_type"].items():
+        print(f"  {TYPE_NAMES.get(t, t):10s} {n}")
+    print("按用户等级:")
+    for lv in sorted(st["by_level"]):
+        print(f"  {lv}. {difficulty_levels.name(lv):4s} {st['by_level'][lv]}")
+    return 0
+
+
 def main(argv=None):
     # 题库文案含 emoji（如 🧀），GBK 控制台打印会崩溃；统一用 UTF-8 输出
     if hasattr(sys.stdout, "reconfigure"):
@@ -162,6 +263,35 @@ def main(argv=None):
     p_play.add_argument("--level", type=int, default=None,
                         help="固定难度等级 1..4（不指定则走自适应出题）")
     p_play.set_defaults(func=cmd_play)
+
+    p_imp = sub.add_parser("import", help="导入外部题库（先进待审队列）")
+    p_imp.add_argument("source", choices=["bigbench", "logiqa"])
+    p_imp.add_argument("--limit", type=int, default=None, help="最多导入条数")
+    p_imp.add_argument("--task", default=None,
+                       help="BIG-bench: task 路径（默认 logical_deduction/three_objects）；"
+                            "LogiQA: split（默认 dev）")
+    p_imp.add_argument("--lang", default=None,
+                       help="LogiQA: zh（官方中文版，默认）或 en")
+    p_imp.add_argument("--approve", action="store_true",
+                       help="通过四道闸门后直接审核入库")
+    p_imp.set_defaults(func=cmd_import)
+
+    p_rev = sub.add_parser("review", help="外部题待审队列管理")
+    p_rev.add_argument("--approve", metavar="QID", default=None,
+                       help="审核通过某题并移入正式题库")
+    p_rev.add_argument("--approve-all", action="store_true",
+                       help="批量审核全部待审题")
+    p_rev.add_argument("--force", action="store_true",
+                       help="无 DSL 的题也允许人工审核入库")
+    p_rev.add_argument("--reject", metavar="QID", default=None,
+                       help="标记某题 rejected")
+    p_rev.set_defaults(func=cmd_review)
+
+    p_ext = sub.add_parser("external", help="外部题库管理（与内置题库分开存储）")
+    p_ext.add_argument("action", choices=["list", "stats", "translate"])
+    p_ext.add_argument("source", nargs="?", default=None,
+                       help="来源 slug（如 bigbench），仅 stats 用")
+    p_ext.set_defaults(func=cmd_external)
 
     args = parser.parse_args(argv)
     return args.func(args) or 0

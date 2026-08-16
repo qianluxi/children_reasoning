@@ -1,8 +1,9 @@
-"""统一 Question 数据模型（专家意见第二节）。
+"""统一 Question 数据模型（专家意见第二节、第八节）。
 
 设计要点：
     - 文字只是表现层（story/statements/options 的 text 字段）；
     - logic 表达式才是核心（statements[].logic / constraints[].logic / option_logic[]）；
+    - source_info + provenance 记录题目来源与许可证（内置/外部题库都要可追溯）；
     - 全部字段可 JSON 序列化，题库文件即 JSON。
 """
 from __future__ import annotations
@@ -10,6 +11,36 @@ from __future__ import annotations
 import json
 from dataclasses import dataclass, field, asdict
 from typing import Optional
+
+
+@dataclass
+class SourceInfo:
+    """题目来源（专家意见第八节：题库来源概念）。
+
+    type        "builtin"（自有生成/种子）| "external"（外部数据集）
+    name        来源名，如 "children_reasoning" / "BIG-bench" / "LogiQA2.0"
+    license     许可证，如 "MIT" / "Apache-2.0" / "CC-BY-NC-SA-4.0"
+    dataset_id  外部数据集标识（如 BIG-bench task 路径）
+    original_id 外部数据集中原始题目 id
+    url         来源地址
+    """
+    type: str = "builtin"
+    name: str = "children_reasoning"
+    license: str = "MIT"
+    dataset_id: str = ""
+    original_id: str = ""
+    url: str = ""
+
+
+@dataclass
+class Provenance:
+    """导入溯源（专家意见第八节：这道题从哪里来、改过没有）。"""
+    imported_at: str = ""        # 导入时间（ISO）
+    modified: bool = False       # 是否经过改写/转换
+    translator: str = ""         # 转换器标识（如 bigbench 规则翻译器）
+    review_status: str = "pending"  # pending / approved / rejected
+    logic_validated: bool = False   # 是否通过 Solver/Validator 逻辑验证
+    difficulty_calibrated: bool = False  # 难度是否由本引擎重新校准
 
 
 @dataclass
@@ -57,6 +88,9 @@ class Question:
     difficulty_score: float = 0.0   # 0..10 连续分（由难度引擎计算）
     difficulty_level: Optional[int] = None  # 用户可见等级 1..4（levels.py 映射）
     source: str = "generated" # "seed" | "generated"
+    source_info: Optional[SourceInfo] = None    # 来源 + 许可证（可追溯）
+    provenance: Optional[Provenance] = None     # 导入溯源（外部题）
+    translations: Optional[dict] = None         # 语言变体，如 {"zh": {...}}（中文版）
     created_at: str = ""
 
     # ---------- 序列化 ----------
@@ -73,6 +107,10 @@ class Question:
         d["variables"] = [Variable(**v) for v in d["variables"]]
         d["statements"] = [Statement(**s) for s in d["statements"]]
         d["constraints"] = [Constraint(**c) for c in d["constraints"]]
+        if d.get("source_info") is not None:
+            d["source_info"] = SourceInfo(**d["source_info"])
+        if d.get("provenance") is not None:
+            d["provenance"] = Provenance(**d["provenance"])
         q = cls(**d)
         # 旧题库文件可能没有 difficulty_level：用评分反算，保证新旧数据一致
         if q.difficulty_level is None and q.difficulty_score:
@@ -98,3 +136,12 @@ class Question:
         if lv is None:
             lv = levels.level_for_score(self.difficulty_score)
         return levels.label(lv)
+
+
+def ensure_builtin_source(question: Question) -> Question:
+    """内置题（种子/生成）补全来源信息，缺省标记为自有题库。"""
+    if question.source_info is None:
+        question.source_info = SourceInfo(type="builtin",
+                                          name="children_reasoning",
+                                          license="MIT")
+    return question

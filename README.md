@@ -39,6 +39,12 @@ python cli.py play --child 小明 --rounds 5 --level 3
 # 5) 启动 Web 界面
 python app.py --port 5000
 # 打开 http://127.0.0.1:5000
+
+# 6) 导入外部题库（Phase 3：先进待审队列，审核后才进正式题库）
+python cli.py import bigbench --task logical_deduction/three_objects --limit 20
+python cli.py review                          # 查看待审队列
+python cli.py review --approve <题目id>        # 审核通过后移入正式题库
+python cli.py import logiqa --task dev --limit 10  # 非商业许可，需谨慎
 ```
 
 运行测试：
@@ -73,15 +79,23 @@ reasoning/
 │   │   ├── themes.py          # 主题词库（角色/物品/场景）
 │   │   ├── generator.py       # 统一生成器（模板→验证→难度→入库）
 │   │   ├── selector.py        # QuestionSelector：按用户等级/题型/避重复选题
-│   │   └── templates/         # 5 个题型模板
+│   │   └── templates/         # 6 个题型模板
 │   │       ├── truth.py       # 真假话
 │   │       ├── ordering.py    # 顺序排列
 │   │       ├── conditional.py # 条件推理
 │   │       ├── set_logic.py   # 集合关系
-│   │       └── exclusion.py   # 排除推理
+│   │       ├── exclusion.py   # 排除推理
+│   │       └── matching.py    # 配对推理（一一对应/排除）
 │   ├── bank/
 │   │   ├── store.py           # 题库存储（JSON 文件 + 索引）
-│   │   └── seed.py            # 人工种子题（含经典"四只老鼠"）
+│   │   ├── seed.py            # 人工种子题（含经典"四只老鼠"）
+│   │   ├── importer.py        # 外部题导入管线（四道闸门 + 审核入库）
+│   │   ├── normalizer.py      # 外部题统一中间模型（不强行转 DSL）
+│   │   ├── provenance.py      # 题目溯源 + 待审队列（data/imports/）
+│   │   ├── external.py        # 外部题库独立存储（data/external/<来源>/，按来源分目录）
+│   │   └── sources/           # 外部题库源适配器
+│   │       ├── bigbench.py    # BIG-bench logical_deduction（Apache-2.0，含规则翻译器）
+│   │       └── logiqa.py      # LogiQA2.0（CC BY-NC-SA，非商业；支持官方中文版 *_zh.txt）
 │   ├── engine/adaptive.py     # 自适应出题（薄弱技能→70/20/10 难度→选题）
 │   └── progress/store.py      # SQLite：儿童档案 + 答题历史 + 掌握度
 ├── web/
@@ -107,11 +121,81 @@ reasoning/
 | `constraints` | 约束/事实（text + logic） |
 | `options` / `option_logic` | 选项文字 + 对应的逻辑表达式 |
 | `answer` | 正确选项下标 |
-| `hints` / `explanation` | 逐步提示 + 儿童友好解释 |
-| `difficulty` / `difficulty_score` | 内部星级 + 连续难度分（0..10） |
-| `difficulty_level` | 用户可见等级 1~4（`difficulty/levels.py` 映射） |
+  | `hints` / `explanation` | 逐步提示 + 儿童友好解释 |
+  | `difficulty` / `difficulty_score` | 内部星级 + 连续难度分（0..10） |
+  | `difficulty_level` | 用户可见等级 1~4（`difficulty/levels.py` 映射） |
+  | `source_info` | 来源与许可证：type/name/license/dataset_id/original_id/url |
+  | `provenance` | 导入溯源：imported_at/modified/translator/review_status |
 
-例（真假话）：`statements[].logic = "NOT_ALL(cheese)"`，`constraints[].logic = "TRUTH_COUNT == 1"`。
+  例（真假话）：`statements[].logic = "NOT_ALL(cheese)"`，`constraints[].logic = "TRUTH_COUNT == 1"`。
+
+  内置题（种子 + 生成）自动标记 `source_info = {type: builtin, name: children_reasoning,
+  license: MIT}`；外部题由导入管线写入完整的来源与许可证信息。
+
+## 外部题库导入（Phase 3）
+
+**外部题与内置题库完全分开存储、分开管理**：
+
+```text
+data/
+├── questions/ + bank_index.json   # 内置题库（种子题 + 生成题）
+├── external/<来源slug>/            # 外部题库（审核通过后按来源分目录）
+│   ├── <qid>.json
+│   └── index.json                 # 该来源的索引
+└── imports/<来源>/                 # 待审队列（审核前）
+```
+
+外部题绝不直接进内置题库（专家意见第十一节）：先写入 `data/imports/` 待审队列，
+审核通过才移入 `data/external/<来源>/`。管线：
+
+  ```text
+  外部数据集 → ① Schema Validation → ② Logic Validation（Solver）
+            → ③ Unique Solution → ④ Difficulty Calibration → 待审队列 → 审核 → 正式题库
+  ```
+
+  已接入两个数据源（专家意见第六、七节选型）：
+
+  | 数据源 | 许可证 | 说明 |
+  |---|---|---|
+  | BIG-bench `logical_deduction` | Apache-2.0（可商用） | 规则翻译器把排序句转成 DSL（`RANK(X)<RANK(Y)`），可走 Solver 四道闸门；翻译不了自动跳过并计数 |
+| LogiQA2.0 | CC BY-NC-SA 4.0（**非商业**） | 自然语言逻辑推理选择题，**不强行转 DSL**；支持官方中文版（`--lang zh`），人工抽检后可用 `review --approve --force` 放行（保留未验证标记） |
+
+  关键规则：
+
+  - **能转 DSL 的题自动审核**：`review --approve` 会复验 Solver/Validator（唯一解）；
+    未通过逻辑验证的题（自然语言题）默认拒绝，人工抽检认可后加 `--force` 放行
+    （`logic_validated=False` 标记会一直保留，方便追溯）。
+- **难度一律由本引擎重算**：`engine.apply()`（外部数据集自带的难度标签不被信任）；
+  无 DSL 的题用结构启发式兜底并标记 `difficulty_calibrated=False`。
+  - **许可证随题记录**：`source_info.license` 与 `provenance.translator` 让每道题
+    都可追溯到"从哪里来、改过什么、谁转换的"。
+- 导入的题目目前保留原始英文题干/选项（等待中文改写），因此只应经过人工审核后
+  再进入儿童可用的正式题库。
+
+### 界面与选择
+
+Web 流程：选择儿童 → **选择题库**（🧩 内置题库 / 🌐 外部题库）→
+选外部来源（BIG-bench / LogiQA…，显示各来源题数与许可证）→
+**选题目语言**（中文版 / English 原文）→ 选难度 → 答题。
+选外部题库后只出该来源的题；`/api/next` 支持 `bank: builtin|external`、
+`source` 与 `lang: zh|en` 参数，判题/提示接口对内置题与外部题都生效。
+
+外部题的中文版由规则翻译器生成（`bank/sources/bigbench.py` 的
+`zh_translate_question`），存放在题目 JSON 的 `translations.zh` 字段里，
+原题保留不动。已入库的题可用 `python cli.py external translate` 批量补翻译。
+
+  常用命令：
+
+  ```bash
+  python cli.py import bigbench --task logical_deduction/three_objects --limit 20
+  python cli.py review                          # 列出待审队列
+  python cli.py review --approve ext_bigbench_logical_deduction_three_objects_0
+  python cli.py review --approve-all --force    # 人工抽检后批量放行（含无 DSL 题）
+  python cli.py review --reject <题目id>
+  python cli.py external list                   # 列出外部题库来源
+  python cli.py external stats                  # 外部题库统计（可按来源）
+  python cli.py external translate              # 给外部题批量生成中文版
+  ```
 
 ## Logic DSL
 
@@ -251,9 +335,10 @@ Web 流程：选择儿童 → 选择难度（4 级）→ 答题 → 下一题保
 
 ## 后续可扩展
 
-- 题型：配对问题、多条件排序、多人真假话（专家题型表 ⑦~⑩）
-- 题库采集层：爬虫 → 结构化 → Logic DSL → Solver 验证（Solver 仍是裁判）
-- 自动变体：同一模板换主题词后重新 Solver 验证（已具备基础）
+  - 题型：多条件排序、多人真假话（配对推理已内置）
+  - Phase 3b：外部题中文改写/翻译器（当前保留英文原文，需人工审核后入正式题库）
+  - Phase 3c：更多数据源（LSAT reasoning CC BY 4.0；OpenBookQA 偏知识推理，暂缓）
+  - 自动变体：同一模板换主题词后重新 Solver 验证（已具备基础）
 - 能力画像的更细粒度建模（IRT / 知识追踪）
 - Phase 2：题库统一 QuestionSchema（source/license/provenance），内置题先行
 - Phase 3：外部题库导入层（Raw → Normalizer → Validator → Bank，先评估 LogiQA2.0 / BIG-bench）

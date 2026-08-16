@@ -26,6 +26,30 @@
     </div>
   </section>
 
+  <!-- 选择题库（内置 / 外部） -->
+  <section id="bankpick" class="card center hidden">
+    <h1>🧩 选择今天的挑战</h1>
+    <p class="sub">想练内置题，还是挑战外部题库？</p>
+    <div id="bankList" class="level-list">
+      <button class="level-card" onclick="pickBank('builtin')">
+        <span class="lv-emoji">🧩</span>
+        <span class="lv-name">内置题库</span>
+        <span class="lv-tag">种子题 + 自动生成</span>
+      </button>
+      <button class="level-card" onclick="pickBank('external')">
+        <span class="lv-emoji">🌐</span>
+        <span class="lv-name">外部题库</span>
+        <span class="lv-tag">开放数据集</span>
+      </button>
+    </div>
+    <div id="langToggle" class="lang-toggle hidden">
+      <span class="lang-lbl">题目语言：</span>
+      <button id="langZhBtn" class="btn ghost active" onclick="pickLang('zh')">中文版</button>
+      <button id="langEnBtn" class="btn ghost" onclick="pickLang('en')">English 原文</button>
+    </div>
+    <div id="sourceList" class="level-list hidden"></div>
+  </section>
+
   <!-- 选择难度 -->
   <section id="pick" class="card center hidden">
     <h1>🧩 选择今天的挑战难度</h1>
@@ -37,6 +61,7 @@
   <!-- 答题区 -->
   <section id="quiz" class="card hidden">
     <div class="q-head">
+      <span id="qBank" class="chip bank"></span>
       <span id="qType" class="chip"></span>
       <span id="qLevel" class="chip gold"></span>
       <span id="qStars" class="starcount"></span>
@@ -53,6 +78,7 @@
     <div class="actions">
       <button id="hintBtn" class="btn ghost">💡 提示</button>
       <button id="changeLevelBtn" class="btn ghost">🔁 换难度</button>
+      <button id="changeBankBtn" class="btn ghost">🌐 换题库</button>
       <button id="nextBtn" class="btn primary hidden">下一题 →</button>
     </div>
     <div id="hints" class="hints"></div>

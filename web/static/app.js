@@ -6,6 +6,10 @@ let childName = null;
 let currentQ = null;
 let currentLevel = null;
 let selectedLevel = null;
+let bankMode = 'builtin';
+let externalSource = null;
+let externalSources = [];
+let externalLang = 'zh';
 let hintStep = 0;
 let answered = false;
 let earnedStars = 0;
@@ -44,7 +48,69 @@ function startAs(id, name) {
   childName = name;
   $('who').textContent = '🧒 ' + name;
   $('login').classList.add('hidden');
+  $('bankpick').classList.remove('hidden');
   $('quiz').classList.add('hidden');
+  $('pick').classList.add('hidden');
+  loadExternalSources();
+}
+
+// ---------- 题库选择（内置 / 外部） ----------
+async function loadExternalSources() {
+  const res = await fetch('/api/external/sources');
+  const data = await res.json();
+  externalSources = data.sources || [];
+}
+
+function pickBank(mode) {
+  bankMode = mode;
+  $('langToggle').classList.add('hidden');
+  const list = $('sourceList');
+  list.classList.add('hidden');
+  list.innerHTML = '';
+  if (mode === 'builtin') {
+    externalSource = null;
+    externalLang = 'zh';
+    showLevels();
+    return;
+  }
+  // 外部题库：先选语言（中文版 / 原文），再按来源选择
+  externalLang = 'zh';
+  pickLang('zh');
+  $('langToggle').classList.remove('hidden');
+  // 外部题库：按来源选择
+  if (!externalSources.length) {
+    alert('外部题库还是空的，请先用 CLI 导入：python cli.py import bigbench');
+    return;
+  }
+  renderSourceList();
+}
+
+function renderSourceList() {
+  const list = $('sourceList');
+  list.innerHTML = '';
+  externalSources.forEach(s => {
+    const b = document.createElement('button');
+    b.className = 'level-card';
+    b.innerHTML = `<span class="lv-emoji">🌐</span>
+      <span class="lv-name">${s.name}</span>
+      <span class="lv-tag">${s.total} 题 · ${s.license}</span>`;
+    b.onclick = () => {
+      externalSource = s.slug;
+      showLevels();
+    };
+    list.appendChild(b);
+  });
+  list.classList.remove('hidden');
+}
+
+function pickLang(lang) {
+  externalLang = lang;
+  $('langZhBtn').classList.toggle('active', lang === 'zh');
+  $('langEnBtn').classList.toggle('active', lang === 'en');
+}
+
+function showLevels() {
+  $('bankpick').classList.add('hidden');
   $('pick').classList.remove('hidden');
   loadLevels();
 }
@@ -97,7 +163,13 @@ async function nextQuestion() {
   const res = await fetch('/api/next', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ child_id: childId, level: currentLevel }),
+    body: JSON.stringify({
+      child_id: childId,
+      level: currentLevel,
+      bank: bankMode,
+      source: bankMode === 'external' ? externalSource : undefined,
+      lang: bankMode === 'external' ? externalLang : 'zh',
+    }),
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
@@ -110,6 +182,9 @@ async function nextQuestion() {
 
 function renderQuestion(q) {
   qStartedAt = Date.now();
+  $('qBank').textContent = q.bank === 'external'
+    ? '🌐 外部 · ' + (q.source_name || '')
+    : '🧩 内置';
   $('qType').textContent = q.type_name;
   $('qLevel').textContent = q.level_label;
   $('qTitle').textContent = q.story.title;
@@ -204,11 +279,19 @@ function changeLevel() {
   loadLevels();
 }
 
+function changeBank() {
+  $('quiz').classList.add('hidden');
+  $('pick').classList.add('hidden');
+  $('bankpick').classList.remove('hidden');
+  loadExternalSources();
+}
+
 // ---------- 启动 ----------
 $('createBtn').onclick = createChild;
 $('newName').addEventListener('keydown', e => { if (e.key === 'Enter') createChild(); });
 $('startBtn').onclick = startChallenge;
 $('hintBtn').onclick = showHint;
 $('changeLevelBtn').onclick = changeLevel;
+$('changeBankBtn').onclick = changeBank;
 $('nextBtn').onclick = nextQuestion;
 loadChildren();

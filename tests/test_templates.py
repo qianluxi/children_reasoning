@@ -3,7 +3,8 @@ import pytest
 import random
 
 from logic_kids.questions import generator
-from logic_kids.questions.templates import truth, ordering, conditional, set_logic, exclusion
+from logic_kids.questions.templates import (truth, ordering, conditional,
+                                            set_logic, exclusion, matching)
 from logic_kids.validator.validator import validate
 from logic_kids.difficulty import engine
 from logic_kids.logic import solver
@@ -14,6 +15,7 @@ TEMPLATES = {
     "conditional": conditional.generate,
     "set_logic": set_logic.generate,
     "exclusion": exclusion.generate,
+    "matching": matching.generate,
 }
 
 
@@ -61,11 +63,24 @@ def test_generate_batch_distribution():
     batch = generator.generate_batch(25, seed=99)
     assert len(batch) == 25
     types = {q.type for q in batch}
-    # 五种题型都应覆盖
-    assert len(types) == 5
+    # 六种题型都应覆盖
+    assert len(types) == 6
     # 全部通过验证
     for q in batch:
         assert validate(q).ok
+
+
+def test_matching_both_forms():
+    """配对推理的两种问法（谁喜欢某物 / 某小朋友喜欢什么）都应能生成。"""
+    rng = random.Random(21)
+    prompts = set()
+    for _ in range(60):
+        q = matching.generate(rng)
+        assert q is not None
+        assert validate(q).ok
+        prompts.add(q.question_prompt)
+    assert any("谁喜欢" in p for p in prompts)
+    assert any(p.endswith("喜欢什么？") for p in prompts)
 
 
 def test_no_duplicate_options_in_batch():
