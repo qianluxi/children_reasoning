@@ -83,7 +83,32 @@
   ],
   "explanation": "从高到矮的顺序是：雪儿 → 大力 → 小白兔 → 贝贝 → 吱吱。所以第 3 高的是 小白兔。",
   "difficulty": 2,
-  "difficulty_score": 3.57,
+  "difficulty_score": 3.77,
+  "difficulty_level": 2,
   "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "ordering",
+  "skills": [
+    "ordering",
+    "transitive_reasoning",
+    "deduction"
+  ],
+  "age_range": "B",
+  "difficulty_profile": {
+    "cognitive_load": 4,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 3,
+    "computation_load": 1
+  },
   "created_at": "2026-08-16 12:46:16"
 }

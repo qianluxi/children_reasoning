@@ -73,7 +73,32 @@
   ],
   "explanation": "有苹果的是：贝贝；没有苹果的是：雪儿、吱吱、球球。\n所以“有些人有苹果，有些人没有”是对的。",
   "difficulty": 2,
-  "difficulty_score": 2.59,
+  "difficulty_score": 3.83,
+  "difficulty_level": 2,
   "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "set_logic",
+    "quantifier",
+    "deduction"
+  ],
+  "age_range": "B",
+  "difficulty_profile": {
+    "cognitive_load": 4,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 1,
+    "computation_load": 1
+  },
   "created_at": "2026-08-16 12:46:16"
 }

@@ -1,0 +1,93 @@
+{
+  "id": "match_f85eb45171",
+  "type": "matching",
+  "story": {
+    "title": "谁喜欢什么？",
+    "text": "3个小伙伴，每人喜欢一种点心，而且每种点心只有一个人喜欢。根据下面的线索，想想谁喜欢什么。",
+    "roles": {
+      "A": "虎斑",
+      "B": "棉棉",
+      "C": "咪咪"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "虎斑喜欢🧀奶酪",
+      "logic": "RANK(A) == 1"
+    },
+    {
+      "text": "棉棉喜欢🥕胡萝卜",
+      "logic": "RANK(B) == 3"
+    },
+    {
+      "text": "咪咪不喜欢🧀奶酪",
+      "logic": "RANK(C) != 1"
+    }
+  ],
+  "question_prompt": "谁喜欢🍪饼干？",
+  "options": [
+    "虎斑",
+    "棉棉",
+    "咪咪"
+  ],
+  "option_logic": [
+    "RANK(A) == 2",
+    "RANK(B) == 2",
+    "RANK(C) == 2"
+  ],
+  "answer": 2,
+  "hints": [
+    "先把“确定喜欢”的配对找出来。",
+    "每个小朋友只能喜欢一种，每种点心也只有一个人喜欢，用排除法试试。"
+  ],
+  "explanation": "按线索一一配对：虎斑喜欢🧀奶酪；棉棉喜欢🥕胡萝卜；咪咪喜欢🍪饼干。",
+  "difficulty": 1,
+  "difficulty_score": 1.91,
+  "difficulty_level": 1,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "relation",
+  "skills": [
+    "relation_reasoning",
+    "one_to_one",
+    "exclusion"
+  ],
+  "age_range": "A",
+  "difficulty_profile": {
+    "cognitive_load": 3,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 1,
+    "computation_load": 1
+  },
+  "created_at": "2026-08-16 17:04:48"
+}

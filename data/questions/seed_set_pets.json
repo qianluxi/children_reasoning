@@ -61,8 +61,33 @@
     "小猫小狗有，小兔没有。"
   ],
   "explanation": "小猫和小狗有鱼，小兔没有，所以是“有些人有，有些人没有”。",
-  "difficulty": 1,
-  "difficulty_score": 1.73,
+  "difficulty": 2,
+  "difficulty_score": 2.46,
+  "difficulty_level": 1,
   "source": "seed",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "set_logic",
+    "quantifier",
+    "deduction"
+  ],
+  "age_range": "A",
+  "difficulty_profile": {
+    "cognitive_load": 3,
+    "reasoning_depth": 1,
+    "language_complexity": 1,
+    "distractor_strength": 1,
+    "computation_load": 1
+  },
   "created_at": ""
 }

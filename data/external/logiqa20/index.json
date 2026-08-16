@@ -6,7 +6,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #10736",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_1096": {
     "type": "external_text",
@@ -15,7 +16,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #1096",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_12828": {
     "type": "external_text",
@@ -24,7 +26,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #12828",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_13402": {
     "type": "external_text",
@@ -33,7 +36,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #13402",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_14912": {
     "type": "external_text",
@@ -42,7 +46,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #14912",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_15505": {
     "type": "external_text",
@@ -51,7 +56,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #15505",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_15899": {
     "type": "external_text",
@@ -60,7 +66,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #15899",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_2131": {
     "type": "external_text",
@@ -69,7 +76,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #2131",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_3306": {
     "type": "external_text",
@@ -78,7 +86,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #3306",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_3460": {
     "type": "external_text",
@@ -87,7 +96,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #3460",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_4333": {
     "type": "external_text",
@@ -96,7 +106,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #4333",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_5672": {
     "type": "external_text",
@@ -105,7 +116,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #5672",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_569": {
     "type": "external_text",
@@ -114,7 +126,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #569",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_5906": {
     "type": "external_text",
@@ -123,7 +136,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #5906",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_6813": {
     "type": "external_text",
@@ -132,7 +146,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #6813",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_7146": {
     "type": "external_text",
@@ -141,7 +156,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #7146",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_7197": {
     "type": "external_text",
@@ -150,7 +166,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #7197",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_7846": {
     "type": "external_text",
@@ -159,7 +176,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #7846",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_9308": {
     "type": "external_text",
@@ -168,7 +186,8 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #9308",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   },
   "ext_logiqa_split_dev_lang_zh_9775": {
     "type": "external_text",
@@ -177,6 +196,7 @@
     "difficulty_level": 2,
     "source": "LogiQA2.0",
     "title": "LogiQA · #9775",
-    "license": "CC-BY-NC-SA-4.0"
+    "license": "CC-BY-NC-SA-4.0",
+    "category": "deduction"
   }
 }

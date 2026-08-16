@@ -84,7 +84,33 @@
   ],
   "explanation": "· 跳跳 说“不是每个人都有糖果”——这是假话 ✘\n· 小鸟 说“我们中有些人有糖果，有些人没有”——这是假话 ✘\n· 飞飞 说“我们中至少有一个有糖果”——这是真话 ✔\n· 蓝蓝 说“小鸟有糖果”——这是真话 ✔\n正好有 2 句真话（飞飞、蓝蓝），所以有糖果的是：跳跳、小鸟、飞飞、蓝蓝。",
   "difficulty": 3,
-  "difficulty_score": 4.59,
+  "difficulty_score": 5.97,
+  "difficulty_level": 3,
   "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "deduction",
+    "negation",
+    "quantifier",
+    "set_logic"
+  ],
+  "age_range": "C",
+  "difficulty_profile": {
+    "cognitive_load": 4,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
   "created_at": "2026-08-16 12:46:16"
 }

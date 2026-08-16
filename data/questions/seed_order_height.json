@@ -58,7 +58,32 @@
   ],
   "explanation": "小明比小红高，小红比小刚高，所以小明 > 小红 > 小刚，最高的是小明。",
   "difficulty": 1,
-  "difficulty_score": 1.41,
+  "difficulty_score": 1.51,
+  "difficulty_level": 1,
   "source": "seed",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "ordering",
+  "skills": [
+    "ordering",
+    "transitive_reasoning",
+    "deduction"
+  ],
+  "age_range": "A",
+  "difficulty_profile": {
+    "cognitive_load": 3,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 1,
+    "computation_load": 1
+  },
   "created_at": ""
 }

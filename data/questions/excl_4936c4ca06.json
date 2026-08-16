@@ -95,7 +95,31 @@
   ],
   "explanation": "把线索一条条对：小狗不可能是第2名、第3名、第4名、第5名，剩下的只能是第1名。",
   "difficulty": 3,
-  "difficulty_score": 4.62,
+  "difficulty_score": 4.97,
+  "difficulty_level": 2,
   "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "exclusion",
+    "deduction"
+  ],
+  "age_range": "B",
+  "difficulty_profile": {
+    "cognitive_load": 4,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 3,
+    "computation_load": 1
+  },
   "created_at": "2026-08-16 12:46:16"
 }

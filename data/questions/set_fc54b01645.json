@@ -1,0 +1,114 @@
+{
+  "id": "set_fc54b01645",
+  "type": "set_logic",
+  "story": {
+    "title": "谁有苹果？",
+    "text": "看看下面的情况，想一想：哪一句话是对的？",
+    "roles": {
+      "A": "大黄",
+      "B": "小熊",
+      "C": "小白兔",
+      "D": "小猫咪",
+      "E": "圆圆"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "variables": [
+    {
+      "name": "A_apple",
+      "type": "boolean"
+    },
+    {
+      "name": "B_apple",
+      "type": "boolean"
+    },
+    {
+      "name": "C_apple",
+      "type": "boolean"
+    },
+    {
+      "name": "D_apple",
+      "type": "boolean"
+    },
+    {
+      "name": "E_apple",
+      "type": "boolean"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "大黄有🍎苹果",
+      "logic": "A_apple"
+    },
+    {
+      "text": "小熊没有🍎苹果",
+      "logic": "!B_apple"
+    },
+    {
+      "text": "小白兔没有🍎苹果",
+      "logic": "!C_apple"
+    },
+    {
+      "text": "小猫咪有🍎苹果",
+      "logic": "D_apple"
+    },
+    {
+      "text": "圆圆没有🍎苹果",
+      "logic": "!E_apple"
+    }
+  ],
+  "question_prompt": "关于苹果，下面哪句话是对的？",
+  "options": [
+    "有些人有苹果，有些人没有",
+    "谁都没有苹果",
+    "所有人都有苹果"
+  ],
+  "option_logic": [
+    "SOME(apple) && NOT_ALL(apple)",
+    "NONE(apple)",
+    "ALL(apple)"
+  ],
+  "answer": 0,
+  "hints": [
+    "先数一数：一共有几个人有苹果。",
+    "“所有”表示一个不少；“都没有”表示一个也没有。",
+    "只要有人有、也有人没有，那就是“有些人有，有些人没有”。"
+  ],
+  "explanation": "有苹果的是：大黄、小猫咪；没有苹果的是：小熊、小白兔、圆圆。\n所以“有些人有苹果，有些人没有”是对的。",
+  "difficulty": 3,
+  "difficulty_score": 4.74,
+  "difficulty_level": 2,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "set_logic",
+    "quantifier",
+    "deduction"
+  ],
+  "age_range": "B",
+  "difficulty_profile": {
+    "cognitive_load": 4,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 1,
+    "computation_load": 1
+  },
+  "created_at": "2026-08-16 17:04:48"
+}

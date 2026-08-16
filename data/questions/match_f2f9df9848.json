@@ -1,0 +1,93 @@
+{
+  "id": "match_f2f9df9848",
+  "type": "matching",
+  "story": {
+    "title": "谁喜欢什么？",
+    "text": "3个小伙伴，每人喜欢一种点心，而且每种点心只有一个人喜欢。根据下面的线索，想想谁喜欢什么。",
+    "roles": {
+      "A": "团团",
+      "B": "雪儿",
+      "C": "跳跳"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "团团喜欢🍒樱桃",
+      "logic": "RANK(A) == 2"
+    },
+    {
+      "text": "雪儿喜欢🍞面包",
+      "logic": "RANK(B) == 3"
+    },
+    {
+      "text": "跳跳不喜欢🍞面包",
+      "logic": "RANK(C) != 3"
+    }
+  ],
+  "question_prompt": "雪儿喜欢什么？",
+  "options": [
+    "🍒樱桃",
+    "🍪饼干",
+    "🍞面包"
+  ],
+  "option_logic": [
+    "RANK(B) == 2",
+    "RANK(B) == 1",
+    "RANK(B) == 3"
+  ],
+  "answer": 2,
+  "hints": [
+    "先把“确定喜欢”的配对找出来。",
+    "每个小朋友只能喜欢一种，每种点心也只有一个人喜欢，用排除法试试。"
+  ],
+  "explanation": "按线索一一配对：团团喜欢🍒樱桃；雪儿喜欢🍞面包；跳跳喜欢🍪饼干。",
+  "difficulty": 1,
+  "difficulty_score": 1.91,
+  "difficulty_level": 1,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "relation",
+  "skills": [
+    "relation_reasoning",
+    "one_to_one",
+    "exclusion"
+  ],
+  "age_range": "A",
+  "difficulty_profile": {
+    "cognitive_load": 3,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 1,
+    "computation_load": 1
+  },
+  "created_at": "2026-08-16 17:04:48"
+}

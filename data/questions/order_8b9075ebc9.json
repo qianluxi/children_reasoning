@@ -1,0 +1,90 @@
+{
+  "id": "order_8b9075ebc9",
+  "type": "ordering",
+  "story": {
+    "title": "谁跑得最快？",
+    "text": "3个小伙伴参加跑步比赛。根据下面的线索，你能排出比赛名次吗？",
+    "roles": {
+      "A": "憨憨",
+      "B": "布丁",
+      "C": "大力"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "憨憨比布丁跑得快",
+      "logic": "RANK(A) < RANK(B)"
+    },
+    {
+      "text": "大力比布丁跑得慢",
+      "logic": "RANK(B) < RANK(C)"
+    }
+  ],
+  "question_prompt": "谁获得第 2 名？",
+  "options": [
+    "布丁",
+    "憨憨",
+    "大力"
+  ],
+  "option_logic": [
+    "RANK(B) == 2",
+    "RANK(A) == 2",
+    "RANK(C) == 2"
+  ],
+  "answer": 0,
+  "hints": [
+    "先把能确定的相邻关系连起来。",
+    "试着把所有人按线索串成一条链。",
+    "数一数：从第 1 名一路数到第 2 名，看看是谁。"
+  ],
+  "explanation": "比赛名次是：憨憨 → 布丁 → 大力。所以获得第 2 名的是 布丁。",
+  "difficulty": 1,
+  "difficulty_score": 1.51,
+  "difficulty_level": 1,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "ordering",
+  "skills": [
+    "ordering",
+    "transitive_reasoning",
+    "deduction"
+  ],
+  "age_range": "A",
+  "difficulty_profile": {
+    "cognitive_load": 3,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 1,
+    "computation_load": 1
+  },
+  "created_at": "2026-08-16 17:04:48"
+}

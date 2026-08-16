@@ -1,0 +1,116 @@
+{
+  "id": "truth_f375d6b25b",
+  "type": "truth_statements",
+  "story": {
+    "title": "谁有胡萝卜？",
+    "text": "4个小伙伴在一起，他们可能藏了🥕胡萝卜。每个人都说了一句话。已知他们里面恰好有 2 句是真话。到底谁有胡萝卜呢？",
+    "roles": {
+      "A": "旺旺",
+      "B": "棉棉",
+      "C": "点点",
+      "D": "圆圆"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "A_carrot",
+      "type": "boolean"
+    },
+    {
+      "name": "B_carrot",
+      "type": "boolean"
+    },
+    {
+      "name": "C_carrot",
+      "type": "boolean"
+    },
+    {
+      "name": "D_carrot",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "点点有胡萝卜",
+      "logic": "C_carrot",
+      "speaker": "A"
+    },
+    {
+      "text": "旺旺或点点至少有一个有胡萝卜",
+      "logic": "A_carrot || C_carrot",
+      "speaker": "B"
+    },
+    {
+      "text": "恰好有1个人有胡萝卜",
+      "logic": "COUNT(carrot) == 1",
+      "speaker": "C"
+    },
+    {
+      "text": "点点有胡萝卜",
+      "logic": "C_carrot",
+      "speaker": "D"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "恰好有 2 句是真话",
+      "logic": "TRUTH_COUNT == 2"
+    }
+  ],
+  "question_prompt": "到底谁有胡萝卜？",
+  "options": [
+    "只有棉棉、点点有胡萝卜",
+    "只有旺旺有胡萝卜",
+    "只有旺旺、棉棉、圆圆有胡萝卜",
+    "只有棉棉有胡萝卜"
+  ],
+  "option_logic": [
+    "B_carrot && C_carrot && !A_carrot && !D_carrot",
+    "A_carrot && COUNT(carrot) == 1",
+    "A_carrot && B_carrot && D_carrot && !C_carrot",
+    "B_carrot && COUNT(carrot) == 1"
+  ],
+  "answer": 1,
+  "hints": [
+    "先数一数：题目说恰好有 2 句是真话。",
+    "试着假设某句话是真的，看看其它话会不会矛盾。",
+    "把每句话的真假列出来，凑出恰好 2 句真话的那种情况就是答案。"
+  ],
+  "explanation": "· 旺旺 说“点点有胡萝卜”——这是假话 ✘\n· 棉棉 说“旺旺或点点至少有一个有胡萝卜”——这是真话 ✔\n· 点点 说“恰好有1个人有胡萝卜”——这是真话 ✔\n· 圆圆 说“点点有胡萝卜”——这是假话 ✘\n正好有 2 句真话（棉棉、点点），所以有胡萝卜的是：旺旺。",
+  "difficulty": 4,
+  "difficulty_score": 6.28,
+  "difficulty_level": 3,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "deduction",
+    "negation",
+    "quantifier",
+    "set_logic"
+  ],
+  "age_range": "C",
+  "difficulty_profile": {
+    "cognitive_load": 4,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "created_at": "2026-08-16 17:04:48"
+}

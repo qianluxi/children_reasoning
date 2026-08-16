@@ -83,8 +83,34 @@
     "试试假设米粒说的是真话，看看其它三句是不是都成了假话。"
   ],
   "explanation": "假设米粒说真话，也就是“至少有一只老鼠偷了奶酪”。\n· 小灰说“不是所有老鼠都偷了奶酪”：如果四只都偷了，这句就是假话，符合。\n· 吱吱说“没有老鼠偷”：和“至少一只偷了”矛盾，是假话，符合。\n· 团团说“只有我偷了”：若是真的，米粒那句也对了，就有两句真话，所以它是假话，符合。\n这样恰好只有一句真话，此时四只老鼠都偷了奶酪。答案是：所有老鼠都偷了奶酪。",
-  "difficulty": 2,
-  "difficulty_score": 3.89,
+  "difficulty": 3,
+  "difficulty_score": 5.09,
+  "difficulty_level": 3,
   "source": "seed",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "deduction",
+    "negation",
+    "quantifier",
+    "set_logic"
+  ],
+  "age_range": "C",
+  "difficulty_profile": {
+    "cognitive_load": 4,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
   "created_at": ""
 }

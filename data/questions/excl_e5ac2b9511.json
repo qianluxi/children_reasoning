@@ -1,0 +1,93 @@
+{
+  "id": "excl_e5ac2b9511",
+  "type": "exclusion",
+  "story": {
+    "title": "跳绳比赛的名次",
+    "text": "3个小伙伴参加跳绳比赛。根据下面的线索，用排除法想想：米粒是第几名？",
+    "roles": {
+      "A": "奶糖",
+      "B": "米粒",
+      "C": "球球"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "球球在米粒前面",
+      "logic": "RANK(C) < RANK(B)"
+    },
+    {
+      "text": "米粒不是第1名",
+      "logic": "RANK(B) != 1"
+    },
+    {
+      "text": "米粒不是最后一名",
+      "logic": "RANK(B) != 3"
+    }
+  ],
+  "question_prompt": "米粒是第几名？",
+  "options": [
+    "第1名",
+    "第2名",
+    "第3名"
+  ],
+  "option_logic": [
+    "RANK(B) == 1",
+    "RANK(B) == 2",
+    "RANK(B) == 3"
+  ],
+  "answer": 1,
+  "hints": [
+    "先看看哪些名次被明确排除了。",
+    "把不可能的名次一个个划掉。",
+    "最后只剩下一个名次，那就是米粒的。"
+  ],
+  "explanation": "把线索一条条对：米粒不可能是第1名、第3名，剩下的只能是第2名。",
+  "difficulty": 1,
+  "difficulty_score": 1.91,
+  "difficulty_level": 1,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "exclusion",
+    "deduction"
+  ],
+  "age_range": "A",
+  "difficulty_profile": {
+    "cognitive_load": 3,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 1,
+    "computation_load": 1
+  },
+  "created_at": "2026-08-16 17:04:48"
+}

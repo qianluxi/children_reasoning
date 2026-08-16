@@ -83,8 +83,34 @@
     "把每句话的真假列出来，凑出恰好 1 句真话的那种情况就是答案。"
   ],
   "explanation": "· 小熊 说“我有面包”——这是假话 ✘\n· 布丁 说“不是每个人都有面包”——这是真话 ✔\n· 旺旺 说“布丁或奶糖至少有一个有面包”——这是假话 ✘\n· 奶糖 说“旺旺没有面包”——这是假话 ✘\n正好有 1 句真话（布丁），所以有面包的是：旺旺。",
-  "difficulty": 3,
-  "difficulty_score": 4.59,
+  "difficulty": 4,
+  "difficulty_score": 6.79,
+  "difficulty_level": 3,
   "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "deduction",
+    "negation",
+    "quantifier",
+    "set_logic"
+  ],
+  "age_range": "C",
+  "difficulty_profile": {
+    "cognitive_load": 4,
+    "reasoning_depth": 3,
+    "language_complexity": 1,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
   "created_at": "2026-08-16 12:46:16"
 }

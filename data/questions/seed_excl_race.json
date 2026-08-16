@@ -63,7 +63,31 @@
   ],
   "explanation": "小鹿和小羊都不是第1名，所以第1名是小马；小鹿在小羊前面，所以小鹿第2、小羊第3名。",
   "difficulty": 1,
-  "difficulty_score": 1.76,
+  "difficulty_score": 1.91,
+  "difficulty_level": 1,
   "source": "seed",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "exclusion",
+    "deduction"
+  ],
+  "age_range": "A",
+  "difficulty_profile": {
+    "cognitive_load": 3,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 1,
+    "computation_load": 1
+  },
   "created_at": ""
 }

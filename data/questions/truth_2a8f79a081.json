@@ -83,8 +83,34 @@
     "把每句话的真假列出来，凑出恰好 1 句真话的那种情况就是答案。"
   ],
   "explanation": "· 花花 说“小灰没有胡萝卜”——这是假话 ✘\n· 贝贝 说“至少有2个人有胡萝卜”——这是真话 ✔\n· 圆圆 说“恰好有1个人有胡萝卜”——这是假话 ✘\n· 小灰 说“不是每个人都有胡萝卜”——这是假话 ✘\n正好有 1 句真话（贝贝），所以有胡萝卜的是：花花、贝贝、圆圆、小灰。",
-  "difficulty": 3,
-  "difficulty_score": 4.59,
+  "difficulty": 4,
+  "difficulty_score": 6.69,
+  "difficulty_level": 3,
   "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "deduction",
+    "negation",
+    "quantifier",
+    "set_logic"
+  ],
+  "age_range": "C",
+  "difficulty_profile": {
+    "cognitive_load": 4,
+    "reasoning_depth": 3,
+    "language_complexity": 1,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
   "created_at": "2026-08-16 12:46:16"
 }

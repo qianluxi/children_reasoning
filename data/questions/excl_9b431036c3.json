@@ -1,0 +1,105 @@
+{
+  "id": "excl_9b431036c3",
+  "type": "exclusion",
+  "story": {
+    "title": "跑步比赛的名次",
+    "text": "4个小伙伴参加跑步比赛。根据下面的线索，用排除法想想：小狗是第几名？",
+    "roles": {
+      "A": "小狗",
+      "B": "虎斑",
+      "C": "吱吱",
+      "D": "壮壮"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    },
+    {
+      "name": "rank_D",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "壮壮不是第1名",
+      "logic": "RANK(D) != 1"
+    },
+    {
+      "text": "虎斑不是第4名",
+      "logic": "RANK(B) != 4"
+    },
+    {
+      "text": "壮壮在虎斑前面",
+      "logic": "RANK(D) < RANK(B)"
+    },
+    {
+      "text": "小狗比壮壮名次好",
+      "logic": "RANK(A) < RANK(D)"
+    }
+  ],
+  "question_prompt": "小狗是第几名？",
+  "options": [
+    "第4名",
+    "第2名",
+    "第3名",
+    "第1名"
+  ],
+  "option_logic": [
+    "RANK(A) == 4",
+    "RANK(A) == 2",
+    "RANK(A) == 3",
+    "RANK(A) == 1"
+  ],
+  "answer": 3,
+  "hints": [
+    "先看看哪些名次被明确排除了。",
+    "把不可能的名次一个个划掉。",
+    "最后只剩下一个名次，那就是小狗的。"
+  ],
+  "explanation": "把线索一条条对：小狗不可能是第2名、第3名、第4名，剩下的只能是第1名。",
+  "difficulty": 2,
+  "difficulty_score": 3.03,
+  "difficulty_level": 2,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "exclusion",
+    "deduction"
+  ],
+  "age_range": "B",
+  "difficulty_profile": {
+    "cognitive_load": 3,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "created_at": "2026-08-16 17:04:48"
+}

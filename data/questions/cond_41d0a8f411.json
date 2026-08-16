@@ -55,7 +55,31 @@
   ],
   "explanation": "我们知道“他能看清书上的字了”发生了，但它可能是由别的原因造成的，光凭这些规则推不出“房间变亮了”一定发生或一定不发生，所以无法确定。",
   "difficulty": 2,
-  "difficulty_score": 2.43,
+  "difficulty_score": 3.27,
+  "difficulty_level": 2,
   "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "deduction",
+    "conditional_reasoning"
+  ],
+  "age_range": "B",
+  "difficulty_profile": {
+    "cognitive_load": 2,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 1,
+    "computation_load": 1
+  },
   "created_at": "2026-08-16 12:46:16"
 }

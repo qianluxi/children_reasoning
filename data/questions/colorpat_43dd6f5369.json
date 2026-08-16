@@ -1,0 +1,106 @@
+{
+  "id": "colorpat_43dd6f5369",
+  "type": "color_pattern",
+  "story": {
+    "title": "颜色排队",
+    "text": "小圆片按规律排成一排，看看下一个是什么颜色：🔴🔵🔴🔵🔴 _",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [
+    {
+      "name": "c1",
+      "type": "boolean"
+    },
+    {
+      "name": "c2",
+      "type": "boolean"
+    },
+    {
+      "name": "c3",
+      "type": "boolean"
+    },
+    {
+      "name": "c4",
+      "type": "boolean"
+    },
+    {
+      "name": "c5",
+      "type": "boolean"
+    },
+    {
+      "name": "c6",
+      "type": "boolean"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "",
+      "logic": "c1"
+    },
+    {
+      "text": "",
+      "logic": "(c2 && !c1) || (!c2 && c1)"
+    },
+    {
+      "text": "",
+      "logic": "(c3 && !c2) || (!c3 && c2)"
+    },
+    {
+      "text": "",
+      "logic": "(c4 && !c3) || (!c4 && c3)"
+    },
+    {
+      "text": "",
+      "logic": "(c5 && !c4) || (!c5 && c4)"
+    },
+    {
+      "text": "",
+      "logic": "(c6 && !c5) || (!c6 && c5)"
+    }
+  ],
+  "question_prompt": "下一个（第 6 个）圆片是什么颜色？",
+  "options": [
+    "红色",
+    "蓝色"
+  ],
+  "option_logic": [
+    "c6",
+    "!c6"
+  ],
+  "answer": 1,
+  "hints": [
+    "先看看颜色是怎么重复的。",
+    "把前面几个连起来读一读，找出循环。"
+  ],
+  "explanation": "规律是红色和蓝色交替出现，所以第 6 个圆片是蓝色。",
+  "difficulty": 3,
+  "difficulty_score": 4.39,
+  "difficulty_level": 2,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "pattern",
+  "skills": [
+    "pattern_recognition",
+    "induction"
+  ],
+  "age_range": "B",
+  "difficulty_profile": {
+    "cognitive_load": 3,
+    "reasoning_depth": 4,
+    "language_complexity": 1,
+    "distractor_strength": 1,
+    "computation_load": 1
+  },
+  "created_at": "2026-08-16 17:04:48"
+}

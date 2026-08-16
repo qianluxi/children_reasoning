@@ -87,5 +87,19 @@
   },
   "provenance": null,
   "translations": null,
+  "category": "relation",
+  "skills": [
+    "relation_reasoning",
+    "one_to_one",
+    "exclusion"
+  ],
+  "age_range": "B",
+  "difficulty_profile": {
+    "cognitive_load": 3,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
   "created_at": "2026-08-16 16:09:21"
 }

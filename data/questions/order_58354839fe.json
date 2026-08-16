@@ -1,0 +1,90 @@
+{
+  "id": "order_58354839fe",
+  "type": "ordering",
+  "story": {
+    "title": "谁最高？",
+    "text": "3个小伙伴在比身高。根据下面的线索，你能排出谁高谁矮吗？",
+    "roles": {
+      "A": "咪咪",
+      "B": "茸茸",
+      "C": "小狗"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "茸茸比小狗高",
+      "logic": "RANK(B) < RANK(C)"
+    },
+    {
+      "text": "咪咪比小狗矮",
+      "logic": "RANK(C) < RANK(A)"
+    }
+  ],
+  "question_prompt": "谁是第 1 高？",
+  "options": [
+    "咪咪",
+    "小狗",
+    "茸茸"
+  ],
+  "option_logic": [
+    "RANK(A) == 1",
+    "RANK(C) == 1",
+    "RANK(B) == 1"
+  ],
+  "answer": 2,
+  "hints": [
+    "先把能确定的相邻关系连起来。",
+    "试着把所有人按线索串成一条链。",
+    "数一数：从最高的开始数，第 1 个是谁？"
+  ],
+  "explanation": "从高到矮的顺序是：茸茸 → 小狗 → 咪咪。所以第 1 高的是 茸茸。",
+  "difficulty": 1,
+  "difficulty_score": 1.51,
+  "difficulty_level": 1,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "ordering",
+  "skills": [
+    "ordering",
+    "transitive_reasoning",
+    "deduction"
+  ],
+  "age_range": "A",
+  "difficulty_profile": {
+    "cognitive_load": 3,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 1,
+    "computation_load": 1
+  },
+  "created_at": "2026-08-16 17:04:48"
+}

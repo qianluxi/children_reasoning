@@ -1,0 +1,104 @@
+{
+  "id": "set_71433bae66",
+  "type": "set_logic",
+  "story": {
+    "title": "谁有胡萝卜？",
+    "text": "看看下面的情况，想一想：哪一句话是对的？",
+    "roles": {
+      "A": "旺旺",
+      "B": "小灰",
+      "C": "贝贝",
+      "D": "豆豆"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "A_carrot",
+      "type": "boolean"
+    },
+    {
+      "name": "B_carrot",
+      "type": "boolean"
+    },
+    {
+      "name": "C_carrot",
+      "type": "boolean"
+    },
+    {
+      "name": "D_carrot",
+      "type": "boolean"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "旺旺有🥕胡萝卜",
+      "logic": "A_carrot"
+    },
+    {
+      "text": "小灰有🥕胡萝卜",
+      "logic": "B_carrot"
+    },
+    {
+      "text": "贝贝没有🥕胡萝卜",
+      "logic": "!C_carrot"
+    },
+    {
+      "text": "豆豆有🥕胡萝卜",
+      "logic": "D_carrot"
+    }
+  ],
+  "question_prompt": "关于胡萝卜，下面哪句话是对的？",
+  "options": [
+    "有些人有胡萝卜，有些人没有",
+    "所有人都有胡萝卜",
+    "谁都没有胡萝卜"
+  ],
+  "option_logic": [
+    "SOME(carrot) && NOT_ALL(carrot)",
+    "ALL(carrot)",
+    "NONE(carrot)"
+  ],
+  "answer": 0,
+  "hints": [
+    "先数一数：一共有几个人有胡萝卜。",
+    "“所有”表示一个不少；“都没有”表示一个也没有。",
+    "只要有人有、也有人没有，那就是“有些人有，有些人没有”。"
+  ],
+  "explanation": "有胡萝卜的是：旺旺、小灰、豆豆；没有胡萝卜的是：贝贝。\n所以“有些人有胡萝卜，有些人没有”是对的。",
+  "difficulty": 2,
+  "difficulty_score": 3.37,
+  "difficulty_level": 2,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "set_logic",
+    "quantifier",
+    "deduction"
+  ],
+  "age_range": "B",
+  "difficulty_profile": {
+    "cognitive_load": 4,
+    "reasoning_depth": 1,
+    "language_complexity": 1,
+    "distractor_strength": 1,
+    "computation_load": 1
+  },
+  "created_at": "2026-08-16 17:04:48"
+}
