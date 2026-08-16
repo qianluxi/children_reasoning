@@ -49,6 +49,7 @@ def generate_one(qtype: str, rng: random.Random, **kwargs):
     engine.apply(q)
     ensure_builtin_source(q)
     ensure_taxonomy(q)
+    q.quality = "A"  # 内置题：Solver 验证 + 中文原创 -> A
     return q
 
 

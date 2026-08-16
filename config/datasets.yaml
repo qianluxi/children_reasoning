@@ -1,0 +1,18 @@
+# 批量导入配置示例（专家意见第十二节）
+# 用法：python cli.py import-all config/datasets.yaml [--dry-run]
+sources:
+
+  bigbench:
+    enabled: true
+    approve: true          # 通过四道闸门的题直接进外部库
+    limit: 20
+    tasks:
+      - logical_deduction/three_objects
+      - logical_deduction/five_objects
+
+  logiqa:
+    enabled: true
+    approve: false         # 非商业 + 无 DSL：只进待审队列，人工抽检后放行
+    task: dev
+    lang: zh
+    limit: 10

@@ -10,6 +10,7 @@ from logic_kids.bank import external, importer, provenance, store
 from logic_kids.bank.normalizer import NormalizedQuestion
 from logic_kids.bank.sources import bigbench, logiqa
 from logic_kids.config import IMPORTS_DIR, ensure_dirs
+from logic_kids import dedup
 from logic_kids.validator.validator import validate
 
 
@@ -58,12 +59,14 @@ def isolated_data():
     ensure_dirs()
     store.clear()
     external.clear()
+    dedup.clear()
     shutil.rmtree(IMPORTS_DIR, ignore_errors=True)
     ensure_dirs()
     yield
     shutil.rmtree(IMPORTS_DIR, ignore_errors=True)
     store.clear()
     external.clear()
+    dedup.clear()
 
 
 def test_bigbench_translate_to_dsl():
@@ -100,7 +103,7 @@ def test_bigbench_zh_translation():
 def test_import_stores_zh_translations():
     report = importer.import_items("bigbench", _items(), bigbench.normalize,
                                    translate=bigbench.zh_translate_question,
-                                   limit=1)
+                                   limit=1, dedup_enabled=False)
     assert report["pending"] == 1
     q = provenance.load_pending("ext_bigbench_logical_deduction_three_objects_0")
     assert q is not None
@@ -211,9 +214,10 @@ def test_non_dsl_cannot_approve():
 def test_non_dsl_force_approve():
     """人工抽检后 force=True 可放行无 DSL 题（保留未验证标记）。"""
     before = external.stats()["total"]
-    raw = {"id": 100, "answer": 0, "text": "Some logic context.",
+    raw = {"id": 100, "answer": 0, "text": "Different context text here.",
            "question": "Which is right?", "options": ["a", "b"], "_split": "dev"}
-    importer.import_items("logiqa", [raw], logiqa.normalize)
+    importer.import_items("logiqa", [raw], logiqa.normalize,
+                          dedup_enabled=False)
     n = logiqa.normalize(raw)
     qid = importer.make_qid("logiqa", n.source.dataset_id, n.source.original_id)
     ok, msg = importer.approve_pending(qid, force=True)

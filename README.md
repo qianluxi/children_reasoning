@@ -45,6 +45,13 @@ python cli.py import bigbench --task logical_deduction/three_objects --limit 20
 python cli.py review                          # 查看待审队列
 python cli.py review --approve <题目id>        # 审核通过后移入正式题库
 python cli.py import logiqa --task dev --limit 10  # 非商业许可，需谨慎
+
+# 7) 批量导入平台（PR1）
+python cli.py import-all config/datasets.yaml            # 按配置批量导入
+python cli.py import-all config/datasets.yaml --dry-run  # 只统计不入库
+python cli.py import-all config/datasets.yaml --retry --checkpoint
+python cli.py import stats          # 批处理统计（RAW/VALID/REJECT/REVIEW/READY）
+python cli.py bank check-license    # 许可证合规检查
 ```
 
 运行测试：
@@ -76,6 +83,9 @@ reasoning/
 │   ├── difficulty/engine.py   # 难度评分引擎（结构化指标，0~10）
 │   ├── difficulty/levels.py   # 难度分 → 用户等级（1~4）映射（唯一出处）
 │   ├── taxonomy.py            # V2：10 大能力分类 + 技能标签 + 年龄分级
+│   ├── license_policy.py      # 许可证策略（config/license_policy.yaml）
+│   ├── child_suitability.py   # 儿童适配层（6 维评分 + suitable 结论）
+│   ├── dedup.py               # 三层去重（ID / 文本 Hash / 逻辑结构 Hash）
 │   ├── questions/
 │   │   ├── themes.py          # 主题词库（角色/物品/场景）
 │   │   ├── generator.py       # 统一生成器（模板→验证→难度→入库）
@@ -95,6 +105,7 @@ reasoning/
 │   │   ├── normalizer.py      # 外部题统一中间模型（不强行转 DSL）
 │   │   ├── provenance.py      # 题目溯源 + 待审队列（data/imports/）
 │   │   ├── external.py        # 外部题库独立存储（data/external/<来源>/，按来源分目录）
+│   │   ├── import_job.py      # 批量导入：配置/dry-run/账本/retry/checkpoint
 │   │   └── sources/           # 外部题库源适配器
 │   │       ├── bigbench.py    # BIG-bench logical_deduction（Apache-2.0，含规则翻译器）
 │   │       └── logiqa.py      # LogiQA2.0（CC BY-NC-SA，非商业；支持官方中文版 *_zh.txt）
@@ -171,8 +182,39 @@ data/
   无 DSL 的题用结构启发式兜底并标记 `difficulty_calibrated=False`。
   - **许可证随题记录**：`source_info.license` 与 `provenance.translator` 让每道题
     都可追溯到"从哪里来、改过什么、谁转换的"。
-- 导入的题目目前保留原始英文题干/选项（等待中文改写），因此只应经过人工审核后
-  再进入儿童可用的正式题库。
+  - 导入的题目目前保留原始英文题干/选项（等待中文改写），因此只应经过人工审核后
+    再进入儿童可用的正式题库。
+
+### 批量导入平台（PR1）
+
+`import_job.py` 把"一次导一个来源"升级成**批处理平台**：
+
+- **ImportConfig**：`config/datasets.yaml` 声明多个来源/任务/数量/是否自动审核；
+- **dry-run**：`--dry-run` 只跑扫描→转换→验证，不写任何队列/题库；
+- **账本**：`data/import_stats.json` 累计每个来源的 RAW/VALID/REJECT/REVIEW/READY，
+  `cli.py import stats` 输出表格（含内置库与已有外部库）；
+- **retry / checkpoint**：`--retry` 只重跑上次失败的来源；`--checkpoint` 跳过已入库
+  或已在待审队列的题目，支持断点续导；
+- **三层去重**（`dedup.py`）：ID（source+original_id）、文本 SHA256、逻辑结构 Hash
+  （默认只统计不删除，`--dedup-logic` 可开启硬删除）；
+- **儿童适配层**（`child_suitability.py`）：6 维评分（阅读水平/语言复杂度/抽象度/
+  推理深度/计算量/文化依赖）+ `suitable` 结论，未翻译英文题会直接判"不适合"；
+- **质量分级**：`quality = A/B/C/rejected`（A=已验证+儿童语言审核、B=逻辑正确但
+  机器翻译、C=仅外部答案人工抽检），`translations.zh.status` 记录
+  machine/reviewed/child_adapted；
+- **许可证硬过滤**（`license_policy.py`）：`bank check-license` 输出
+  Production-safe / Non-commercial / Unknown 三类统计。
+
+### 综合训练模式
+
+题库选择新增 **🧠 综合训练**（专家意见第二十二节）：按能力权重
+（演绎 25% / 排序 15% / 模式 15% / 关系 10% / 数学 10% / 空间 10% / 其余 15%）
+从**内置 + 外部混合**选题，儿童不再面对"内置/外部二选一"。
+
+### 固定数据源版本
+
+BIG-bench 已于 2026-04-17 归档为只读：`sources/bigbench.py` 固定到归档 commit
+`092b196c`（可用环境变量 `BIGBENCH_REF` 覆盖），不"永远拉最新"。
 
 ### 界面与选择
 

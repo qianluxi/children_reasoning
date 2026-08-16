@@ -95,6 +95,8 @@ class Question:
     skills: list = field(default_factory=list)  # 技能标签（taxonomy.SKILLS）
     age_range: str = ""                         # 年龄分级 A/B/C/D（空=待计算）
     difficulty_profile: dict = field(default_factory=dict)  # 二维难度（engine 计算）
+    quality: str = ""                           # 质量分级 A/B/C/rejected（V2.6）
+    child_suitability: dict = field(default_factory=dict)    # 儿童适配评分
     created_at: str = ""
 
     # ---------- 序列化 ----------
@@ -131,6 +133,17 @@ class Question:
         if not q.age_range:
             from . import taxonomy
             q.age_range = taxonomy.LEVEL_AGE.get(q.difficulty_level or 1, "B")
+        if not q.quality:
+            is_ext = bool(q.source_info and q.source_info.type == "external")
+            if is_ext:
+                q.quality = "B" if (q.provenance
+                                    and q.provenance.logic_validated) else "C"
+            else:
+                q.quality = "A"
+        if q.translations:
+            for lang, tr in q.translations.items():
+                if isinstance(tr, dict) and "status" not in tr:
+                    tr["status"] = "machine"
         return q
 
     @classmethod

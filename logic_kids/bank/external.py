@@ -133,7 +133,8 @@ def list_ids(slug: str = None) -> list:
 
 
 def query(slug: str = None, qtype: str = None, difficulty: int = None,
-          difficulty_level: int = None, exclude_ids: set = None) -> list:
+          difficulty_level: int = None, exclude_ids: set = None,
+          category: str = None) -> list:
     """按来源/题型/等级过滤外部题，返回 id 列表。"""
     exclude_ids = exclude_ids or set()
     ids = []
@@ -150,6 +151,8 @@ def query(slug: str = None, qtype: str = None, difficulty: int = None,
                     lv = levels.level_for_score(meta.get("difficulty_score", 0.0))
                 if lv != difficulty_level:
                     continue
+            if category is not None and meta.get("category") != category:
+                continue
             if qid in exclude_ids:
                 continue
             ids.append(qid)

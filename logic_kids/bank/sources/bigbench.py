@@ -29,6 +29,10 @@ _BASE_URL = ("https://raw.githubusercontent.com/google/BIG-bench/main/"
              "bigbench/benchmark_tasks/{task}/task.json")
 _CDN_URL = ("https://cdn.jsdelivr.net/gh/google/BIG-bench@main/"
             "bigbench/benchmark_tasks/{task}/task.json")
+
+# BIG-bench 已于 2026-04-17 归档为只读（专家意见第六节）：
+# 固定到归档时的 main commit，避免"永远拉最新"。
+BIGBENCH_REF = "092b196c1f8f14a54bbc62f24759d43bde46dd3b"
 _TRANSLATOR = "bigbench_logical_deduction_rule_v1"
 
 _ORDINALS = {"first": 1, "second": 2, "third": 3, "fourth": 4,
@@ -179,6 +183,7 @@ def zh_translate_question(q) -> dict:
     """给已转换的 BIG-bench 题生成中文版文本（story/constraints/options）。"""
     names_zh = [_zh_name(q.story.roles.get(c, c)) for c in q.entities]
     return {
+        "status": "machine",
         "story_title": q.story.title,
         "story_text": _zh_story(q.story.text, names_zh, len(q.entities)),
         "constraints": [_zh_constraint(c.text) for c in q.constraints],
@@ -200,8 +205,13 @@ def _zh_option(opt: str) -> str:
 
 
 def fetch(task: str = "logical_deduction/three_objects", limit: int = None) -> list:
-    """拉取 BIG-bench task.json（jsDelivr CDN 优先，GitHub raw 兜底）。"""
-    urls = [_CDN_URL.format(task=task), _BASE_URL.format(task=task)]
+    """拉取 BIG-bench task.json（固定版本，jsDelivr CDN 优先，GitHub raw 兜底）。"""
+    import os
+    ref = os.environ.get("BIGBENCH_REF", BIGBENCH_REF)
+    urls = [
+        _CDN_URL.replace("@main", f"@{ref}").format(task=task),
+        _BASE_URL.replace("/main/", f"/{ref}/").format(task=task),
+    ]
     last_err = None
     for url in urls:
         for _ in range(3):  # 每个镜像重试 3 次

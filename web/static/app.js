@@ -67,6 +67,11 @@ function pickBank(mode) {
   const list = $('sourceList');
   list.classList.add('hidden');
   list.innerHTML = '';
+  if (mode === 'mixed') {
+    externalSource = null;
+    showLevels();
+    return;
+  }
   if (mode === 'builtin') {
     externalSource = null;
     externalLang = 'zh';
@@ -182,9 +187,13 @@ async function nextQuestion() {
 
 function renderQuestion(q) {
   qStartedAt = Date.now();
-  $('qBank').textContent = q.bank === 'external'
-    ? '🌐 外部 · ' + (q.source_name || '')
-    : '🧩 内置';
+  if (bankMode === 'mixed') {
+    $('qBank').textContent = '🧠 综合 · ' + (q.bank === 'external' ? '外部' : '内置');
+  } else {
+    $('qBank').textContent = q.bank === 'external'
+      ? '🌐 外部 · ' + (q.source_name || '')
+      : '🧩 内置';
+  }
   $('qType').textContent = q.type_name;
   $('qLevel').textContent = q.level_label;
   $('qTitle').textContent = q.story.title;

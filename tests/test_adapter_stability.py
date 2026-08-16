@@ -7,6 +7,7 @@ import pytest
 from logic_kids.bank import external, importer, provenance, store
 from logic_kids.bank.sources import bigbench, logiqa
 from logic_kids.config import IMPORTS_DIR, ensure_dirs
+from logic_kids import dedup
 from logic_kids.validator.validator import validate
 
 
@@ -29,12 +30,14 @@ def isolated():
     ensure_dirs()
     store.clear()
     external.clear()
+    dedup.clear()
     shutil.rmtree(IMPORTS_DIR, ignore_errors=True)
     ensure_dirs()
     yield
     shutil.rmtree(IMPORTS_DIR, ignore_errors=True)
     store.clear()
     external.clear()
+    dedup.clear()
 
 
 # ---------- 畸形输入 ----------
@@ -135,7 +138,8 @@ def test_import_rejects_garbage_without_crash():
 
 def test_duplicate_qid_deduped_within_batch():
     items = [_valid_bigbench_item(0), _valid_bigbench_item(0)]
-    report = importer.import_items("bigbench", items, bigbench.normalize)
+    report = importer.import_items("bigbench", items, bigbench.normalize,
+                                   dedup_enabled=False)
     assert report["total"] == 2
     assert report["pending"] == 1
 
@@ -147,7 +151,8 @@ def test_stress_import_approve_consistency():
     ensure_dirs()
     items = [_valid_bigbench_item(i) for i in range(30)]
     report = importer.import_items("bigbench", items, bigbench.normalize,
-                                   translate=bigbench.zh_translate_question)
+                                   translate=bigbench.zh_translate_question,
+                                   dedup_enabled=False)
     assert report["pending"] == 30
     ok_n, fail_n, failures = importer.approve_all_pending()
     assert fail_n == 0, failures[:3]
@@ -171,8 +176,24 @@ def test_stress_import_approve_consistency():
 def test_reimport_is_idempotent():
     """同一批题重复导入：pending 与外部库数量不翻倍。"""
     items = [_valid_bigbench_item(i) for i in range(3)]
-    importer.import_items("bigbench", items, bigbench.normalize)
-    importer.import_items("bigbench", items, bigbench.normalize)
+    importer.import_items("bigbench", items, bigbench.normalize,
+                          dedup_enabled=False)
+    importer.import_items("bigbench", items, bigbench.normalize,
+                          dedup_enabled=False)
     pending = [p for p in provenance.list_pending()
                if p["review_status"] == "pending"]
     assert len(pending) == 3
+
+
+def test_text_dedup_skips_identical_content():
+    """Level 2 文本去重：相同内容第二次导入被跳过。"""
+    shutil.rmtree(IMPORTS_DIR, ignore_errors=True)
+    ensure_dirs()
+    dedup.clear()
+    first = importer.import_items("bigbench", [_valid_bigbench_item(0)],
+                                  bigbench.normalize)
+    second = importer.import_items("bigbench", [_valid_bigbench_item(0)],
+                                   bigbench.normalize)
+    assert first["pending"] == 1
+    assert second["duplicates"] == 1
+    assert second["pending"] == 0

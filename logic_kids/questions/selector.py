@@ -20,8 +20,16 @@ import random
 
 from ..bank import external, store
 from ..difficulty import levels
+from .. import taxonomy
 from ..progress import store as progress
 from .generator import GENERATORS
+
+# 综合训练模式的能力权重（专家意见第二十二节）
+MIXED_WEIGHTS = {
+    "deduction": 0.25, "ordering": 0.15, "pattern": 0.15, "relation": 0.10,
+    "math": 0.10, "spatial": 0.10, "language": 0.05, "science": 0.05,
+    "strategy": 0.05, "classification": 0.05,
+}
 
 
 def select_question(difficulty: int = None,
@@ -31,7 +39,8 @@ def select_question(difficulty: int = None,
                     avoid_recent: bool = True,
                     exclude_ids: set = None,
                     external_bank: bool = False,
-                    source: str = None) -> dict | None:
+                    source: str = None,
+                    mixed: bool = False) -> dict | None:
     """按用户选择的难度等级选题。
 
     参数：
@@ -43,8 +52,11 @@ def select_question(difficulty: int = None,
         exclude_ids 额外排除的题目 id（测试/去重用）。
         external_bank 从外部题库选题（True）；默认内置题库。
         source      外部题库来源 slug（如 "bigbench"）；None 表示全部外部来源。
+        mixed       综合训练：按能力权重从内置 + 外部混合选题。
     """
     rng = rng or random.Random()
+    if mixed:
+        return _select_mixed(difficulty, child_id, rng)
     if difficulty is not None:
         levels.validate_level(difficulty)
     if category is not None and category not in GENERATORS:
@@ -97,3 +109,37 @@ def _load(external_bank: bool, source: str, qid: str):
             return external.load_question(source, qid)
         return external.load_question_any(qid)
     return store.load_question(qid)
+
+
+def _select_mixed(difficulty: int, child_id: int, rng: random.Random) -> dict | None:
+    """综合训练：先按能力权重抽能力，再在该能力下从内置 + 外部选题。"""
+    recent = set(progress.recent_question_ids(child_id)) if child_id else set()
+    order = levels.adjacent_levels(difficulty) if difficulty is not None else [None]
+    pool = {}
+    for lv in order:
+        for ability in MIXED_WEIGHTS:
+            ids = store.query(category=ability, difficulty_level=lv,
+                              exclude_ids=recent)
+            ids += external.query(category=ability, difficulty_level=lv,
+                                  exclude_ids=recent)
+            if ids:
+                pool.setdefault(ability, []).extend(ids)
+        if pool:
+            break  # 优先精确等级；不足时向外放宽
+    if not pool:
+        ids = store.query(exclude_ids=recent) + external.query(exclude_ids=recent)
+        if not ids:
+            return None
+        qid = rng.choice(ids)
+        q = store.load_question(qid) or external.load_question_any(qid)
+        return {"question": q, "qtype": q.type, "difficulty": q.difficulty,
+                "difficulty_level": levels.level_for_score(q.difficulty_score),
+                "reason": "综合训练（任意能力）"}
+    abilities = [a for a in MIXED_WEIGHTS if pool.get(a)]
+    weights = [MIXED_WEIGHTS[a] for a in abilities]
+    ability = rng.choices(abilities, weights=weights)[0]
+    qid = rng.choice(pool[ability])
+    q = store.load_question(qid) or external.load_question_any(qid)
+    return {"question": q, "qtype": q.type, "difficulty": q.difficulty,
+            "difficulty_level": levels.level_for_score(q.difficulty_score),
+            "reason": f"综合训练 · {taxonomy.ability_label(ability)}"}

@@ -23,6 +23,7 @@ import math
 from ..logic import dsl, solver, ast
 from ..models import Question
 from .. import taxonomy
+from .. import child_suitability
 from . import levels
 
 # 权重（启发式，可在数据积累后校准）
@@ -229,4 +230,5 @@ def apply(question: Question) -> Question:
     question.difficulty = stars(s)
     question.difficulty_profile = difficulty_profile(question)
     question.age_range = age_for(question)
+    question.child_suitability = child_suitability.evaluate(question)
     return question

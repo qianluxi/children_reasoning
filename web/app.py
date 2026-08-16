@@ -146,8 +146,8 @@ def create_app() -> Flask:
         lang = data.get("lang", "zh")
         if lang not in ("zh", "en"):
             return jsonify({"error": "lang 必须是 zh 或 en"}), 400
-        if bank not in ("builtin", "external"):
-            return jsonify({"error": "bank 必须是 builtin 或 external"}), 400
+        if bank not in ("builtin", "external", "mixed"):
+            return jsonify({"error": "bank 必须是 builtin / external / mixed"}), 400
         if bank == "external":
             known = {s["slug"] for s in external.list_sources()}
             if source is not None and source not in known:
@@ -163,7 +163,10 @@ def create_app() -> Flask:
         # 身份绑定：本次浏览器的 session 只认这个儿童
         session["child_id"] = child_id
         session["lang"] = lang
-        if bank == "external":
+        if bank == "mixed":
+            pick = select_question(difficulty=level, child_id=child_id,
+                                   category=category, mixed=True)
+        elif bank == "external":
             pick = select_question(difficulty=level, child_id=child_id,
                                    category=category, external_bank=True,
                                    source=source)

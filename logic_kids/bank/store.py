@@ -91,7 +91,7 @@ def _meta_level(meta: dict) -> int:
 
 def query(qtype: str = None, difficulty: int = None,
           difficulty_level: int = None, source: str = None,
-          exclude_ids: set = None) -> list:
+          exclude_ids: set = None, category: str = None) -> list:
     """按条件过滤，返回题目 id 列表。
 
     difficulty_level 是用户可见等级（1..4），按难度分区间过滤；
@@ -108,6 +108,8 @@ def query(qtype: str = None, difficulty: int = None,
         if difficulty_level is not None and _meta_level(meta) != difficulty_level:
             continue
         if source is not None and meta.get("source") != source:
+            continue
+        if category is not None and meta.get("category") != category:
             continue
         if qid in exclude_ids:
             continue

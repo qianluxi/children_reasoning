@@ -14,6 +14,10 @@
     python cli.py external list         # 列出外部题库来源
     python cli.py external stats        # 外部题库统计
     python cli.py external translate    # 给外部题生成中文版（机器翻译）
+    python cli.py import-all config/datasets.yaml          # 按配置批量导入
+    python cli.py import-all config/datasets.yaml --dry-run
+    python cli.py import stats          # 批处理统计
+    python cli.py bank check-license    # 许可证合规检查
 """
 from __future__ import annotations
 
@@ -151,6 +155,16 @@ def cmd_play(args):
 def cmd_import(args):
     from logic_kids.bank import importer
     from logic_kids.bank.sources import SOURCE_INFO
+    if args.source == "stats":
+        from logic_kids.bank.import_job import stats_table
+        rows = stats_table()
+        print(f"{'SOURCE':14s} {'RAW':>8s} {'VALID':>8s} {'REJECT':>8s} "
+              f"{'REVIEW':>8s} {'READY':>8s}")
+        print("-" * 62)
+        for r in rows:
+            print(f"{r[0]:14s} {str(r[1]):>8s} {str(r[2]):>8s} "
+                  f"{str(r[3]):>8s} {str(r[4]):>8s} {str(r[5]):>8s}")
+        return 0
     info = SOURCE_INFO.get(args.source, {})
     license_name = info.get("license", "?")
     print(f"导入源: {args.source}（许可证: {license_name}）")
@@ -158,15 +172,47 @@ def cmd_import(args):
         print("[warn] 该数据集使用 CC BY-NC-SA（非商业许可），仅限研究/非商业用途！")
     report = importer.import_source(args.source, limit=args.limit,
                                     approve=args.approve, task=args.task,
-                                    lang=args.lang)
+                                    lang=args.lang, dry_run=args.dry_run,
+                                    checkpoint=args.checkpoint,
+                                    dedup_enabled=not args.no_dedup)
     print(f"共 {report['total']} 条：转换成功 {report['translated']}，"
           f"跳过 {report['skipped']}，结构不过 {report['failed_schema']}，"
-          f"逻辑不过 {report['failed_logic']}。")
+          f"逻辑不过 {report['failed_logic']}，重复 {report['duplicates']}"
+          + (f"，断点跳过 {report['checkpoint_skipped']}" if args.checkpoint else "")
+          + "。")
+    if args.dry_run:
+        print(f"[dry-run] 未写入任何队列/题库：有效 {report['valid']} 条。")
+        return 0
     print(f"进入待审队列 {report['pending']} 条"
           + (f"，审核入库 {report['approved']} 条" if args.approve else "。"))
     if args.approve and report["approve_failed"]:
         print(f"[warn] 有 {report['approve_failed']} 条未能直接审核入库"
               f"（未通过逻辑验证的题必须人工改写后才能入库）。")
+        return 1
+    return 0
+
+
+def cmd_import_all(args):
+    from logic_kids.bank.import_job import run_job
+    result = run_job(args.config, dry_run=args.dry_run, retry=args.retry,
+                     checkpoint=args.checkpoint, dedup_enabled=True)
+    errors = [name for name, status in result["summary"] if status == "error"]
+    if errors:
+        print(f"\n完成（{len(errors)} 个来源失败）：{', '.join(errors)}")
+        return 1
+    print("\n全部来源导入完成。")
+    return 0
+
+
+def cmd_bank(args):
+    from logic_kids.license_policy import check_bank
+    counts = check_bank()
+    print("许可证合规检查：")
+    print(f"  Production-safe : {counts['production']}")
+    print(f"  Non-commercial  : {counts['noncommercial']}")
+    print(f"  Unknown         : {counts['unknown']}")
+    if counts["unknown"]:
+        print("[warn] 存在未知许可证题目，进入生产前需人工确认。")
         return 1
     return 0
 
@@ -271,7 +317,7 @@ def main(argv=None):
     p_play.set_defaults(func=cmd_play)
 
     p_imp = sub.add_parser("import", help="导入外部题库（先进待审队列）")
-    p_imp.add_argument("source", choices=["bigbench", "logiqa"])
+    p_imp.add_argument("source", choices=["bigbench", "logiqa", "stats"])
     p_imp.add_argument("--limit", type=int, default=None, help="最多导入条数")
     p_imp.add_argument("--task", default=None,
                        help="BIG-bench: task 路径（默认 logical_deduction/three_objects）；"
@@ -280,7 +326,25 @@ def main(argv=None):
                        help="LogiQA: zh（官方中文版，默认）或 en")
     p_imp.add_argument("--approve", action="store_true",
                        help="通过四道闸门后直接审核入库")
+    p_imp.add_argument("--dry-run", action="store_true",
+                       help="只跑管线不入库（统计扫描/转换/有效数）")
+    p_imp.add_argument("--checkpoint", action="store_true",
+                       help="跳过已入库/待审的题目（断点续导）")
+    p_imp.add_argument("--no-dedup", action="store_true",
+                       help="关闭文本去重")
     p_imp.set_defaults(func=cmd_import)
+
+    p_all = sub.add_parser("import-all", help="按配置文件批量导入")
+    p_all.add_argument("config", help="datasets.yaml 路径")
+    p_all.add_argument("--dry-run", action="store_true")
+    p_all.add_argument("--retry", action="store_true",
+                       help="只重跑上次失败的来源")
+    p_all.add_argument("--checkpoint", action="store_true")
+    p_all.set_defaults(func=cmd_import_all)
+
+    p_bank = sub.add_parser("bank", help="题库管理")
+    p_bank.add_argument("action", choices=["check-license"])
+    p_bank.set_defaults(func=cmd_bank)
 
     p_rev = sub.add_parser("review", help="外部题待审队列管理")
     p_rev.add_argument("--approve", metavar="QID", default=None,

@@ -15,6 +15,7 @@ import re
 
 from ..config import ensure_dirs
 from ..difficulty import engine as difficulty_engine, levels
+from .. import child_suitability, dedup
 from ..validator.validator import validate
 from . import external, provenance, sources
 from .normalizer import NormalizedQuestion
@@ -76,19 +77,42 @@ def calibrate_difficulty(q) -> bool:
     q.difficulty = difficulty_engine.stars(score)
     q.difficulty_profile = difficulty_engine.difficulty_profile(q)
     q.age_range = difficulty_engine.age_for(q)
+    q.child_suitability = child_suitability.evaluate(q)
     q.provenance.difficulty_calibrated = False
     return False
 
 
+def grade_quality(q) -> str:
+    """质量分级（专家意见第十八节）：A/B/C/rejected。
+
+    A：Solver 验证 + 儿童语言已审核（child_adapted）或内置中文原创
+    B：逻辑正确但儿童语言未人工审核（机器翻译）
+    C：只有外部答案、无法形式化验证（人工抽检后可用）
+    """
+    if not (q.source_info and q.source_info.type == "external"):
+        return "A"
+    if not q.provenance.logic_validated:
+        return "C"
+    tr = (q.translations or {}).get("zh") or {}
+    return "A" if tr.get("status") == "child_adapted" else "B"
+
+
 def import_items(source_name: str, raw_items: list, normalize,
                  limit: int = None, approve: bool = False,
-                 translate=None) -> dict:
+                 translate=None, dry_run: bool = False,
+                 checkpoint: bool = False, dedup_enabled: bool = True,
+                 dedup_logic: bool = False) -> dict:
     """把一批原始题跑完四道闸门，写入待审队列（可选直接审核入库）。"""
     ensure_dirs()
     report = {"total": 0, "translated": 0, "skipped": 0,
               "failed_schema": 0, "failed_logic": 0,
-              "pending": 0, "approved": 0, "approve_failed": 0}
+              "pending": 0, "approved": 0, "approve_failed": 0,
+              "duplicates": 0, "checkpoint_skipped": 0, "valid": 0}
     seen_qids = set()
+    existing = set()
+    if checkpoint:
+        existing = set(external.list_ids())
+        existing |= {p["qid"] for p in provenance.list_pending()}
     items = raw_items[:limit] if limit is not None else raw_items
     for item in items:
         report["total"] += 1
@@ -103,6 +127,9 @@ def import_items(source_name: str, raw_items: list, normalize,
             report["failed_schema"] += 1
             continue
         seen_qids.add(qid)
+        if checkpoint and qid in existing:
+            report["checkpoint_skipped"] += 1
+            continue
         if issues:
             report["failed_schema"] += 1
             continue
@@ -120,8 +147,19 @@ def import_items(source_name: str, raw_items: list, normalize,
         q.provenance.logic_validated = any(c.logic for c in q.constraints) \
             or any(q.option_logic)
         calibrate_difficulty(q)
+        q.quality = grade_quality(q)
+        if dedup_enabled:
+            dup = dedup.check(q)
+            if dup["text_dup"] or (dedup_logic and dup["logic_dup"]):
+                report["duplicates"] += 1
+                continue
+        report["valid"] += 1
+        if dry_run:
+            continue
         q.provenance.review_status = provenance.REVIEW_PENDING
         provenance.save_pending(q)
+        if dedup_enabled:
+            dedup.register(q)
         report["pending"] += 1
         if approve:
             ok_approve, _ = approve_pending(qid)
@@ -133,7 +171,9 @@ def import_items(source_name: str, raw_items: list, normalize,
 
 
 def import_source(source_name: str, limit: int = None, approve: bool = False,
-                  task: str = None, lang: str = None) -> dict:
+                  task: str = None, lang: str = None, dry_run: bool = False,
+                  checkpoint: bool = False, dedup_enabled: bool = True,
+                  dedup_logic: bool = False) -> dict:
     """下载指定外部源并导入（CLI/Web 统一入口）。"""
     adapter = sources.get(source_name)
     kw = {"task": task}
@@ -142,7 +182,9 @@ def import_source(source_name: str, limit: int = None, approve: bool = False,
     items = adapter.fetch(**kw)
     translate = getattr(adapter, "zh_translate_question", None)
     return import_items(source_name, items, adapter.normalize,
-                        limit=limit, approve=approve, translate=translate)
+                        limit=limit, approve=approve, translate=translate,
+                        dry_run=dry_run, checkpoint=checkpoint,
+                        dedup_enabled=dedup_enabled, dedup_logic=dedup_logic)
 
 
 def approve_pending(qid: str, force: bool = False) -> tuple:

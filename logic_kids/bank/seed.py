@@ -203,6 +203,7 @@ def validated_seeds() -> list:
         if report.ok:
             ensure_builtin_source(q)
             ensure_taxonomy(q)
+            q.quality = "A"
             result.append(q)
         else:
             print(f"[warn] 种子题 {q.id} 未通过 Validator，已跳过: {'; '.join(report.issues)}")
