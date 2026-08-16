@@ -1,0 +1,101 @@
+{
+  "id": "truth_870e21ccbb",
+  "type": "truth_statements",
+  "story": {
+    "title": "谁有饼干？",
+    "text": "4个小伙伴在一起，他们可能藏了🍪饼干。每个人都说了一句话。已知他们里面恰好有 2 句是真话。到底谁有饼干呢？",
+    "roles": {
+      "A": "跳跳",
+      "B": "旺旺",
+      "C": "大力",
+      "D": "云云"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "A_cookie",
+      "type": "boolean"
+    },
+    {
+      "name": "B_cookie",
+      "type": "boolean"
+    },
+    {
+      "name": "C_cookie",
+      "type": "boolean"
+    },
+    {
+      "name": "D_cookie",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "我们中至少有一个有饼干",
+      "logic": "SOME(cookie)",
+      "speaker": "A"
+    },
+    {
+      "text": "大力和云云都有饼干",
+      "logic": "C_cookie && D_cookie",
+      "speaker": "B"
+    },
+    {
+      "text": "至少有3个人有饼干",
+      "logic": "COUNT(cookie) >= 3",
+      "speaker": "C"
+    },
+    {
+      "text": "恰好有3个人有饼干",
+      "logic": "COUNT(cookie) == 3",
+      "speaker": "D"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "恰好有 2 句是真话",
+      "logic": "TRUTH_COUNT == 2"
+    }
+  ],
+  "question_prompt": "到底谁有饼干？",
+  "options": [
+    "只有大力、云云有饼干",
+    "只有跳跳、旺旺、云云有饼干",
+    "只有云云有饼干",
+    "只有旺旺、云云有饼干"
+  ],
+  "option_logic": [
+    "C_cookie && D_cookie && !A_cookie && !B_cookie",
+    "A_cookie && B_cookie && D_cookie && !C_cookie",
+    "D_cookie && COUNT(cookie) == 1",
+    "B_cookie && D_cookie && !A_cookie && !C_cookie"
+  ],
+  "answer": 0,
+  "hints": [
+    "先数一数：题目说恰好有 2 句是真话。",
+    "试着假设某句话是真的，看看其它话会不会矛盾。",
+    "把每句话的真假列出来，凑出恰好 2 句真话的那种情况就是答案。"
+  ],
+  "explanation": "· 跳跳 说“我们中至少有一个有饼干”——这是真话 ✔\n· 旺旺 说“大力和云云都有饼干”——这是真话 ✔\n· 大力 说“至少有3个人有饼干”——这是假话 ✘\n· 云云 说“恰好有3个人有饼干”——这是假话 ✘\n正好有 2 句真话（跳跳、旺旺），所以有饼干的是：大力、云云。",
+  "difficulty": 4,
+  "difficulty_score": 6.94,
+  "difficulty_level": 3,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "created_at": "2026-08-16 16:09:21"
+}

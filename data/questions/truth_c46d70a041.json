@@ -1,0 +1,90 @@
+{
+  "id": "truth_c46d70a041",
+  "type": "truth_statements",
+  "story": {
+    "title": "谁有胡萝卜？",
+    "text": "3个小伙伴在一起，他们可能藏了🥕胡萝卜。每个人都说了一句话。已知他们里面恰好有 2 句是真话。到底谁有胡萝卜呢？",
+    "roles": {
+      "A": "布丁",
+      "B": "贝贝",
+      "C": "跳跳"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "A_carrot",
+      "type": "boolean"
+    },
+    {
+      "name": "B_carrot",
+      "type": "boolean"
+    },
+    {
+      "name": "C_carrot",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "不是每个人都有胡萝卜",
+      "logic": "NOT_ALL(carrot)",
+      "speaker": "A"
+    },
+    {
+      "text": "至少有2个人有胡萝卜",
+      "logic": "COUNT(carrot) >= 2",
+      "speaker": "B"
+    },
+    {
+      "text": "至少有2个人有胡萝卜",
+      "logic": "COUNT(carrot) >= 2",
+      "speaker": "C"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "恰好有 2 句是真话",
+      "logic": "TRUTH_COUNT == 2"
+    }
+  ],
+  "question_prompt": "到底谁有胡萝卜？",
+  "options": [
+    "只有跳跳有胡萝卜",
+    "只有布丁、跳跳有胡萝卜",
+    "只有贝贝、跳跳有胡萝卜",
+    "所有人都有胡萝卜"
+  ],
+  "option_logic": [
+    "C_carrot && COUNT(carrot) == 1",
+    "A_carrot && C_carrot && !B_carrot",
+    "B_carrot && C_carrot && !A_carrot",
+    "ALL(carrot)"
+  ],
+  "answer": 3,
+  "hints": [
+    "先数一数：题目说恰好有 2 句是真话。",
+    "试着假设某句话是真的，看看其它话会不会矛盾。",
+    "把每句话的真假列出来，凑出恰好 2 句真话的那种情况就是答案。"
+  ],
+  "explanation": "· 布丁 说“不是每个人都有胡萝卜”——这是假话 ✘\n· 贝贝 说“至少有2个人有胡萝卜”——这是真话 ✔\n· 跳跳 说“至少有2个人有胡萝卜”——这是真话 ✔\n正好有 2 句真话（贝贝、跳跳），所以有胡萝卜的是：布丁、贝贝、跳跳。",
+  "difficulty": 3,
+  "difficulty_score": 5.04,
+  "difficulty_level": 3,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "created_at": "2026-08-16 16:09:21"
+}

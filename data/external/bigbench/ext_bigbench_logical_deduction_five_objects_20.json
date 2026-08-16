@@ -1,0 +1,126 @@
+{
+  "id": "ext_bigbench_logical_deduction_five_objects_20",
+  "type": "ordering",
+  "story": {
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "text": "On a shelf, there are five books: a green book, a blue book, a brown book, a gray book, and a red book",
+    "roles": {
+      "A": "green book",
+      "B": "blue book",
+      "C": "brown book",
+      "D": "gray book",
+      "E": "red book"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    },
+    {
+      "name": "rank_D",
+      "type": "rank"
+    },
+    {
+      "name": "rank_E",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "The green book is to the left of the brown book",
+      "logic": "RANK(A) < RANK(C)"
+    },
+    {
+      "text": "The gray book is to the left of the blue book",
+      "logic": "RANK(D) < RANK(B)"
+    },
+    {
+      "text": "The green book is to the right of the blue book",
+      "logic": "RANK(A) > RANK(B)"
+    },
+    {
+      "text": "The red book is the leftmost",
+      "logic": "RANK(E) == 1"
+    }
+  ],
+  "question_prompt": "谁排在最左边？",
+  "options": [
+    "The green book is the leftmost.",
+    "The blue book is the leftmost.",
+    "The brown book is the leftmost.",
+    "The gray book is the leftmost.",
+    "The red book is the leftmost."
+  ],
+  "option_logic": [
+    "RANK(A) == 1",
+    "RANK(B) == 1",
+    "RANK(C) == 1",
+    "RANK(D) == 1",
+    "RANK(E) == 1"
+  ],
+  "answer": 4,
+  "hints": [
+    "把每条线索先翻译成“谁在谁前面/后面”。",
+    "把能确定的位置先固定下来，再继续推。"
+  ],
+  "explanation": "来自 BIG-bench logical_deduction 第 20 例，由规则翻译器转换（Apache-2.0），未经人工改写。",
+  "difficulty": 2,
+  "difficulty_score": 3.77,
+  "difficulty_level": 2,
+  "source": "big-bench",
+  "source_info": {
+    "type": "external",
+    "name": "BIG-bench",
+    "license": "Apache-2.0",
+    "dataset_id": "logical_deduction/five_objects",
+    "original_id": "20",
+    "url": "https://raw.githubusercontent.com/google/BIG-bench/main/bigbench/benchmark_tasks/logical_deduction/five_objects/task.json"
+  },
+  "provenance": {
+    "imported_at": "2026-08-16T15:22:11",
+    "modified": true,
+    "translator": "bigbench_logical_deduction_rule_v1",
+    "review_status": "approved",
+    "logic_validated": true,
+    "difficulty_calibrated": true
+  },
+  "translations": {
+    "zh": {
+      "story_title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+      "story_text": "在书架上有 5 个：绿色的书、蓝色的书、棕色的书、灰色的书、红色的书。",
+      "constraints": [
+        "绿色的书 在 棕色的书 的左边。",
+        "灰色的书 在 蓝色的书 的左边。",
+        "绿色的书 在 蓝色的书 的右边。",
+        "红色的书排在最左边。"
+      ],
+      "options": [
+        "绿色的书排在最左边。",
+        "蓝色的书排在最左边。",
+        "棕色的书排在最左边。",
+        "灰色的书排在最左边。",
+        "红色的书排在最左边。"
+      ],
+      "question_prompt": "谁排在最左边？",
+      "explanation": "来自 BIG-bench logical_deduction 第 20 例，由规则翻译器转换（Apache-2.0），未经人工改写。"
+    }
+  },
+  "created_at": "2026-08-16T15:22:11"
+}

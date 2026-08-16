@@ -1,0 +1,1127 @@
+{
+  "ext_bigbench_logical_deduction_three_objects_0": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_1": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_2": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_3": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_4": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_5": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_6": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_7": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_8": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_9": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_10": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_11": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_12": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_13": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_14": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_15": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_16": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_17": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_18": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_19": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_20": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_21": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_22": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_23": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_24": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_25": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_26": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_27": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_28": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_29": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_30": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_31": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_32": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_33": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_34": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_35": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_36": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_37": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_38": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_39": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_40": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_41": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_42": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_43": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_44": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_45": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_46": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_47": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_48": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_49": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_50": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_51": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_52": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_53": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_54": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_55": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_56": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_57": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_58": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_three_objects_59": {
+    "type": "ordering",
+    "difficulty": 1,
+    "difficulty_score": 1.51,
+    "difficulty_level": 1,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_0": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_1": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_2": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_3": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_4": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_5": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_6": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_7": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_8": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_9": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_10": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_11": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_12": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_13": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_14": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_15": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_16": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_17": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_18": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_19": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_20": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_21": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_22": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_23": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_24": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_25": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_26": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_27": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_28": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_29": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_30": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_31": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_32": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_33": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_34": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_35": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_36": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_37": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_38": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_five_objects_39": {
+    "type": "ordering",
+    "difficulty": 2,
+    "difficulty_score": 3.77,
+    "difficulty_level": 2,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/five_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_0": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_1": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_2": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_3": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_4": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_5": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_6": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_7": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_8": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_9": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_10": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_11": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_12": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_13": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_14": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_15": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_16": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_17": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_18": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_19": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_20": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_21": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_22": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_23": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  },
+  "ext_bigbench_logical_deduction_seven_objects_24": {
+    "type": "ordering",
+    "difficulty": 4,
+    "difficulty_score": 6.09,
+    "difficulty_level": 3,
+    "source": "BIG-bench",
+    "title": "BIG-bench 逻辑推理 · logical_deduction/seven_objects",
+    "license": "Apache-2.0"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "excl_7c0298d229",
+  "type": "exclusion",
+  "story": {
+    "title": "排队领点心的名次",
+    "text": "3个小伙伴参加排队领点心。根据下面的线索，用排除法想想：蓝蓝是第几个？",
+    "roles": {
+      "A": "小猫咪",
+      "B": "蓝蓝",
+      "C": "贝贝"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "蓝蓝不是第1个",
+      "logic": "RANK(B) != 1"
+    },
+    {
+      "text": "贝贝不是第3个",
+      "logic": "RANK(C) != 3"
+    },
+    {
+      "text": "贝贝比蓝蓝名次好",
+      "logic": "RANK(C) < RANK(B)"
+    },
+    {
+      "text": "蓝蓝不是第3个",
+      "logic": "RANK(B) != 3"
+    }
+  ],
+  "question_prompt": "蓝蓝是第几个？",
+  "options": [
+    "第1个",
+    "第3个",
+    "第2个"
+  ],
+  "option_logic": [
+    "RANK(B) == 1",
+    "RANK(B) == 3",
+    "RANK(B) == 2"
+  ],
+  "answer": 2,
+  "hints": [
+    "先看看哪些名次被明确排除了。",
+    "把不可能的名次一个个划掉。",
+    "最后只剩下一个名次，那就是蓝蓝的。"
+  ],
+  "explanation": "把线索一条条对：蓝蓝不可能是第1个、第3个，剩下的只能是第2个。",
+  "difficulty": 2,
+  "difficulty_score": 2.31,
+  "difficulty_level": 1,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "created_at": "2026-08-16 16:09:21"
+}

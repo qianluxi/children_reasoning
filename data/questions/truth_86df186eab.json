@@ -1,0 +1,101 @@
+{
+  "id": "truth_86df186eab",
+  "type": "truth_statements",
+  "story": {
+    "title": "谁有胡萝卜？",
+    "text": "4个小伙伴在一起，他们可能藏了🥕胡萝卜。每个人都说了一句话。已知他们里面恰好有 3 句是真话。到底谁有胡萝卜呢？",
+    "roles": {
+      "A": "小鸟",
+      "B": "小狗",
+      "C": "茸茸",
+      "D": "乐乐"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "A_carrot",
+      "type": "boolean"
+    },
+    {
+      "name": "B_carrot",
+      "type": "boolean"
+    },
+    {
+      "name": "C_carrot",
+      "type": "boolean"
+    },
+    {
+      "name": "D_carrot",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "至少有2个人有胡萝卜",
+      "logic": "COUNT(carrot) >= 2",
+      "speaker": "A"
+    },
+    {
+      "text": "我们谁都没有胡萝卜",
+      "logic": "NONE(carrot)",
+      "speaker": "B"
+    },
+    {
+      "text": "我们每个人都有胡萝卜",
+      "logic": "ALL(carrot)",
+      "speaker": "C"
+    },
+    {
+      "text": "我有胡萝卜",
+      "logic": "D_carrot",
+      "speaker": "D"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "恰好有 3 句是真话",
+      "logic": "TRUTH_COUNT == 3"
+    }
+  ],
+  "question_prompt": "到底谁有胡萝卜？",
+  "options": [
+    "只有小鸟、小狗、乐乐有胡萝卜",
+    "只有茸茸有胡萝卜",
+    "所有人都有胡萝卜",
+    "只有小鸟、茸茸、乐乐有胡萝卜"
+  ],
+  "option_logic": [
+    "A_carrot && B_carrot && D_carrot && !C_carrot",
+    "C_carrot && COUNT(carrot) == 1",
+    "ALL(carrot)",
+    "A_carrot && C_carrot && D_carrot && !B_carrot"
+  ],
+  "answer": 2,
+  "hints": [
+    "先数一数：题目说恰好有 3 句是真话。",
+    "试着假设某句话是真的，看看其它话会不会矛盾。",
+    "把每句话的真假列出来，凑出恰好 3 句真话的那种情况就是答案。"
+  ],
+  "explanation": "· 小鸟 说“至少有2个人有胡萝卜”——这是真话 ✔\n· 小狗 说“我们谁都没有胡萝卜”——这是假话 ✘\n· 茸茸 说“我们每个人都有胡萝卜”——这是真话 ✔\n· 乐乐 说“我有胡萝卜”——这是真话 ✔\n正好有 3 句真话（小鸟、茸茸、乐乐），所以有胡萝卜的是：小鸟、小狗、茸茸、乐乐。",
+  "difficulty": 4,
+  "difficulty_score": 6.05,
+  "difficulty_level": 3,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "created_at": "2026-08-16 16:09:21"
+}

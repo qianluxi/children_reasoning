@@ -1,0 +1,91 @@
+{
+  "id": "match_731cdff23f",
+  "type": "matching",
+  "story": {
+    "title": "谁喜欢什么？",
+    "text": "4个小伙伴，每人喜欢一种点心，而且每种点心只有一个人喜欢。根据下面的线索，想想谁喜欢什么。",
+    "roles": {
+      "A": "米粒",
+      "B": "旺旺",
+      "C": "啾啾",
+      "D": "蓝蓝"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    },
+    {
+      "name": "rank_D",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "旺旺喜欢🧀奶酪",
+      "logic": "RANK(B) == 2"
+    },
+    {
+      "text": "米粒喜欢🍒樱桃",
+      "logic": "RANK(A) == 4"
+    },
+    {
+      "text": "啾啾喜欢🥕胡萝卜",
+      "logic": "RANK(C) == 3"
+    },
+    {
+      "text": "蓝蓝不喜欢🥕胡萝卜",
+      "logic": "RANK(D) != 3"
+    }
+  ],
+  "question_prompt": "谁喜欢🍒樱桃？",
+  "options": [
+    "蓝蓝",
+    "旺旺",
+    "米粒",
+    "啾啾"
+  ],
+  "option_logic": [
+    "RANK(D) == 4",
+    "RANK(B) == 4",
+    "RANK(A) == 4",
+    "RANK(C) == 4"
+  ],
+  "answer": 2,
+  "hints": [
+    "先把“确定喜欢”的配对找出来。",
+    "每个小朋友只能喜欢一种，每种点心也只有一个人喜欢，用排除法试试。"
+  ],
+  "explanation": "按线索一一配对：米粒喜欢🍒樱桃；旺旺喜欢🧀奶酪；啾啾喜欢🥕胡萝卜；蓝蓝喜欢🍞面包。",
+  "difficulty": 2,
+  "difficulty_score": 3.03,
+  "difficulty_level": 2,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "created_at": "2026-08-16 16:09:21"
+}

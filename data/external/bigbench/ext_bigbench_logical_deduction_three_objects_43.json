@@ -1,0 +1,98 @@
+{
+  "id": "ext_bigbench_logical_deduction_three_objects_43",
+  "type": "ordering",
+  "story": {
+    "title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+    "text": "On a shelf, there are three books: a blue book, an orange book, and a green book",
+    "roles": {
+      "A": "blue book",
+      "B": "orange book",
+      "C": "green book"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "The green book is the leftmost",
+      "logic": "RANK(C) == 1"
+    },
+    {
+      "text": "The orange book is to the left of the blue book",
+      "logic": "RANK(B) < RANK(A)"
+    }
+  ],
+  "question_prompt": "谁排在从左数第 2 位？",
+  "options": [
+    "The blue book is the second from the left.",
+    "The orange book is the second from the left.",
+    "The green book is the second from the left."
+  ],
+  "option_logic": [
+    "RANK(A) == 2",
+    "RANK(B) == 2",
+    "RANK(C) == 2"
+  ],
+  "answer": 1,
+  "hints": [
+    "把每条线索先翻译成“谁在谁前面/后面”。",
+    "把能确定的位置先固定下来，再继续推。"
+  ],
+  "explanation": "来自 BIG-bench logical_deduction 第 43 例，由规则翻译器转换（Apache-2.0），未经人工改写。",
+  "difficulty": 1,
+  "difficulty_score": 1.51,
+  "difficulty_level": 1,
+  "source": "big-bench",
+  "source_info": {
+    "type": "external",
+    "name": "BIG-bench",
+    "license": "Apache-2.0",
+    "dataset_id": "logical_deduction/three_objects",
+    "original_id": "43",
+    "url": "https://raw.githubusercontent.com/google/BIG-bench/main/bigbench/benchmark_tasks/logical_deduction/three_objects/task.json"
+  },
+  "provenance": {
+    "imported_at": "2026-08-16T15:21:08",
+    "modified": true,
+    "translator": "bigbench_logical_deduction_rule_v1",
+    "review_status": "approved",
+    "logic_validated": true,
+    "difficulty_calibrated": true
+  },
+  "translations": {
+    "zh": {
+      "story_title": "BIG-bench 逻辑推理 · logical_deduction/three_objects",
+      "story_text": "在书架上有 3 个：蓝色的书、橙子的书、绿色的书。",
+      "constraints": [
+        "绿色的书排在最左边。",
+        "橙子的书 在 蓝色的书 的左边。"
+      ],
+      "options": [
+        "蓝色的书排在从左数第 2 位。",
+        "橙子的书排在从左数第 2 位。",
+        "绿色的书排在从左数第 2 位。"
+      ],
+      "question_prompt": "谁排在从左数第 2 位？",
+      "explanation": "来自 BIG-bench logical_deduction 第 43 例，由规则翻译器转换（Apache-2.0），未经人工改写。"
+    }
+  },
+  "created_at": "2026-08-16T15:21:08"
+}

@@ -1,0 +1,79 @@
+{
+  "id": "match_b47f65cba1",
+  "type": "matching",
+  "story": {
+    "title": "谁喜欢什么？",
+    "text": "3个小伙伴，每人喜欢一种点心，而且每种点心只有一个人喜欢。根据下面的线索，想想谁喜欢什么。",
+    "roles": {
+      "A": "大力",
+      "B": "跳跳",
+      "C": "啾啾"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "跳跳喜欢🍎苹果",
+      "logic": "RANK(B) == 2"
+    },
+    {
+      "text": "大力喜欢🍞面包",
+      "logic": "RANK(A) == 1"
+    },
+    {
+      "text": "啾啾不喜欢🍎苹果",
+      "logic": "RANK(C) != 2"
+    }
+  ],
+  "question_prompt": "谁喜欢🍎苹果？",
+  "options": [
+    "啾啾",
+    "跳跳",
+    "大力"
+  ],
+  "option_logic": [
+    "RANK(C) == 2",
+    "RANK(B) == 2",
+    "RANK(A) == 2"
+  ],
+  "answer": 1,
+  "hints": [
+    "先把“确定喜欢”的配对找出来。",
+    "每个小朋友只能喜欢一种，每种点心也只有一个人喜欢，用排除法试试。"
+  ],
+  "explanation": "按线索一一配对：大力喜欢🍞面包；跳跳喜欢🍎苹果；啾啾喜欢🧀奶酪。",
+  "difficulty": 1,
+  "difficulty_score": 1.91,
+  "difficulty_level": 1,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "created_at": "2026-08-16 16:09:21"
+}

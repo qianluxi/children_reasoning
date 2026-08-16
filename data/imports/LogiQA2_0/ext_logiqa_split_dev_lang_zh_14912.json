@@ -1,0 +1,46 @@
+{
+  "id": "ext_logiqa_split_dev_lang_zh_14912",
+  "type": "external_text",
+  "story": {
+    "title": "LogiQA · #14912",
+    "text": "医学研究人员:不出所料，十家大医院过去四年的记录表明，早产婴儿出生时体重偏低和健康问题的可能性高于婴儿没有早产。这些记录还表明，与产前护理不足的母亲相比，接受充分产前护理的母亲生低出生体重婴儿的可能性更小。因此，充分的产前护理可显着降低低出生体重婴儿的风险.",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [],
+  "statements": [],
+  "constraints": [],
+  "question_prompt": "以下哪一项，如果为真，最能削弱医学研究人员的论点？",
+  "options": [
+    "医院记录表明，低出生体重婴儿通常被归类为早产。",
+    "早产的母亲通常被医院归类为没有得到足够的产前护理，但没有提供这种护理的记录。",
+    "医院的记录表明，许多出生时体重正常的婴儿是产前护理不足的母亲所生。",
+    "与未接受充分产前护理的妇女相比，接受充分产前护理的妇女早产的可能性较小。"
+  ],
+  "option_logic": [],
+  "answer": 1,
+  "hints": [],
+  "explanation": "LogiQA 原始题（CC BY-NC-SA 4.0，非商业），未经改写与逻辑验证。",
+  "difficulty": 2,
+  "difficulty_score": 2.6,
+  "difficulty_level": 2,
+  "source": "logiqa2.0",
+  "source_info": {
+    "type": "external",
+    "name": "LogiQA2.0",
+    "license": "CC-BY-NC-SA-4.0",
+    "dataset_id": "split=dev,lang=zh",
+    "original_id": "14912",
+    "url": "https://raw.githubusercontent.com/csitfun/logiqa2.0/main/logiqa/DATA/LOGIQA/dev_zh.txt"
+  },
+  "provenance": {
+    "imported_at": "2026-08-16T16:13:19",
+    "modified": false,
+    "translator": "",
+    "review_status": "approved",
+    "logic_validated": false,
+    "difficulty_calibrated": false
+  },
+  "translations": null,
+  "created_at": "2026-08-16T16:13:19"
+}

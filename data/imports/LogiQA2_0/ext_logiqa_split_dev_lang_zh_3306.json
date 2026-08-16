@@ -1,0 +1,46 @@
+{
+  "id": "ext_logiqa_split_dev_lang_zh_3306",
+  "type": "external_text",
+  "story": {
+    "title": "LogiQA · #3306",
+    "text": "雪崩体能使每平方米的被打物体表面承受40~50吨的力量,冲击力量非常惊人,雪崩体在高速运动过程中,还能够引起空气剧烈的振荡,在雪崩龙头前方造成类似于原子弹爆炸时的冲击波的强大气浪.在陡岩或河谷急转弯的地方,雪崩体很可能被阻停留下来.而雪崩气浪却会继续沿着雪崩运动的方向爬山越岭,摧毁森林,房屋,倾覆车辆,人畜遇到它可能窒息而死.",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [],
+  "statements": [],
+  "constraints": [],
+  "question_prompt": "从这段文字可以推出：",
+  "options": [
+    "A.雪崩体的巨大冲击力更甚于原子弹爆炸",
+    "B.雪崩的威力一般只能达到陡岩或者河谷急转变的地方",
+    "C.雪崩体对登山队员的主要威胁在于缺氧",
+    "D.雪崩气浪的作用范围要比雪崩体大得多"
+  ],
+  "option_logic": [],
+  "answer": 3,
+  "hints": [],
+  "explanation": "LogiQA 原始题（CC BY-NC-SA 4.0，非商业），未经改写与逻辑验证。",
+  "difficulty": 2,
+  "difficulty_score": 2.6,
+  "difficulty_level": 2,
+  "source": "logiqa2.0",
+  "source_info": {
+    "type": "external",
+    "name": "LogiQA2.0",
+    "license": "CC-BY-NC-SA-4.0",
+    "dataset_id": "split=dev,lang=zh",
+    "original_id": "3306",
+    "url": "https://raw.githubusercontent.com/csitfun/logiqa2.0/main/logiqa/DATA/LOGIQA/dev_zh.txt"
+  },
+  "provenance": {
+    "imported_at": "2026-08-16T16:13:19",
+    "modified": false,
+    "translator": "",
+    "review_status": "approved",
+    "logic_validated": false,
+    "difficulty_calibrated": false
+  },
+  "translations": null,
+  "created_at": "2026-08-16T16:13:19"
+}

@@ -1,0 +1,84 @@
+{
+  "id": "excl_cb4d7ac49d",
+  "type": "exclusion",
+  "story": {
+    "title": "跑步比赛的名次",
+    "text": "3个小伙伴参加跑步比赛。根据下面的线索，用排除法想想：大黄是第几名？",
+    "roles": {
+      "A": "大黄",
+      "B": "蓝蓝",
+      "C": "布丁"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "布丁不是第3名",
+      "logic": "RANK(C) != 3"
+    },
+    {
+      "text": "大黄不是第1名",
+      "logic": "RANK(A) != 1"
+    },
+    {
+      "text": "大黄不是第1名",
+      "logic": "RANK(A) != 1"
+    },
+    {
+      "text": "蓝蓝在大黄前面",
+      "logic": "RANK(B) < RANK(A)"
+    }
+  ],
+  "question_prompt": "大黄是第几名？",
+  "options": [
+    "第3名",
+    "第2名",
+    "第1名"
+  ],
+  "option_logic": [
+    "RANK(A) == 3",
+    "RANK(A) == 2",
+    "RANK(A) == 1"
+  ],
+  "answer": 0,
+  "hints": [
+    "先看看哪些名次被明确排除了。",
+    "把不可能的名次一个个划掉。",
+    "最后只剩下一个名次，那就是大黄的。"
+  ],
+  "explanation": "把线索一条条对：大黄不可能是第1名、第2名，剩下的只能是第3名。",
+  "difficulty": 2,
+  "difficulty_score": 2.31,
+  "difficulty_level": 1,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "created_at": "2026-08-16 16:09:21"
+}

@@ -1,0 +1,80 @@
+{
+  "id": "cond_99adec550f",
+  "type": "conditional",
+  "story": {
+    "title": "想一想，会发生吗？",
+    "text": "根据下面的规则，判断问题里的事情会不会一定发生。",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [
+    {
+      "name": "e0",
+      "type": "boolean"
+    },
+    {
+      "name": "e1",
+      "type": "boolean"
+    },
+    {
+      "name": "e2",
+      "type": "boolean"
+    },
+    {
+      "name": "e3",
+      "type": "boolean"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "如果小红给花浇了水，那么花喝饱了水",
+      "logic": "!e0 || e1"
+    },
+    {
+      "text": "如果花喝饱了水，那么花开了",
+      "logic": "!e1 || e2"
+    },
+    {
+      "text": "如果花开了，那么蜜蜂飞来了",
+      "logic": "!e2 || e3"
+    },
+    {
+      "text": "现在：小红给花浇了水",
+      "logic": "e0"
+    }
+  ],
+  "question_prompt": "那么，“花开了”一定会发生吗？",
+  "options": [
+    "一定会发生",
+    "其实“小红给花浇了水”没有发生",
+    "一定不会发生"
+  ],
+  "option_logic": [
+    "e2",
+    "!e0",
+    "!e2"
+  ],
+  "answer": 0,
+  "hints": [
+    "先找到题目告诉你的那个已知事实。",
+    "顺着“如果…那么…”一步一步推。",
+    "注意：只有前面的事发生了，后面的事才一定发生；反过来不一定。"
+  ],
+  "explanation": "已知：小红给花浇了水。\n因为“如果小红给花浇了水，那么花喝饱了水”，所以花喝饱了水。\n因为“如果花喝饱了水，那么花开了”，所以花开了。\n所以“花开了”一定会发生。",
+  "difficulty": 3,
+  "difficulty_score": 4.64,
+  "difficulty_level": 2,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "created_at": "2026-08-16 16:09:21"
+}

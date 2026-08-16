@@ -1,0 +1,79 @@
+{
+  "id": "match_721b0d9b16",
+  "type": "matching",
+  "story": {
+    "title": "谁喜欢什么？",
+    "text": "3个小伙伴，每人喜欢一种点心，而且每种点心只有一个人喜欢。根据下面的线索，想想谁喜欢什么。",
+    "roles": {
+      "A": "旺旺",
+      "B": "小熊",
+      "C": "大黄"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "小熊喜欢🍒樱桃",
+      "logic": "RANK(B) == 1"
+    },
+    {
+      "text": "旺旺喜欢🧀奶酪",
+      "logic": "RANK(A) == 2"
+    },
+    {
+      "text": "大黄不喜欢🧀奶酪",
+      "logic": "RANK(C) != 2"
+    }
+  ],
+  "question_prompt": "谁喜欢🍒樱桃？",
+  "options": [
+    "大黄",
+    "旺旺",
+    "小熊"
+  ],
+  "option_logic": [
+    "RANK(C) == 1",
+    "RANK(A) == 1",
+    "RANK(B) == 1"
+  ],
+  "answer": 2,
+  "hints": [
+    "先把“确定喜欢”的配对找出来。",
+    "每个小朋友只能喜欢一种，每种点心也只有一个人喜欢，用排除法试试。"
+  ],
+  "explanation": "按线索一一配对：旺旺喜欢🧀奶酪；小熊喜欢🍒樱桃；大黄喜欢🍞面包。",
+  "difficulty": 1,
+  "difficulty_score": 1.91,
+  "difficulty_level": 1,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "created_at": "2026-08-16 16:09:21"
+}
