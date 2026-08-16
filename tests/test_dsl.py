@@ -118,6 +118,29 @@ def test_trailing_garbage_rejected():
         dsl.parse_expr("A_cheese B_cheese", VARS)
 
 
+def test_trailing_whitespace_ok():
+    """尾随空白（空格/换行/tab）不是语法错误（专家审查 P1）。"""
+    assert eval_expr("A_cheese ", {"A_cheese": True})
+    assert eval_expr("A_cheese  \n\t", {"A_cheese": True})
+    assert eval_expr("!B_cheese \n", {"B_cheese": False})
+    assert eval_expr("RANK(A) < RANK(B) ", {"rank_A": 1, "rank_B": 2})
+    dsl.parse_constraint("TRUTH_COUNT == 1 \n", VARS)
+
+
+def test_unknown_rank_entity_rejected():
+    """RANK(X) / ORDER(A,X) 中 X 不是题目实体 → 解析期 DSLSyntaxError（而非求值期 KeyError）。"""
+    with pytest.raises(dsl.DSLSyntaxError):
+        dsl.parse_expr("RANK(X) < RANK(A)", VARS)
+    with pytest.raises(dsl.DSLSyntaxError):
+        dsl.parse_expr("RANK(X) == 1", VARS)
+    with pytest.raises(dsl.DSLSyntaxError):
+        dsl.parse_constraint("ORDER(A, X)", VARS)
+    with pytest.raises(dsl.DSLSyntaxError):
+        dsl.parse_constraint("ORDER(X, A, B)", VARS)
+    # 合法实体不受影响
+    assert eval_expr("RANK(A) < RANK(B)", {"rank_A": 1, "rank_B": 2})
+
+
 def test_chain_length_and_depth():
     assert dsl.chain_length(["RANK(A) < RANK(B) < RANK(C)"], VARS) == 2
     assert dsl.chain_length(["RANK(A) < RANK(B)"], VARS) == 1

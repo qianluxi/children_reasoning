@@ -19,6 +19,10 @@ async function loadChildren() {
 
 async function loadProfile(childId) {
   const res = await fetch(`/api/profile/${childId}`);
+  if (res.status === 403) {
+    alert('只能查看当前登录儿童的档案，请回到首页重新选择该儿童。');
+    return;
+  }
   const p = await res.json();
 
   $('summary').innerHTML = `

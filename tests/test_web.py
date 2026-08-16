@@ -123,5 +123,14 @@ def test_session_binds_child_blocks_forgery(client):
     r = client.post("/api/answer", json={
         "child_id": c2, "question_id": q["id"], "choice": 0})
     assert r.status_code == 200
+    # 记录落在 session 绑定的 c1；伪造的 c2 既没有记录、也无法查看档案（403）
     assert client.get(f"/api/profile/{c1}").get_json()["total_attempts"] >= 1
-    assert client.get(f"/api/profile/{c2}").get_json()["total_attempts"] == 0
+    assert client.get(f"/api/profile/{c2}").status_code == 403
+
+
+def test_profile_blocks_other_child(client, child_id):
+    """session 绑定儿童 A 后，读取儿童 B 的档案应 403（专家审查 P1）。"""
+    other = client.post("/api/children", json={"name": "档案隔壁娃"}).get_json()["id"]
+    client.post("/api/next", json={"child_id": child_id})  # session 绑定 child_id
+    assert client.get(f"/api/profile/{child_id}").status_code == 200
+    assert client.get(f"/api/profile/{other}").status_code == 403

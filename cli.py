@@ -32,8 +32,14 @@ def cmd_seed(args):
 def cmd_generate(args):
     batch = generate_batch(args.count, seed=args.seed)
     store.save_many(batch)
-    print(f"已生成并入库 {len(batch)} 道题。")
+    print(f"已生成并入库 {len(batch)} 道题（请求 {args.count} 道）。")
+    if len(batch) < args.count:
+        # 专家审查 P1：数量不足必须明确报告，不能静默成功
+        print(f"[warn] 请求 {args.count} 道，实际生成 {len(batch)} 道，"
+              f"不足 {args.count - len(batch)} 道（生成器已尽力尝试）。")
+        return 1
     _print_stats()
+    return 0
 
 
 def cmd_stats(args):

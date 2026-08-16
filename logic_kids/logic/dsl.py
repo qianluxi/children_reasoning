@@ -52,6 +52,9 @@ def _tokenize(text: str) -> list:
     while pos < len(text):
         m = _TOKEN_RE.match(text, pos)
         if not m:
+            # 剩余部分全是空白（尾随空格/换行）是合法的，正常结束
+            if not text[pos:].strip():
+                break
             raise DSLSyntaxError(f"无法解析的位置 {pos}: {text[pos:pos+10]!r}（原文：{text}）")
         pos = m.end()
         if m.group("kw"):
@@ -179,7 +182,10 @@ class _Parser:
         self.expect_op("(")
         code = self.expect_id()
         self.expect_op(")")
-        return ast.RankNode(f"rank_{code}")
+        var = f"rank_{code}"
+        if var not in self.varnames:
+            raise DSLSyntaxError(f"未知实体: {code}（题目没有变量 {var}）")
+        return ast.RankNode(var)
 
     def _count(self) -> ast.CountNode:
         self.expect_kw("COUNT")
@@ -258,6 +264,9 @@ class _Parser:
             self.expect_op(")")
             if len(codes) < 2:
                 raise DSLSyntaxError("ORDER 至少需要两个实体")
+            for code in codes:
+                if f"rank_{code}" not in self.varnames:
+                    raise DSLSyntaxError(f"未知实体: {code}（题目没有变量 rank_{code}）")
             compares = [
                 ast.CompareNode(ast.RankNode(f"rank_{a}"), "<", ast.RankNode(f"rank_{b}"))
                 for a, b in zip(codes, codes[1:])

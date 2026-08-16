@@ -138,3 +138,14 @@ def test_state_space_guard_boundary_ok():
     q = make_question(
         variables=[Variable(f"v{i}", "boolean") for i in range(12)], constraints=[])
     assert len(solver.solve(q)) == 2 ** 12
+
+
+def test_unknown_rank_entity_is_question_error_not_keyerror():
+    """含未知实体（RANK(X)）的题在 Solver 层应抛 QuestionError，而不是裸 KeyError。"""
+    q = make_question(
+        type="ordering", entities=["A", "B"],
+        variables=[Variable("rank_A", "rank"), Variable("rank_B", "rank")],
+        constraints=[Constraint("X在A前面", "RANK(X) < RANK(A)")],
+    )
+    with pytest.raises(solver.QuestionError):
+        solver.solve(q)

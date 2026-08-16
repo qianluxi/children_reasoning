@@ -66,7 +66,9 @@ def create_app() -> Flask:
         template_folder=str(WEB_DIR / "templates"),
         static_folder=str(WEB_DIR / "static"),
     )
-    # session 签名密钥（本地开发默认值；部署时用环境变量覆盖）
+    # session 签名密钥（仅限本地开发默认值；部署公网前必须设置 SECRET_KEY）
+    if os.environ.get("SECRET_KEY") is None:
+        print("[warn] 未设置 SECRET_KEY 环境变量，正在使用默认密钥——仅限本地开发，部署公网前必须设置")
     app.secret_key = os.environ.get("SECRET_KEY", "dev-secret-change-me")
     _ensure_bank()
 
@@ -155,6 +157,10 @@ def create_app() -> Flask:
     # ---------- 能力画像 ----------
     @app.route("/api/profile/<int:child_id>")
     def profile(child_id):
+        # 身份校验（专家审查 P1）：session 已绑定儿童时只能查看自己的档案
+        session_child = session.get("child_id")
+        if session_child is not None and session_child != child_id:
+            return jsonify({"error": "只能查看当前登录儿童的档案"}), 403
         prof = progress.profile(child_id, list(TYPE_NAMES))
         # 转成前端友好的列表
         rows = []

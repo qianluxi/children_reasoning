@@ -3,35 +3,48 @@
 目录结构：
     data/questions/<id>.json     题目全文
     data/bank_index.json         索引：id -> {type, difficulty, difficulty_score, source}
+
+写入采用"临时文件 + os.replace"原子替换，索引损坏时报错而不是静默当空题库
+（专家审查 P1：避免程序中断后 index 与 questions 失同步）。
 """
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 from ..config import QUESTIONS_DIR, BANK_INDEX_PATH, ensure_dirs
 from ..models import Question
 
 
+def _atomic_write(path: Path, text: str) -> None:
+    """临时文件 + os.replace 原子替换，避免写一半留下损坏文件。"""
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
+
+
 def _index() -> dict:
-    if BANK_INDEX_PATH.exists():
-        try:
-            return json.loads(BANK_INDEX_PATH.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError):
-            return {}
-    return {}
+    if not BANK_INDEX_PATH.exists():
+        return {}  # 首次运行，还没有索引
+    try:
+        return json.loads(BANK_INDEX_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        # 索引损坏不能静默当空题库（否则会重新生成并与旧题文件失同步）
+        raise RuntimeError(f"题库索引损坏（{BANK_INDEX_PATH}）：{e}") from e
+    except OSError:
+        return {}
 
 
 def _save_index(index: dict) -> None:
     ensure_dirs()
-    BANK_INDEX_PATH.write_text(
-        json.dumps(index, ensure_ascii=False, indent=2), encoding="utf-8")
+    _atomic_write(BANK_INDEX_PATH, json.dumps(index, ensure_ascii=False, indent=2))
 
 
 def save_question(q: Question) -> None:
     ensure_dirs()
     path = QUESTIONS_DIR / f"{q.id}.json"
-    path.write_text(q.to_json(), encoding="utf-8")
+    _atomic_write(path, q.to_json())
     index = _index()
     index[q.id] = {
         "type": q.type,
