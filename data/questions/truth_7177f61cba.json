@@ -112,5 +112,15 @@
     "distractor_strength": 2,
     "computation_load": 1
   },
+  "quality": "A",
+  "child_suitability": {
+    "reading_level": 1,
+    "language_complexity": 1,
+    "abstractness": 3,
+    "reasoning_depth": 3,
+    "calculation_load": 1,
+    "cultural_dependency": 1,
+    "suitable": true
+  },
   "created_at": "2026-08-16 17:04:48"
 }

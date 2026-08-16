@@ -55,5 +55,15 @@
     "distractor_strength": 2,
     "computation_load": 1
   },
+  "quality": "C",
+  "child_suitability": {
+    "reading_level": 4,
+    "language_complexity": 4,
+    "abstractness": 3,
+    "reasoning_depth": 1,
+    "calculation_load": 1,
+    "cultural_dependency": 1,
+    "suitable": true
+  },
   "created_at": "2026-08-16T16:13:19"
 }

@@ -85,5 +85,15 @@
     "distractor_strength": 1,
     "computation_load": 1
   },
+  "quality": "A",
+  "child_suitability": {
+    "reading_level": 1,
+    "language_complexity": 1,
+    "abstractness": 2,
+    "reasoning_depth": 2,
+    "calculation_load": 1,
+    "cultural_dependency": 1,
+    "suitable": true
+  },
   "created_at": ""
 }
