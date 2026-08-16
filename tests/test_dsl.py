@@ -108,6 +108,16 @@ def test_syntax_errors():
         dsl.parse_expr("A_cheese < 2", VARS)  # 布尔变量不能比较
 
 
+def test_trailing_garbage_rejected():
+    """表达式后不能有未解析内容（专家审查 P1：DSL 是裁判语言，不能静默忽略）。"""
+    for txt in ["A_cheese B_cheese", "A_cheese garbage", "A_cheese &&",
+                "TRUTH_COUNT == 1 junk", "ORDER(A, B) C"]:
+        with pytest.raises(dsl.DSLSyntaxError):
+            dsl.parse_constraint(txt, VARS)
+    with pytest.raises(dsl.DSLSyntaxError):
+        dsl.parse_expr("A_cheese B_cheese", VARS)
+
+
 def test_chain_length_and_depth():
     assert dsl.chain_length(["RANK(A) < RANK(B) < RANK(C)"], VARS) == 2
     assert dsl.chain_length(["RANK(A) < RANK(B)"], VARS) == 1

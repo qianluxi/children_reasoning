@@ -114,8 +114,15 @@ class _Parser:
         return names
 
     # -- 语法 --
+    def _expect_eof(self):
+        """表达式解析完成后必须到结尾；DSL 是裁判语言，不能静默忽略尾随内容。"""
+        if self.peek()[0] != "EOF":
+            raise DSLSyntaxError(f"表达式后有未解析的内容: {self.peek()[1]!r}")
+
     def parse_expr(self) -> ast.LogicNode:
-        return self._or()
+        node = self._or()
+        self._expect_eof()
+        return node
 
     def _or(self) -> ast.LogicNode:
         children = [self._and()]
@@ -240,8 +247,8 @@ class _Parser:
             num = self.next()
             if num[0] != "NUM":
                 raise DSLSyntaxError("TRUTH_COUNT 比较的右边必须是数字")
-            return _TruthCountNode(op[1], num[1])
-        if self.at_kw("ORDER"):
+            node = _TruthCountNode(op[1], num[1])
+        elif self.at_kw("ORDER"):
             self.next()
             self.expect_op("(")
             codes = [self.expect_id()]
@@ -255,8 +262,11 @@ class _Parser:
                 ast.CompareNode(ast.RankNode(f"rank_{a}"), "<", ast.RankNode(f"rank_{b}"))
                 for a, b in zip(codes, codes[1:])
             ]
-            return ast.AndNode(compares)
-        return self.parse_expr()
+            node = ast.AndNode(compares)
+        else:
+            node = self.parse_expr()
+        self._expect_eof()
+        return node
 
 
 class _TruthCountNode(ast.LogicNode):
