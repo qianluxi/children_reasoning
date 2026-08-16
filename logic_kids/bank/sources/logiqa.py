@@ -51,6 +51,8 @@ def fetch(task: str = "dev", limit: int = None, lang: str = "zh") -> list:
             continue
         try:
             obj = json.loads(line)
+            if not isinstance(obj, dict):
+                continue
             obj["_split"] = task
             obj["_lang"] = lang
             items.append(obj)
@@ -70,6 +72,8 @@ def normalize(item: dict) -> NormalizedQuestion | None:
     oid = str(item.get("id") or item.get("example_id") or "")
     if not text or not question or len(options) < 2:
         return None
+    if len(set(options)) != len(options):
+        return None  # 重复选项无法建模
     if not isinstance(answer, int) or not (0 <= answer < len(options)):
         return None
 
@@ -86,6 +90,9 @@ def normalize(item: dict) -> NormalizedQuestion | None:
         source=source,
         provenance=prov,
         qtype="external_text",
+        category="deduction",
+        skills=["deduction", "language_reasoning"],
+        age_range="D",
         story_title=f"LogiQA · #{oid}",
         story_text=text,
         question_prompt=question,

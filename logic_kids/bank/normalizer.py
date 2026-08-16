@@ -38,6 +38,9 @@ class NormalizedQuestion:
     answer: int = -1
     hints: list = field(default_factory=list)
     explanation: str = ""
+    category: str = ""                                  # 能力大类
+    skills: list = field(default_factory=list)          # 技能标签
+    age_range: str = ""                                 # 年龄分级 A/B/C/D
 
     @property
     def has_dsl(self) -> bool:
@@ -46,6 +49,11 @@ class NormalizedQuestion:
             or bool(self.option_logic and any(self.option_logic))
 
     def to_question(self, qid: str) -> Question:
+        from .. import taxonomy
+        category = self.category
+        skills = self.skills
+        if not category:
+            category, skills = taxonomy.defaults_for(self.qtype)
         return Question(
             id=qid,
             type=self.qtype,
@@ -64,5 +72,8 @@ class NormalizedQuestion:
             source=self.source.name.lower(),
             source_info=self.source,
             provenance=self.provenance,
+            category=category,
+            skills=skills,
+            age_range=self.age_range,
             created_at=self.provenance.imported_at,
         )

@@ -91,6 +91,10 @@ class Question:
     source_info: Optional[SourceInfo] = None    # 来源 + 许可证（可追溯）
     provenance: Optional[Provenance] = None     # 导入溯源（外部题）
     translations: Optional[dict] = None         # 语言变体，如 {"zh": {...}}（中文版）
+    category: str = ""                          # 能力大类（taxonomy.ABILITIES；空=待回填）
+    skills: list = field(default_factory=list)  # 技能标签（taxonomy.SKILLS）
+    age_range: str = ""                         # 年龄分级 A/B/C/D（空=待计算）
+    difficulty_profile: dict = field(default_factory=dict)  # 二维难度（engine 计算）
     created_at: str = ""
 
     # ---------- 序列化 ----------
@@ -111,11 +115,22 @@ class Question:
             d["source_info"] = SourceInfo(**d["source_info"])
         if d.get("provenance") is not None:
             d["provenance"] = Provenance(**d["provenance"])
+        has_category = "category" in d
         q = cls(**d)
+        # 旧题库文件没有 category/skills：按题型回填缺省标签
+        if not has_category or not q.category:
+            from . import taxonomy
+            q.category, q.skills = taxonomy.defaults_for(q.type)
+        if not q.skills:
+            from . import taxonomy
+            _, q.skills = taxonomy.defaults_for(q.type)
         # 旧题库文件可能没有 difficulty_level：用评分反算，保证新旧数据一致
         if q.difficulty_level is None and q.difficulty_score:
             from .difficulty import levels
             q.difficulty_level = levels.level_for_score(q.difficulty_score)
+        if not q.age_range:
+            from . import taxonomy
+            q.age_range = taxonomy.LEVEL_AGE.get(q.difficulty_level or 1, "B")
         return q
 
     @classmethod
@@ -144,4 +159,14 @@ def ensure_builtin_source(question: Question) -> Question:
         question.source_info = SourceInfo(type="builtin",
                                           name="children_reasoning",
                                           license="MIT")
+    return question
+
+
+def ensure_taxonomy(question: Question) -> Question:
+    """补全能力分类/技能标签（外部题已有自己的标签则保留）。"""
+    from . import taxonomy
+    if not question.category:
+        question.category, question.skills = taxonomy.defaults_for(question.type)
+    if not question.skills:
+        _, question.skills = taxonomy.defaults_for(question.type)
     return question

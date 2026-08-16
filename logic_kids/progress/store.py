@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS attempts (
     qtype       TEXT NOT NULL,
     correct     INTEGER NOT NULL,
     time_ms     INTEGER,
+    category    TEXT,
     created_at  TEXT DEFAULT (datetime('now','localtime')),
     FOREIGN KEY(child_id) REFERENCES children(id)
 );
@@ -40,6 +41,8 @@ def _migrate(c) -> None:
     cols = {r["name"] for r in c.execute("PRAGMA table_info(attempts)").fetchall()}
     if "difficulty_score" not in cols:
         c.execute("ALTER TABLE attempts ADD COLUMN difficulty_score REAL")
+    if "category" not in cols:
+        c.execute("ALTER TABLE attempts ADD COLUMN category TEXT")
 
 
 @contextmanager
@@ -96,14 +99,15 @@ def child_exists(child_id: int) -> bool:
 
 def record_attempt(child_id: int, question_id: str, qtype: str,
                    correct: bool, time_ms: int = None,
-                   difficulty_score: float = None) -> None:
+                   difficulty_score: float = None,
+                   category: str = None) -> None:
     init_db()
     with _conn() as c:
         c.execute(
-            "INSERT INTO attempts(child_id, question_id, qtype, correct, time_ms, difficulty_score) "
-            "VALUES(?,?,?,?,?,?)",
+            "INSERT INTO attempts(child_id, question_id, qtype, correct, time_ms, difficulty_score, category) "
+            "VALUES(?,?,?,?,?,?,?)",
             (child_id, question_id, qtype, 1 if correct else 0,
-             time_ms, difficulty_score))
+             time_ms, difficulty_score, category))
 
 
 def recent_question_ids(child_id: int, limit: int = 20) -> set:
@@ -160,3 +164,26 @@ def stars_earned(child_id: int) -> int:
         row = c.execute("SELECT COUNT(*) n FROM attempts WHERE child_id=? AND correct=1",
                         (child_id,)).fetchone()
         return row["n"]
+
+
+def ability_profile(child_id: int, window: int = 200) -> dict:
+    """按能力大类统计掌握度（V2.5 能力画像的基础）。
+
+    取最近 window 条答题记录，按 category 分组计算最近正确率。
+    """
+    init_db()
+    with _conn() as c:
+        rows = c.execute(
+            "SELECT category, correct FROM attempts WHERE child_id=? "
+            "ORDER BY id DESC LIMIT ?", (child_id, window)).fetchall()
+    per = {}
+    for r in rows:
+        cat = r["category"] or "deduction"
+        per.setdefault(cat, []).append(r["correct"])
+    result = {}
+    for cat, vals in per.items():
+        result[cat] = {
+            "mastery": (sum(vals) / len(vals)) if vals else None,
+            "attempts": len(vals),
+        }
+    return result

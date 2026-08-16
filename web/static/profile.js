@@ -44,6 +44,21 @@ async function loadProfile(childId) {
     `;
     skills.appendChild(div);
   });
+
+  const abilities = $('abilities');
+  abilities.innerHTML = '';
+  p.abilities.forEach(a => {
+    const div = document.createElement('div');
+    div.className = 'skill';
+    const pct = a.mastery === null ? 0 : a.mastery;
+    const label = a.mastery === null ? '还没练过' : a.mastery + '%';
+    div.innerHTML = `
+      <div class="skill-top"><span>${a.emoji} ${a.name}</span><span>${label}</span></div>
+      <div class="bar"><div class="fill" style="width:${pct}%"></div></div>
+      <div class="meta">最近练习 ${a.attempts} 题</div>
+    `;
+    abilities.appendChild(div);
+  });
 }
 
 loadChildren();

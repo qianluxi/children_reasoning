@@ -22,6 +22,7 @@ import math
 
 from ..logic import dsl, solver, ast
 from ..models import Question
+from .. import taxonomy
 from . import levels
 
 # 权重（启发式，可在数据积累后校准）
@@ -36,6 +37,13 @@ W_NEG = 0.18        # 每处否定（"反过来想"负担）
 W_AND = 0.10        # 每处合取（同时成立负担）
 W_STEPS = 0.05      # 每个最小推理步数（专家最看重的指标）
 OFFSET = 2.4        # 基线（简单题的低分）
+
+# 题型校准：结构公式对某些"直观题型"会系统性高估（如颜色规律题里
+# 否定算子数量虚高，但儿童实际只是"找循环"）。这里的修正值来自人工校准，
+# 属于难度引擎的一部分（专家意见第十六节：难度 = 多维而非单一公式）。
+_TYPE_ADJUST = {
+    "color_pattern": -5.5,
+}
 
 
 def _parsed_nodes(question: Question) -> list:
@@ -141,6 +149,7 @@ def score(question: Question) -> float:
         + W_STEPS * m["minimum_reasoning_steps"]
         - OFFSET
     )
+    s += _TYPE_ADJUST.get(question.type, 0.0)
     return round(min(max(s, 0.3), 10.0), 2)
 
 
@@ -156,10 +165,68 @@ def stars(score_value: float) -> int:
     return 5
 
 
+def difficulty_profile(question: Question) -> dict:
+    """二维难度（专家意见第十六节）：5 个维度的 1..5 分。
+
+    两个难度相同的问题，对儿童的"困难点"可能完全不同：
+    逻辑难语言简单 vs 语言难逻辑简单。这里把难度拆开描述。
+    """
+    m = metrics(question)
+
+    def _clamp(v: float) -> int:
+        return max(1, min(5, int(round(v))))
+
+    # 推理深度：链长 + 真假话假设 + 否定转换
+    reasoning_depth = _clamp(
+        1.0 + 0.6 * m["chain_length"] + 0.5 * m["truth_count"]
+        + 0.3 * m["negation_count"])
+    # 认知负荷：实体/条件/嵌套
+    cognitive_load = _clamp(
+        1.0 + 0.3 * m["entity_count"] + 0.2 * m["constraint_count"]
+        + 0.3 * m["max_depth"])
+    # 语言负担：题干/约束/选项的平均长度；外部未翻译英文 +1
+    texts = [question.story.text, question.question_prompt]
+    texts += [c.text for c in question.constraints]
+    texts += list(question.options)
+    avg_len = sum(len(t) for t in texts) / max(len(texts), 1)
+    language = _clamp(1.0 + avg_len / 40.0)
+    if question.source_info and question.source_info.type == "external" \
+            and not question.translations:
+        language = min(5, language + 1)
+    # 干扰强度：选项越多越容易混淆（后续可加选项相似度）
+    distractor = _clamp(1.0 + max(len(question.options) - 3, 0) * 0.8)
+    # 计算负担：数学/应用题类更高（当前内置题型基本为 1）
+    computation = 3 if question.type in ("math_word", "arithmetic") else 1
+    return {
+        "cognitive_load": cognitive_load,
+        "reasoning_depth": reasoning_depth,
+        "language_complexity": language,
+        "distractor_strength": distractor,
+        "computation_load": computation,
+    }
+
+
+def age_for(question: Question) -> str:
+    """按难度等级 + 题型/来源推断建议年龄分级（A..D）。"""
+    lv = question.difficulty_level or levels.level_for_score(question.difficulty_score)
+    age = taxonomy.LEVEL_AGE.get(lv, "B")
+    rank = {"A": 0, "B": 1, "C": 2, "D": 3}
+    # 外部未翻译/阅读负担重的题，年龄下限提高一档
+    if question.type == "external_text" and rank[age] < 3:
+        age = "D"
+    # 直观/低龄友好能力（模式、关系、分类）：难度再高也控制在 C 以内
+    if question.category in ("pattern", "relation", "classification") \
+            and rank[age] > 2:
+        age = "C"
+    return age
+
+
 def apply(question: Question) -> Question:
     """计算难度并写回题目对象（连续分 + 用户可见等级 + 内部星级）。"""
     s = score(question)
     question.difficulty_score = s
     question.difficulty_level = levels.level_for_score(s)
     question.difficulty = stars(s)
+    question.difficulty_profile = difficulty_profile(question)
+    question.age_range = age_for(question)
     return question

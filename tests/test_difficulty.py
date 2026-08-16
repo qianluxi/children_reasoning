@@ -99,3 +99,34 @@ def test_level_from_score_roundtrip():
     for s in (0.0, 2.4, 2.5, 4.9, 5.0, 7.4, 7.5, 10.0):
         lv = levels.level_for_score(s)
         assert 1 <= lv <= 4
+
+
+def test_difficulty_profile_dimensions():
+    """二维难度：5 个维度都应落在 1..5，且更难的题推理深度更高。"""
+    easy = make_question(
+        entities=["A", "B", "C"],
+        variables=[Variable(f"rank_{e}", "rank") for e in "ABC"],
+        constraints=[Constraint("A比B高", "RANK(A) < RANK(B)"),
+                     Constraint("B比C高", "RANK(B) < RANK(C)")],
+    )
+    hard = make_question(
+        entities=["A", "B", "C", "D", "E"],
+        variables=[Variable(f"rank_{e}", "rank") for e in "ABCDE"],
+        constraints=[Constraint("排序", "ORDER(A, B, C, D, E)"),
+                     Constraint("E不在最后", "RANK(E) != 5")],
+    )
+    for q in (easy, hard):
+        p = engine.difficulty_profile(q)
+        assert set(p) == {"cognitive_load", "reasoning_depth",
+                          "language_complexity", "distractor_strength",
+                          "computation_load"}
+        assert all(isinstance(v, int) and 1 <= v <= 5 for v in p.values())
+    assert engine.difficulty_profile(hard)["reasoning_depth"] >= \
+        engine.difficulty_profile(easy)["reasoning_depth"]
+
+
+def test_apply_sets_profile_and_age():
+    q = mice_question()
+    engine.apply(q)
+    assert q.difficulty_profile
+    assert q.age_range in ("A", "B", "C", "D")

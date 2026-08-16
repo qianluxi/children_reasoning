@@ -4,7 +4,8 @@ import random
 
 from logic_kids.questions import generator
 from logic_kids.questions.templates import (truth, ordering, conditional,
-                                            set_logic, exclusion, matching)
+                                            set_logic, exclusion, matching,
+                                            color_pattern)
 from logic_kids.validator.validator import validate
 from logic_kids.difficulty import engine
 from logic_kids.logic import solver
@@ -16,6 +17,7 @@ TEMPLATES = {
     "set_logic": set_logic.generate,
     "exclusion": exclusion.generate,
     "matching": matching.generate,
+    "color_pattern": color_pattern.generate,
 }
 
 
@@ -63,11 +65,17 @@ def test_generate_batch_distribution():
     batch = generator.generate_batch(25, seed=99)
     assert len(batch) == 25
     types = {q.type for q in batch}
-    # 六种题型都应覆盖
-    assert len(types) == 6
+    # 七种题型都应覆盖
+    assert len(types) == 7
     # 全部通过验证
     for q in batch:
         assert validate(q).ok
+        # V2：每道题都应有能力分类/技能标签/年龄/二维难度
+        assert q.category and q.skills
+        assert q.age_range in ("A", "B", "C", "D")
+        assert set(q.difficulty_profile) == {
+            "cognitive_load", "reasoning_depth", "language_complexity",
+            "distractor_strength", "computation_load"}
 
 
 def test_matching_both_forms():
@@ -81,6 +89,18 @@ def test_matching_both_forms():
         prompts.add(q.question_prompt)
     assert any("谁喜欢" in p for p in prompts)
     assert any(p.endswith("喜欢什么？") for p in prompts)
+
+
+def test_color_pattern_valid():
+    rng = random.Random(33)
+    answers = set()
+    for _ in range(30):
+        q = color_pattern.generate(rng)
+        assert q is not None
+        assert validate(q).ok
+        assert len(q.options) == 2
+        answers.add(q.options[q.answer])
+    assert "红色" in answers and "蓝色" in answers
 
 
 def test_no_duplicate_options_in_batch():

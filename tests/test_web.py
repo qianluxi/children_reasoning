@@ -99,7 +99,8 @@ def test_answer_and_profile(client, child_id):
 
     prof = client.get(f"/api/profile/{child_id}").get_json()
     assert prof["total_attempts"] >= 1
-    assert len(prof["skills"]) == 6
+    assert len(prof["skills"]) == 7
+    assert "abilities" in prof
 
 
 def test_hint_progressive(client, child_id):

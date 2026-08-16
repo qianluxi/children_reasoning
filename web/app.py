@@ -19,6 +19,7 @@ from logic_kids.progress import store as progress
 from logic_kids.engine import adaptive
 from logic_kids.questions.generator import generate_batch, TYPE_NAMES, GENERATORS
 from logic_kids.questions.selector import select_question
+from logic_kids import taxonomy
 
 WEB_DIR = Path(__file__).resolve().parent
 
@@ -45,6 +46,11 @@ def _public_question(q, lang: str = "zh") -> dict:
         "bank": "external" if is_external else "builtin",
         "source_name": q.source_info.name if is_external else "",
         "lang": "zh" if use_zh else "en",
+        "category": q.category,
+        "category_name": taxonomy.ability_label(q.category),
+        "skills": [{"id": s, "name": taxonomy.skill_label(s)}
+                   for s in (q.skills or [])],
+        "age_range": q.age_range,
         "difficulty": q.difficulty,
         "difficulty_level": q.difficulty_level
         or difficulty_levels.level_for_score(q.difficulty_score),
@@ -199,7 +205,8 @@ def create_app() -> Flask:
         correct = (choice == q.answer)
         progress.record_attempt(child_id, q.id, q.type, correct,
                                 time_ms=time_ms,
-                                difficulty_score=q.difficulty_score)
+                                difficulty_score=q.difficulty_score,
+                                category=q.category)
         zh = (q.translations or {}).get("zh") if q.translations else None
         explanation = zh["explanation"] if session.get("lang") == "zh" and zh \
             else q.explanation
@@ -245,8 +252,18 @@ def create_app() -> Flask:
                 "mastery": None if m is None else round(m * 100),
                 "attempts": info["attempts"],
             })
+        abilities = progress.ability_profile(child_id)
+        ability_rows = [{
+            "ability": cat,
+            "name": taxonomy.ability_label(cat),
+            "emoji": taxonomy.ability_emoji(cat),
+            "mastery": None if info["mastery"] is None
+                       else round(info["mastery"] * 100),
+            "attempts": info["attempts"],
+        } for cat, info in sorted(abilities.items())]
         return jsonify({
             "skills": rows,
+            "abilities": ability_rows,
             "total_attempts": progress.total_attempts(child_id),
             "stars": progress.stars_earned(child_id),
         })

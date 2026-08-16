@@ -8,9 +8,10 @@ from __future__ import annotations
 import random
 
 from ..difficulty import engine
-from ..models import ensure_builtin_source
+from ..models import ensure_builtin_source, ensure_taxonomy
 from ..validator.validator import validate
-from .templates import truth, ordering, conditional, set_logic, exclusion, matching
+from .templates import (truth, ordering, conditional, set_logic, exclusion,
+                        matching, color_pattern)
 
 GENERATORS = {
     "truth_statements": truth.generate,
@@ -19,6 +20,7 @@ GENERATORS = {
     "set_logic": set_logic.generate,
     "exclusion": exclusion.generate,
     "matching": matching.generate,
+    "color_pattern": color_pattern.generate,
 }
 
 TYPE_NAMES = {
@@ -28,6 +30,7 @@ TYPE_NAMES = {
     "set_logic": "集合关系",
     "exclusion": "排除推理",
     "matching": "配对推理",
+    "color_pattern": "颜色规律",
     "external_text": "外部逻辑",
 }
 
@@ -45,6 +48,7 @@ def generate_one(qtype: str, rng: random.Random, **kwargs):
         return None
     engine.apply(q)
     ensure_builtin_source(q)
+    ensure_taxonomy(q)
     return q
 
 

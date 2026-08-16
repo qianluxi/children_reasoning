@@ -75,6 +75,7 @@ reasoning/
 │   ├── validator/validator.py # Question Validator（题目质量检查）
 │   ├── difficulty/engine.py   # 难度评分引擎（结构化指标，0~10）
 │   ├── difficulty/levels.py   # 难度分 → 用户等级（1~4）映射（唯一出处）
+│   ├── taxonomy.py            # V2：10 大能力分类 + 技能标签 + 年龄分级
 │   ├── questions/
 │   │   ├── themes.py          # 主题词库（角色/物品/场景）
 │   │   ├── generator.py       # 统一生成器（模板→验证→难度→入库）
@@ -85,7 +86,8 @@ reasoning/
 │   │       ├── conditional.py # 条件推理
 │   │       ├── set_logic.py   # 集合关系
 │   │       ├── exclusion.py   # 排除推理
-│   │       └── matching.py    # 配对推理（一一对应/排除）
+│   │       ├── matching.py    # 配对推理（一一对应/排除）
+│   │       └── color_pattern.py  # 颜色规律（模式与规律）
 │   ├── bank/
 │   │   ├── store.py           # 题库存储（JSON 文件 + 索引）
 │   │   ├── seed.py            # 人工种子题（含经典"四只老鼠"）
@@ -270,6 +272,40 @@ UI 显示:           🌱 简单      ⭐ 普通      🚀 困难      🧠 挑�
 ```
 
 星级（1~5 ★）保留为内部粗分带，仅供自适应引擎等内部逻辑使用；儿童界面只显示等级。
+
+### V2：二维难度
+
+除总分外，每题还有 `difficulty_profile`（1..5 五维，专家意见第十六节）：
+
+```text
+cognitive_load      认知负荷（实体/条件/嵌套）
+reasoning_depth     推理深度（链长/真假话假设/否定转换）
+language_complexity 语言负担（文本长度；外部未翻译英文 +1）
+distractor_strength 干扰强度（选项数等）
+computation_load    计算负担（数学类更高）
+```
+
+两个总分相同的问题对儿童的"困难点"可能完全不同（逻辑难语言简单 vs 语言难逻辑简单），
+五维拆解是以后"难度选择真正有意义"的基础。题型校准（如颜色规律题结构分数系统性
+高估时）在 `engine._TYPE_ADJUST` 里集中维护。
+
+## V2：能力分类体系（taxonomy.py）
+
+所有题目（内置生成 + 外部导入）都标注三样东西：
+
+```text
+category    能力大类：classification/pattern/deduction/ordering/relation/
+                    spatial/math/science/language/strategy
+skills[]    技能标签：如 deduction、negation、transitive_reasoning、pattern_recognition…
+age_range   年龄分级：A=5-7岁 / B=7-9岁 / C=9-11岁 / D=11-13岁
+```
+
+- 内置题型 → 能力映射集中在 `taxonomy.TYPE_DEFAULTS`；
+- 外部适配器在归一化时打标签（BIG-bench → ordering；LogiQA → deduction）；
+- 年龄分级由难度等级 + 题型/来源推断（直观类能力如 pattern/relation 封顶 C）。
+
+儿童能力画像页（`/profile`）现在按"能力维度"（🧠）和"各题型"（📊）两层展示，
+答题记录落库时写入 `category`，为后续个性化训练打基础。
 
 ## QuestionSelector（用户选择难度）
 

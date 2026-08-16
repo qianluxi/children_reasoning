@@ -68,6 +68,9 @@ def _print_stats():
     print("按用户等级:")
     for lv in sorted(st["by_level"]):
         print(f"  {lv}. {difficulty_levels.name(lv):4s} {st['by_level'][lv]}")
+    print("按能力:")
+    for cat, n in st["by_category"].items():
+        print(f"  {cat:12s} {n}")
     print("按来源:")
     for s, n in st["by_source"].items():
         print(f"  {s:10s} {n}")
@@ -236,6 +239,9 @@ def cmd_external(args):
     print("按用户等级:")
     for lv in sorted(st["by_level"]):
         print(f"  {lv}. {difficulty_levels.name(lv):4s} {st['by_level'][lv]}")
+    print("按能力:")
+    for cat, n in st["by_category"].items():
+        print(f"  {cat:12s} {n}")
     return 0
 
 

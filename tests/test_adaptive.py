@@ -37,11 +37,16 @@ def test_record_and_mastery(bank):
     # 连续答对 5 道真假话
     truth_qs = [q for q in bank if q.type == "truth_statements"][:5]
     for q in truth_qs:
-        progress.record_attempt(cid, q.id, q.type, correct=True)
+        progress.record_attempt(cid, q.id, q.type, correct=True,
+                                category=q.category or "deduction")
     m = progress.mastery(cid, "truth_statements")
     assert m == 1.0
     # 未练过的题型掌握度为 None
     assert progress.mastery(cid, "ordering") is None
+    # 能力画像按能力大类聚合
+    ab = progress.ability_profile(cid)
+    assert ab["deduction"]["mastery"] == 1.0
+    assert ab["deduction"]["attempts"] == 5
 
 
 def test_profile_shape(bank):

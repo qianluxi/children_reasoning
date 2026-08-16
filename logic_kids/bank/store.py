@@ -15,7 +15,7 @@ from pathlib import Path
 
 from ..config import QUESTIONS_DIR, BANK_INDEX_PATH, ensure_dirs
 from ..difficulty import levels
-from ..models import Question, ensure_builtin_source
+from ..models import Question, ensure_builtin_source, ensure_taxonomy
 
 
 def _atomic_write(path: Path, text: str) -> None:
@@ -45,6 +45,7 @@ def _save_index(index: dict) -> None:
 def save_question(q: Question) -> None:
     ensure_dirs()
     ensure_builtin_source(q)  # 内置题缺省来源；外部题已有自己的 source_info
+    ensure_taxonomy(q)
     path = QUESTIONS_DIR / f"{q.id}.json"
     _atomic_write(path, q.to_json())
     index = _index()
@@ -56,6 +57,7 @@ def save_question(q: Question) -> None:
         "difficulty_level": level,
         "source": q.source,
         "title": q.story.title,
+        "category": q.category,
     }
     _save_index(index)
 
@@ -114,18 +116,20 @@ def query(qtype: str = None, difficulty: int = None,
 
 
 def stats() -> dict:
-    """题库统计：按类型、星级、用户等级、来源汇总。"""
+    """题库统计：按类型、星级、用户等级、来源、能力汇总。"""
     index = _index()
-    by_type, by_diff, by_level, by_source = {}, {}, {}, {}
+    by_type, by_diff, by_level, by_source, by_category = {}, {}, {}, {}, {}
     for meta in index.values():
         by_type[meta["type"]] = by_type.get(meta["type"], 0) + 1
         by_diff[meta["difficulty"]] = by_diff.get(meta["difficulty"], 0) + 1
         lv = _meta_level(meta)
         by_level[lv] = by_level.get(lv, 0) + 1
         by_source[meta["source"]] = by_source.get(meta["source"], 0) + 1
+        cat = meta.get("category") or "deduction"
+        by_category[cat] = by_category.get(cat, 0) + 1
     return {"total": len(index), "by_type": by_type,
             "by_difficulty": by_diff, "by_level": by_level,
-            "by_source": by_source}
+            "by_source": by_source, "by_category": by_category}
 
 
 def clear() -> None:

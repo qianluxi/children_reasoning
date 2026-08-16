@@ -35,6 +35,8 @@ def schema_validate(n: NormalizedQuestion) -> list:
         issues.append("source/license 缺失")
     if not n.source.original_id:
         issues.append("original_id 缺失")
+    if not n.category:
+        issues.append("能力分类(category)缺失")
     if not n.question_prompt and not n.story_text:
         issues.append("题干与问题都缺失")
     if len(n.options) < 2:
@@ -72,6 +74,8 @@ def calibrate_difficulty(q) -> bool:
     q.difficulty_score = score
     q.difficulty_level = levels.level_for_score(score)
     q.difficulty = difficulty_engine.stars(score)
+    q.difficulty_profile = difficulty_engine.difficulty_profile(q)
+    q.age_range = difficulty_engine.age_for(q)
     q.provenance.difficulty_calibrated = False
     return False
 

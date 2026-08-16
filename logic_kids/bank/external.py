@@ -77,6 +77,7 @@ def save_question(q: Question) -> None:
         "source": name,
         "title": q.story.title,
         "license": (q.source_info.license if q.source_info else ""),
+        "category": q.category or "deduction",
     }
     _save_index(slug, index)
 
@@ -90,6 +91,8 @@ def load_question(slug: str, qid: str) -> Question | None:
 
 def load_question_any(qid: str) -> Question | None:
     """在全部外部来源里按 id 查找（判题/提示用）。"""
+    if not re.fullmatch(r"[A-Za-z0-9_-]+", qid or ""):
+        return None  # 防御：拒绝路径穿越
     ensure_dirs()
     for slug_dir in EXTERNAL_DIR.iterdir():
         if not slug_dir.is_dir():
@@ -155,7 +158,8 @@ def query(slug: str = None, qtype: str = None, difficulty: int = None,
 
 def stats(slug: str = None) -> dict:
     """外部题库统计（可按来源）。"""
-    result = {"total": 0, "by_source": {}, "by_type": {}, "by_level": {}}
+    result = {"total": 0, "by_source": {}, "by_type": {}, "by_level": {},
+              "by_category": {}}
     for s in list_sources():
         if slug and s["slug"] != slug:
             continue
@@ -168,6 +172,8 @@ def stats(slug: str = None) -> dict:
             if lv is None:
                 lv = levels.level_for_score(meta.get("difficulty_score", 0.0))
             result["by_level"][lv] = result["by_level"].get(lv, 0) + 1
+            cat = meta.get("category") or "deduction"
+            result["by_category"][cat] = result["by_category"].get(cat, 0) + 1
     return result
 
 

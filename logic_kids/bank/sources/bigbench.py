@@ -27,6 +27,8 @@ LICENSE = "Apache-2.0"
 
 _BASE_URL = ("https://raw.githubusercontent.com/google/BIG-bench/main/"
              "bigbench/benchmark_tasks/{task}/task.json")
+_CDN_URL = ("https://cdn.jsdelivr.net/gh/google/BIG-bench@main/"
+            "bigbench/benchmark_tasks/{task}/task.json")
 _TRANSLATOR = "bigbench_logical_deduction_rule_v1"
 
 _ORDINALS = {"first": 1, "second": 2, "third": 3, "fourth": 4,
@@ -198,18 +200,22 @@ def _zh_option(opt: str) -> str:
 
 
 def fetch(task: str = "logical_deduction/three_objects", limit: int = None) -> list:
-    """从 GitHub raw 拉取 task.json，返回原始 example 列表。"""
-    url = _BASE_URL.format(task=task)
+    """拉取 BIG-bench task.json（jsDelivr CDN 优先，GitHub raw 兜底）。"""
+    urls = [_CDN_URL.format(task=task), _BASE_URL.format(task=task)]
     last_err = None
-    for _ in range(3):  # GitHub raw 偶发超时，重试 3 次
-        try:
-            with urllib.request.urlopen(url, timeout=60) as r:
-                data = json.load(r)
-            break
-        except (urllib.error.URLError, json.JSONDecodeError, OSError) as e:
-            last_err = e
+    for url in urls:
+        for _ in range(3):  # 每个镜像重试 3 次
+            try:
+                with urllib.request.urlopen(url, timeout=45) as r:
+                    data = json.load(r)
+                break
+            except Exception as e:  # 网络抖动：换镜像/重试
+                last_err = e
+        else:
+            continue
+        break
     else:
-        raise RuntimeError(f"BIG-bench 下载失败（{url}）：{last_err}") from last_err
+        raise RuntimeError(f"BIG-bench 下载失败：{last_err}") from last_err
     items = [dict(ex, _task=task, _index=i)
              for i, ex in enumerate(data.get("examples", []))]
     return items[:limit] if limit is not None else items
@@ -320,6 +326,8 @@ def _find_code(entity_name: str, lower_to_code: dict) -> str | None:
 
 def normalize(item: dict) -> NormalizedQuestion | None:
     """把一个 BIG-bench example 转换为统一题目；翻译不了返回 None。"""
+    if not isinstance(item, dict):
+        return None
     text = (item.get("input") or "").strip()
     scores = item.get("target_scores") or {}
     task = item.get("_task", "")
@@ -332,6 +340,8 @@ def normalize(item: dict) -> NormalizedQuestion | None:
     names = _extract_entities(intro)
     if not names:
         return None
+    if len(set(n.lower() for n in names)) != len(names):
+        return None  # 实体重名无法可靠建模
     n = len(names)
     codes = [chr(ord("A") + i) for i in range(n)]
     lower_to_code = {nm.lower(): code for nm, code in zip(names, codes)}
@@ -416,6 +426,8 @@ def normalize(item: dict) -> NormalizedQuestion | None:
         source=source,
         provenance=prov,
         qtype="ordering",
+        category="ordering",
+        skills=["ordering", "transitive_reasoning", "deduction"],
         story_title=f"BIG-bench 逻辑推理 · {task}",
         story_text=intro,
         entities=codes,
