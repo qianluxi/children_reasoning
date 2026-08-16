@@ -69,6 +69,16 @@ def calibrate_difficulty(q) -> bool:
         difficulty_engine.apply(q)
         q.provenance.difficulty_calibrated = True
         return True
+    # 适配器自带难度等级（如 Reasoning Gym 的元数据启发）：保留并映射分数
+    if q.difficulty_level in (1, 2, 3, 4):
+        mid = {1: 1.2, 2: 3.7, 3: 6.2, 4: 8.7}[q.difficulty_level]
+        q.difficulty_score = mid
+        q.difficulty = difficulty_engine.stars(mid)
+        q.difficulty_profile = difficulty_engine.difficulty_profile(q)
+        q.age_range = difficulty_engine.age_for(q)
+        q.child_suitability = child_suitability.evaluate(q)
+        q.provenance.difficulty_calibrated = False
+        return False
     # 无 DSL：结构启发式兜底，明确标记"未校准"，等待人工改写后重算
     n = max(len(q.entities), len(q.options), 1)
     score = round(min(10.0, max(0.5, 1.2 + 0.35 * n + 0.15 * len(q.constraints))), 2)
@@ -91,17 +101,19 @@ def grade_quality(q) -> str:
     """
     if not (q.source_info and q.source_info.type == "external"):
         return "A"
+    tr = (q.translations or {}).get("zh_child") \
+        or (q.translations or {}).get("zh") or {}
+    child_adapted = tr.get("status") == "child_adapted"
     if not q.provenance.logic_validated:
-        return "C"
-    tr = (q.translations or {}).get("zh") or {}
-    return "A" if tr.get("status") == "child_adapted" else "B"
+        return "B" if child_adapted else "C"
+    return "A" if child_adapted else "B"
 
 
 def import_items(source_name: str, raw_items: list, normalize,
                  limit: int = None, approve: bool = False,
                  translate=None, dry_run: bool = False,
                  checkpoint: bool = False, dedup_enabled: bool = True,
-                 dedup_logic: bool = False) -> dict:
+                 dedup_logic: bool = False, translate_child=None) -> dict:
     """把一批原始题跑完四道闸门，写入待审队列（可选直接审核入库）。"""
     ensure_dirs()
     report = {"total": 0, "translated": 0, "skipped": 0,
@@ -140,6 +152,11 @@ def import_items(source_name: str, raw_items: list, normalize,
                 q.translations = {"zh": translate(q)}
             except Exception:
                 q.translations = None
+        if translate_child is not None and q.translations:
+            try:
+                q.translations["zh_child"] = translate_child(q)
+            except Exception:
+                pass
         ok, logic_issues = logic_validate(q)
         if not ok:
             report["failed_logic"] += 1
@@ -173,16 +190,20 @@ def import_items(source_name: str, raw_items: list, normalize,
 def import_source(source_name: str, limit: int = None, approve: bool = False,
                   task: str = None, lang: str = None, dry_run: bool = False,
                   checkpoint: bool = False, dedup_enabled: bool = True,
-                  dedup_logic: bool = False) -> dict:
+                  dedup_logic: bool = False, seed: int = None) -> dict:
     """下载指定外部源并导入（CLI/Web 统一入口）。"""
     adapter = sources.get(source_name)
     kw = {"task": task}
     if lang is not None:
         kw["lang"] = lang
+    if seed is not None:
+        kw["seed"] = seed
     items = adapter.fetch(**kw)
     translate = getattr(adapter, "zh_translate_question", None)
+    translate_child = getattr(adapter, "zh_child_question", None)
     return import_items(source_name, items, adapter.normalize,
                         limit=limit, approve=approve, translate=translate,
+                        translate_child=translate_child,
                         dry_run=dry_run, checkpoint=checkpoint,
                         dedup_enabled=dedup_enabled, dedup_logic=dedup_logic)
 

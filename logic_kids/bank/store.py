@@ -58,6 +58,7 @@ def save_question(q: Question) -> None:
         "source": q.source,
         "title": q.story.title,
         "category": q.category,
+        "quality": q.quality or "A",
     }
     _save_index(index)
 

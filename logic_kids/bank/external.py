@@ -78,6 +78,7 @@ def save_question(q: Question) -> None:
         "title": q.story.title,
         "license": (q.source_info.license if q.source_info else ""),
         "category": q.category or "deduction",
+        "quality": q.quality or "C",
     }
     _save_index(slug, index)
 

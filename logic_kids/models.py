@@ -97,6 +97,7 @@ class Question:
     difficulty_profile: dict = field(default_factory=dict)  # 二维难度（engine 计算）
     quality: str = ""                           # 质量分级 A/B/C/rejected（V2.6）
     child_suitability: dict = field(default_factory=dict)    # 儿童适配评分
+    metadata: dict = field(default_factory=dict)            # 生成器/数据集元数据（可追溯）
     created_at: str = ""
 
     # ---------- 序列化 ----------

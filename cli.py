@@ -18,6 +18,7 @@
     python cli.py import-all config/datasets.yaml --dry-run
     python cli.py import stats          # 批处理统计
     python cli.py bank check-license    # 许可证合规检查
+    python cli.py analyze-bank          # 题库质量分析（能力空缺/难度/层级）
 """
 from __future__ import annotations
 
@@ -174,7 +175,8 @@ def cmd_import(args):
                                     approve=args.approve, task=args.task,
                                     lang=args.lang, dry_run=args.dry_run,
                                     checkpoint=args.checkpoint,
-                                    dedup_enabled=not args.no_dedup)
+                                    dedup_enabled=not args.no_dedup,
+                                    seed=args.seed)
     print(f"共 {report['total']} 条：转换成功 {report['translated']}，"
           f"跳过 {report['skipped']}，结构不过 {report['failed_schema']}，"
           f"逻辑不过 {report['failed_logic']}，重复 {report['duplicates']}"
@@ -217,6 +219,12 @@ def cmd_bank(args):
     return 0
 
 
+def cmd_analyze_bank(args):
+    from logic_kids.quality.analyzer import report_text
+    print(report_text())
+    return 0
+
+
 def cmd_review(args):
     from logic_kids.bank import importer, provenance
     if args.approve_all:
@@ -250,20 +258,40 @@ def cmd_review(args):
 def cmd_external(args):
     from logic_kids.bank import external
     if args.action == "translate":
-        from logic_kids.bank.sources import bigbench
-        source = args.source or "bigbench"
-        qids = external.list_ids(source)
-        done = 0
-        for qid in qids:
-            q = external.load_question(source, qid)
-            if q is None:
+        from logic_kids.bank.sources import SOURCES
+
+        def resolve(src):
+            """按 CLI 键名或外部库 slug 找到适配器与外部库 slug。"""
+            if src in SOURCES:
+                return SOURCES[src], external.source_slug(
+                    SOURCES[src].SOURCE_NAME)
+            for key, mod in SOURCES.items():
+                if external.source_slug(mod.SOURCE_NAME) == src:
+                    return mod, src
+            return None, None
+
+        targets = [(args.source, *resolve(args.source))] if args.source else [
+            (key, mod, external.source_slug(mod.SOURCE_NAME))
+            for key, mod in SOURCES.items()
+            if hasattr(mod, "zh_translate_question")]
+        for key, mod, slug in targets:
+            if mod is None or not hasattr(mod, "zh_translate_question"):
+                print(f"[skip] {key}：该来源没有中文翻译器")
                 continue
-            zh = bigbench.zh_translate_question(q)
-            q.translations = {"zh": zh}
-            external.save_question(q)
-            done += 1
-        print(f"已为外部来源 {source} 生成中文版：{done}/{len(qids)} 题"
-              "（机器翻译，建议人工校对后开放给儿童）。")
+            qids = external.list_ids(slug)
+            done = 0
+            for qid in qids:
+                q = external.load_question(slug, qid)
+                if q is None:
+                    continue
+                q.translations = {"zh": mod.zh_translate_question(q)}
+                child = getattr(mod, "zh_child_question", None)
+                if child is not None:
+                    q.translations["zh_child"] = child(q)
+                external.save_question(q)
+                done += 1
+            print(f"已为外部来源 {key} 生成中文版：{done}/{len(qids)} 题"
+                  "（机器翻译，建议人工校对后开放给儿童）。")
         return 0
     if args.action == "list":
         sources = external.list_sources()
@@ -317,13 +345,17 @@ def main(argv=None):
     p_play.set_defaults(func=cmd_play)
 
     p_imp = sub.add_parser("import", help="导入外部题库（先进待审队列）")
-    p_imp.add_argument("source", choices=["bigbench", "logiqa", "stats"])
+    p_imp.add_argument("source",
+                       choices=["bigbench", "logiqa", "reasoning_gym",
+                                "stats"])
     p_imp.add_argument("--limit", type=int, default=None, help="最多导入条数")
     p_imp.add_argument("--task", default=None,
                        help="BIG-bench: task 路径（默认 logical_deduction/three_objects）；"
                             "LogiQA: split（默认 dev）")
     p_imp.add_argument("--lang", default=None,
                        help="LogiQA: zh（官方中文版，默认）或 en")
+    p_imp.add_argument("--seed", type=int, default=None,
+                       help="生成随机种子（reasoning_gym 用）")
     p_imp.add_argument("--approve", action="store_true",
                        help="通过四道闸门后直接审核入库")
     p_imp.add_argument("--dry-run", action="store_true",
@@ -345,6 +377,9 @@ def main(argv=None):
     p_bank = sub.add_parser("bank", help="题库管理")
     p_bank.add_argument("action", choices=["check-license"])
     p_bank.set_defaults(func=cmd_bank)
+
+    sub.add_parser("analyze-bank", help="题库质量分析器").set_defaults(
+        func=cmd_analyze_bank)
 
     p_rev = sub.add_parser("review", help="外部题待审队列管理")
     p_rev.add_argument("--approve", metavar="QID", default=None,

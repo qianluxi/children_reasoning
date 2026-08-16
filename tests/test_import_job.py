@@ -100,6 +100,10 @@ def test_quality_grading():
     assert importer.grade_quality(ext_adapted) == "A"
     ext_nodsl = _ext_q(dsl=False, translated=False)
     assert importer.grade_quality(ext_nodsl) == "C"
+    # 儿童化改写：无 DSL 的题升级到 B
+    ext_child = _ext_q(dsl=False, translated=True)
+    ext_child.translations["zh"]["status"] = "child_adapted"
+    assert importer.grade_quality(ext_child) == "B"
 
 
 def test_import_job_config_dry_run_ledger(monkeypatch, tmp_path):
@@ -159,3 +163,21 @@ def test_mixed_selector_uses_both_banks():
         assert pick is not None
         seen.add(pick["question"].id)
     assert seen >= {"mix_builtin", "mix_ext"}
+
+
+def test_selector_exclude_prevents_repeat():
+    from logic_kids.questions.selector import select_question
+    store.clear()
+    external.clear()
+    for i in range(2):
+        eq = _ext_q(category="deduction")
+        eq.id = f"ext_sel_{i}"
+        external.save_question(eq)
+    seen = set()
+    rng = random.Random(3)
+    for _ in range(2):
+        pick = select_question(external_bank=True, source="bigbench",
+                               exclude_ids=seen, rng=rng)
+        assert pick is not None
+        assert pick["question"].id not in seen
+        seen.add(pick["question"].id)

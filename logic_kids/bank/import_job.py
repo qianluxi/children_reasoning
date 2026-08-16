@@ -133,7 +133,7 @@ def run_job(config_path: str, dry_run: bool = False, retry: bool = False,
                     approve=bool(plan.get("approve", False)), task=task,
                     lang=plan.get("lang"), dry_run=dry_run,
                     checkpoint=checkpoint, dedup_enabled=dedup_enabled,
-                    dedup_logic=dedup_logic)
+                    dedup_logic=dedup_logic, seed=plan.get("seed"))
                 for k in agg:
                     agg[k] += rep.get(k, 0)
                 print(f"[{name}] task={task} "

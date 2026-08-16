@@ -30,7 +30,9 @@ _QID_RE = re.compile(r"^[A-Za-z0-9_-]+$")
 def _public_question(q, lang: str = "zh") -> dict:
     """去掉答案与逻辑，只给儿童看的表现层。"""
     is_external = bool(q.source_info and q.source_info.type == "external")
-    zh = (q.translations or {}).get("zh") if q.translations else None
+    tr = q.translations or {}
+    # 儿童化改写优先：zh_child（child_adapted）> zh（machine）
+    zh = tr.get("zh_child") or tr.get("zh") if tr else None
     use_zh = lang == "zh" and zh is not None
     constraints = (zh["constraints"] if use_zh
                    else [c.text for c in q.constraints if c.text])
@@ -163,18 +165,30 @@ def create_app() -> Flask:
         # 身份绑定：本次浏览器的 session 只认这个儿童
         session["child_id"] = child_id
         session["lang"] = lang
-        if bank == "mixed":
-            pick = select_question(difficulty=level, child_id=child_id,
-                                   category=category, mixed=True)
-        elif bank == "external":
-            pick = select_question(difficulty=level, child_id=child_id,
-                                   category=category, external_bank=True,
-                                   source=source)
-        elif level is not None:
-            pick = select_question(difficulty=level, child_id=child_id,
-                                   category=category)
-        else:
-            pick = adaptive.next_question(child_id)
+        # 会话级去重：本次会话最近出过的题不重复（每次都随机，但避免连出同一题）
+        served = session.get("served_qids") or []
+        exclude = set(served[-25:])
+
+        def _pick(use_exclude):
+            kw = {"child_id": child_id, "category": category,
+                  "exclude_ids": exclude if use_exclude else None}
+            if bank == "mixed":
+                return select_question(difficulty=level, mixed=True, **kw)
+            if bank == "external":
+                return select_question(difficulty=level, external_bank=True,
+                                       source=source, **kw)
+            if level is not None:
+                return select_question(difficulty=level, **kw)
+            return adaptive.next_question(child_id)
+
+        pick = _pick(True)
+        if pick is None and exclude:
+            # 可选题被排空时：退化为只保证不连出上一题
+            exclude = set(served[-1:]) if served else set()
+            pick = _pick(True)
+        if pick is not None:
+            served.append(pick["question"].id)
+            session["served_qids"] = served[-30:]
         if pick is None:
             return jsonify({"error": "该题库暂无可用题目"}), 404
         resp = _public_question(pick["question"], lang)
@@ -210,7 +224,8 @@ def create_app() -> Flask:
                                 time_ms=time_ms,
                                 difficulty_score=q.difficulty_score,
                                 category=q.category)
-        zh = (q.translations or {}).get("zh") if q.translations else None
+        tr = q.translations or {}
+        zh = tr.get("zh_child") or tr.get("zh") if tr else None
         explanation = zh["explanation"] if session.get("lang") == "zh" and zh \
             else q.explanation
         options = zh["options"] if session.get("lang") == "zh" and zh \

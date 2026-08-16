@@ -44,14 +44,26 @@ def external_bank():
                                    license="Apache-2.0"),
             provenance=Provenance(imported_at="2026-01-01T00:00:00",
                                   review_status="approved"),
-            translations={"zh": {
+        translations={
+            "zh": {
+                "status": "machine",
                 "story_title": "外部测试题",
                 "story_text": "中文题干",
                 "constraints": ["A 在 B 的左边。"],
                 "options": ["中文A", "中文B", "中文C"],
                 "question_prompt": "谁最左？",
                 "explanation": "中文解释",
-            }},
+            },
+            "zh_child": {
+                "status": "child_adapted",
+                "story_title": "外部测试题",
+                "story_text": "儿童题干",
+                "constraints": ["A 在 B 的左边。"],
+                "options": ["儿童甲", "儿童乙", "儿童丙"],
+                "question_prompt": "谁最左？",
+                "explanation": "儿童解释",
+            },
+        },
         )
         external.save_question(q)
     yield
@@ -296,6 +308,17 @@ def test_answer_external_question(client, child_id, external_bank):
     assert "correct" in r.get_json()
 
 
+def test_next_served_questions_do_not_repeat(client, child_id, external_bank):
+    """会话级去重：连续出题不应立刻重复同一题。"""
+    q1 = client.post("/api/next", json={
+        "child_id": child_id, "level": 1,
+        "bank": "external", "source": "bigbench"}).get_json()
+    q2 = client.post("/api/next", json={
+        "child_id": child_id, "level": 1,
+        "bank": "external", "source": "bigbench"}).get_json()
+    assert q1["id"] != q2["id"]
+
+
 def test_next_external_zh_lang(client, child_id, external_bank):
     r = client.post("/api/next", json={
         "child_id": child_id, "level": 1,
@@ -303,8 +326,9 @@ def test_next_external_zh_lang(client, child_id, external_bank):
     assert r.status_code == 200
     q = r.get_json()
     assert q["lang"] == "zh"
-    assert q["options"] == ["中文A", "中文B", "中文C"]
-    assert q["story"]["text"] == "中文题干"
+    # 儿童化改写优先
+    assert q["options"] == ["儿童甲", "儿童乙", "儿童丙"]
+    assert q["story"]["text"] == "儿童题干"
 
 
 def test_next_external_en_lang(client, child_id, external_bank):
@@ -324,8 +348,8 @@ def test_answer_external_zh_explanation(client, child_id, external_bank):
     r = client.post("/api/answer", json={
         "question_id": q["id"], "choice": 0})
     data = r.get_json()
-    assert data["explanation"] == "中文解释"
-    assert data["correct_text"] == "中文A"
+    assert data["explanation"] == "儿童解释"
+    assert data["correct_text"] == "儿童甲"
 
 
 def test_next_lang_validation(client, child_id):

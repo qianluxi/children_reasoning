@@ -2,3 +2,4 @@
 # 以下为可选/上层依赖：
 flask>=3.0        # Web 儿童界面
 pytest>=8.0       # 测试
+reasoning-gym==0.1.25  # 外部程序化题库源（Reasoning Gym）

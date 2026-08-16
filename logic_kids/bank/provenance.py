@@ -80,6 +80,9 @@ def list_pending(source_name: str = None) -> list:
                 "title": data.get("story", {}).get("title", ""),
                 "review_status": data.get("provenance", {}).get("review_status", ""),
                 "logic_validated": data.get("provenance", {}).get("logic_validated", False),
+                "quality": data.get("quality", "C"),
+                "category": data.get("category", "deduction"),
+                "license": data.get("source_info", {}).get("license", ""),
                 "imported_at": data.get("provenance", {}).get("imported_at", ""),
                 "path": str(p),
             })

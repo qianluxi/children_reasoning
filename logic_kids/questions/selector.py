@@ -56,7 +56,7 @@ def select_question(difficulty: int = None,
     """
     rng = rng or random.Random()
     if mixed:
-        return _select_mixed(difficulty, child_id, rng)
+        return _select_mixed(difficulty, child_id, rng, exclude_ids)
     if difficulty is not None:
         levels.validate_level(difficulty)
     if category is not None and category not in GENERATORS:
@@ -111,9 +111,12 @@ def _load(external_bank: bool, source: str, qid: str):
     return store.load_question(qid)
 
 
-def _select_mixed(difficulty: int, child_id: int, rng: random.Random) -> dict | None:
+def _select_mixed(difficulty: int, child_id: int, rng: random.Random,
+                  exclude_ids: set = None) -> dict | None:
     """综合训练：先按能力权重抽能力，再在该能力下从内置 + 外部选题。"""
-    recent = set(progress.recent_question_ids(child_id)) if child_id else set()
+    recent = set(exclude_ids or ())
+    if child_id:
+        recent |= progress.recent_question_ids(child_id)
     order = levels.adjacent_levels(difficulty) if difficulty is not None else [None]
     pool = {}
     for lv in order:

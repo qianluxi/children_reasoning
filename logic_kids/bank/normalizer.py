@@ -41,6 +41,8 @@ class NormalizedQuestion:
     category: str = ""                                  # 能力大类
     skills: list = field(default_factory=list)          # 技能标签
     age_range: str = ""                                 # 年龄分级 A/B/C/D
+    difficulty_level: int = 0                           # 适配器自带的难度等级（0=未定）
+    metadata: dict = field(default_factory=dict)        # 生成器/数据集元数据
 
     @property
     def has_dsl(self) -> bool:
@@ -75,5 +77,7 @@ class NormalizedQuestion:
             category=category,
             skills=skills,
             age_range=self.age_range,
+            difficulty_level=self.difficulty_level or None,
+            metadata=self.metadata,
             created_at=self.provenance.imported_at,
         )

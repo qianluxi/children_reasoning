@@ -52,7 +52,9 @@ python cli.py import-all config/datasets.yaml --dry-run  # 只统计不入库
 python cli.py import-all config/datasets.yaml --retry --checkpoint
 python cli.py import stats          # 批处理统计（RAW/VALID/REJECT/REVIEW/READY）
 python cli.py bank check-license    # 许可证合规检查
-```
+python cli.py analyze-bank          # 题库质量分析（能力空缺/难度/层级/许可证）
+python cli.py import reasoning_gym --task knights_knaves --limit 15  # 程序化生成
+  ```
 
 运行测试：
 
@@ -108,7 +110,8 @@ reasoning/
 │   │   ├── import_job.py      # 批量导入：配置/dry-run/账本/retry/checkpoint
 │   │   └── sources/           # 外部题库源适配器
 │   │       ├── bigbench.py    # BIG-bench logical_deduction（Apache-2.0，含规则翻译器）
-│   │       └── logiqa.py      # LogiQA2.0（CC BY-NC-SA，非商业；支持官方中文版 *_zh.txt）
+│   │       ├── logiqa.py      # LogiQA2.0（CC BY-NC-SA，非商业；支持官方中文版 *_zh.txt）
+│   │       └── reasoning_gym.py # Reasoning Gym（Apache-2.0，程序化生成，儿童任务白名单）
 │   ├── engine/adaptive.py     # 自适应出题（薄弱技能→70/20/10 难度→选题）
 │   └── progress/store.py      # SQLite：儿童档案 + 答题历史 + 掌握度
 ├── web/
@@ -215,6 +218,45 @@ data/
 
 BIG-bench 已于 2026-04-17 归档为只读：`sources/bigbench.py` 固定到归档 commit
 `092b196c`（可用环境变量 `BIGBENCH_REF` 覆盖），不"永远拉最新"。
+
+### 题库质量分析器（V2.5）
+
+`python cli.py analyze-bank` 输出题库的能力 / 难度 / 层级 / 许可证分布，并给出
+**能力空缺警告**（如"空间推理题不足""演绎逻辑占比过高""高难度题不足"），
+告诉下一步该引入什么数据集，而不是凭感觉。
+
+三层题库（专家意见第二节）：
+
+| 层级 | 质量 | 用途 |
+|---|---|---|
+| production | A 级（已验证 + 儿童语言审核） | 儿童正常训练 |
+| experimental | B 级（逻辑正确但机器翻译） | 开发者测试 |
+| raw | C 级 / 待审队列 | 永不直接给儿童 |
+
+### Reasoning Gym（程序化题库源，PR2）
+
+Reasoning Gym 是 Apache-2.0 的程序化推理任务框架（可生成、可验证、可调难度）。
+适配器只开放 **11 个儿童任务白名单**，覆盖不同能力：
+
+```text
+knights_knaves / syllogism    → 演绎逻辑
+family_relationships          → 关系推理
+leg_counting / letter_counting / rectangle_count / chain_sum / time_intervals → 数学/计数
+number_sequence               → 模式与规律
+arc_1d                        → 模式/图形抽象
+maze                          → 空间推理
+```
+
+答案由 reasoning-gym 自带算法验证器保证；题目为英文自然语言、无法转 DSL，
+默认进入待审队列（raw/experimental 层级），`review --approve --force`
+人工抽检后放行。中文版由 `zh_translate_question` 机器翻译生成（按任务模板：
+数列/算式/动物计数/时长/迷宫/图形规律/三段论/真假人/亲属关系等），
+`python cli.py external translate reasoning_gym` 可批量补翻译。
+儿童化改写由 `zh_child_question` 生成（`translations.zh_child`，
+status=child_adapted）：用元数据重建儿童语言题面（"小蚂蚁走迷宫"、
+"小动物排队找规律"），Web 中文版优先展示儿童版；改写后质量升级为 B
+（逻辑正确 + 儿童语言已审核）。原 machine 版本保留在 `translations.zh`。
+依赖：`pip install -r requirements.txt`（含 reasoning-gym）。
 
 ### 界面与选择
 
