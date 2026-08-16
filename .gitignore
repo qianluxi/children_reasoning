@@ -1,0 +1,7 @@
+data/*.json
+data/bank_index.json
+data/profiles.db
+__pycache__/
+*.pyc
+.pytest_cache/
+.zcode/
