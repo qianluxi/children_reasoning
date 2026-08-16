@@ -14,10 +14,11 @@ from pathlib import Path
 from flask import Flask, jsonify, render_template, request, session
 
 from logic_kids.bank import store, seed
-from logic_kids.difficulty import engine as difficulty_engine
+from logic_kids.difficulty import engine as difficulty_engine, levels as difficulty_levels
 from logic_kids.progress import store as progress
 from logic_kids.engine import adaptive
-from logic_kids.questions.generator import generate_batch, TYPE_NAMES
+from logic_kids.questions.generator import generate_batch, TYPE_NAMES, GENERATORS
+from logic_kids.questions.selector import select_question
 
 WEB_DIR = Path(__file__).resolve().parent
 
@@ -32,6 +33,9 @@ def _public_question(q) -> dict:
         "type": q.type,
         "type_name": TYPE_NAMES.get(q.type, q.type),
         "difficulty": q.difficulty,
+        "difficulty_level": q.difficulty_level
+        or difficulty_levels.level_for_score(q.difficulty_score),
+        "level_label": q.level_label(),
         "stars": "★" * q.difficulty,
         "story": {"title": q.story.title, "text": q.story.text},
         "statements": [
@@ -95,6 +99,11 @@ def create_app() -> Flask:
         return jsonify({"id": cid, "name": name})
 
     # ---------- 出题 ----------
+    @app.route("/api/levels")
+    def levels_api():
+        """难度等级清单（前端只拿等级名，不拿评分）。"""
+        return jsonify({"levels": difficulty_levels.public_levels()})
+
     @app.route("/api/next", methods=["POST"])
     def next_question():
         data = request.get_json(force=True) or {}
@@ -104,9 +113,24 @@ def create_app() -> Flask:
             return jsonify({"error": "child_id 必须是正整数"}), 400
         if not progress.child_exists(child_id):
             return jsonify({"error": "儿童不存在"}), 404
+        # 可选参数：用户选择的难度等级（1..4）与题型
+        level = data.get("level")
+        category = data.get("category")
+        if level is not None:
+            try:
+                level = difficulty_levels.validate_level(level)
+            except ValueError:
+                return jsonify({"error": "难度等级必须是 1~4 的整数"}), 400
+        if category is not None:
+            if not isinstance(category, str) or category not in GENERATORS:
+                return jsonify({"error": f"未知题型，可选：{', '.join(TYPE_NAMES)}"}), 400
         # 身份绑定：本次浏览器的 session 只认这个儿童
         session["child_id"] = child_id
-        pick = adaptive.next_question(child_id)
+        if level is not None:
+            pick = select_question(difficulty=level, child_id=child_id,
+                                   category=category)
+        else:
+            pick = adaptive.next_question(child_id)
         if pick is None:
             return jsonify({"error": "题库空了"}), 404
         resp = _public_question(pick["question"])
@@ -131,8 +155,16 @@ def create_app() -> Flask:
         # 参数校验：choice 必须是 int 且在选项范围内（专家审查 P1）
         if not isinstance(choice, int) or isinstance(choice, bool) or not (0 <= choice < len(q.options)):
             return jsonify({"error": "选项编号超出范围"}), 400
+        # 解题时间（专家意见第十七节：正确率 + 用时才能反映真实能力）
+        time_ms = data.get("time_ms")
+        if time_ms is not None:
+            if isinstance(time_ms, bool) or not isinstance(time_ms, int) \
+                    or time_ms < 0 or time_ms > 3600_000:
+                return jsonify({"error": "time_ms 必须是 0..3600000 的整数"}), 400
         correct = (choice == q.answer)
-        progress.record_attempt(child_id, q.id, q.type, correct)
+        progress.record_attempt(child_id, q.id, q.type, correct,
+                                time_ms=time_ms,
+                                difficulty_score=q.difficulty_score)
         return jsonify({
             "correct": correct,
             "correct_index": q.answer,

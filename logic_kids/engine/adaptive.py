@@ -57,26 +57,12 @@ def pick_difficulty(child_id: int, qtype: str, rng: random.Random) -> int:
     return max(1, min(5, target))
 
 
-def _recent_question_ids(child_id: int, limit: int = 20) -> set:
-    from ..config import DB_PATH, ensure_dirs
-    import sqlite3
-    ensure_dirs()
-    conn = sqlite3.connect(DB_PATH)
-    try:
-        rows = conn.execute(
-            "SELECT question_id FROM attempts WHERE child_id=? ORDER BY id DESC LIMIT ?",
-            (child_id, limit)).fetchall()
-        return {r[0] for r in rows}
-    finally:
-        conn.close()
-
-
 def next_question(child_id: int, rng: random.Random = None) -> dict | None:
     """为儿童挑一道题，返回 {question, qtype, difficulty, reason}。"""
     rng = rng or random.Random()
     qtype = pick_weakest_type(child_id, rng)
     difficulty = pick_difficulty(child_id, qtype, rng)
-    recent = _recent_question_ids(child_id)
+    recent = progress.recent_question_ids(child_id)
 
     # 依次放宽难度，找到可用的题
     for d in _difficulty_fallbacks(difficulty):

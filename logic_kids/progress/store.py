@@ -35,6 +35,13 @@ CREATE INDEX IF NOT EXISTS idx_attempts_child ON attempts(child_id, qtype);
 """
 
 
+def _migrate(c) -> None:
+    """旧库升级：attempts 表补 difficulty_score 列（专家意见第十七节）。"""
+    cols = {r["name"] for r in c.execute("PRAGMA table_info(attempts)").fetchall()}
+    if "difficulty_score" not in cols:
+        c.execute("ALTER TABLE attempts ADD COLUMN difficulty_score REAL")
+
+
 @contextmanager
 def _conn():
     ensure_dirs()
@@ -52,6 +59,7 @@ def _conn():
 def init_db() -> None:
     with _conn() as c:
         c.executescript(_SCHEMA)
+        _migrate(c)
 
 
 def create_child(name: str) -> int:
@@ -87,13 +95,25 @@ def child_exists(child_id: int) -> bool:
 
 
 def record_attempt(child_id: int, question_id: str, qtype: str,
-                   correct: bool, time_ms: int = None) -> None:
+                   correct: bool, time_ms: int = None,
+                   difficulty_score: float = None) -> None:
     init_db()
     with _conn() as c:
         c.execute(
-            "INSERT INTO attempts(child_id, question_id, qtype, correct, time_ms) "
-            "VALUES(?,?,?,?,?)",
-            (child_id, question_id, qtype, 1 if correct else 0, time_ms))
+            "INSERT INTO attempts(child_id, question_id, qtype, correct, time_ms, difficulty_score) "
+            "VALUES(?,?,?,?,?,?)",
+            (child_id, question_id, qtype, 1 if correct else 0,
+             time_ms, difficulty_score))
+
+
+def recent_question_ids(child_id: int, limit: int = 20) -> set:
+    """最近做过的题目 id（出题时避重复用）。"""
+    init_db()
+    with _conn() as c:
+        rows = c.execute(
+            "SELECT question_id FROM attempts WHERE child_id=? "
+            "ORDER BY id DESC LIMIT ?", (child_id, limit)).fetchall()
+        return {r["question_id"] for r in rows}
 
 
 def recent_attempts(child_id: int, qtype: str, limit: int = WINDOW) -> list:

@@ -33,6 +33,9 @@ python cli.py stats
 # 4) 命令行答题演示（自适应出题）
 python cli.py play --child 小明 --rounds 5
 
+# 4b) 固定难度等级答题（1=简单 2=普通 3=困难 4=挑战）
+python cli.py play --child 小明 --rounds 5 --level 3
+
 # 5) 启动 Web 界面
 python app.py --port 5000
 # 打开 http://127.0.0.1:5000
@@ -64,10 +67,12 @@ reasoning/
 │   │   ├── ast.py             # AST 节点 + 求值器
 │   │   └── solver.py          # Solver：布尔枚举 2^n + 排列枚举 n!，求全部解
 │   ├── validator/validator.py # Question Validator（题目质量检查）
-│   ├── difficulty/engine.py   # 难度评分引擎（0~10 → ★）
+│   ├── difficulty/engine.py   # 难度评分引擎（结构化指标，0~10）
+│   ├── difficulty/levels.py   # 难度分 → 用户等级（1~4）映射（唯一出处）
 │   ├── questions/
 │   │   ├── themes.py          # 主题词库（角色/物品/场景）
 │   │   ├── generator.py       # 统一生成器（模板→验证→难度→入库）
+│   │   ├── selector.py        # QuestionSelector：按用户等级/题型/避重复选题
 │   │   └── templates/         # 5 个题型模板
 │   │       ├── truth.py       # 真假话
 │   │       ├── ordering.py    # 顺序排列
@@ -103,7 +108,8 @@ reasoning/
 | `options` / `option_logic` | 选项文字 + 对应的逻辑表达式 |
 | `answer` | 正确选项下标 |
 | `hints` / `explanation` | 逐步提示 + 儿童友好解释 |
-| `difficulty` / `difficulty_score` | 星级 + 连续难度分 |
+| `difficulty` / `difficulty_score` | 内部星级 + 连续难度分（0..10） |
+| `difficulty_level` | 用户可见等级 1~4（`difficulty/levels.py` 映射） |
 
 例（真假话）：`statements[].logic = "NOT_ALL(cheese)"`，`constraints[].logic = "TRUTH_COUNT == 1"`。
 
@@ -154,16 +160,50 @@ reasoning/
 `SCENARIOS`），生成结果由 `tests/test_templates.py::test_ordering_story_prompt_semantics_match`
 逐题抽查，杜绝"比身高却问排第几位"这类语义错位。
 
-## 难度评分
+## 难度评分与用户等级
 
 `difficulty/engine.py`：
 
 ```
 score = 0.45*变量数 + 0.35*条件数 + 0.7*嵌套深度 + 0.75*推理链长
-      + 0.15*干扰项 + 0.2*解空间log10 + 0.8*真假话约束 - 2.4
+      + 0.15*干扰项 + 0.2*解空间log10 + 0.8*真假话约束
+      + 0.18*否定数 + 0.1*合取数 + 0.05*最小推理步数 - 2.4
 ```
 
-映射：`0~2 ★ / 2~4 ★★ / 4~6 ★★★ / 6~8 ★★★★ / 8~10 ★★★★★`。
+引擎同时输出结构化指标 `engine.metrics()`：
+`entity_count / constraint_count / chain_length / negation_count /
+conjunction_count / quantifier_complexity / solution_space /
+minimum_reasoning_steps`（专家意见第四节；其中"最小推理步数"目前是
+结构代理启发式，后续可替换为真实的证明搜索度量）。
+
+**连续分 → 用户可见等级** 只在 `difficulty/levels.py` 定义（专家意见第二节：
+难度等级与难度评分必须分离，分界线调整不影响生成器）：
+
+```
+difficulty_score:  0.00~2.49   2.50~4.99   5.00~7.49   7.50~10.0
+difficulty_level:       1           2           3           4
+UI 显示:           🌱 简单      ⭐ 普通      🚀 困难      🧠 挑战
+```
+
+星级（1~5 ★）保留为内部粗分带，仅供自适应引擎等内部逻辑使用；儿童界面只显示等级。
+
+## QuestionSelector（用户选择难度）
+
+`questions/selector.py`（专家意见第三节）：
+
+```
+用户选择 level=3
+        ↓
+select_question(difficulty=3, child_id, category)
+        ↓
+difficulty_score ∈ [5.0, 7.49]
+        ↓
+从题库选题（等级不足时向相邻等级放宽，reason 明确说明）
+```
+
+Web 流程：选择儿童 → 选择难度（4 级）→ 答题 → 下一题保持同一难度；
+点击"换难度"可随时返回选择页。`POST /api/next` 接受 `level`（1~4）与
+可选 `category`（题型）；不传 `level` 时仍走自适应出题。
 
 ## 自适应出题
 
@@ -172,6 +212,12 @@ score = 0.45*变量数 + 0.35*条件数 + 0.7*嵌套深度 + 0.75*推理链长
 1. 选薄弱技能：未练过的题型优先（探索），否则掌握度最低的；
 2. 定难度：掌握度→当前水平，再按 **70% 当前 / 20% 简单 / 10% 挑战** 抖动；
 3. 从题库选符合题型+难度的题，避开最近做过的。
+
+## 答题记录
+
+`attempts` 表除对错外，还记录 `time_ms`（解题用时）与 `difficulty_score`
+（专家意见第十七节：**正确率 + 解题时间** 比单纯正确率更能反映儿童真实能力，
+为后续 `ChildAbility` 能力画像铺路）。旧数据库首次启动时自动补列。
 
 ## Web 安全设计
 
@@ -209,3 +255,6 @@ score = 0.45*变量数 + 0.35*条件数 + 0.7*嵌套深度 + 0.75*推理链长
 - 题库采集层：爬虫 → 结构化 → Logic DSL → Solver 验证（Solver 仍是裁判）
 - 自动变体：同一模板换主题词后重新 Solver 验证（已具备基础）
 - 能力画像的更细粒度建模（IRT / 知识追踪）
+- Phase 2：题库统一 QuestionSchema（source/license/provenance），内置题先行
+- Phase 3：外部题库导入层（Raw → Normalizer → Validator → Bank，先评估 LogiQA2.0 / BIG-bench）
+- Phase 4：自适应难度（ChildAbility → 题型能力 → 难度预测）

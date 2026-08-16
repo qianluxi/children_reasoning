@@ -7,11 +7,15 @@
 from __future__ import annotations
 
 import argparse
+import sys
 
 from web.app import create_app
 
 
 def main():
+    # Windows GBK 控制台无法打印 emoji（🧩），统一用 UTF-8 输出
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     parser = argparse.ArgumentParser(description="儿童逻辑推理训练软件 Web 服务")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=5000)

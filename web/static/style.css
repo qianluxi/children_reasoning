@@ -82,6 +82,36 @@ h1 { color: var(--primary); }
   width: 220px;
 }
 
+/* 难度选择 */
+.level-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+  margin: 22px 0;
+}
+.level-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: #fafafa;
+  border: 3px solid #eee;
+  border-radius: 18px;
+  padding: 18px 12px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all .12s ease;
+}
+.level-card:hover { border-color: var(--primary); background: #fff7ef; transform: translateY(-2px); }
+.level-card.selected {
+  border-color: var(--primary);
+  background: #fff1e3;
+  box-shadow: 0 4px 14px rgba(255, 140, 66, .25);
+}
+.level-card .lv-emoji { font-size: 2.4rem; }
+.level-card .lv-name { font-size: 1.25rem; font-weight: 700; color: var(--text); }
+.level-card .lv-tag { font-size: .85rem; color: var(--muted); }
+
 /* 按钮 */
 .btn {
   border: none;

@@ -26,11 +26,19 @@
     </div>
   </section>
 
+  <!-- 选择难度 -->
+  <section id="pick" class="card center hidden">
+    <h1>🧩 选择今天的挑战难度</h1>
+    <p class="sub">选一个适合你的难度，开始挑战吧！</p>
+    <div id="levelList" class="level-list"></div>
+    <button id="startBtn" class="btn primary hidden">🚀 开始挑战</button>
+  </section>
+
   <!-- 答题区 -->
   <section id="quiz" class="card hidden">
     <div class="q-head">
       <span id="qType" class="chip"></span>
-      <span id="qDiff" class="chip gold"></span>
+      <span id="qLevel" class="chip gold"></span>
       <span id="qStars" class="starcount"></span>
     </div>
     <h2 id="qTitle"></h2>
@@ -44,6 +52,7 @@
 
     <div class="actions">
       <button id="hintBtn" class="btn ghost">💡 提示</button>
+      <button id="changeLevelBtn" class="btn ghost">🔁 换难度</button>
       <button id="nextBtn" class="btn primary hidden">下一题 →</button>
     </div>
     <div id="hints" class="hints"></div>

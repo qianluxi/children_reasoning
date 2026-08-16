@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 
 from ..config import QUESTIONS_DIR, BANK_INDEX_PATH, ensure_dirs
+from ..difficulty import levels
 from ..models import Question
 
 
@@ -46,10 +47,12 @@ def save_question(q: Question) -> None:
     path = QUESTIONS_DIR / f"{q.id}.json"
     _atomic_write(path, q.to_json())
     index = _index()
+    level = q.difficulty_level or levels.level_for_score(q.difficulty_score)
     index[q.id] = {
         "type": q.type,
         "difficulty": q.difficulty,
         "difficulty_score": q.difficulty_score,
+        "difficulty_level": level,
         "source": q.source,
         "title": q.story.title,
     }
@@ -75,31 +78,53 @@ def list_ids() -> list:
     return list(_index().keys())
 
 
-def query(qtype: str = None, difficulty: int = None, source: str = None) -> list:
-    """按条件过滤，返回题目 id 列表。"""
+def _meta_level(meta: dict) -> int:
+    """索引里的等级；旧索引没有时按评分反算。"""
+    lv = meta.get("difficulty_level")
+    if lv is None:
+        lv = levels.level_for_score(meta.get("difficulty_score", 0.0))
+    return lv
+
+
+def query(qtype: str = None, difficulty: int = None,
+          difficulty_level: int = None, source: str = None,
+          exclude_ids: set = None) -> list:
+    """按条件过滤，返回题目 id 列表。
+
+    difficulty_level 是用户可见等级（1..4），按难度分区间过滤；
+    difficulty 是内部星级（1..5）。
+    """
     index = _index()
+    exclude_ids = exclude_ids or set()
     ids = []
     for qid, meta in index.items():
         if qtype and meta.get("type") != qtype:
             continue
-        if difficulty and meta.get("difficulty") != difficulty:
+        if difficulty is not None and meta.get("difficulty") != difficulty:
             continue
-        if source and meta.get("source") != source:
+        if difficulty_level is not None and _meta_level(meta) != difficulty_level:
+            continue
+        if source is not None and meta.get("source") != source:
+            continue
+        if qid in exclude_ids:
             continue
         ids.append(qid)
     return ids
 
 
 def stats() -> dict:
-    """题库统计：按类型、难度、来源汇总。"""
+    """题库统计：按类型、星级、用户等级、来源汇总。"""
     index = _index()
-    by_type, by_diff, by_source = {}, {}, {}
+    by_type, by_diff, by_level, by_source = {}, {}, {}, {}
     for meta in index.values():
         by_type[meta["type"]] = by_type.get(meta["type"], 0) + 1
         by_diff[meta["difficulty"]] = by_diff.get(meta["difficulty"], 0) + 1
+        lv = _meta_level(meta)
+        by_level[lv] = by_level.get(lv, 0) + 1
         by_source[meta["source"]] = by_source.get(meta["source"], 0) + 1
     return {"total": len(index), "by_type": by_type,
-            "by_difficulty": by_diff, "by_source": by_source}
+            "by_difficulty": by_diff, "by_level": by_level,
+            "by_source": by_source}
 
 
 def clear() -> None:

@@ -134,3 +134,79 @@ def test_profile_blocks_other_child(client, child_id):
     client.post("/api/next", json={"child_id": child_id})  # session 绑定 child_id
     assert client.get(f"/api/profile/{child_id}").status_code == 200
     assert client.get(f"/api/profile/{other}").status_code == 403
+
+
+# ---------- 专家意见 Phase 1：难度选择 ----------
+
+def test_levels_api(client):
+    r = client.get("/api/levels")
+    assert r.status_code == 200
+    lv = r.get_json()["levels"]
+    assert [x["level"] for x in lv] == [1, 2, 3, 4]
+    assert lv[0]["emoji"] == "🌱"
+    assert lv[3]["label"] == "🧠 挑战"
+    # 评分是内部信息，不能给儿童界面
+    assert all("score" not in x for x in lv)
+
+
+def test_next_with_level(client, child_id):
+    r = client.post("/api/next", json={"child_id": child_id, "level": 2})
+    assert r.status_code == 200
+    q = r.get_json()
+    assert q["difficulty_level"] in (1, 2, 3, 4)
+    assert q["level_label"]
+    assert "answer" not in q
+    assert "option_logic" not in q
+
+
+def test_next_with_category(client, child_id):
+    r = client.post("/api/next", json={
+        "child_id": child_id, "level": 2, "category": "ordering"})
+    assert r.status_code == 200
+    assert r.get_json()["type"] == "ordering"
+
+
+def test_next_level_validation(client, child_id):
+    for bad in (0, 5, -1, "2", True):
+        r = client.post("/api/next", json={"child_id": child_id, "level": bad})
+        assert r.status_code == 400, f"level={bad!r} 应被拒绝"
+    r = client.post("/api/next", json={
+        "child_id": child_id, "level": 2, "category": "不存在"})
+    assert r.status_code == 400
+
+
+def test_answer_with_time_ms(client, child_id):
+    q = client.post("/api/next", json={"child_id": child_id}).get_json()
+    r = client.post("/api/answer", json={
+        "question_id": q["id"], "choice": 0, "time_ms": 1500})
+    assert r.status_code == 200
+    assert "correct" in r.get_json()
+
+
+def test_answer_time_ms_validation(client, child_id):
+    q = client.post("/api/next", json={"child_id": child_id}).get_json()
+    for bad in (-1, "abc", 3.5, True, 3600_001):
+        r = client.post("/api/answer", json={
+            "question_id": q["id"], "choice": 0, "time_ms": bad})
+        assert r.status_code == 400, f"time_ms={bad!r} 应被拒绝"
+
+
+def test_attempt_records_time_and_score(client, child_id):
+    """答题记录必须保存用时与难度分（专家意见第十七节）。"""
+    import sqlite3
+    from logic_kids.config import DB_PATH
+    q = client.post("/api/next", json={
+        "child_id": child_id, "level": 3}).get_json()
+    r = client.post("/api/answer", json={
+        "question_id": q["id"], "choice": 0, "time_ms": 999})
+    assert r.status_code == 200
+    conn = sqlite3.connect(DB_PATH)
+    try:
+        row = conn.execute(
+            "SELECT time_ms, difficulty_score FROM attempts "
+            "WHERE child_id=? ORDER BY id DESC LIMIT 1", (child_id,)).fetchone()
+    finally:
+        conn.close()
+    assert row is not None
+    assert row[0] == 999
+    assert row[1] is not None

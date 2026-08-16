@@ -55,6 +55,7 @@ class Question:
     explanation: str          # 儿童友好的解释
     difficulty: int = 1       # ★ 星级 1..5（由难度引擎计算）
     difficulty_score: float = 0.0   # 0..10 连续分（由难度引擎计算）
+    difficulty_level: Optional[int] = None  # 用户可见等级 1..4（levels.py 映射）
     source: str = "generated" # "seed" | "generated"
     created_at: str = ""
 
@@ -72,7 +73,12 @@ class Question:
         d["variables"] = [Variable(**v) for v in d["variables"]]
         d["statements"] = [Statement(**s) for s in d["statements"]]
         d["constraints"] = [Constraint(**c) for c in d["constraints"]]
-        return cls(**d)
+        q = cls(**d)
+        # 旧题库文件可能没有 difficulty_level：用评分反算，保证新旧数据一致
+        if q.difficulty_level is None and q.difficulty_score:
+            from .difficulty import levels
+            q.difficulty_level = levels.level_for_score(q.difficulty_score)
+        return q
 
     @classmethod
     def from_json(cls, text: str) -> "Question":
@@ -84,3 +90,11 @@ class Question:
 
     def entity_name(self, code: str) -> str:
         return self.story.roles.get(code, code)
+
+    def level_label(self) -> str:
+        """儿童友好的等级名，如 "🚀 困难"；未计算时按评分反算。"""
+        from .difficulty import levels
+        lv = self.difficulty_level
+        if lv is None:
+            lv = levels.level_for_score(self.difficulty_score)
+        return levels.label(lv)

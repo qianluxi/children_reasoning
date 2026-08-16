@@ -6,6 +6,7 @@
     python cli.py stats                # 题库统计
     python cli.py validate             # 校验题库全部题目
     python cli.py play --child 小明     # 命令行答题演示（自适应出题）
+    python cli.py play --child 小明 --level 3   # 固定难度等级 3（困难）
 """
 from __future__ import annotations
 
@@ -15,8 +16,10 @@ import sys
 
 from logic_kids.bank import store, seed
 from logic_kids.difficulty import engine as difficulty_engine
+from logic_kids.difficulty import levels as difficulty_levels
 from logic_kids.validator.validator import validate
 from logic_kids.questions.generator import generate_batch, TYPE_NAMES
+from logic_kids.questions.selector import select_question
 from logic_kids.progress import store as progress
 from logic_kids.engine import adaptive
 
@@ -55,6 +58,9 @@ def _print_stats():
     print("按难度:")
     for d in sorted(st["by_difficulty"]):
         print(f"  {'★'*d:8s} {st['by_difficulty'][d]}")
+    print("按用户等级:")
+    for lv in sorted(st["by_level"]):
+        print(f"  {lv}. {difficulty_levels.name(lv):4s} {st['by_level'][lv]}")
     print("按来源:")
     for s, n in st["by_source"].items():
         print(f"  {s:10s} {n}")
@@ -78,14 +84,22 @@ def cmd_validate(args):
 def cmd_play(args):
     child_id = progress.get_or_create_child(args.child)
     rng = random.Random(args.seed)
+    if args.level is not None:
+        difficulty_levels.validate_level(args.level)
     print(f"你好，{args.child}！开始答题（输入 q 退出）。\n")
     for round_no in range(1, args.rounds + 1):
-        pick = adaptive.next_question(child_id, rng)
+        if args.level is not None:
+            pick = select_question(difficulty=args.level, child_id=child_id, rng=rng)
+        else:
+            pick = adaptive.next_question(child_id, rng)
         if pick is None:
             print("题库里没有可用的题目了，请先运行: python cli.py generate 50")
             break
         q = pick["question"]
-        print(f"— 第 {round_no} 题 [{TYPE_NAMES.get(q.type, q.type)} {'★'*q.difficulty}] —")
+        lv = (pick.get("difficulty_level") or q.difficulty_level
+              or difficulty_levels.level_for_score(q.difficulty_score))
+        level_text = f"{lv}. {difficulty_levels.name(lv)}"
+        print(f"— 第 {round_no} 题 [{TYPE_NAMES.get(q.type, q.type)} {level_text}] —")
         print(f"《{q.story.title}》 {q.story.text}")
         for s in q.statements:
             print(f"  {q.story.roles.get(s.speaker, s.speaker)}：{s.text}")
@@ -125,6 +139,9 @@ def cmd_play(args):
 
 
 def main(argv=None):
+    # 题库文案含 emoji（如 🧀），GBK 控制台打印会崩溃；统一用 UTF-8 输出
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     parser = argparse.ArgumentParser(description="儿童逻辑推理训练软件 CLI")
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -142,6 +159,8 @@ def main(argv=None):
     p_play.add_argument("--child", default="小朋友")
     p_play.add_argument("--rounds", type=int, default=5)
     p_play.add_argument("--seed", type=int, default=None)
+    p_play.add_argument("--level", type=int, default=None,
+                        help="固定难度等级 1..4（不指定则走自适应出题）")
     p_play.set_defaults(func=cmd_play)
 
     args = parser.parse_args(argv)
