@@ -1,0 +1,79 @@
+{
+  "id": "set_993631b5bf",
+  "type": "set_logic",
+  "story": {
+    "title": "谁有饼干？",
+    "text": "看看下面的情况，想一想：哪一句话是对的？",
+    "roles": {
+      "A": "吱吱",
+      "B": "点点",
+      "C": "云云",
+      "D": "毛毛"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "A_cookie",
+      "type": "boolean"
+    },
+    {
+      "name": "B_cookie",
+      "type": "boolean"
+    },
+    {
+      "name": "C_cookie",
+      "type": "boolean"
+    },
+    {
+      "name": "D_cookie",
+      "type": "boolean"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "吱吱没有🍪饼干",
+      "logic": "!A_cookie"
+    },
+    {
+      "text": "点点有🍪饼干",
+      "logic": "B_cookie"
+    },
+    {
+      "text": "云云没有🍪饼干",
+      "logic": "!C_cookie"
+    },
+    {
+      "text": "毛毛有🍪饼干",
+      "logic": "D_cookie"
+    }
+  ],
+  "question_prompt": "关于饼干，下面哪句话是对的？",
+  "options": [
+    "有些人有饼干，有些人没有",
+    "所有人都有饼干",
+    "谁都没有饼干"
+  ],
+  "option_logic": [
+    "SOME(cookie) && NOT_ALL(cookie)",
+    "ALL(cookie)",
+    "NONE(cookie)"
+  ],
+  "answer": 0,
+  "hints": [
+    "先数一数：一共有几个人有饼干。",
+    "“所有”表示一个不少；“都没有”表示一个也没有。",
+    "只要有人有、也有人没有，那就是“有些人有，有些人没有”。"
+  ],
+  "explanation": "有饼干的是：点点、毛毛；没有饼干的是：吱吱、云云。\n所以“有些人有饼干，有些人没有”是对的。",
+  "difficulty": 2,
+  "difficulty_score": 2.59,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

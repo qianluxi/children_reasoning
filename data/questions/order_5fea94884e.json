@@ -1,0 +1,65 @@
+{
+  "id": "order_5fea94884e",
+  "type": "ordering",
+  "story": {
+    "title": "谁跑得最快？",
+    "text": "3个小伙伴参加跑步比赛。根据下面的线索，你能排出比赛名次吗？",
+    "roles": {
+      "A": "旺旺",
+      "B": "啾啾",
+      "C": "蓝蓝"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "啾啾比蓝蓝跑得快",
+      "logic": "RANK(B) < RANK(C)"
+    },
+    {
+      "text": "旺旺比蓝蓝跑得慢",
+      "logic": "RANK(C) < RANK(A)"
+    }
+  ],
+  "question_prompt": "谁获得第 1 名？",
+  "options": [
+    "蓝蓝",
+    "啾啾",
+    "旺旺"
+  ],
+  "option_logic": [
+    "RANK(C) == 1",
+    "RANK(B) == 1",
+    "RANK(A) == 1"
+  ],
+  "answer": 1,
+  "hints": [
+    "先把能确定的相邻关系连起来。",
+    "试着把所有人按线索串成一条链。",
+    "数一数：从第 1 名一路数到第 1 名，看看是谁。"
+  ],
+  "explanation": "比赛名次是：啾啾 → 蓝蓝 → 旺旺。所以获得第 1 名的是 啾啾。",
+  "difficulty": 1,
+  "difficulty_score": 1.41,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

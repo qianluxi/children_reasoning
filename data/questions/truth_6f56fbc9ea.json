@@ -1,0 +1,101 @@
+{
+  "id": "truth_6f56fbc9ea",
+  "type": "truth_statements",
+  "story": {
+    "title": "谁有樱桃？",
+    "text": "5个小伙伴在一起，他们可能藏了🍒樱桃。每个人都说了一句话。已知他们里面恰好有 3 句是真话。到底谁有樱桃呢？",
+    "roles": {
+      "A": "旺旺",
+      "B": "布丁",
+      "C": "团团",
+      "D": "球球",
+      "E": "大力"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "variables": [
+    {
+      "name": "A_cherry",
+      "type": "boolean"
+    },
+    {
+      "name": "B_cherry",
+      "type": "boolean"
+    },
+    {
+      "name": "C_cherry",
+      "type": "boolean"
+    },
+    {
+      "name": "D_cherry",
+      "type": "boolean"
+    },
+    {
+      "name": "E_cherry",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "团团和大力都有樱桃",
+      "logic": "C_cherry && E_cherry",
+      "speaker": "A"
+    },
+    {
+      "text": "团团和球球都有樱桃",
+      "logic": "C_cherry && D_cherry",
+      "speaker": "B"
+    },
+    {
+      "text": "我们每个人都有樱桃",
+      "logic": "ALL(cherry)",
+      "speaker": "C"
+    },
+    {
+      "text": "恰好有1个人有樱桃",
+      "logic": "COUNT(cherry) == 1",
+      "speaker": "D"
+    },
+    {
+      "text": "我们谁都没有樱桃",
+      "logic": "NONE(cherry)",
+      "speaker": "E"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "恰好有 3 句是真话",
+      "logic": "TRUTH_COUNT == 3"
+    }
+  ],
+  "question_prompt": "到底谁有樱桃？",
+  "options": [
+    "只有布丁有樱桃",
+    "所有人都有樱桃",
+    "只有旺旺、布丁、大力有樱桃",
+    "只有旺旺、球球有樱桃"
+  ],
+  "option_logic": [
+    "B_cherry && COUNT(cherry) == 1",
+    "ALL(cherry)",
+    "A_cherry && B_cherry && E_cherry && !C_cherry && !D_cherry",
+    "A_cherry && D_cherry && !B_cherry && !C_cherry && !E_cherry"
+  ],
+  "answer": 1,
+  "hints": [
+    "先数一数：题目说恰好有 3 句是真话。",
+    "试着假设某句话是真的，看看其它话会不会矛盾。",
+    "把每句话的真假列出来，凑出恰好 3 句真话的那种情况就是答案。"
+  ],
+  "explanation": "· 旺旺 说“团团和大力都有樱桃”——这是真话 ✔\n· 布丁 说“团团和球球都有樱桃”——这是真话 ✔\n· 团团 说“我们每个人都有樱桃”——这是真话 ✔\n· 球球 说“恰好有1个人有樱桃”——这是假话 ✘\n· 大力 说“我们谁都没有樱桃”——这是假话 ✘\n正好有 3 句真话（旺旺、布丁、团团），所以有樱桃的是：旺旺、布丁、团团、球球、大力。",
+  "difficulty": 3,
+  "difficulty_score": 5.45,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

@@ -1,0 +1,90 @@
+{
+  "id": "truth_d6194e80e4",
+  "type": "truth_statements",
+  "story": {
+    "title": "谁有糖果？",
+    "text": "4个小伙伴在一起，他们可能藏了🍬糖果。每个人都说了一句话。已知他们里面恰好有 2 句是真话。到底谁有糖果呢？",
+    "roles": {
+      "A": "跳跳",
+      "B": "小鸟",
+      "C": "飞飞",
+      "D": "蓝蓝"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "A_candy",
+      "type": "boolean"
+    },
+    {
+      "name": "B_candy",
+      "type": "boolean"
+    },
+    {
+      "name": "C_candy",
+      "type": "boolean"
+    },
+    {
+      "name": "D_candy",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "不是每个人都有糖果",
+      "logic": "NOT_ALL(candy)",
+      "speaker": "A"
+    },
+    {
+      "text": "我们中有些人有糖果，有些人没有",
+      "logic": "SOME(candy) && NOT_ALL(candy)",
+      "speaker": "B"
+    },
+    {
+      "text": "我们中至少有一个有糖果",
+      "logic": "SOME(candy)",
+      "speaker": "C"
+    },
+    {
+      "text": "小鸟有糖果",
+      "logic": "B_candy",
+      "speaker": "D"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "恰好有 2 句是真话",
+      "logic": "TRUTH_COUNT == 2"
+    }
+  ],
+  "question_prompt": "到底谁有糖果？",
+  "options": [
+    "只有跳跳、小鸟、蓝蓝有糖果",
+    "所有人都有糖果",
+    "谁都没有有糖果",
+    "只有飞飞有糖果"
+  ],
+  "option_logic": [
+    "A_candy && B_candy && D_candy && !C_candy",
+    "ALL(candy)",
+    "NONE(candy)",
+    "C_candy && COUNT(candy) == 1"
+  ],
+  "answer": 1,
+  "hints": [
+    "先数一数：题目说恰好有 2 句是真话。",
+    "试着假设某句话是真的，看看其它话会不会矛盾。",
+    "把每句话的真假列出来，凑出恰好 2 句真话的那种情况就是答案。"
+  ],
+  "explanation": "· 跳跳 说“不是每个人都有糖果”——这是假话 ✘\n· 小鸟 说“我们中有些人有糖果，有些人没有”——这是假话 ✘\n· 飞飞 说“我们中至少有一个有糖果”——这是真话 ✔\n· 蓝蓝 说“小鸟有糖果”——这是真话 ✔\n正好有 2 句真话（飞飞、蓝蓝），所以有糖果的是：跳跳、小鸟、飞飞、蓝蓝。",
+  "difficulty": 3,
+  "difficulty_score": 4.59,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

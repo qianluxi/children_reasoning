@@ -1,0 +1,161 @@
+{
+  "id": "excl_d3ae5a425c",
+  "type": "exclusion",
+  "story": {
+    "title": "跳绳比赛的名次",
+    "text": "5个小伙伴参加跳绳比赛。根据下面的线索，用排除法想想：棉棉是第几名？",
+    "roles": {
+      "A": "棉棉",
+      "B": "毛毛",
+      "C": "布丁",
+      "D": "壮壮",
+      "E": "小熊"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    },
+    {
+      "name": "rank_D",
+      "type": "rank"
+    },
+    {
+      "name": "rank_E",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "布丁不是第1名",
+      "logic": "RANK(C) != 1"
+    },
+    {
+      "text": "小熊不是第3名",
+      "logic": "RANK(E) != 3"
+    },
+    {
+      "text": "小熊不是第4名",
+      "logic": "RANK(E) != 4"
+    },
+    {
+      "text": "壮壮比小熊名次好",
+      "logic": "RANK(D) < RANK(E)"
+    },
+    {
+      "text": "毛毛不是第2名",
+      "logic": "RANK(B) != 2"
+    },
+    {
+      "text": "棉棉不是第5名",
+      "logic": "RANK(A) != 5"
+    },
+    {
+      "text": "毛毛在小熊前面",
+      "logic": "RANK(B) < RANK(E)"
+    },
+    {
+      "text": "棉棉不是第3名",
+      "logic": "RANK(A) != 3"
+    },
+    {
+      "text": "棉棉不是第4名",
+      "logic": "RANK(A) != 4"
+    },
+    {
+      "text": "毛毛在布丁前面",
+      "logic": "RANK(B) < RANK(C)"
+    },
+    {
+      "text": "棉棉比小熊名次好",
+      "logic": "RANK(A) < RANK(E)"
+    },
+    {
+      "text": "布丁不是第1名",
+      "logic": "RANK(C) != 1"
+    },
+    {
+      "text": "小熊不是第1名",
+      "logic": "RANK(E) != 1"
+    },
+    {
+      "text": "毛毛比布丁名次好",
+      "logic": "RANK(B) < RANK(C)"
+    },
+    {
+      "text": "毛毛不是第4名",
+      "logic": "RANK(B) != 4"
+    },
+    {
+      "text": "壮壮不是最后一名",
+      "logic": "RANK(D) != 5"
+    },
+    {
+      "text": "棉棉比毛毛名次好",
+      "logic": "RANK(A) < RANK(B)"
+    },
+    {
+      "text": "小熊不是第2名",
+      "logic": "RANK(E) != 2"
+    },
+    {
+      "text": "毛毛比小熊名次好",
+      "logic": "RANK(B) < RANK(E)"
+    },
+    {
+      "text": "壮壮在小熊前面",
+      "logic": "RANK(D) < RANK(E)"
+    },
+    {
+      "text": "毛毛不是最后一名",
+      "logic": "RANK(B) != 5"
+    },
+    {
+      "text": "棉棉不是第1名",
+      "logic": "RANK(A) != 1"
+    }
+  ],
+  "question_prompt": "棉棉是第几名？",
+  "options": [
+    "第1名",
+    "第5名",
+    "第2名",
+    "第3名",
+    "第4名"
+  ],
+  "option_logic": [
+    "RANK(A) == 1",
+    "RANK(A) == 5",
+    "RANK(A) == 2",
+    "RANK(A) == 3",
+    "RANK(A) == 4"
+  ],
+  "answer": 2,
+  "hints": [
+    "先看看哪些名次被明确排除了。",
+    "把不可能的名次一个个划掉。",
+    "最后只剩下一个名次，那就是棉棉的。"
+  ],
+  "explanation": "把线索一条条对：棉棉不可能是第1名、第3名、第4名、第5名，剩下的只能是第2名。",
+  "difficulty": 5,
+  "difficulty_score": 9.87,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

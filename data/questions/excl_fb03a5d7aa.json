@@ -1,0 +1,85 @@
+{
+  "id": "excl_fb03a5d7aa",
+  "type": "exclusion",
+  "story": {
+    "title": "跳绳比赛的名次",
+    "text": "4个小伙伴参加跳绳比赛。根据下面的线索，用排除法想想：圆圆是第几名？",
+    "roles": {
+      "A": "云云",
+      "B": "圆圆",
+      "C": "小白兔",
+      "D": "憨憨"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    },
+    {
+      "name": "rank_D",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "圆圆不是第4名",
+      "logic": "RANK(B) != 4"
+    },
+    {
+      "text": "憨憨在圆圆前面",
+      "logic": "RANK(D) < RANK(B)"
+    },
+    {
+      "text": "圆圆不是第1名",
+      "logic": "RANK(B) != 1"
+    },
+    {
+      "text": "云云不是第4名",
+      "logic": "RANK(A) != 4"
+    },
+    {
+      "text": "圆圆在云云前面",
+      "logic": "RANK(B) < RANK(A)"
+    }
+  ],
+  "question_prompt": "圆圆是第几名？",
+  "options": [
+    "第2名",
+    "第4名",
+    "第3名",
+    "第1名"
+  ],
+  "option_logic": [
+    "RANK(B) == 2",
+    "RANK(B) == 4",
+    "RANK(B) == 3",
+    "RANK(B) == 1"
+  ],
+  "answer": 0,
+  "hints": [
+    "先看看哪些名次被明确排除了。",
+    "把不可能的名次一个个划掉。",
+    "最后只剩下一个名次，那就是圆圆的。"
+  ],
+  "explanation": "把线索一条条对：圆圆不可能是第1名、第3名、第4名，剩下的只能是第2名。",
+  "difficulty": 2,
+  "difficulty_score": 3.18,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

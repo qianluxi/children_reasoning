@@ -1,0 +1,89 @@
+{
+  "id": "order_ff4a6ba4a8",
+  "type": "ordering",
+  "story": {
+    "title": "谁最高？",
+    "text": "5个小伙伴在比身高。根据下面的线索，你能排出谁高谁矮吗？",
+    "roles": {
+      "A": "吱吱",
+      "B": "雪儿",
+      "C": "大力",
+      "D": "贝贝",
+      "E": "小白兔"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    },
+    {
+      "name": "rank_D",
+      "type": "rank"
+    },
+    {
+      "name": "rank_E",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "雪儿比大力高",
+      "logic": "RANK(B) < RANK(C)"
+    },
+    {
+      "text": "大力比小白兔高",
+      "logic": "RANK(C) < RANK(E)"
+    },
+    {
+      "text": "小白兔比贝贝高",
+      "logic": "RANK(E) < RANK(D)"
+    },
+    {
+      "text": "贝贝比吱吱高",
+      "logic": "RANK(D) < RANK(A)"
+    }
+  ],
+  "question_prompt": "谁是第 3 高？",
+  "options": [
+    "雪儿",
+    "吱吱",
+    "小白兔",
+    "贝贝",
+    "大力"
+  ],
+  "option_logic": [
+    "RANK(B) == 3",
+    "RANK(A) == 3",
+    "RANK(E) == 3",
+    "RANK(D) == 3",
+    "RANK(C) == 3"
+  ],
+  "answer": 2,
+  "hints": [
+    "先把能确定的相邻关系连起来。",
+    "试着把所有人按线索串成一条链。",
+    "数一数：从最高的开始数，第 3 个是谁？"
+  ],
+  "explanation": "从高到矮的顺序是：雪儿 → 大力 → 小白兔 → 贝贝 → 吱吱。所以第 3 高的是 小白兔。",
+  "difficulty": 2,
+  "difficulty_score": 3.57,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

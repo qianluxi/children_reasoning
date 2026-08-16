@@ -1,0 +1,69 @@
+{
+  "id": "excl_c4426869c5",
+  "type": "exclusion",
+  "story": {
+    "title": "排队领点心的名次",
+    "text": "3个小伙伴参加排队领点心。根据下面的线索，用排除法想想：毛毛是第几个？",
+    "roles": {
+      "A": "跳跳",
+      "B": "毛毛",
+      "C": "圆圆"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "圆圆不是第1个",
+      "logic": "RANK(C) != 1"
+    },
+    {
+      "text": "圆圆不是第3个",
+      "logic": "RANK(C) != 3"
+    },
+    {
+      "text": "圆圆比跳跳名次好",
+      "logic": "RANK(C) < RANK(A)"
+    }
+  ],
+  "question_prompt": "毛毛是第几个？",
+  "options": [
+    "第2个",
+    "第1个",
+    "第3个"
+  ],
+  "option_logic": [
+    "RANK(B) == 2",
+    "RANK(B) == 1",
+    "RANK(B) == 3"
+  ],
+  "answer": 1,
+  "hints": [
+    "先看看哪些名次被明确排除了。",
+    "把不可能的名次一个个划掉。",
+    "最后只剩下一个名次，那就是毛毛的。"
+  ],
+  "explanation": "把线索一条条对：毛毛不可能是第2个、第3个，剩下的只能是第1个。",
+  "difficulty": 1,
+  "difficulty_score": 1.76,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

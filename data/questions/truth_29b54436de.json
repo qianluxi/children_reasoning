@@ -1,0 +1,90 @@
+{
+  "id": "truth_29b54436de",
+  "type": "truth_statements",
+  "story": {
+    "title": "谁有面包？",
+    "text": "4个小伙伴在一起，他们可能藏了🍞面包。每个人都说了一句话。已知他们里面恰好有 1 句是真话。到底谁有面包呢？",
+    "roles": {
+      "A": "小熊",
+      "B": "布丁",
+      "C": "旺旺",
+      "D": "奶糖"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "A_bread",
+      "type": "boolean"
+    },
+    {
+      "name": "B_bread",
+      "type": "boolean"
+    },
+    {
+      "name": "C_bread",
+      "type": "boolean"
+    },
+    {
+      "name": "D_bread",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "我有面包",
+      "logic": "A_bread",
+      "speaker": "A"
+    },
+    {
+      "text": "不是每个人都有面包",
+      "logic": "NOT_ALL(bread)",
+      "speaker": "B"
+    },
+    {
+      "text": "布丁或奶糖至少有一个有面包",
+      "logic": "B_bread || D_bread",
+      "speaker": "C"
+    },
+    {
+      "text": "旺旺没有面包",
+      "logic": "!C_bread",
+      "speaker": "D"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "恰好有 1 句是真话",
+      "logic": "TRUTH_COUNT == 1"
+    }
+  ],
+  "question_prompt": "到底谁有面包？",
+  "options": [
+    "只有小熊、布丁、奶糖有面包",
+    "只有小熊、旺旺、奶糖有面包",
+    "只有旺旺有面包",
+    "只有小熊、旺旺有面包"
+  ],
+  "option_logic": [
+    "A_bread && B_bread && D_bread && !C_bread",
+    "A_bread && C_bread && D_bread && !B_bread",
+    "C_bread && COUNT(bread) == 1",
+    "A_bread && C_bread && !B_bread && !D_bread"
+  ],
+  "answer": 2,
+  "hints": [
+    "先数一数：题目说恰好有 1 句是真话。",
+    "试着假设某句话是真的，看看其它话会不会矛盾。",
+    "把每句话的真假列出来，凑出恰好 1 句真话的那种情况就是答案。"
+  ],
+  "explanation": "· 小熊 说“我有面包”——这是假话 ✘\n· 布丁 说“不是每个人都有面包”——这是真话 ✔\n· 旺旺 说“布丁或奶糖至少有一个有面包”——这是假话 ✘\n· 奶糖 说“旺旺没有面包”——这是假话 ✘\n正好有 1 句真话（布丁），所以有面包的是：旺旺。",
+  "difficulty": 3,
+  "difficulty_score": 4.59,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

@@ -1,0 +1,65 @@
+{
+  "id": "order_5bb1d50c74",
+  "type": "ordering",
+  "story": {
+    "title": "排排队：谁在第 1？",
+    "text": "3个小伙伴要排成一列。根据下面的线索，你能排出他们的顺序吗？",
+    "roles": {
+      "A": "小灰",
+      "B": "咪咪",
+      "C": "旺旺"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "旺旺排在咪咪前面",
+      "logic": "RANK(C) < RANK(B)"
+    },
+    {
+      "text": "咪咪排在小灰前面",
+      "logic": "RANK(B) < RANK(A)"
+    }
+  ],
+  "question_prompt": "谁排在第 2 位？",
+  "options": [
+    "小灰",
+    "咪咪",
+    "旺旺"
+  ],
+  "option_logic": [
+    "RANK(A) == 2",
+    "RANK(B) == 2",
+    "RANK(C) == 2"
+  ],
+  "answer": 1,
+  "hints": [
+    "先把能确定的相邻关系连起来。",
+    "试着把所有人按线索串成一条链。",
+    "数一数：从第 1 位一路数到第 2 位，看看是谁。"
+  ],
+  "explanation": "完整顺序是：旺旺 → 咪咪 → 小灰。所以排在第 2 位的是 咪咪。",
+  "difficulty": 1,
+  "difficulty_score": 1.41,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

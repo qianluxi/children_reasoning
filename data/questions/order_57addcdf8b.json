@@ -1,0 +1,65 @@
+{
+  "id": "order_57addcdf8b",
+  "type": "ordering",
+  "story": {
+    "title": "谁最高？",
+    "text": "3个小伙伴在比身高。根据下面的线索，你能排出谁高谁矮吗？",
+    "roles": {
+      "A": "小猫咪",
+      "B": "雪儿",
+      "C": "虎斑"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "虎斑比雪儿高",
+      "logic": "RANK(C) < RANK(B)"
+    },
+    {
+      "text": "雪儿比小猫咪高",
+      "logic": "RANK(B) < RANK(A)"
+    }
+  ],
+  "question_prompt": "谁是第 3 高？",
+  "options": [
+    "雪儿",
+    "虎斑",
+    "小猫咪"
+  ],
+  "option_logic": [
+    "RANK(B) == 3",
+    "RANK(C) == 3",
+    "RANK(A) == 3"
+  ],
+  "answer": 2,
+  "hints": [
+    "先把能确定的相邻关系连起来。",
+    "试着把所有人按线索串成一条链。",
+    "数一数：从最高的开始数，第 3 个是谁？"
+  ],
+  "explanation": "从高到矮的顺序是：虎斑 → 雪儿 → 小猫咪。所以第 3 高的是 小猫咪。",
+  "difficulty": 1,
+  "difficulty_score": 1.41,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

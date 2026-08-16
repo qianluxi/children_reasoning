@@ -1,0 +1,79 @@
+{
+  "id": "truth_2f9c16fcac",
+  "type": "truth_statements",
+  "story": {
+    "title": "谁有奶酪？",
+    "text": "3个小伙伴在一起，他们可能藏了🧀奶酪。每个人都说了一句话。已知他们里面恰好有 2 句是真话。到底谁有奶酪呢？",
+    "roles": {
+      "A": "飞飞",
+      "B": "布丁",
+      "C": "吱吱"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "A_cheese",
+      "type": "boolean"
+    },
+    {
+      "name": "B_cheese",
+      "type": "boolean"
+    },
+    {
+      "name": "C_cheese",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "布丁没有奶酪",
+      "logic": "!B_cheese",
+      "speaker": "A"
+    },
+    {
+      "text": "我们中有些人有奶酪，有些人没有",
+      "logic": "SOME(cheese) && NOT_ALL(cheese)",
+      "speaker": "B"
+    },
+    {
+      "text": "布丁没有奶酪",
+      "logic": "!B_cheese",
+      "speaker": "C"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "恰好有 2 句是真话",
+      "logic": "TRUTH_COUNT == 2"
+    }
+  ],
+  "question_prompt": "到底谁有奶酪？",
+  "options": [
+    "只有飞飞有奶酪",
+    "谁都没有有奶酪",
+    "只有吱吱有奶酪",
+    "只有飞飞、布丁有奶酪"
+  ],
+  "option_logic": [
+    "A_cheese && COUNT(cheese) == 1",
+    "NONE(cheese)",
+    "C_cheese && COUNT(cheese) == 1",
+    "A_cheese && B_cheese && !C_cheese"
+  ],
+  "answer": 1,
+  "hints": [
+    "先数一数：题目说恰好有 2 句是真话。",
+    "试着假设某句话是真的，看看其它话会不会矛盾。",
+    "把每句话的真假列出来，凑出恰好 2 句真话的那种情况就是答案。"
+  ],
+  "explanation": "· 飞飞 说“布丁没有奶酪”——这是真话 ✔\n· 布丁 说“我们中有些人有奶酪，有些人没有”——这是假话 ✘\n· 吱吱 说“布丁没有奶酪”——这是真话 ✔\n正好有 2 句真话（飞飞、吱吱），所以其实谁都没有奶酪。",
+  "difficulty": 2,
+  "difficulty_score": 3.73,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

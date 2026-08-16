@@ -1,0 +1,101 @@
+{
+  "id": "truth_2a08f8d7df",
+  "type": "truth_statements",
+  "story": {
+    "title": "谁有奶酪？",
+    "text": "5个小伙伴在一起，他们可能藏了🧀奶酪。每个人都说了一句话。已知他们里面恰好有 3 句是真话。到底谁有奶酪呢？",
+    "roles": {
+      "A": "大黄",
+      "B": "奶糖",
+      "C": "米粒",
+      "D": "点点",
+      "E": "花花"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "variables": [
+    {
+      "name": "A_cheese",
+      "type": "boolean"
+    },
+    {
+      "name": "B_cheese",
+      "type": "boolean"
+    },
+    {
+      "name": "C_cheese",
+      "type": "boolean"
+    },
+    {
+      "name": "D_cheese",
+      "type": "boolean"
+    },
+    {
+      "name": "E_cheese",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "奶糖和花花都有奶酪",
+      "logic": "B_cheese && E_cheese",
+      "speaker": "A"
+    },
+    {
+      "text": "花花没有奶酪",
+      "logic": "!E_cheese",
+      "speaker": "B"
+    },
+    {
+      "text": "点点和花花都有奶酪",
+      "logic": "D_cheese && E_cheese",
+      "speaker": "C"
+    },
+    {
+      "text": "奶糖没有奶酪",
+      "logic": "!B_cheese",
+      "speaker": "D"
+    },
+    {
+      "text": "我们每个人都有奶酪",
+      "logic": "ALL(cheese)",
+      "speaker": "E"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "恰好有 3 句是真话",
+      "logic": "TRUTH_COUNT == 3"
+    }
+  ],
+  "question_prompt": "到底谁有奶酪？",
+  "options": [
+    "只有大黄有奶酪",
+    "所有人都有奶酪",
+    "只有奶糖、米粒、点点、花花有奶酪",
+    "只有米粒、点点有奶酪"
+  ],
+  "option_logic": [
+    "A_cheese && COUNT(cheese) == 1",
+    "ALL(cheese)",
+    "B_cheese && C_cheese && D_cheese && E_cheese && !A_cheese",
+    "C_cheese && D_cheese && !A_cheese && !B_cheese && !E_cheese"
+  ],
+  "answer": 1,
+  "hints": [
+    "先数一数：题目说恰好有 3 句是真话。",
+    "试着假设某句话是真的，看看其它话会不会矛盾。",
+    "把每句话的真假列出来，凑出恰好 3 句真话的那种情况就是答案。"
+  ],
+  "explanation": "· 大黄 说“奶糖和花花都有奶酪”——这是真话 ✔\n· 奶糖 说“花花没有奶酪”——这是假话 ✘\n· 米粒 说“点点和花花都有奶酪”——这是真话 ✔\n· 点点 说“奶糖没有奶酪”——这是假话 ✘\n· 花花 说“我们每个人都有奶酪”——这是真话 ✔\n正好有 3 句真话（大黄、米粒、花花），所以有奶酪的是：大黄、奶糖、米粒、点点、花花。",
+  "difficulty": 3,
+  "difficulty_score": 5.45,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

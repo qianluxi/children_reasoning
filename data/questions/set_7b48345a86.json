@@ -1,0 +1,69 @@
+{
+  "id": "set_7b48345a86",
+  "type": "set_logic",
+  "story": {
+    "title": "谁有奶酪？",
+    "text": "看看下面的情况，想一想：哪一句话是对的？",
+    "roles": {
+      "A": "蓝蓝",
+      "B": "吱吱",
+      "C": "飞飞"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "A_cheese",
+      "type": "boolean"
+    },
+    {
+      "name": "B_cheese",
+      "type": "boolean"
+    },
+    {
+      "name": "C_cheese",
+      "type": "boolean"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "蓝蓝有🧀奶酪",
+      "logic": "A_cheese"
+    },
+    {
+      "text": "吱吱有🧀奶酪",
+      "logic": "B_cheese"
+    },
+    {
+      "text": "飞飞有🧀奶酪",
+      "logic": "C_cheese"
+    }
+  ],
+  "question_prompt": "关于奶酪，下面哪句话是对的？",
+  "options": [
+    "所有人都有奶酪",
+    "有些人有奶酪，有些人没有",
+    "谁都没有奶酪"
+  ],
+  "option_logic": [
+    "ALL(cheese)",
+    "SOME(cheese) && NOT_ALL(cheese)",
+    "NONE(cheese)"
+  ],
+  "answer": 0,
+  "hints": [
+    "先数一数：一共有几个人有奶酪。",
+    "“所有”表示一个不少；“都没有”表示一个也没有。",
+    "只要有人有、也有人没有，那就是“有些人有，有些人没有”。"
+  ],
+  "explanation": "有奶酪的是：蓝蓝、吱吱、飞飞。\n所以“所有人都有奶酪”是对的。",
+  "difficulty": 1,
+  "difficulty_score": 1.73,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

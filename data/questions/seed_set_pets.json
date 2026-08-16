@@ -53,7 +53,7 @@
   "option_logic": [
     "ALL(fish)",
     "NONE(fish)",
-    "SOME(fish) && SOME_NOT(fish)"
+    "SOME(fish) && NOT_ALL(fish)"
   ],
   "answer": 2,
   "hints": [

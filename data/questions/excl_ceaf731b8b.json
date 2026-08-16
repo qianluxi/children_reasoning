@@ -1,0 +1,109 @@
+{
+  "id": "excl_ceaf731b8b",
+  "type": "exclusion",
+  "story": {
+    "title": "跳绳比赛的名次",
+    "text": "4个小伙伴参加跳绳比赛。根据下面的线索，用排除法想想：豆豆是第几名？",
+    "roles": {
+      "A": "小熊",
+      "B": "大黄",
+      "C": "豆豆",
+      "D": "小灰"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    },
+    {
+      "name": "rank_D",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "小灰不是第1名",
+      "logic": "RANK(D) != 1"
+    },
+    {
+      "text": "大黄比小熊名次好",
+      "logic": "RANK(B) < RANK(A)"
+    },
+    {
+      "text": "大黄比小灰名次好",
+      "logic": "RANK(B) < RANK(D)"
+    },
+    {
+      "text": "大黄不是第3名",
+      "logic": "RANK(B) != 3"
+    },
+    {
+      "text": "豆豆不是第1名",
+      "logic": "RANK(C) != 1"
+    },
+    {
+      "text": "豆豆在小熊前面",
+      "logic": "RANK(C) < RANK(A)"
+    },
+    {
+      "text": "大黄在豆豆前面",
+      "logic": "RANK(B) < RANK(C)"
+    },
+    {
+      "text": "豆豆不是第4名",
+      "logic": "RANK(C) != 4"
+    },
+    {
+      "text": "小灰不是第1名",
+      "logic": "RANK(D) != 1"
+    },
+    {
+      "text": "豆豆不是第1名",
+      "logic": "RANK(C) != 1"
+    },
+    {
+      "text": "豆豆比小灰名次好",
+      "logic": "RANK(C) < RANK(D)"
+    }
+  ],
+  "question_prompt": "豆豆是第几名？",
+  "options": [
+    "第3名",
+    "第1名",
+    "第2名",
+    "第4名"
+  ],
+  "option_logic": [
+    "RANK(C) == 3",
+    "RANK(C) == 1",
+    "RANK(C) == 2",
+    "RANK(C) == 4"
+  ],
+  "answer": 2,
+  "hints": [
+    "先看看哪些名次被明确排除了。",
+    "把不可能的名次一个个划掉。",
+    "最后只剩下一个名次，那就是豆豆的。"
+  ],
+  "explanation": "把线索一条条对：豆豆不可能是第1名、第3名、第4名，剩下的只能是第2名。",
+  "difficulty": 3,
+  "difficulty_score": 5.28,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

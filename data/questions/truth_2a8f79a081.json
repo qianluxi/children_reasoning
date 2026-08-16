@@ -1,0 +1,90 @@
+{
+  "id": "truth_2a8f79a081",
+  "type": "truth_statements",
+  "story": {
+    "title": "谁有胡萝卜？",
+    "text": "4个小伙伴在一起，他们可能藏了🥕胡萝卜。每个人都说了一句话。已知他们里面恰好有 1 句是真话。到底谁有胡萝卜呢？",
+    "roles": {
+      "A": "花花",
+      "B": "贝贝",
+      "C": "圆圆",
+      "D": "小灰"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "A_carrot",
+      "type": "boolean"
+    },
+    {
+      "name": "B_carrot",
+      "type": "boolean"
+    },
+    {
+      "name": "C_carrot",
+      "type": "boolean"
+    },
+    {
+      "name": "D_carrot",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "小灰没有胡萝卜",
+      "logic": "!D_carrot",
+      "speaker": "A"
+    },
+    {
+      "text": "至少有2个人有胡萝卜",
+      "logic": "COUNT(carrot) >= 2",
+      "speaker": "B"
+    },
+    {
+      "text": "恰好有1个人有胡萝卜",
+      "logic": "COUNT(carrot) == 1",
+      "speaker": "C"
+    },
+    {
+      "text": "不是每个人都有胡萝卜",
+      "logic": "NOT_ALL(carrot)",
+      "speaker": "D"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "恰好有 1 句是真话",
+      "logic": "TRUTH_COUNT == 1"
+    }
+  ],
+  "question_prompt": "到底谁有胡萝卜？",
+  "options": [
+    "只有花花、圆圆有胡萝卜",
+    "只有圆圆、小灰有胡萝卜",
+    "只有小灰有胡萝卜",
+    "所有人都有胡萝卜"
+  ],
+  "option_logic": [
+    "A_carrot && C_carrot && !B_carrot && !D_carrot",
+    "C_carrot && D_carrot && !A_carrot && !B_carrot",
+    "D_carrot && COUNT(carrot) == 1",
+    "ALL(carrot)"
+  ],
+  "answer": 3,
+  "hints": [
+    "先数一数：题目说恰好有 1 句是真话。",
+    "试着假设某句话是真的，看看其它话会不会矛盾。",
+    "把每句话的真假列出来，凑出恰好 1 句真话的那种情况就是答案。"
+  ],
+  "explanation": "· 花花 说“小灰没有胡萝卜”——这是假话 ✘\n· 贝贝 说“至少有2个人有胡萝卜”——这是真话 ✔\n· 圆圆 说“恰好有1个人有胡萝卜”——这是假话 ✘\n· 小灰 说“不是每个人都有胡萝卜”——这是假话 ✘\n正好有 1 句真话（贝贝），所以有胡萝卜的是：花花、贝贝、圆圆、小灰。",
+  "difficulty": 3,
+  "difficulty_score": 4.59,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

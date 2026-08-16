@@ -1,0 +1,77 @@
+{
+  "id": "order_03626f848a",
+  "type": "ordering",
+  "story": {
+    "title": "谁跑得最快？",
+    "text": "4个小伙伴参加跑步比赛。根据下面的线索，你能排出比赛名次吗？",
+    "roles": {
+      "A": "大力",
+      "B": "小白兔",
+      "C": "乐乐",
+      "D": "花花"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    },
+    {
+      "name": "rank_D",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "花花比小白兔跑得快",
+      "logic": "RANK(D) < RANK(B)"
+    },
+    {
+      "text": "乐乐比小白兔跑得慢",
+      "logic": "RANK(B) < RANK(C)"
+    },
+    {
+      "text": "乐乐比大力跑得快",
+      "logic": "RANK(C) < RANK(A)"
+    }
+  ],
+  "question_prompt": "谁获得第 4 名？",
+  "options": [
+    "乐乐",
+    "大力",
+    "小白兔",
+    "花花"
+  ],
+  "option_logic": [
+    "RANK(C) == 4",
+    "RANK(A) == 4",
+    "RANK(B) == 4",
+    "RANK(D) == 4"
+  ],
+  "answer": 1,
+  "hints": [
+    "先把能确定的相邻关系连起来。",
+    "试着把所有人按线索串成一条链。",
+    "数一数：从第 1 名一路数到第 4 名，看看是谁。"
+  ],
+  "explanation": "比赛名次是：花花 → 小白兔 → 乐乐 → 大力。所以获得第 4 名的是 大力。",
+  "difficulty": 2,
+  "difficulty_score": 2.48,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

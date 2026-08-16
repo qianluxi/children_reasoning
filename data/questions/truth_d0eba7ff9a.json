@@ -1,0 +1,79 @@
+{
+  "id": "truth_d0eba7ff9a",
+  "type": "truth_statements",
+  "story": {
+    "title": "谁有饼干？",
+    "text": "3个小伙伴在一起，他们可能藏了🍪饼干。每个人都说了一句话。已知他们里面恰好有 1 句是真话。到底谁有饼干呢？",
+    "roles": {
+      "A": "憨憨",
+      "B": "小狗",
+      "C": "花花"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "A_cookie",
+      "type": "boolean"
+    },
+    {
+      "name": "B_cookie",
+      "type": "boolean"
+    },
+    {
+      "name": "C_cookie",
+      "type": "boolean"
+    }
+  ],
+  "statements": [
+    {
+      "text": "我没有饼干",
+      "logic": "!A_cookie",
+      "speaker": "A"
+    },
+    {
+      "text": "憨憨有饼干",
+      "logic": "A_cookie",
+      "speaker": "B"
+    },
+    {
+      "text": "不是每个人都有饼干",
+      "logic": "NOT_ALL(cookie)",
+      "speaker": "C"
+    }
+  ],
+  "constraints": [
+    {
+      "text": "恰好有 1 句是真话",
+      "logic": "TRUTH_COUNT == 1"
+    }
+  ],
+  "question_prompt": "到底谁有饼干？",
+  "options": [
+    "只有憨憨、小狗有饼干",
+    "只有小狗有饼干",
+    "只有小狗、花花有饼干",
+    "所有人都有饼干"
+  ],
+  "option_logic": [
+    "A_cookie && B_cookie && !C_cookie",
+    "B_cookie && COUNT(cookie) == 1",
+    "B_cookie && C_cookie && !A_cookie",
+    "ALL(cookie)"
+  ],
+  "answer": 3,
+  "hints": [
+    "先数一数：题目说恰好有 1 句是真话。",
+    "试着假设某句话是真的，看看其它话会不会矛盾。",
+    "把每句话的真假列出来，凑出恰好 1 句真话的那种情况就是答案。"
+  ],
+  "explanation": "· 憨憨 说“我没有饼干”——这是假话 ✘\n· 小狗 说“憨憨有饼干”——这是真话 ✔\n· 花花 说“不是每个人都有饼干”——这是假话 ✘\n正好有 1 句真话（小狗），所以有饼干的是：憨憨、小狗、花花。",
+  "difficulty": 2,
+  "difficulty_score": 3.73,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

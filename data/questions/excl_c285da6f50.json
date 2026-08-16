@@ -1,0 +1,65 @@
+{
+  "id": "excl_c285da6f50",
+  "type": "exclusion",
+  "story": {
+    "title": "唱歌比赛的名次",
+    "text": "3个小伙伴参加唱歌比赛。根据下面的线索，用排除法想想：小熊是第几名？",
+    "roles": {
+      "A": "小熊",
+      "B": "吱吱",
+      "C": "小狗"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "吱吱不是最后一名",
+      "logic": "RANK(B) != 3"
+    },
+    {
+      "text": "小狗不是第3名",
+      "logic": "RANK(C) != 3"
+    }
+  ],
+  "question_prompt": "小熊是第几名？",
+  "options": [
+    "第1名",
+    "第2名",
+    "第3名"
+  ],
+  "option_logic": [
+    "RANK(A) == 1",
+    "RANK(A) == 2",
+    "RANK(A) == 3"
+  ],
+  "answer": 2,
+  "hints": [
+    "先看看哪些名次被明确排除了。",
+    "把不可能的名次一个个划掉。",
+    "最后只剩下一个名次，那就是小熊的。"
+  ],
+  "explanation": "把线索一条条对：小熊不可能是第1名、第2名，剩下的只能是第3名。",
+  "difficulty": 1,
+  "difficulty_score": 1.41,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}

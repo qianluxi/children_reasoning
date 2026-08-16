@@ -1,0 +1,79 @@
+{
+  "id": "set_cc70e0633f",
+  "type": "set_logic",
+  "story": {
+    "title": "谁有小鱼？",
+    "text": "看看下面的情况，想一想：哪一句话是对的？",
+    "roles": {
+      "A": "壮壮",
+      "B": "茸茸",
+      "C": "奶糖",
+      "D": "毛毛"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "A_fish",
+      "type": "boolean"
+    },
+    {
+      "name": "B_fish",
+      "type": "boolean"
+    },
+    {
+      "name": "C_fish",
+      "type": "boolean"
+    },
+    {
+      "name": "D_fish",
+      "type": "boolean"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "壮壮没有🐟小鱼",
+      "logic": "!A_fish"
+    },
+    {
+      "text": "茸茸没有🐟小鱼",
+      "logic": "!B_fish"
+    },
+    {
+      "text": "奶糖没有🐟小鱼",
+      "logic": "!C_fish"
+    },
+    {
+      "text": "毛毛没有🐟小鱼",
+      "logic": "!D_fish"
+    }
+  ],
+  "question_prompt": "关于小鱼，下面哪句话是对的？",
+  "options": [
+    "所有人都有小鱼",
+    "谁都没有小鱼",
+    "有些人有小鱼，有些人没有"
+  ],
+  "option_logic": [
+    "ALL(fish)",
+    "NONE(fish)",
+    "SOME(fish) && NOT_ALL(fish)"
+  ],
+  "answer": 1,
+  "hints": [
+    "先数一数：一共有几个人有小鱼。",
+    "“所有”表示一个不少；“都没有”表示一个也没有。",
+    "只要有人有、也有人没有，那就是“有些人有，有些人没有”。"
+  ],
+  "explanation": "没有小鱼的是：壮壮、茸茸、奶糖、毛毛。\n所以“谁都没有小鱼”是对的。",
+  "difficulty": 2,
+  "difficulty_score": 2.59,
+  "source": "generated",
+  "created_at": "2026-08-16 12:46:16"
+}
