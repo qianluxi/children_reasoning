@@ -22,11 +22,11 @@ from logic_kids.engine import adaptive
 
 
 def cmd_seed(args):
-    seeds = seed.all_seeds()
+    seeds = seed.validated_seeds()
     for q in seeds:
         difficulty_engine.apply(q)
     store.save_many(seeds)
-    print(f"已载入 {len(seeds)} 道种子题。")
+    print(f"已载入 {len(seeds)} 道种子题（未通过 Validator 的已跳过）。")
 
 
 def cmd_generate(args):

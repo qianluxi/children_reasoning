@@ -78,6 +78,30 @@ def test_no_duplicate_options_in_batch():
             assert 0 <= q.answer < len(q.options)
 
 
+def test_ordering_story_prompt_semantics_match():
+    """顺序题的题干/故事/线索必须与关系场景一致（专家审查 P0）。
+
+    排队 → 问"第 X 位"；身高 → 问"第 X 高"；比赛 → 问"第 X 名"，
+    三者绝不能混用（例如"比身高"却问"谁排在第 X 位"）。
+    """
+    rng = random.Random(42)
+    for _ in range(60):
+        q = ordering.generate(rng)
+        prompt = q.question_prompt
+        story = q.story.title + q.story.text
+        cons = "".join(c.text for c in q.constraints)
+        if "位" in prompt:      # 排队场景
+            assert "排" in story and "排" in cons, f"排队题语义不符: {prompt} / {story}"
+        elif "高" in prompt:    # 身高场景
+            assert "身高" in story, f"身高题故事不符: {story}"
+            assert "高" in cons or "矮" in cons, f"身高题线索不符: {cons}"
+        elif "名" in prompt:    # 比赛场景
+            assert "比赛" in story, f"比赛题故事不符: {story}"
+            assert "跑" in cons, f"比赛题线索不符: {cons}"
+        else:
+            pytest.fail(f"未知提问形式: {prompt}")
+
+
 def test_seeds_are_valid():
     from logic_kids.bank.seed import all_seeds
     for q in all_seeds():

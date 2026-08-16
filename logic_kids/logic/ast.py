@@ -178,7 +178,8 @@ class CompareNode(LogicNode):
 
 
 class QuantifierNode(LogicNode):
-    """量词：ALL(prop) 所有 / SOME(prop) 有些 / NONE(prop) 没有 / SOME_NOT(prop) 有些没。"""
+    """量词：ALL(prop) 所有 / SOME(prop) 有些 / NONE(prop) 没有 /
+    NOT_ALL(prop) 不是所有（"有些没"的旧名 SOME_NOT 归一化为 not_all）。"""
 
     def __init__(self, kind: str, var_names: list):
         self.kind = kind
@@ -192,7 +193,7 @@ class QuantifierNode(LogicNode):
             return any(values)
         if self.kind == "none":
             return not any(values)
-        if self.kind == "some_not":
+        if self.kind in ("not_all", "some_not"):
             return not all(values)
         raise ValueError(f"未知量词: {self.kind}")
 

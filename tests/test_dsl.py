@@ -46,6 +46,21 @@ def test_quantifiers():
     assert eval_expr("NONE(cheese)", {"A_cheese": False, "B_cheese": False, "C_cheese": False, "D_cheese": False})
 
 
+def test_not_all_quantifier():
+    # NOT_ALL = "不是所有"（至少一个没有）；SOME_NOT 是它的旧别名，语义相同
+    s = {"A_cheese": True, "B_cheese": True, "C_cheese": False, "D_cheese": True}
+    assert eval_expr("NOT_ALL(cheese)", s)
+    assert not eval_expr("NOT_ALL(cheese)", {**s, "C_cheese": True})
+    assert eval_expr("NOT_ALL(cheese)", {"A_cheese": False, "B_cheese": False,
+                                         "C_cheese": False, "D_cheese": False})
+    assert eval_expr("SOME_NOT(cheese)", s) == eval_expr("NOT_ALL(cheese)", s)
+    # "有些人有，有些人没有" = SOME && NOT_ALL（至少要有一个有）
+    s2 = {"A_cheese": True, "B_cheese": False, "C_cheese": False, "D_cheese": False}
+    assert eval_expr("SOME(cheese) && NOT_ALL(cheese)", s2)
+    assert not eval_expr("SOME(cheese) && NOT_ALL(cheese)",
+                         {"A_cheese": False, "B_cheese": False, "C_cheese": False, "D_cheese": False})
+
+
 def test_count():
     s = {"A_cheese": True, "B_cheese": True, "C_cheese": False, "D_cheese": False}
     assert eval_expr("COUNT(cheese) >= 2", s)

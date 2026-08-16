@@ -108,7 +108,8 @@ async function submitAnswer(choice, btn) {
   const res = await fetch('/api/answer', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ child_id: childId, question_id: currentQ.id, choice }),
+    // 身份由服务端 session 绑定，无需（也不应）在请求里带 child_id
+    body: JSON.stringify({ question_id: currentQ.id, choice }),
   });
   const r = await res.json();
 

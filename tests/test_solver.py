@@ -1,4 +1,6 @@
 """Solver 测试：四只老鼠种子题 + 典型题型建模。"""
+import pytest
+
 from logic_kids.logic import solver
 from logic_kids.models import Question, Story, Variable, Statement, Constraint
 
@@ -112,3 +114,27 @@ def test_option_truth_counts():
     solutions = solver.solve(q)
     counts = solver.option_truth_counts(q, solutions)
     assert counts == [1, 0, 0]
+
+
+# ---------- 专家审查 P1：状态空间上限保护 ----------
+
+def test_state_space_guard_boolean():
+    q = make_question(
+        variables=[Variable(f"v{i}", "boolean") for i in range(13)], constraints=[])
+    with pytest.raises(solver.QuestionError):
+        solver.solve(q)
+
+
+def test_state_space_guard_rank():
+    q = make_question(
+        type="ordering", entities=[],
+        variables=[Variable(f"rank_{i}", "rank") for i in range(9)], constraints=[])
+    with pytest.raises(solver.QuestionError):
+        solver.solve(q)
+
+
+def test_state_space_guard_boundary_ok():
+    # 上限边界内仍可正常求解
+    q = make_question(
+        variables=[Variable(f"v{i}", "boolean") for i in range(12)], constraints=[])
+    assert len(solver.solve(q)) == 2 ** 12

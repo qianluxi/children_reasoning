@@ -26,7 +26,8 @@ def _statement_pool(codes: list, prop: str, item_zh: str) -> list:
         (f"我们每个人都有{item_zh}", "ALL({p})".format(p=prop)),
         (f"我们谁都没有{item_zh}", "NONE({p})".format(p=prop)),
         (f"我们中至少有一个有{item_zh}", "SOME({p})".format(p=prop)),
-        (f"我们中有些人没有{item_zh}", "SOME_NOT({p})".format(p=prop)),
+        (f"不是每个人都有{item_zh}", "NOT_ALL({p})".format(p=prop)),
+        (f"我们中有些人有{item_zh}，有些人没有", f"SOME({prop}) && NOT_ALL({prop})"),
     ]
     for m in range(1, n):
         group.append((f"恰好有{m}个人有{item_zh}", f"COUNT({prop}) == {m}"))

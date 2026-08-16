@@ -46,7 +46,7 @@ def generate(rng: random.Random, n_entities: int = None, max_tries: int = 100):
         f"谁都没有{item_zh}",
         f"有些人有{item_zh}，有些人没有",
     ]
-    logics = [f"ALL({prop})", f"NONE({prop})", f"SOME({prop}) && SOME_NOT({prop})"]
+    logics = [f"ALL({prop})", f"NONE({prop})", f"SOME({prop}) && NOT_ALL({prop})"]
     if len(subset_true) == len(codes):
         correct_idx = 0
     elif len(subset_true) == 0:

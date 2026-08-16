@@ -1,8 +1,14 @@
-"""全局路径配置。"""
+"""全局路径配置。
+
+数据目录可用环境变量 LOGIC_KIDS_DATA_DIR 覆盖（测试隔离用），
+否则默认使用项目根目录下的 data/。
+"""
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent   # 项目根目录
-DATA_DIR = BASE_DIR / "data"
+_DATA_OVERRIDE = os.environ.get("LOGIC_KIDS_DATA_DIR")
+DATA_DIR = Path(_DATA_OVERRIDE) if _DATA_OVERRIDE else BASE_DIR / "data"
 QUESTIONS_DIR = DATA_DIR / "questions"              # 每道题一个 JSON 文件
 BANK_INDEX_PATH = DATA_DIR / "bank_index.json"      # 题库索引
 DB_PATH = DATA_DIR / "profiles.db"                  # 儿童进度 SQLite

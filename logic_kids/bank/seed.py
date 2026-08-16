@@ -24,7 +24,7 @@ def seed_mice() -> Question:
         entities=codes,
         variables=[Variable(f"{c}_cheese", "boolean") for c in codes],
         statements=[
-            Statement(text="我们中有些老鼠没偷奶酪", logic="SOME_NOT(cheese)", speaker="A"),
+            Statement(text="不是所有老鼠都偷了奶酪", logic="NOT_ALL(cheese)", speaker="A"),
             Statement(text="至少有一只老鼠偷了奶酪", logic="SOME(cheese)", speaker="B"),
             Statement(text="没有老鼠偷奶酪", logic="NONE(cheese)", speaker="C"),
             Statement(text="只有我偷了奶酪", logic="D_cheese && COUNT(cheese) == 1", speaker="D"),
@@ -33,13 +33,13 @@ def seed_mice() -> Question:
         question_prompt="到底哪些老鼠偷了奶酪？",
         options=[
             "所有老鼠都偷了奶酪",
-            "有些老鼠没偷奶酪",
+            "有些老鼠有奶酪，有些老鼠没有",
             "没有老鼠偷奶酪",
             "只有团团偷了奶酪",
         ],
         option_logic=[
             "ALL(cheese)",
-            "SOME_NOT(cheese)",
+            "SOME(cheese) && NOT_ALL(cheese)",
             "NONE(cheese)",
             "D_cheese && COUNT(cheese) == 1",
         ],
@@ -51,7 +51,7 @@ def seed_mice() -> Question:
         ],
         explanation=(
             "假设米粒说真话，也就是“至少有一只老鼠偷了奶酪”。\n"
-            "· 小灰说“有些没偷”：如果四只都偷了，这句就是假话，符合。\n"
+            "· 小灰说“不是所有老鼠都偷了奶酪”：如果四只都偷了，这句就是假话，符合。\n"
             "· 吱吱说“没有老鼠偷”：和“至少一只偷了”矛盾，是假话，符合。\n"
             "· 团团说“只有我偷了”：若是真的，米粒那句也对了，就有两句真话，所以它是假话，符合。\n"
             "这样恰好只有一句真话，此时四只老鼠都偷了奶酪。答案是：所有老鼠都偷了奶酪。"
@@ -146,7 +146,7 @@ def seed_set_logic() -> Question:
             "谁都没有鱼",
             "有些人有鱼，有些人没有",
         ],
-        option_logic=["ALL(fish)", "NONE(fish)", "SOME(fish) && SOME_NOT(fish)"],
+        option_logic=["ALL(fish)", "NONE(fish)", "SOME(fish) && NOT_ALL(fish)"],
         answer=2,
         hints=["数一数有几个有鱼。", "小猫小狗有，小兔没有。"],
         explanation="小猫和小狗有鱼，小兔没有，所以是“有些人有，有些人没有”。",
@@ -188,3 +188,19 @@ def seed_exclusion() -> Question:
 
 def all_seeds() -> list:
     return [seed_mice(), seed_ordering(), seed_conditional(), seed_set_logic(), seed_exclusion()]
+
+
+def validated_seeds() -> list:
+    """种子题入库前先过 Validator（专家审查 P0：任何入口都不能绕过）。
+
+    返回通过 Validator 的种子题列表；不合格的打印警告并跳过。
+    """
+    from ..validator.validator import validate
+    result = []
+    for q in all_seeds():
+        report = validate(q)
+        if report.ok:
+            result.append(q)
+        else:
+            print(f"[warn] 种子题 {q.id} 未通过 Validator，已跳过: {'; '.join(report.issues)}")
+    return result

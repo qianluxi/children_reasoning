@@ -40,6 +40,8 @@ def _conn():
     ensure_dirs()
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
+    # 专家审查 P1：SQLite 默认不强制外键，必须显式开启，防止孤儿答题记录
+    conn.execute("PRAGMA foreign_keys = ON")
     try:
         yield conn
         conn.commit()
@@ -74,6 +76,14 @@ def list_children() -> list:
     with _conn() as c:
         rows = c.execute("SELECT id, name FROM children ORDER BY id").fetchall()
         return [dict(r) for r in rows]
+
+
+def child_exists(child_id: int) -> bool:
+    """儿童是否存在（Web API 身份校验用）。"""
+    init_db()
+    with _conn() as c:
+        row = c.execute("SELECT 1 FROM children WHERE id=?", (child_id,)).fetchone()
+        return row is not None
 
 
 def record_attempt(child_id: int, question_id: str, qtype: str,

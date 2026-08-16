@@ -7,9 +7,11 @@
 """
 from __future__ import annotations
 
+import os
+import re
 from pathlib import Path
 
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, session
 
 from logic_kids.bank import store, seed
 from logic_kids.difficulty import engine as difficulty_engine
@@ -18,6 +20,9 @@ from logic_kids.engine import adaptive
 from logic_kids.questions.generator import generate_batch, TYPE_NAMES
 
 WEB_DIR = Path(__file__).resolve().parent
+
+# 题目 id 白名单（专家审查：防止路径穿越）
+_QID_RE = re.compile(r"^[A-Za-z0-9_-]+$")
 
 
 def _public_question(q) -> dict:
@@ -41,10 +46,14 @@ def _public_question(q) -> dict:
 
 
 def _ensure_bank():
-    """首次运行时自动载入种子题并生成一批题目。"""
+    """首次运行时自动载入种子题并生成一批题目。
+
+    种子题必须先过 Validator 才能入库（seed → validate → difficulty → save），
+    与 CLI 入口共用 validated_seeds()，防止人工改坏种子题后绕过检查。
+    """
     if store.stats()["total"] > 0:
         return
-    seeds = seed.all_seeds()
+    seeds = seed.validated_seeds()
     for q in seeds:
         difficulty_engine.apply(q)
     store.save_many(seeds)
@@ -57,6 +66,8 @@ def create_app() -> Flask:
         template_folder=str(WEB_DIR / "templates"),
         static_folder=str(WEB_DIR / "static"),
     )
+    # session 签名密钥（本地开发默认值；部署时用环境变量覆盖）
+    app.secret_key = os.environ.get("SECRET_KEY", "dev-secret-change-me")
     _ensure_bank()
 
     # ---------- 页面 ----------
@@ -86,9 +97,14 @@ def create_app() -> Flask:
     def next_question():
         data = request.get_json(force=True) or {}
         child_id = data.get("child_id")
-        if not child_id:
-            return jsonify({"error": "缺少 child_id"}), 400
-        pick = adaptive.next_question(int(child_id))
+        # 参数校验：child_id 必须是正整数且真实存在（专家审查 P1）
+        if not isinstance(child_id, int) or isinstance(child_id, bool) or child_id <= 0:
+            return jsonify({"error": "child_id 必须是正整数"}), 400
+        if not progress.child_exists(child_id):
+            return jsonify({"error": "儿童不存在"}), 404
+        # 身份绑定：本次浏览器的 session 只认这个儿童
+        session["child_id"] = child_id
+        pick = adaptive.next_question(child_id)
         if pick is None:
             return jsonify({"error": "题库空了"}), 404
         resp = _public_question(pick["question"])
@@ -98,16 +114,23 @@ def create_app() -> Flask:
     # ---------- 判题 ----------
     @app.route("/api/answer", methods=["POST"])
     def answer():
+        # 身份来自 session（忽略请求体里的 child_id，防止伪造换人）
+        child_id = session.get("child_id")
+        if child_id is None or not progress.child_exists(child_id):
+            return jsonify({"error": "请先选择儿童"}), 400
         data = request.get_json(force=True) or {}
-        child_id = data.get("child_id")
         qid = data.get("question_id")
-        choice = data.get("choice")
+        if not isinstance(qid, str) or not _QID_RE.fullmatch(qid):
+            return jsonify({"error": "题目编号不合法"}), 400
         q = store.load_question(qid)
         if q is None:
             return jsonify({"error": "题目不存在"}), 404
+        choice = data.get("choice")
+        # 参数校验：choice 必须是 int 且在选项范围内（专家审查 P1）
+        if not isinstance(choice, int) or isinstance(choice, bool) or not (0 <= choice < len(q.options)):
+            return jsonify({"error": "选项编号超出范围"}), 400
         correct = (choice == q.answer)
-        if child_id:
-            progress.record_attempt(int(child_id), q.id, q.type, correct)
+        progress.record_attempt(child_id, q.id, q.type, correct)
         return jsonify({
             "correct": correct,
             "correct_index": q.answer,
@@ -118,6 +141,8 @@ def create_app() -> Flask:
     # ---------- 提示（逐步） ----------
     @app.route("/api/hint/<qid>")
     def hint(qid):
+        if not _QID_RE.fullmatch(qid):
+            return jsonify({"error": "题目编号不合法"}), 400
         step = request.args.get("step", 0, type=int)
         q = store.load_question(qid)
         if q is None:

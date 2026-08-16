@@ -20,6 +20,11 @@ class QuestionError(ValueError):
     """题目本身无法建模（DSL 解析失败等）。"""
 
 
+# 状态空间上限（专家审查 P1）：超过即拒绝求解，防止生成器/Web 被拖死
+MAX_BOOL_VARS = 12   # 2^12 = 4096
+MAX_RANK_VARS = 8    # 8! = 40320
+
+
 def _domain_kind(question: Question) -> str:
     kinds = {v.type for v in question.variables}
     if not kinds:
@@ -30,16 +35,24 @@ def _domain_kind(question: Question) -> str:
 
 
 def _all_states(question: Question) -> list:
-    """枚举全部可能状态（不做任何约束过滤）。"""
+    """枚举全部可能状态（不做任何约束过滤）。超限直接拒绝。"""
     kind = _domain_kind(question)
     names = [v.name for v in question.variables]
     if kind == "boolean":
+        if len(names) > MAX_BOOL_VARS:
+            raise QuestionError(
+                f"题目 {question.id} 的布尔变量 {len(names)} 个超过上限 {MAX_BOOL_VARS}"
+                f"（状态空间 2^{len(names)} 过大）")
         states = []
         for combo in product((False, True), repeat=len(names)):
             states.append(dict(zip(names, combo)))
         return states
     if kind == "rank":
         n = len(names)
+        if n > MAX_RANK_VARS:
+            raise QuestionError(
+                f"题目 {question.id} 的排列变量 {n} 个超过上限 {MAX_RANK_VARS}"
+                f"（状态空间 {n}! 过大）")
         states = []
         for perm in permutations(range(1, n + 1)):
             states.append(dict(zip(names, perm)))

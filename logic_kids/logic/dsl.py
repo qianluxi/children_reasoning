@@ -9,7 +9,7 @@
     operand   := primary | RANK '(' IDENT ')' | COUNT '(' prop ')'
     primary   := 'TRUE' | 'FALSE' | IDENT | '(' expr ')'
                | ALL '(' prop ')' | SOME '(' prop ')' | NONE '(' prop ')'
-               | SOME_NOT '(' prop ')'
+               | NOT_ALL '(' prop ')' | SOME_NOT '(' prop ')'  # SOME_NOT 是旧别名
                | EXACTLY '(' NUMBER ',' expr (',' expr)* ')'
 
 约束（constraint）额外支持：
@@ -17,6 +17,13 @@
     ORDER(A, B, C, …)          # RANK(A) < RANK(B) < RANK(C) < …
 
 量词按变量名后缀展开：ALL(cheese) 覆盖所有以 "_cheese" 结尾的布尔变量。
+
+量词语义（专家审查 P1，避免儿童语言歧义）：
+  · ALL(prop)      所有都有
+  · NONE(prop)     谁都没有
+  · SOME(prop)     至少一个有
+  · NOT_ALL(prop)  不是所有都有（= 至少一个没有；SOME_NOT 是它的旧名）
+  · "有些人有，有些人没有" 应写成 SOME(prop) && NOT_ALL(prop)
 """
 from __future__ import annotations
 
@@ -27,7 +34,7 @@ from . import ast
 # ---------- 词法 ----------
 
 _TOKEN_RE = re.compile(
-    r"\s*(?:(?P<kw>TRUTH_COUNT|ORDER|RANK|COUNT|ALL|SOME_NOT|SOME|NONE|EXACTLY|TRUE|FALSE)"
+    r"\s*(?:(?P<kw>TRUTH_COUNT|ORDER|RANK|COUNT|ALL|NOT_ALL|SOME_NOT|SOME|NONE|EXACTLY|TRUE|FALSE)"
     r"|(?P<op>&&|\|\||==|!=|<=|>=|<|>|!|\(|\)|,)"
     r"|(?P<num>\d+)"
     r"|(?P<id>[A-Za-z_][A-Za-z0-9_]*))"
@@ -199,9 +206,11 @@ class _Parser:
             if name not in self.varnames:
                 raise DSLSyntaxError(f"未知变量: {name}")
             return ast.BoolVarNode(name)
-        if t[0] == "KW" and t[1] in ("ALL", "SOME", "NONE", "SOME_NOT"):
+        if t[0] == "KW" and t[1] in ("ALL", "SOME", "NONE", "SOME_NOT", "NOT_ALL"):
             self.next()
-            kind = {"ALL": "all", "SOME": "some", "NONE": "none", "SOME_NOT": "some_not"}[t[1]]
+            # SOME_NOT 是 NOT_ALL 的旧别名，语义相同（"不是所有"）
+            kind = {"ALL": "all", "SOME": "some", "NONE": "none",
+                    "NOT_ALL": "not_all", "SOME_NOT": "not_all"}[t[1]]
             self.expect_op("(")
             prop = self.expect_id()
             self.expect_op(")")

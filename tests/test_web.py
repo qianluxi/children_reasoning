@@ -72,6 +72,56 @@ def test_hint_progressive(client, child_id):
 
 
 def test_answer_missing_question(client, child_id):
+    client.post("/api/next", json={"child_id": child_id})  # 建立 session 身份
     r = client.post("/api/answer", json={
-        "child_id": child_id, "question_id": "nonexistent", "choice": 0})
+        "question_id": "nonexistent", "choice": 0})
     assert r.status_code == 404
+
+
+# ---------- 专家审查 P1：API 参数与身份校验 ----------
+
+def test_answer_requires_session():
+    """没有先选儿童（无 session）就判题 → 400。"""
+    app = create_app()
+    app.config["TESTING"] = True
+    with app.test_client() as c:
+        r = c.post("/api/answer", json={"question_id": "x", "choice": 0})
+        assert r.status_code == 400
+
+
+def test_next_requires_real_child(client):
+    r = client.post("/api/next", json={"child_id": 10 ** 9})
+    assert r.status_code == 404
+    r = client.post("/api/next", json={"child_id": "abc"})
+    assert r.status_code == 400
+    r = client.post("/api/next", json={})
+    assert r.status_code == 400
+
+
+def test_answer_choice_validation(client, child_id):
+    q = client.post("/api/next", json={"child_id": child_id}).get_json()
+    # 字符串 "0"、负数、越界、缺失 都必须被服务端拒绝
+    for bad in ["0", -1, 999, None]:
+        r = client.post("/api/answer", json={"question_id": q["id"], "choice": bad})
+        assert r.status_code == 400, f"choice={bad!r} 应被拒绝"
+
+
+def test_answer_qid_traversal_rejected(client, child_id):
+    client.post("/api/next", json={"child_id": child_id})
+    for qid in ["../../etc/passwd", "a/b", "..", "a.b", ""]:
+        r = client.post("/api/answer", json={"question_id": qid, "choice": 0})
+        assert r.status_code == 400, f"qid={qid!r} 应被拒绝"
+    r = client.get("/api/hint/..%2F..%2Fetc%2Fpasswd")
+    assert r.status_code in (400, 404)
+
+
+def test_session_binds_child_blocks_forgery(client):
+    """伪造请求体里的 child_id 无效：答题记录只能落在 session 绑定的儿童上。"""
+    c1 = client.post("/api/children", json={"name": "绑定娃1"}).get_json()["id"]
+    c2 = client.post("/api/children", json={"name": "绑定娃2"}).get_json()["id"]
+    q = client.post("/api/next", json={"child_id": c1}).get_json()
+    r = client.post("/api/answer", json={
+        "child_id": c2, "question_id": q["id"], "choice": 0})
+    assert r.status_code == 200
+    assert client.get(f"/api/profile/{c1}").get_json()["total_attempts"] >= 1
+    assert client.get(f"/api/profile/{c2}").get_json()["total_attempts"] == 0

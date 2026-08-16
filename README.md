@@ -44,6 +44,9 @@ python app.py --port 5000
 python -m pytest tests/ -q
 ```
 
+> 测试的数据目录由 `tests/conftest.py` 重定向到临时目录，运行测试
+> **不会触碰** `data/` 下的真实题库与儿童档案（曾有过测试清空真实题库的教训）。
+
 ---
 
 ## 目录结构
@@ -102,23 +105,32 @@ reasoning/
 | `hints` / `explanation` | 逐步提示 + 儿童友好解释 |
 | `difficulty` / `difficulty_score` | 星级 + 连续难度分 |
 
-例（真假话）：`statements[].logic = "SOME_NOT(cheese)"`，`constraints[].logic = "TRUTH_COUNT == 1"`。
+例（真假话）：`statements[].logic = "NOT_ALL(cheese)"`，`constraints[].logic = "TRUTH_COUNT == 1"`。
 
 ## Logic DSL
 
 支持的表达式（`logic_kids/logic/dsl.py`）：
 
 - 布尔运算：`&&` `||` `!` `( )`，常量 `TRUE`/`FALSE`
-- 量词：`ALL(prop)` 所有、`SOME(prop)` 有些、`NONE(prop)` 没有、`SOME_NOT(prop)` 有些没
+- 量词：`ALL(prop)` 所有、`SOME(prop)` 有些、`NONE(prop)` 没有、
+  `NOT_ALL(prop)` 不是所有（`SOME_NOT` 是它的旧别名，语义相同）
 - 计数：`COUNT(prop)`、`EXACTLY(k, e1, e2, …)`
 - 排列比较：`RANK(A) < RANK(B)`、`RANK(A) == 1`、支持链式 `RANK(A)<RANK(B)<RANK(C)`
 - 约束：`TRUTH_COUNT == k`（真假话）、`ORDER(A, B, C)`（全序）
 
 量词按变量名后缀展开：`ALL(cheese)` 覆盖所有以 `_cheese` 结尾的布尔变量。
 
+**量词语义约定（避免儿童语言歧义）**："有些人没有" 在中文里容易被理解成"至少一个有且至少一个没有"，
+因此——
+- "不是所有都有"（含"谁都没有"这种情况）→ `NOT_ALL(prop)`
+- "有些人有，有些人没有"（至少要有一个有）→ `SOME(prop) && NOT_ALL(prop)`
+- 模板与种子题全部按此约定书写（专家审查 P1）。
+
 ## Solver 与 Validator
 
 - `solver.solve()` 枚举全部状态（布尔 2^n，排列 n!），过滤约束后返回所有解。
+  **状态空间有上限保护**：布尔变量 ≤ 12、排列变量 ≤ 8，超限直接抛
+  `QuestionError`（专家审查 P1，防止生成器/Web 被拖死）。
 - `validator.validate()` 检查：
   1. 选项 ≥2 且互不重复；
   2. 有解；
@@ -127,7 +139,20 @@ reasoning/
   5. 干扰项合理（每个错误选项至少在某个状态下能成立）；
   6. 陈述句不能恒真/恒假（要有推理价值）。
 
-只有 `report.ok` 的题才会入库。
+只有 `report.ok` 的题才会入库。**种子题也不例外**：`seed.validated_seeds()`
+先过 Validator 再入库（seed → validate → difficulty → save），Web 启动与 CLI
+`seed` 共用这一入口，任何路径都不能绕过检查（专家审查 P0）。
+
+## 题型语义一致性
+
+**顺序排列题的关系类型与题干必须配套**（专家审查 P0）：
+- 排队场景 → 故事"排成一列"，问"谁排在第 X 位？"
+- 身高场景 → 故事"比身高"，问"谁是第 X 高？"
+- 比赛场景 → 故事"跑步比赛"，问"谁获得第 X 名？"
+
+三种场景各有配套的故事、提问、解释与提示用词（`templates/ordering.py` 的
+`SCENARIOS`），生成结果由 `tests/test_templates.py::test_ordering_story_prompt_semantics_match`
+逐题抽查，杜绝"比身高却问排第几位"这类语义错位。
 
 ## 难度评分
 
@@ -151,6 +176,30 @@ score = 0.45*变量数 + 0.35*条件数 + 0.7*嵌套深度 + 0.75*推理链长
 ## Web 安全设计
 
 前端只拿表现层（故事、陈述、选项文字、提示数），**绝不返回** `answer`/`option_logic`/`solution`；判题在服务端 `POST /api/answer` 完成。见 `tests/test_web.py::test_next_question_no_leak`。
+
+服务端还做如下校验（专家审查 P1）：
+
+- **身份绑定**：`/api/next` 校验儿童存在后写入 session，`/api/answer` 只认 session
+  里的儿童（忽略请求体中的 `child_id`，防伪造换人）；SQLite 开启
+  `PRAGMA foreign_keys = ON` 防孤儿记录。
+- **参数校验**：`choice` 必须是整数且在选项范围内、`question_id` 必须匹配
+  `^[A-Za-z0-9_-]+$`（防路径穿越）、`child_id` 必须是存在的正整数，否则返回 400/404。
+- **判题安全**：判题逻辑在服务端，前端只拿到 `correct / correct_index / correct_text / explanation`。
+
+---
+
+## 专家审查修复记录
+
+| 优先级 | 问题 | 修复 |
+|---|---|---|
+| P0 | ordering 的"身高/跑步"与"排队位置"语义冲突 | 三种场景各有配套题干（见上节） |
+| P0 | Web 启动载入 seed 绕过 Validator | `seed.validated_seeds()` 统一先验证再入库 |
+| P0 | 种子题存在多解 | 换唯一解变体，并把原题（64 解）固定为回归测试 |
+| P1 | `SOME_NOT` 与儿童语言"有些没有"歧义 | 改名 `NOT_ALL`；"有些人有，有些人没有" 用 `SOME && NOT_ALL` |
+| P1 | `/api/answer` 不校验 choice 类型/范围 | 服务端严格校验，非法返回 400 |
+| P1 | `child_id` 可伪造 / 孤儿记录 | session 身份绑定 + FK 强制 |
+| P1 | 题目 id 路径穿越 | 白名单正则校验 |
+| P1 | Solver 状态空间无上限 | 布尔 ≤12、排列 ≤8，超限抛错 |
 
 ---
 
