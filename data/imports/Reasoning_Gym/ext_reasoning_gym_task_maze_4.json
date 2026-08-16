@@ -1,0 +1,115 @@
+{
+  "id": "ext_reasoning_gym_task_maze_4",
+  "type": "external_text",
+  "story": {
+    "title": "Reasoning Gym · maze",
+    "text": "Navigate from '5' (start) to '.' (goal):\n\n```\n999999999\n999PP9PP9\n9999PPP99\n9P9PPP999\n9PPPP9P59\n9PPPPPPP9\n9PPP.9P99\n9P9PPPP99\n999999999\n```\nLegend: '9' = Wall, 'P' = Passage\n\nWhat is the minimum number of steps to reach the goal?\nGive only the number of steps as your final answer, no other text or formatting.",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [],
+  "statements": [],
+  "constraints": [],
+  "question_prompt": "请选择正确答案：",
+  "options": [
+    "3",
+    "5",
+    "10",
+    "7"
+  ],
+  "option_logic": [],
+  "answer": 1,
+  "hints": [],
+  "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+  "difficulty": 4,
+  "difficulty_score": 6.2,
+  "difficulty_level": 3,
+  "source": "reasoning gym",
+  "source_info": {
+    "type": "external",
+    "name": "Reasoning Gym",
+    "license": "Apache-2.0",
+    "dataset_id": "task=maze",
+    "original_id": "4",
+    "url": "https://github.com/open-thought/reasoning-gym"
+  },
+  "provenance": {
+    "imported_at": "2026-08-16T22:51:52",
+    "modified": true,
+    "translator": "reasoning_gym_generator_v1",
+    "review_status": "approved",
+    "logic_validated": false,
+    "difficulty_calibrated": false
+  },
+  "translations": {
+    "zh": {
+      "status": "machine",
+      "story_title": "Reasoning Gym · maze",
+      "story_text": "从 '5'（起点）走到 '.'（终点）：\n\n```\n999999999\n999PP9PP9\n9999PPP99\n9P9PPP999\n9PPPP9P59\n9PPPPPPP9\n9PPP.9P99\n9P9PPPP99\n999999999\n```\n说明：'9' 是墙，'P' 是通道\n\n最少需要走多少步才能到达终点？\n只回答步数 as your final answer, no other text or formatting.",
+      "constraints": [],
+      "options": [
+        "3",
+        "5",
+        "10",
+        "7"
+      ],
+      "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    }
+  },
+  "category": "spatial",
+  "skills": [
+    "spatial_reasoning",
+    "planning"
+  ],
+  "age_range": "D",
+  "difficulty_profile": {
+    "cognitive_load": 1,
+    "reasoning_depth": 1,
+    "language_complexity": 2,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "quality": "C",
+  "child_suitability": {
+    "reading_level": 2,
+    "language_complexity": 2,
+    "abstractness": 3,
+    "reasoning_depth": 1,
+    "calculation_load": 1,
+    "cultural_dependency": 2,
+    "suitable": true
+  },
+  "metadata": {
+    "source_dataset": "maze",
+    "source_index": 4,
+    "grid_size": 9,
+    "grid": [
+      "999999999",
+      "999PP9PP9",
+      "9999PPP99",
+      "9P9PPP999",
+      "9PPPP9P59",
+      "9PPPPPPP9",
+      "9PPP.9P99",
+      "9P9PPPP99",
+      "999999999"
+    ],
+    "shortest_path_length": 5,
+    "start": "5",
+    "goal": ".",
+    "wall": "9",
+    "path": "P",
+    "difficulty": {
+      "dist": [
+        5,
+        10
+      ],
+      "grid_size": [
+        5,
+        10
+      ]
+    }
+  },
+  "created_at": "2026-08-16T22:51:52"
+}

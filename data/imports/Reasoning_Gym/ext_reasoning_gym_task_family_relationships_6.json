@@ -1,0 +1,98 @@
+{
+  "id": "ext_reasoning_gym_task_family_relationships_6",
+  "type": "external_text",
+  "story": {
+    "title": "Reasoning Gym · family_relationships",
+    "text": "Alexander is married to Sarah. They have a child called Samuel. Samuel is married to Luna. They have children called Logan and Richard. Jayden is married to Aria. They have a child called Luna.\n\nWhat is Jayden to Aria? Respond only with the word that describes their relationship.",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [],
+  "statements": [],
+  "constraints": [],
+  "question_prompt": "请选择正确答案：",
+  "options": [
+    "husband",
+    "uncle",
+    "grandchild",
+    "grandmother"
+  ],
+  "option_logic": [],
+  "answer": 0,
+  "hints": [],
+  "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+  "difficulty": 2,
+  "difficulty_score": 3.7,
+  "difficulty_level": 2,
+  "source": "reasoning gym",
+  "source_info": {
+    "type": "external",
+    "name": "Reasoning Gym",
+    "license": "Apache-2.0",
+    "dataset_id": "task=family_relationships",
+    "original_id": "6",
+    "url": "https://github.com/open-thought/reasoning-gym"
+  },
+  "provenance": {
+    "imported_at": "2026-08-16T22:51:52",
+    "modified": true,
+    "translator": "reasoning_gym_generator_v1",
+    "review_status": "approved",
+    "logic_validated": false,
+    "difficulty_calibrated": false
+  },
+  "translations": {
+    "zh": {
+      "status": "machine",
+      "story_title": "Reasoning Gym · family_relationships",
+      "story_text": "Alexander 和 Sarah 结婚了。 他们有个孩子叫 Samuel。 Samuel 和 Luna 结婚了。 他们有孩子叫 Logan 和 Richard。 Jayden 和 Aria 结婚了。 他们有个孩子叫 Luna。\n\nJayden 和 Aria 是什么关系？ ",
+      "constraints": [],
+      "options": [
+        "丈夫",
+        "叔叔",
+        "孙子/孙女",
+        "奶奶"
+      ],
+      "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    }
+  },
+  "category": "relation",
+  "skills": [
+    "relation_reasoning",
+    "multi_hop_reasoning"
+  ],
+  "age_range": "C",
+  "difficulty_profile": {
+    "cognitive_load": 1,
+    "reasoning_depth": 1,
+    "language_complexity": 2,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "quality": "C",
+  "child_suitability": {
+    "reading_level": 2,
+    "language_complexity": 2,
+    "abstractness": 2,
+    "reasoning_depth": 1,
+    "calculation_load": 1,
+    "cultural_dependency": 2,
+    "suitable": true
+  },
+  "metadata": {
+    "source_dataset": "family_relationships",
+    "source_index": 6,
+    "person1": "Jayden",
+    "person2": "Aria",
+    "relationship": "husband",
+    "family_size": 8,
+    "difficulty": {
+      "family_size": [
+        4,
+        8
+      ]
+    }
+  },
+  "created_at": "2026-08-16T22:51:52"
+}

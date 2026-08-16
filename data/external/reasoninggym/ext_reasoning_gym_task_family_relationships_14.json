@@ -1,0 +1,112 @@
+{
+  "id": "ext_reasoning_gym_task_family_relationships_14",
+  "type": "external_text",
+  "story": {
+    "title": "Reasoning Gym · family_relationships",
+    "text": "James is married to Lily. They have a child called Alexander. Alexander is married to Willow. They have children called Victoria and Elizabeth. Finn is married to Nova. They have a child called Willow.\n\nWhat is Alexander to Elizabeth? Respond only with the word that describes their relationship.",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [],
+  "statements": [],
+  "constraints": [],
+  "question_prompt": "请选择正确答案：",
+  "options": [
+    "grandmother",
+    "father",
+    "aunt",
+    "nephew"
+  ],
+  "option_logic": [],
+  "answer": 1,
+  "hints": [],
+  "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+  "difficulty": 2,
+  "difficulty_score": 3.7,
+  "difficulty_level": 2,
+  "source": "reasoning gym",
+  "source_info": {
+    "type": "external",
+    "name": "Reasoning Gym",
+    "license": "Apache-2.0",
+    "dataset_id": "task=family_relationships",
+    "original_id": "14",
+    "url": "https://github.com/open-thought/reasoning-gym"
+  },
+  "provenance": {
+    "imported_at": "2026-08-16T22:51:52",
+    "modified": true,
+    "translator": "reasoning_gym_generator_v1",
+    "review_status": "approved",
+    "logic_validated": false,
+    "difficulty_calibrated": false
+  },
+  "translations": {
+    "zh": {
+      "status": "machine",
+      "story_title": "Reasoning Gym · family_relationships",
+      "story_text": "James 和 Lily 结婚了。 他们有个孩子叫 Alexander。 Alexander 和 Willow 结婚了。 他们有孩子叫 Victoria 和 Elizabeth。 Finn 和 Nova 结婚了。 他们有个孩子叫 Willow。\n\nAlexander 和 Elizabeth 是什么关系？ ",
+      "constraints": [],
+      "options": [
+        "奶奶",
+        "爸爸",
+        "阿姨",
+        "侄子"
+      ],
+      "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "story_title": "Reasoning Gym · family_relationships",
+      "story_text": "James 和 Lily 结婚了。 他们有个孩子叫 Alexander。 Alexander 和 Willow 结婚了。 他们有孩子叫 Victoria 和 Elizabeth。 Finn 和 Nova 结婚了。 他们有个孩子叫 Willow。\n\nAlexander 和 Elizabeth 是什么关系？",
+      "constraints": [],
+      "options": [
+        "奶奶",
+        "爸爸",
+        "阿姨",
+        "侄子"
+      ],
+      "question_prompt": "他们是什么关系？",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    }
+  },
+  "category": "relation",
+  "skills": [
+    "relation_reasoning",
+    "multi_hop_reasoning"
+  ],
+  "age_range": "C",
+  "difficulty_profile": {
+    "cognitive_load": 1,
+    "reasoning_depth": 1,
+    "language_complexity": 2,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "quality": "B",
+  "child_suitability": {
+    "reading_level": 2,
+    "language_complexity": 2,
+    "abstractness": 2,
+    "reasoning_depth": 1,
+    "calculation_load": 1,
+    "cultural_dependency": 2,
+    "suitable": true
+  },
+  "metadata": {
+    "source_dataset": "family_relationships",
+    "source_index": 14,
+    "person1": "Alexander",
+    "person2": "Elizabeth",
+    "relationship": "father",
+    "family_size": 8,
+    "difficulty": {
+      "family_size": [
+        4,
+        8
+      ]
+    }
+  },
+  "created_at": "2026-08-16T22:51:52"
+}

@@ -1,0 +1,111 @@
+{
+  "id": "ext_reasoning_gym_task_time_intervals_0",
+  "type": "external_text",
+  "story": {
+    "title": "Reasoning Gym · time_intervals",
+    "text": "A system backup started at 2964-06-17 08:15:14 and completed at 2964-07-04 11:59:09. What was the total backup duration? Answer in D days, HH:MM.",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [],
+  "statements": [],
+  "constraints": [],
+  "question_prompt": "请选择正确答案：",
+  "options": [
+    "17 days, 03:44",
+    "17 days, 03:53",
+    "17 days, 03:43",
+    "17 days, 04:43"
+  ],
+  "option_logic": [],
+  "answer": 2,
+  "hints": [],
+  "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+  "difficulty": 4,
+  "difficulty_score": 6.2,
+  "difficulty_level": 3,
+  "source": "reasoning gym",
+  "source_info": {
+    "type": "external",
+    "name": "Reasoning Gym",
+    "license": "Apache-2.0",
+    "dataset_id": "task=time_intervals",
+    "original_id": "0",
+    "url": "https://github.com/open-thought/reasoning-gym"
+  },
+  "provenance": {
+    "imported_at": "2026-08-16T22:52:21",
+    "modified": true,
+    "translator": "reasoning_gym_generator_v1",
+    "review_status": "approved",
+    "logic_validated": false,
+    "difficulty_calibrated": false
+  },
+  "translations": {
+    "zh": {
+      "status": "machine",
+      "story_title": "Reasoning Gym · time_intervals",
+      "story_text": "A system backup started at 2964-06-17 08:15:14 and completed at 2964-07-04 11:59:09. What was the total backup duration? （答案格式见选项） days, HH:MM.",
+      "constraints": [],
+      "options": [
+        "17 days, 03:44",
+        "17 days, 03:53",
+        "17 days, 03:43",
+        "17 days, 04:43"
+      ],
+      "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "story_title": "Reasoning Gym · time_intervals",
+      "story_text": "小闹钟从 08:15:14 走到 11:59:09，一共过了多久？",
+      "constraints": [],
+      "options": [
+        "17 days, 03:44",
+        "17 days, 03:53",
+        "17 days, 03:43",
+        "17 days, 04:43"
+      ],
+      "question_prompt": "一共过了多长时间？",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    }
+  },
+  "category": "math",
+  "skills": [
+    "arithmetic",
+    "ordering"
+  ],
+  "age_range": "D",
+  "difficulty_profile": {
+    "cognitive_load": 1,
+    "reasoning_depth": 1,
+    "language_complexity": 2,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "quality": "B",
+  "child_suitability": {
+    "reading_level": 2,
+    "language_complexity": 2,
+    "abstractness": 4,
+    "reasoning_depth": 1,
+    "calculation_load": 1,
+    "cultural_dependency": 2,
+    "suitable": true
+  },
+  "metadata": {
+    "source_dataset": "time_intervals",
+    "source_index": 0,
+    "task_type": "datetime_tz",
+    "start_time": "2964-06-17 08:15:14",
+    "end_time": "2964-07-04 11:59:09",
+    "format": "%Y-%m-%d %H:%M:%S",
+    "expected_format": "D days, HH:MM",
+    "difficulty": {
+      "max_time_difference_seconds": 86400,
+      "max_date_difference_days": 100
+    }
+  },
+  "created_at": "2026-08-16T22:52:21"
+}

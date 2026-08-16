@@ -1,0 +1,98 @@
+{
+  "id": "ext_reasoning_gym_task_family_relationships_8",
+  "type": "external_text",
+  "story": {
+    "title": "Reasoning Gym · family_relationships",
+    "text": "Benjamin is married to Amelia. They have a child called Theodore. Theodore is married to Abigail. They have a child called Jayden. Ryder is married to Charlotte. They have a child called Abigail.\n\nWhat is Theodore to Benjamin? Respond only with the word that describes their relationship.",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [],
+  "statements": [],
+  "constraints": [],
+  "question_prompt": "请选择正确答案：",
+  "options": [
+    "daughter",
+    "father",
+    "sister",
+    "son"
+  ],
+  "option_logic": [],
+  "answer": 3,
+  "hints": [],
+  "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+  "difficulty": 2,
+  "difficulty_score": 3.7,
+  "difficulty_level": 2,
+  "source": "reasoning gym",
+  "source_info": {
+    "type": "external",
+    "name": "Reasoning Gym",
+    "license": "Apache-2.0",
+    "dataset_id": "task=family_relationships",
+    "original_id": "8",
+    "url": "https://github.com/open-thought/reasoning-gym"
+  },
+  "provenance": {
+    "imported_at": "2026-08-16T22:51:52",
+    "modified": true,
+    "translator": "reasoning_gym_generator_v1",
+    "review_status": "approved",
+    "logic_validated": false,
+    "difficulty_calibrated": false
+  },
+  "translations": {
+    "zh": {
+      "status": "machine",
+      "story_title": "Reasoning Gym · family_relationships",
+      "story_text": "Benjamin 和 Amelia 结婚了。 他们有个孩子叫 Theodore。 Theodore 和 Abigail 结婚了。 他们有个孩子叫 Jayden。 Ryder 和 Charlotte 结婚了。 他们有个孩子叫 Abigail。\n\nTheodore 和 Benjamin 是什么关系？ ",
+      "constraints": [],
+      "options": [
+        "女儿",
+        "爸爸",
+        "姐姐",
+        "儿子"
+      ],
+      "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    }
+  },
+  "category": "relation",
+  "skills": [
+    "relation_reasoning",
+    "multi_hop_reasoning"
+  ],
+  "age_range": "C",
+  "difficulty_profile": {
+    "cognitive_load": 1,
+    "reasoning_depth": 1,
+    "language_complexity": 2,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "quality": "C",
+  "child_suitability": {
+    "reading_level": 2,
+    "language_complexity": 2,
+    "abstractness": 2,
+    "reasoning_depth": 1,
+    "calculation_load": 1,
+    "cultural_dependency": 2,
+    "suitable": true
+  },
+  "metadata": {
+    "source_dataset": "family_relationships",
+    "source_index": 8,
+    "person1": "Theodore",
+    "person2": "Benjamin",
+    "relationship": "son",
+    "family_size": 7,
+    "difficulty": {
+      "family_size": [
+        4,
+        8
+      ]
+    }
+  },
+  "created_at": "2026-08-16T22:51:52"
+}

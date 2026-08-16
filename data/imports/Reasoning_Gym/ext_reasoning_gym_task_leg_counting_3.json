@@ -1,0 +1,109 @@
+{
+  "id": "ext_reasoning_gym_task_leg_counting_3",
+  "type": "external_text",
+  "story": {
+    "title": "Reasoning Gym · leg_counting",
+    "text": "Your task is to count how many legs there are in total when given a list of animals.\n\nNow, how many legs are there in total if you have 2 grasshoppers, 8 spiders, 1 tiger, 2 chickens, 5 starfishs, 13 ants, 2 snakes?",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [],
+  "statements": [],
+  "constraints": [],
+  "question_prompt": "请选择正确答案：",
+  "options": [
+    "189",
+    "190",
+    "197",
+    "187"
+  ],
+  "option_logic": [],
+  "answer": 3,
+  "hints": [],
+  "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+  "difficulty": 1,
+  "difficulty_score": 1.2,
+  "difficulty_level": 1,
+  "source": "reasoning gym",
+  "source_info": {
+    "type": "external",
+    "name": "Reasoning Gym",
+    "license": "Apache-2.0",
+    "dataset_id": "task=leg_counting",
+    "original_id": "3",
+    "url": "https://github.com/open-thought/reasoning-gym"
+  },
+  "provenance": {
+    "imported_at": "2026-08-16T22:51:52",
+    "modified": true,
+    "translator": "reasoning_gym_generator_v1",
+    "review_status": "approved",
+    "logic_validated": false,
+    "difficulty_calibrated": false
+  },
+  "translations": {
+    "zh": {
+      "status": "machine",
+      "story_title": "Reasoning Gym · leg_counting",
+      "story_text": "数一数：2 只grasshopper、8 只蜘蛛、1 只老虎、2 只鸡、5 只starfish、13 只蚂蚁、2 只蛇，这些动物一共有多少条腿？",
+      "constraints": [],
+      "options": [
+        "189",
+        "190",
+        "197",
+        "187"
+      ],
+      "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    }
+  },
+  "category": "math",
+  "skills": [
+    "counting",
+    "arithmetic"
+  ],
+  "age_range": "D",
+  "difficulty_profile": {
+    "cognitive_load": 1,
+    "reasoning_depth": 1,
+    "language_complexity": 2,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "quality": "C",
+  "child_suitability": {
+    "reading_level": 2,
+    "language_complexity": 2,
+    "abstractness": 4,
+    "reasoning_depth": 1,
+    "calculation_load": 1,
+    "cultural_dependency": 2,
+    "suitable": true
+  },
+  "metadata": {
+    "source_dataset": "leg_counting",
+    "source_index": 3,
+    "animals": {
+      "grasshopper": 2,
+      "spider": 8,
+      "tiger": 1,
+      "chicken": 2,
+      "starfish": 5,
+      "ant": 13,
+      "snake": 2
+    },
+    "num_animals": 7,
+    "total_legs": 187,
+    "difficulty": {
+      "num_animals": [
+        3,
+        10
+      ],
+      "num_instances": [
+        1,
+        15
+      ]
+    }
+  },
+  "created_at": "2026-08-16T22:51:52"
+}

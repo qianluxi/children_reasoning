@@ -6,7 +6,8 @@
     "difficulty_level": 3,
     "source": "seed",
     "title": "四只偷食物的小老鼠",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "seed_order_height": {
     "type": "ordering",
@@ -15,7 +16,8 @@
     "difficulty_level": 1,
     "source": "seed",
     "title": "谁最高？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "seed_cond_rain": {
     "type": "conditional",
@@ -24,7 +26,8 @@
     "difficulty_level": 2,
     "source": "seed",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "seed_set_pets": {
     "type": "set_logic",
@@ -33,7 +36,8 @@
     "difficulty_level": 1,
     "source": "seed",
     "title": "谁有鱼？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "seed_excl_race": {
     "type": "exclusion",
@@ -42,7 +46,8 @@
     "difficulty_level": 1,
     "source": "seed",
     "title": "跑步比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "truth_f4c342e970": {
     "type": "truth_statements",
@@ -51,7 +56,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有面包？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_acd784a5b4": {
     "type": "ordering",
@@ -60,7 +66,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁跑得最快？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_40077afaed": {
     "type": "conditional",
@@ -69,7 +76,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_95177f05ce": {
     "type": "set_logic",
@@ -78,7 +86,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有胡萝卜？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_1471eac416": {
     "type": "exclusion",
@@ -87,7 +96,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "跑步比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "truth_7f77cee3d0": {
     "type": "truth_statements",
@@ -96,7 +106,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有苹果？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_3f52a7ab0e": {
     "type": "ordering",
@@ -105,7 +116,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "排排队：谁在第 1？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_8bb3603a68": {
     "type": "conditional",
@@ -114,7 +126,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_cc70e0633f": {
     "type": "set_logic",
@@ -123,7 +136,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有小鱼？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_b4759cc1bf": {
     "type": "exclusion",
@@ -132,7 +146,8 @@
     "difficulty_level": 4,
     "source": "generated",
     "title": "唱歌比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "truth_08f5104955": {
     "type": "truth_statements",
@@ -141,7 +156,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "谁有面包？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_6f9c892c00": {
     "type": "ordering",
@@ -150,7 +166,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁跑得最快？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_92090eba97": {
     "type": "conditional",
@@ -159,7 +176,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_993631b5bf": {
     "type": "set_logic",
@@ -168,7 +186,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有饼干？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_ceaf731b8b": {
     "type": "exclusion",
@@ -177,7 +196,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "跳绳比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "truth_2f9c16fcac": {
     "type": "truth_statements",
@@ -186,7 +206,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "谁有奶酪？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_c536f8462b": {
     "type": "ordering",
@@ -195,7 +216,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "排排队：谁在第 1？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_9ab93fb245": {
     "type": "conditional",
@@ -204,7 +226,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_88268546ba": {
     "type": "set_logic",
@@ -213,7 +236,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有小鱼？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_6e0294bea3": {
     "type": "exclusion",
@@ -222,7 +246,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "排队领点心的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "truth_fc145e1b5b": {
     "type": "truth_statements",
@@ -231,7 +256,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "谁有胡萝卜？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_5fea94884e": {
     "type": "ordering",
@@ -240,7 +266,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "谁跑得最快？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_e53e9a8c02": {
     "type": "conditional",
@@ -249,7 +276,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_9d9d39c46c": {
     "type": "set_logic",
@@ -258,7 +286,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有小鱼？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_d3ae5a425c": {
     "type": "exclusion",
@@ -267,7 +296,8 @@
     "difficulty_level": 4,
     "source": "generated",
     "title": "跳绳比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "truth_29b54436de": {
     "type": "truth_statements",
@@ -276,7 +306,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "谁有面包？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_a09b8ca234": {
     "type": "ordering",
@@ -285,7 +316,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁跑得最快？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_3345daf9bd": {
     "type": "conditional",
@@ -294,7 +326,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_16cdd2d571": {
     "type": "set_logic",
@@ -303,7 +336,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有樱桃？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_7a1d90b44f": {
     "type": "exclusion",
@@ -312,7 +346,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "唱歌比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "truth_2a08f8d7df": {
     "type": "truth_statements",
@@ -321,7 +356,8 @@
     "difficulty_level": 4,
     "source": "generated",
     "title": "谁有奶酪？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_ff4a6ba4a8": {
     "type": "ordering",
@@ -330,7 +366,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁最高？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_ef28b85cd1": {
     "type": "conditional",
@@ -339,7 +376,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_c75001aaa7": {
     "type": "set_logic",
@@ -348,7 +386,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "谁有面包？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_d84523001a": {
     "type": "exclusion",
@@ -357,7 +396,8 @@
     "difficulty_level": 4,
     "source": "generated",
     "title": "跑步比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "truth_d0eba7ff9a": {
     "type": "truth_statements",
@@ -366,7 +406,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "谁有饼干？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_8d19b4e973": {
     "type": "ordering",
@@ -375,7 +416,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁跑得最快？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_190b287715": {
     "type": "conditional",
@@ -384,7 +426,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_47478261af": {
     "type": "set_logic",
@@ -393,7 +436,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "谁有糖果？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_fb03a5d7aa": {
     "type": "exclusion",
@@ -402,7 +446,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "跳绳比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "truth_2a8f79a081": {
     "type": "truth_statements",
@@ -411,7 +456,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "谁有胡萝卜？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_03626f848a": {
     "type": "ordering",
@@ -420,7 +466,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁跑得最快？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_55829ba5b9": {
     "type": "conditional",
@@ -429,7 +476,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_b188a6f651": {
     "type": "set_logic",
@@ -438,7 +486,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有小鱼？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_b01d61c503": {
     "type": "exclusion",
@@ -447,7 +496,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "跳绳比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "truth_88999434b9": {
     "type": "truth_statements",
@@ -456,7 +506,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "谁有饼干？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_5bb1d50c74": {
     "type": "ordering",
@@ -465,7 +516,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "排排队：谁在第 1？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_cdcaf6b7df": {
     "type": "conditional",
@@ -474,7 +526,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_7b48345a86": {
     "type": "set_logic",
@@ -483,7 +536,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "谁有奶酪？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_4936c4ca06": {
     "type": "exclusion",
@@ -492,7 +546,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "唱歌比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "truth_6f56fbc9ea": {
     "type": "truth_statements",
@@ -501,7 +556,8 @@
     "difficulty_level": 4,
     "source": "generated",
     "title": "谁有樱桃？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_f5be0a9c14": {
     "type": "ordering",
@@ -510,7 +566,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁跑得最快？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_45e77c553c": {
     "type": "conditional",
@@ -519,7 +576,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_fa80c1a8a2": {
     "type": "set_logic",
@@ -528,7 +586,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有苹果？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_c285da6f50": {
     "type": "exclusion",
@@ -537,7 +596,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "唱歌比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "truth_d6194e80e4": {
     "type": "truth_statements",
@@ -546,7 +606,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "谁有糖果？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_57addcdf8b": {
     "type": "ordering",
@@ -555,7 +616,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "谁最高？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_41d0a8f411": {
     "type": "conditional",
@@ -564,7 +626,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_522ae798ce": {
     "type": "set_logic",
@@ -573,7 +636,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有饼干？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_c4426869c5": {
     "type": "exclusion",
@@ -582,7 +646,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "排队领点心的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "truth_571a7b4141": {
     "type": "truth_statements",
@@ -591,7 +656,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有面包？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_97dcb364a3": {
     "type": "ordering",
@@ -600,7 +666,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁跑得最快？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_aa4dec22bd": {
     "type": "conditional",
@@ -609,7 +676,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_f476c799c4": {
     "type": "set_logic",
@@ -618,7 +686,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有胡萝卜？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_cb4d7ac49d": {
     "type": "exclusion",
@@ -627,7 +696,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "跑步比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "match_a9d4438419": {
     "type": "matching",
@@ -636,7 +706,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "谁喜欢什么？",
-    "category": "relation"
+    "category": "relation",
+    "quality": "A"
   },
   "truth_c46d70a041": {
     "type": "truth_statements",
@@ -645,7 +716,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "谁有胡萝卜？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_f0b2730afa": {
     "type": "ordering",
@@ -654,7 +726,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "排排队：谁在第 1？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_af023ef0ac": {
     "type": "conditional",
@@ -663,7 +736,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_4933040f93": {
     "type": "set_logic",
@@ -672,7 +746,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有樱桃？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_aa3ff6af2c": {
     "type": "exclusion",
@@ -681,7 +756,8 @@
     "difficulty_level": 4,
     "source": "generated",
     "title": "唱歌比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "match_721b0d9b16": {
     "type": "matching",
@@ -690,7 +766,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "谁喜欢什么？",
-    "category": "relation"
+    "category": "relation",
+    "quality": "A"
   },
   "truth_86df186eab": {
     "type": "truth_statements",
@@ -699,7 +776,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "谁有胡萝卜？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_605fa6f3a2": {
     "type": "ordering",
@@ -708,7 +786,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁跑得最快？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_cefd0bc47f": {
     "type": "conditional",
@@ -717,7 +796,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_501b808bcc": {
     "type": "set_logic",
@@ -726,7 +806,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有糖果？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_7c0298d229": {
     "type": "exclusion",
@@ -735,7 +816,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "排队领点心的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "match_b47f65cba1": {
     "type": "matching",
@@ -744,7 +826,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "谁喜欢什么？",
-    "category": "relation"
+    "category": "relation",
+    "quality": "A"
   },
   "truth_870e21ccbb": {
     "type": "truth_statements",
@@ -753,7 +836,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "谁有饼干？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_e43744a36c": {
     "type": "ordering",
@@ -762,7 +846,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁跑得最快？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_99adec550f": {
     "type": "conditional",
@@ -771,7 +856,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_ef86c3612f": {
     "type": "set_logic",
@@ -780,7 +866,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有奶酪？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_de17743c67": {
     "type": "exclusion",
@@ -789,7 +876,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "跳绳比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "match_731cdff23f": {
     "type": "matching",
@@ -798,7 +886,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁喜欢什么？",
-    "category": "relation"
+    "category": "relation",
+    "quality": "A"
   },
   "truth_7177f61cba": {
     "type": "truth_statements",
@@ -807,7 +896,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "谁有面包？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_58354839fe": {
     "type": "ordering",
@@ -816,7 +906,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "谁最高？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_e077507dc7": {
     "type": "conditional",
@@ -825,7 +916,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_71433bae66": {
     "type": "set_logic",
@@ -834,7 +926,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有胡萝卜？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_e5ac2b9511": {
     "type": "exclusion",
@@ -843,7 +936,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "跳绳比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "match_bdf899de4b": {
     "type": "matching",
@@ -852,7 +946,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "谁喜欢什么？",
-    "category": "relation"
+    "category": "relation",
+    "quality": "A"
   },
   "colorpat_71bcaff742": {
     "type": "color_pattern",
@@ -861,7 +956,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "颜色排队",
-    "category": "pattern"
+    "category": "pattern",
+    "quality": "A"
   },
   "truth_f375d6b25b": {
     "type": "truth_statements",
@@ -870,7 +966,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "谁有胡萝卜？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_8b9075ebc9": {
     "type": "ordering",
@@ -879,7 +976,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "谁跑得最快？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_3726f99794": {
     "type": "conditional",
@@ -888,7 +986,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_a97b1efeb4": {
     "type": "set_logic",
@@ -897,7 +996,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有饼干？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_12226a2990": {
     "type": "exclusion",
@@ -906,7 +1006,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "排队领点心的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "match_f2f9df9848": {
     "type": "matching",
@@ -915,7 +1016,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "谁喜欢什么？",
-    "category": "relation"
+    "category": "relation",
+    "quality": "A"
   },
   "colorpat_e6140471d9": {
     "type": "color_pattern",
@@ -924,7 +1026,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "颜色排队",
-    "category": "pattern"
+    "category": "pattern",
+    "quality": "A"
   },
   "truth_e20a0ab777": {
     "type": "truth_statements",
@@ -933,7 +1036,8 @@
     "difficulty_level": 3,
     "source": "generated",
     "title": "谁有胡萝卜？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "order_f8c282ed85": {
     "type": "ordering",
@@ -942,7 +1046,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁跑得最快？",
-    "category": "ordering"
+    "category": "ordering",
+    "quality": "A"
   },
   "cond_51ac12265b": {
     "type": "conditional",
@@ -951,7 +1056,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "想一想，会发生吗？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "set_fc54b01645": {
     "type": "set_logic",
@@ -960,7 +1066,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "谁有苹果？",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "excl_9b431036c3": {
     "type": "exclusion",
@@ -969,7 +1076,8 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "跑步比赛的名次",
-    "category": "deduction"
+    "category": "deduction",
+    "quality": "A"
   },
   "match_f85eb45171": {
     "type": "matching",
@@ -978,7 +1086,8 @@
     "difficulty_level": 1,
     "source": "generated",
     "title": "谁喜欢什么？",
-    "category": "relation"
+    "category": "relation",
+    "quality": "A"
   },
   "colorpat_43dd6f5369": {
     "type": "color_pattern",
@@ -987,6 +1096,7 @@
     "difficulty_level": 2,
     "source": "generated",
     "title": "颜色排队",
-    "category": "pattern"
+    "category": "pattern",
+    "quality": "A"
   }
 }
