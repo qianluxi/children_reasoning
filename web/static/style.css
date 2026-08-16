@@ -157,6 +157,20 @@ h1 { color: var(--primary); }
 .starcount { color: var(--gold); font-size: 1.1rem; }
 .story { color: var(--muted); font-size: 1.05rem; }
 
+.visual-box {
+  margin: 14px 0;
+  text-align: center;
+  background: #ffffff;
+  border: 2px solid #eee;
+  border-radius: 14px;
+  padding: 12px;
+}
+.visual-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
 .statements { margin: 16px 0; display: flex; flex-direction: column; gap: 10px; }
 .bubble {
   background: #f4f9f8;

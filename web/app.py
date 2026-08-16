@@ -11,7 +11,7 @@ import os
 import re
 from pathlib import Path
 
-from flask import Flask, jsonify, render_template, request, session
+from flask import Flask, Response, jsonify, render_template, request, session
 
 from logic_kids.bank import external, store, seed
 from logic_kids.difficulty import engine as difficulty_engine, levels as difficulty_levels
@@ -20,6 +20,7 @@ from logic_kids.engine import adaptive
 from logic_kids.questions.generator import generate_batch, TYPE_NAMES, GENERATORS
 from logic_kids.questions.selector import select_question
 from logic_kids import taxonomy
+from logic_kids import visuals
 
 WEB_DIR = Path(__file__).resolve().parent
 
@@ -53,6 +54,7 @@ def _public_question(q, lang: str = "zh") -> dict:
         "skills": [{"id": s, "name": taxonomy.skill_label(s)}
                    for s in (q.skills or [])],
         "age_range": q.age_range,
+        "visual": visuals.visual_kind(q),
         "difficulty": q.difficulty,
         "difficulty_level": q.difficulty_level
         or difficulty_levels.level_for_score(q.difficulty_score),
@@ -250,6 +252,20 @@ def create_app() -> Flask:
             return jsonify({"hint": None})
         return jsonify({"hint": q.hints[step], "step": step,
                         "has_more": step + 1 < len(q.hints)})
+
+    # ---------- 图形化渲染（迷宫/ARC 格子/长方形计数） ----------
+    @app.route("/api/question/<qid>/visual")
+    def question_visual(qid):
+        if not _QID_RE.fullmatch(qid):
+            return jsonify({"error": "题目编号不合法"}), 400
+        q = store.load_question(qid) or external.load_question_any(qid)
+        if q is None:
+            return jsonify({"error": "题目不存在"}), 404
+        data = visuals.render_question_png(q)
+        if data is None:
+            return jsonify({"error": "该题没有图形内容"}), 404
+        return Response(data, mimetype="image/png",
+                        headers={"Cache-Control": "public, max-age=3600"})
 
     # ---------- 能力画像 ----------
     @app.route("/api/profile/<int:child_id>")

@@ -284,6 +284,29 @@ def test_next_external_bank(client, child_id, external_bank):
     assert q["bank"] == "external"
     assert q["source_name"] == "BIG-bench"
     assert "answer" not in q and "option_logic" not in q
+    assert "visual" in q  # 图形题字段（普通题为 null）
+
+
+def test_question_visual_endpoint_returns_png(client, child_id):
+    from logic_kids.models import Question, Story, SourceInfo, Provenance
+    from logic_kids.bank import external
+    q = Question(
+        id="ext_web_maze_0", type="external_text",
+        story=Story("迷宫", "迷宫", {}), entities=[], variables=[],
+        statements=[], constraints=[], question_prompt="?",
+        options=["a", "b"], option_logic=[], answer=0, hints=[],
+        explanation="", source="reasoning_gym",
+        source_info=SourceInfo(type="external", name="Reasoning Gym",
+                               license="Apache-2.0", dataset_id="task=maze"),
+        provenance=Provenance(review_status="approved"),
+        metadata={"grid": ["###", "#S#", "###"], "start": "S",
+                  "goal": "G", "wall": "#"},
+    )
+    external.save_question(q)
+    r = client.get("/api/question/ext_web_maze_0/visual")
+    assert r.status_code == 200
+    assert r.mimetype == "image/png"
+    assert r.data[:4] == b"\x89PNG"
 
 
 def test_next_external_unknown_source(client, child_id):

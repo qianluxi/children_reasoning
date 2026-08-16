@@ -258,6 +258,14 @@ status=child_adapted）：用元数据重建儿童语言题面（"小蚂蚁走�
 （逻辑正确 + 儿童语言已审核）。原 machine 版本保留在 `translations.zh`。
 依赖：`pip install -r requirements.txt`（含 reasoning-gym）。
 
+### 图形化渲染
+
+迷宫、ARC 格子、长方形计数等**图形题**不再只显示纯文本：
+`logic_kids/visuals.py` 用 Pillow 按需渲染成 PNG，
+`/api/question/<qid>/visual` 提供图片，前端有图形时自动展示图片并隐藏纯文本题干。
+支持：maze（墙/通道/起点 S/终点 G 着色）、arc_1d（ARC 色板 + 训练例子→测试输入）、
+rectangle_count（ASCII 图形着色）。
+
 ### 界面与选择
 
 Web 流程：选择儿童 → **选择题库**（🧩 内置题库 / 🌐 外部题库）→

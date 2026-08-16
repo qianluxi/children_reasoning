@@ -197,7 +197,18 @@ function renderQuestion(q) {
   $('qType').textContent = q.type_name;
   $('qLevel').textContent = q.level_label;
   $('qTitle').textContent = q.story.title;
-  $('qStory').textContent = q.story.text;
+  // 图形题：显示真实图片，隐藏纯文本题干
+  const vb = $('visualBox');
+  if (q.visual) {
+    vb.innerHTML = `<img src="/api/question/${q.id}/visual" alt="题目图形">`;
+    vb.classList.remove('hidden');
+    $('qStory').classList.add('hidden');
+  } else {
+    vb.innerHTML = '';
+    vb.classList.add('hidden');
+    $('qStory').classList.remove('hidden');
+    $('qStory').textContent = q.story.text;
+  }
 
   const st = $('statements');
   st.innerHTML = '';
