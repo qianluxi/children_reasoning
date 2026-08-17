@@ -135,5 +135,8 @@
     "cultural_dependency": 1,
     "suitable": true
   },
+  "metadata": {},
+  "archetype": "exclusion",
+  "verified_by": "solver",
   "created_at": "2026-08-16 17:04:48"
 }

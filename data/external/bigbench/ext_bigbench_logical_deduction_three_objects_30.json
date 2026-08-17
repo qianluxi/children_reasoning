@@ -92,7 +92,8 @@
       ],
       "question_prompt": "谁排在最左边？",
       "explanation": "来自 BIG-bench logical_deduction 第 30 例，由规则翻译器转换（Apache-2.0），未经人工改写。",
-      "status": "machine"
+      "status": "machine",
+      "method": "machine"
     }
   },
   "category": "ordering",
@@ -119,5 +120,8 @@
     "cultural_dependency": 2,
     "suitable": true
   },
+  "metadata": {},
+  "archetype": "ordering",
+  "verified_by": "solver",
   "created_at": "2026-08-16T15:21:08"
 }

@@ -54,7 +54,8 @@
         "6"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+      "method": "machine"
     },
     "zh_child": {
       "status": "child_adapted",
@@ -68,7 +69,8 @@
         "6"
       ],
       "question_prompt": "最少要走多少步才能到终点？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+      "method": "template"
     }
   },
   "category": "spatial",
@@ -123,5 +125,7 @@
       ]
     }
   },
+  "archetype": "maze",
+  "verified_by": "generator",
   "created_at": "2026-08-16T22:51:52"
 }

@@ -65,5 +65,8 @@
     "cultural_dependency": 1,
     "suitable": true
   },
+  "metadata": {},
+  "archetype": "reading_reasoning",
+  "verified_by": "dataset",
   "created_at": "2026-08-16T16:13:19"
 }

@@ -7,7 +7,12 @@
     "source": "seed",
     "title": "四只偷食物的小老鼠",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "seed_order_height": {
     "type": "ordering",
@@ -17,7 +22,12 @@
     "source": "seed",
     "title": "谁最高？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "seed_cond_rain": {
     "type": "conditional",
@@ -27,7 +37,12 @@
     "source": "seed",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "seed_set_pets": {
     "type": "set_logic",
@@ -37,7 +52,12 @@
     "source": "seed",
     "title": "谁有鱼？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "seed_excl_race": {
     "type": "exclusion",
@@ -47,7 +67,12 @@
     "source": "seed",
     "title": "跑步比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_f4c342e970": {
     "type": "truth_statements",
@@ -57,7 +82,12 @@
     "source": "generated",
     "title": "谁有面包？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_acd784a5b4": {
     "type": "ordering",
@@ -67,7 +97,12 @@
     "source": "generated",
     "title": "谁跑得最快？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_40077afaed": {
     "type": "conditional",
@@ -77,7 +112,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_95177f05ce": {
     "type": "set_logic",
@@ -87,7 +127,12 @@
     "source": "generated",
     "title": "谁有胡萝卜？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_1471eac416": {
     "type": "exclusion",
@@ -97,7 +142,12 @@
     "source": "generated",
     "title": "跑步比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_7f77cee3d0": {
     "type": "truth_statements",
@@ -107,7 +157,12 @@
     "source": "generated",
     "title": "谁有苹果？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_3f52a7ab0e": {
     "type": "ordering",
@@ -117,7 +172,12 @@
     "source": "generated",
     "title": "排排队：谁在第 1？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_8bb3603a68": {
     "type": "conditional",
@@ -127,7 +187,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_cc70e0633f": {
     "type": "set_logic",
@@ -137,7 +202,12 @@
     "source": "generated",
     "title": "谁有小鱼？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_b4759cc1bf": {
     "type": "exclusion",
@@ -147,7 +217,12 @@
     "source": "generated",
     "title": "唱歌比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "D",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_08f5104955": {
     "type": "truth_statements",
@@ -157,7 +232,12 @@
     "source": "generated",
     "title": "谁有面包？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_6f9c892c00": {
     "type": "ordering",
@@ -167,7 +247,12 @@
     "source": "generated",
     "title": "谁跑得最快？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_92090eba97": {
     "type": "conditional",
@@ -177,7 +262,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_993631b5bf": {
     "type": "set_logic",
@@ -187,7 +277,12 @@
     "source": "generated",
     "title": "谁有饼干？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_ceaf731b8b": {
     "type": "exclusion",
@@ -197,7 +292,12 @@
     "source": "generated",
     "title": "跳绳比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_2f9c16fcac": {
     "type": "truth_statements",
@@ -207,7 +307,12 @@
     "source": "generated",
     "title": "谁有奶酪？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_c536f8462b": {
     "type": "ordering",
@@ -217,7 +322,12 @@
     "source": "generated",
     "title": "排排队：谁在第 1？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_9ab93fb245": {
     "type": "conditional",
@@ -227,7 +337,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_88268546ba": {
     "type": "set_logic",
@@ -237,7 +352,12 @@
     "source": "generated",
     "title": "谁有小鱼？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_6e0294bea3": {
     "type": "exclusion",
@@ -247,7 +367,12 @@
     "source": "generated",
     "title": "排队领点心的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_fc145e1b5b": {
     "type": "truth_statements",
@@ -257,7 +382,12 @@
     "source": "generated",
     "title": "谁有胡萝卜？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_5fea94884e": {
     "type": "ordering",
@@ -267,7 +397,12 @@
     "source": "generated",
     "title": "谁跑得最快？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_e53e9a8c02": {
     "type": "conditional",
@@ -277,7 +412,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_9d9d39c46c": {
     "type": "set_logic",
@@ -287,7 +427,12 @@
     "source": "generated",
     "title": "谁有小鱼？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_d3ae5a425c": {
     "type": "exclusion",
@@ -297,7 +442,12 @@
     "source": "generated",
     "title": "跳绳比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "D",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_29b54436de": {
     "type": "truth_statements",
@@ -307,7 +457,12 @@
     "source": "generated",
     "title": "谁有面包？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_a09b8ca234": {
     "type": "ordering",
@@ -317,7 +472,12 @@
     "source": "generated",
     "title": "谁跑得最快？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_3345daf9bd": {
     "type": "conditional",
@@ -327,7 +487,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_16cdd2d571": {
     "type": "set_logic",
@@ -337,7 +502,12 @@
     "source": "generated",
     "title": "谁有樱桃？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_7a1d90b44f": {
     "type": "exclusion",
@@ -347,7 +517,12 @@
     "source": "generated",
     "title": "唱歌比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_2a08f8d7df": {
     "type": "truth_statements",
@@ -357,7 +532,12 @@
     "source": "generated",
     "title": "谁有奶酪？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "D",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_ff4a6ba4a8": {
     "type": "ordering",
@@ -367,7 +547,12 @@
     "source": "generated",
     "title": "谁最高？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_ef28b85cd1": {
     "type": "conditional",
@@ -377,7 +562,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_c75001aaa7": {
     "type": "set_logic",
@@ -387,7 +577,12 @@
     "source": "generated",
     "title": "谁有面包？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_d84523001a": {
     "type": "exclusion",
@@ -397,7 +592,12 @@
     "source": "generated",
     "title": "跑步比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "D",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_d0eba7ff9a": {
     "type": "truth_statements",
@@ -407,7 +607,12 @@
     "source": "generated",
     "title": "谁有饼干？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_8d19b4e973": {
     "type": "ordering",
@@ -417,7 +622,12 @@
     "source": "generated",
     "title": "谁跑得最快？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_190b287715": {
     "type": "conditional",
@@ -427,7 +637,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_47478261af": {
     "type": "set_logic",
@@ -437,7 +652,12 @@
     "source": "generated",
     "title": "谁有糖果？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_fb03a5d7aa": {
     "type": "exclusion",
@@ -447,7 +667,12 @@
     "source": "generated",
     "title": "跳绳比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_2a8f79a081": {
     "type": "truth_statements",
@@ -457,7 +682,12 @@
     "source": "generated",
     "title": "谁有胡萝卜？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_03626f848a": {
     "type": "ordering",
@@ -467,7 +697,12 @@
     "source": "generated",
     "title": "谁跑得最快？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_55829ba5b9": {
     "type": "conditional",
@@ -477,7 +712,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_b188a6f651": {
     "type": "set_logic",
@@ -487,7 +727,12 @@
     "source": "generated",
     "title": "谁有小鱼？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_b01d61c503": {
     "type": "exclusion",
@@ -497,7 +742,12 @@
     "source": "generated",
     "title": "跳绳比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_88999434b9": {
     "type": "truth_statements",
@@ -507,7 +757,12 @@
     "source": "generated",
     "title": "谁有饼干？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_5bb1d50c74": {
     "type": "ordering",
@@ -517,7 +772,12 @@
     "source": "generated",
     "title": "排排队：谁在第 1？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_cdcaf6b7df": {
     "type": "conditional",
@@ -527,7 +787,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_7b48345a86": {
     "type": "set_logic",
@@ -537,7 +802,12 @@
     "source": "generated",
     "title": "谁有奶酪？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_4936c4ca06": {
     "type": "exclusion",
@@ -547,7 +817,12 @@
     "source": "generated",
     "title": "唱歌比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_6f56fbc9ea": {
     "type": "truth_statements",
@@ -557,7 +832,12 @@
     "source": "generated",
     "title": "谁有樱桃？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "D",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_f5be0a9c14": {
     "type": "ordering",
@@ -567,7 +847,12 @@
     "source": "generated",
     "title": "谁跑得最快？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_45e77c553c": {
     "type": "conditional",
@@ -577,7 +862,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_fa80c1a8a2": {
     "type": "set_logic",
@@ -587,7 +877,12 @@
     "source": "generated",
     "title": "谁有苹果？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_c285da6f50": {
     "type": "exclusion",
@@ -597,7 +892,12 @@
     "source": "generated",
     "title": "唱歌比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_d6194e80e4": {
     "type": "truth_statements",
@@ -607,7 +907,12 @@
     "source": "generated",
     "title": "谁有糖果？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_57addcdf8b": {
     "type": "ordering",
@@ -617,7 +922,12 @@
     "source": "generated",
     "title": "谁最高？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_41d0a8f411": {
     "type": "conditional",
@@ -627,7 +937,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_522ae798ce": {
     "type": "set_logic",
@@ -637,7 +952,12 @@
     "source": "generated",
     "title": "谁有饼干？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_c4426869c5": {
     "type": "exclusion",
@@ -647,7 +967,12 @@
     "source": "generated",
     "title": "排队领点心的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_571a7b4141": {
     "type": "truth_statements",
@@ -657,7 +982,12 @@
     "source": "generated",
     "title": "谁有面包？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_97dcb364a3": {
     "type": "ordering",
@@ -667,7 +997,12 @@
     "source": "generated",
     "title": "谁跑得最快？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_aa4dec22bd": {
     "type": "conditional",
@@ -677,7 +1012,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_f476c799c4": {
     "type": "set_logic",
@@ -687,7 +1027,12 @@
     "source": "generated",
     "title": "谁有胡萝卜？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_cb4d7ac49d": {
     "type": "exclusion",
@@ -697,7 +1042,12 @@
     "source": "generated",
     "title": "跑步比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "match_a9d4438419": {
     "type": "matching",
@@ -707,7 +1057,12 @@
     "source": "generated",
     "title": "谁喜欢什么？",
     "category": "relation",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "matching",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_c46d70a041": {
     "type": "truth_statements",
@@ -717,7 +1072,12 @@
     "source": "generated",
     "title": "谁有胡萝卜？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_f0b2730afa": {
     "type": "ordering",
@@ -727,7 +1087,12 @@
     "source": "generated",
     "title": "排排队：谁在第 1？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_af023ef0ac": {
     "type": "conditional",
@@ -737,7 +1102,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_4933040f93": {
     "type": "set_logic",
@@ -747,7 +1117,12 @@
     "source": "generated",
     "title": "谁有樱桃？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_aa3ff6af2c": {
     "type": "exclusion",
@@ -757,7 +1132,12 @@
     "source": "generated",
     "title": "唱歌比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "D",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "match_721b0d9b16": {
     "type": "matching",
@@ -767,7 +1147,12 @@
     "source": "generated",
     "title": "谁喜欢什么？",
     "category": "relation",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "matching",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_86df186eab": {
     "type": "truth_statements",
@@ -777,7 +1162,12 @@
     "source": "generated",
     "title": "谁有胡萝卜？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_605fa6f3a2": {
     "type": "ordering",
@@ -787,7 +1177,12 @@
     "source": "generated",
     "title": "谁跑得最快？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_cefd0bc47f": {
     "type": "conditional",
@@ -797,7 +1192,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_501b808bcc": {
     "type": "set_logic",
@@ -807,7 +1207,12 @@
     "source": "generated",
     "title": "谁有糖果？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_7c0298d229": {
     "type": "exclusion",
@@ -817,7 +1222,12 @@
     "source": "generated",
     "title": "排队领点心的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "match_b47f65cba1": {
     "type": "matching",
@@ -827,7 +1237,12 @@
     "source": "generated",
     "title": "谁喜欢什么？",
     "category": "relation",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "matching",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_870e21ccbb": {
     "type": "truth_statements",
@@ -837,7 +1252,12 @@
     "source": "generated",
     "title": "谁有饼干？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_e43744a36c": {
     "type": "ordering",
@@ -847,7 +1267,12 @@
     "source": "generated",
     "title": "谁跑得最快？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_99adec550f": {
     "type": "conditional",
@@ -857,7 +1282,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_ef86c3612f": {
     "type": "set_logic",
@@ -867,7 +1297,12 @@
     "source": "generated",
     "title": "谁有奶酪？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_de17743c67": {
     "type": "exclusion",
@@ -877,7 +1312,12 @@
     "source": "generated",
     "title": "跳绳比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "match_731cdff23f": {
     "type": "matching",
@@ -887,7 +1327,12 @@
     "source": "generated",
     "title": "谁喜欢什么？",
     "category": "relation",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "matching",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_7177f61cba": {
     "type": "truth_statements",
@@ -897,7 +1342,12 @@
     "source": "generated",
     "title": "谁有面包？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_58354839fe": {
     "type": "ordering",
@@ -907,7 +1357,12 @@
     "source": "generated",
     "title": "谁最高？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_e077507dc7": {
     "type": "conditional",
@@ -917,7 +1372,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_71433bae66": {
     "type": "set_logic",
@@ -927,7 +1387,12 @@
     "source": "generated",
     "title": "谁有胡萝卜？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_e5ac2b9511": {
     "type": "exclusion",
@@ -937,7 +1402,12 @@
     "source": "generated",
     "title": "跳绳比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "match_bdf899de4b": {
     "type": "matching",
@@ -947,7 +1417,12 @@
     "source": "generated",
     "title": "谁喜欢什么？",
     "category": "relation",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "matching",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "colorpat_71bcaff742": {
     "type": "color_pattern",
@@ -957,7 +1432,12 @@
     "source": "generated",
     "title": "颜色排队",
     "category": "pattern",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "visual_pattern",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_f375d6b25b": {
     "type": "truth_statements",
@@ -967,7 +1447,12 @@
     "source": "generated",
     "title": "谁有胡萝卜？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_8b9075ebc9": {
     "type": "ordering",
@@ -977,7 +1462,12 @@
     "source": "generated",
     "title": "谁跑得最快？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_3726f99794": {
     "type": "conditional",
@@ -987,7 +1477,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_a97b1efeb4": {
     "type": "set_logic",
@@ -997,7 +1492,12 @@
     "source": "generated",
     "title": "谁有饼干？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_12226a2990": {
     "type": "exclusion",
@@ -1007,7 +1507,12 @@
     "source": "generated",
     "title": "排队领点心的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "match_f2f9df9848": {
     "type": "matching",
@@ -1017,7 +1522,12 @@
     "source": "generated",
     "title": "谁喜欢什么？",
     "category": "relation",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "matching",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "colorpat_e6140471d9": {
     "type": "color_pattern",
@@ -1027,7 +1537,12 @@
     "source": "generated",
     "title": "颜色排队",
     "category": "pattern",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "visual_pattern",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "truth_e20a0ab777": {
     "type": "truth_statements",
@@ -1037,7 +1552,12 @@
     "source": "generated",
     "title": "谁有胡萝卜？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "truth_tellers",
+    "age_range": "C",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "order_f8c282ed85": {
     "type": "ordering",
@@ -1047,7 +1567,12 @@
     "source": "generated",
     "title": "谁跑得最快？",
     "category": "ordering",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "ordering",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "cond_51ac12265b": {
     "type": "conditional",
@@ -1057,7 +1582,12 @@
     "source": "generated",
     "title": "想一想，会发生吗？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "conditional",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "set_fc54b01645": {
     "type": "set_logic",
@@ -1067,7 +1597,12 @@
     "source": "generated",
     "title": "谁有苹果？",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "set_logic",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "excl_9b431036c3": {
     "type": "exclusion",
@@ -1077,7 +1612,12 @@
     "source": "generated",
     "title": "跑步比赛的名次",
     "category": "deduction",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "exclusion",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "match_f85eb45171": {
     "type": "matching",
@@ -1087,7 +1627,12 @@
     "source": "generated",
     "title": "谁喜欢什么？",
     "category": "relation",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "matching",
+    "age_range": "A",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   },
   "colorpat_43dd6f5369": {
     "type": "color_pattern",
@@ -1097,6 +1642,11 @@
     "source": "generated",
     "title": "颜色排队",
     "category": "pattern",
-    "quality": "A"
+    "quality": "A",
+    "archetype": "visual_pattern",
+    "age_range": "B",
+    "verified_by": "solver",
+    "has_translation": false,
+    "child_adapted": false
   }
 }

@@ -95,5 +95,8 @@
     "cultural_dependency": 1,
     "suitable": true
   },
+  "metadata": {},
+  "archetype": "ordering",
+  "verified_by": "solver",
   "created_at": ""
 }

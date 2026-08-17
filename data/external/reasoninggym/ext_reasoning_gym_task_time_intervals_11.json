@@ -54,7 +54,8 @@
         "91 days, 06:57:11"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+      "method": "machine"
     },
     "zh_child": {
       "status": "child_adapted",
@@ -68,7 +69,8 @@
         "91 days, 06:57:11"
       ],
       "question_prompt": "一共过了多长时间？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+      "method": "template"
     }
   },
   "category": "math",
@@ -107,5 +109,7 @@
       "max_date_difference_days": 100
     }
   },
+  "archetype": "time_interval",
+  "verified_by": "generator",
   "created_at": "2026-08-16T22:52:21"
 }
