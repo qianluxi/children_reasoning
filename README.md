@@ -67,6 +67,17 @@ python -m pytest tests/ -q
 > 测试的数据目录由 `tests/conftest.py` 重定向到临时目录，运行测试
 > **不会触碰** `data/` 下的真实题库与儿童档案（曾有过测试清空真实题库的教训）。
 
+## Docker 部署（与本地完全一致的 Web 页面）
+
+```bash
+docker build -t children_reasoning .
+docker run -p 5000:5000 children_reasoning
+# 打开 http://localhost:5000
+```
+
+镜像包含 Flask Web 全部界面（儿童挑战卡片 / 图形题可视化 / 能力画像）、
+核心引擎与打包好的外部题库。ModelScope 创空间的 Gradio 版见 `MSCOP/`。
+
 ---
 
 ## 目录结构

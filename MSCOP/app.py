@@ -28,17 +28,25 @@ CHALLENGES = {
     "📏 排序挑战": "ordering",
 }
 
-LEVELS = [("🌱 简单", 1), ("⭐ 普通", 2), ("🚀 困难", 3), ("🧠 挑战", 4)]
+LEVEL_MAP = {"简单": 1, "普通": 2, "困难": 3, "挑战": 4}
 
 
 def _ensure_bank():
     """内置题库为空时自动生成（外部题库已打包在 data/external）。"""
-    if store.stats()["total"] == 0:
-        seeds = seed.validated_seeds()
-        for q in seeds:
-            engine.apply(q)
-        store.save_many(seeds)
-        store.save_many(generate_batch(60, seed=2024))
+    try:
+        if store.stats()["total"] == 0:
+            seeds = seed.validated_seeds()
+            for q in seeds:
+                engine.apply(q)
+            store.save_many(seeds)
+            store.save_many(generate_batch(60, seed=2024))
+    except Exception as e:  # 创空间环境差异：至少保证种子题可用
+        import sys
+        print(f"[warn] 内置题库初始化失败：{e}", file=sys.stderr)
+        try:
+            store.save_many(seed.validated_seeds())
+        except Exception:
+            pass
 
 
 _ensure_bank()
@@ -81,8 +89,9 @@ def _question_view():
 
 def start(challenge, level):
     state.value["ability"] = CHALLENGES.get(challenge)
-    state.value["level"] = level
-    pick = select_question(difficulty=level, child_id=state.value["child_id"],
+    lv = LEVEL_MAP.get(level, 2)
+    state.value["level"] = lv
+    pick = select_question(difficulty=lv, child_id=state.value["child_id"],
                            mixed=True, category=state.value["ability"])
     if pick is None:
         return ("暂无合适的题目，请换个挑战或难度", None,
@@ -143,12 +152,14 @@ def show_hint():
 
 with gr.Blocks(title="小小推理家 · 儿童思维训练") as demo:
     gr.Markdown("# 🧠 小小推理家 · 儿童思维训练\n"
-                "选一个挑战类型和难度，开始今天的逻辑冒险吧！")
+                "选一个挑战类型和难度，开始今天的逻辑冒险吧！\n"
+                "想换难度？随时改上面的「难度」，再点「开始 / 切换难度」即可。")
     with gr.Row():
         challenge = gr.Dropdown(list(CHALLENGES), value="🧠 综合挑战",
                                 label="挑战类型")
-        level = gr.Radio(LEVELS, value=2, label="难度", type="value")
-    start_btn = gr.Button("🚀 开始挑战", variant="primary")
+        level = gr.Radio(["简单", "普通", "困难", "挑战"], value="普通",
+                         label="难度")
+    start_btn = gr.Button("🚀 开始 / 切换难度", variant="primary")
     info = gr.Markdown()
     img = gr.Image(type="pil", label="题目图形", visible=False)
     prompt = gr.Markdown()
@@ -169,4 +180,4 @@ with gr.Blocks(title="小小推理家 · 儿童思维训练") as demo:
 
 
 if __name__ == "__main__":
-    demo.queue().launch()
+    demo.queue().launch(server_name="0.0.0.0")
