@@ -1,0 +1,72 @@
+{
+  "id": "ext_logiqa_split_dev_lang_zh_5672",
+  "type": "external_text",
+  "story": {
+    "title": "LogiQA · #5672",
+    "text": "对于消费者来讲,传统零售业最大的弊端在于信息的不对称.而互联网可以将一件商品的真正定价变得透明,让每个人都知道商品的真正价格区间.传统制造业属于封闭式生产,由生产商决定商品品种,型号,生产者与消费者之间是割裂的.而互联网会让消费者全程参与到生产环节,由用户决定他们想要的商品.",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [],
+  "statements": [],
+  "constraints": [],
+  "question_prompt": "这段文字旨在说明?",
+  "options": [
+    "A.互联网将打破信息不对称的格局",
+    "B.个性化定制是传统零售业的发展方向",
+    "C.互联网会对传统行业进行渗透与改造",
+    "D.互联网会对传统零售业和制造业产生影响"
+  ],
+  "option_logic": [],
+  "answer": 3,
+  "hints": [],
+  "explanation": "LogiQA 原始题（CC BY-NC-SA 4.0，非商业），未经改写与逻辑验证。",
+  "difficulty": 2,
+  "difficulty_score": 2.6,
+  "difficulty_level": 2,
+  "source": "logiqa2.0",
+  "source_info": {
+    "type": "external",
+    "name": "LogiQA2.0",
+    "license": "CC-BY-NC-SA-4.0",
+    "dataset_id": "split=dev,lang=zh",
+    "original_id": "5672",
+    "url": "https://raw.githubusercontent.com/csitfun/logiqa2.0/main/logiqa/DATA/LOGIQA/dev_zh.txt"
+  },
+  "provenance": {
+    "imported_at": "2026-08-16T16:13:19",
+    "modified": false,
+    "translator": "",
+    "review_status": "approved",
+    "logic_validated": false,
+    "difficulty_calibrated": false
+  },
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "deduction",
+    "language_reasoning"
+  ],
+  "age_range": "D",
+  "difficulty_profile": {
+    "cognitive_load": 1,
+    "reasoning_depth": 1,
+    "language_complexity": 3,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "quality": "C",
+  "child_suitability": {
+    "reading_level": 3,
+    "language_complexity": 3,
+    "abstractness": 3,
+    "reasoning_depth": 1,
+    "calculation_load": 1,
+    "cultural_dependency": 1,
+    "suitable": true
+  },
+  "metadata": {},
+  "archetype": "reading_reasoning",
+  "verified_by": "dataset",
+  "created_at": "2026-08-16T16:13:19"
+}

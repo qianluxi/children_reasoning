@@ -1,0 +1,72 @@
+{
+  "id": "ext_logiqa_split_dev_lang_zh_9775",
+  "type": "external_text",
+  "story": {
+    "title": "LogiQA · #9775",
+    "text": "政治家-我们应该对进口水果征收关税，让消费者花费比国产水果更多的钱。否则，其他国家的种植者可以种出更好的水果廉价将使国内果农倒闭。这将导致农田被转变为更有利可图的工业用途，并随之消失一种独特的生活方式。",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [],
+  "statements": [],
+  "constraints": [],
+  "question_prompt": "政治家的建议最符合哪个以下原则之一？",
+  "options": [
+    "一个国家应该将本国公民的利益置于其他国家公民的利益之上。",
+    "政府干预有时比自由市场创造更多的经济效率。",
+    "一个国家应该把自己的经济利益置于其他国家的经济利益之上",
+    "社会问题有时应该优先于经济效率。"
+  ],
+  "option_logic": [],
+  "answer": 3,
+  "hints": [],
+  "explanation": "LogiQA 原始题（CC BY-NC-SA 4.0，非商业），未经改写与逻辑验证。",
+  "difficulty": 2,
+  "difficulty_score": 2.6,
+  "difficulty_level": 2,
+  "source": "logiqa2.0",
+  "source_info": {
+    "type": "external",
+    "name": "LogiQA2.0",
+    "license": "CC-BY-NC-SA-4.0",
+    "dataset_id": "split=dev,lang=zh",
+    "original_id": "9775",
+    "url": "https://raw.githubusercontent.com/csitfun/logiqa2.0/main/logiqa/DATA/LOGIQA/dev_zh.txt"
+  },
+  "provenance": {
+    "imported_at": "2026-08-16T16:13:19",
+    "modified": false,
+    "translator": "",
+    "review_status": "approved",
+    "logic_validated": false,
+    "difficulty_calibrated": false
+  },
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "deduction",
+    "language_reasoning"
+  ],
+  "age_range": "D",
+  "difficulty_profile": {
+    "cognitive_load": 1,
+    "reasoning_depth": 1,
+    "language_complexity": 3,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "quality": "C",
+  "child_suitability": {
+    "reading_level": 3,
+    "language_complexity": 3,
+    "abstractness": 3,
+    "reasoning_depth": 1,
+    "calculation_load": 1,
+    "cultural_dependency": 1,
+    "suitable": true
+  },
+  "metadata": {},
+  "archetype": "reading_reasoning",
+  "verified_by": "dataset",
+  "created_at": "2026-08-16T16:13:19"
+}

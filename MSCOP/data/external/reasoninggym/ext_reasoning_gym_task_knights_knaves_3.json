@@ -1,0 +1,151 @@
+{
+  "id": "ext_reasoning_gym_task_knights_knaves_3",
+  "type": "external_text",
+  "story": {
+    "title": "Reasoning Gym · knights_knaves",
+    "text": "A very special island is inhabited only by pioneers and laggards. Pioneers always tell the truth, and laggards always lie. You meet 2 inhabitants: Olivia, and Lily. \"Lily is a laggard and Lily is a pioneer\" - Olivia. Lily noted, \"if Olivia is a pioneer then Lily is a pioneer\". So who is a pioneer and who is a laggard? (Format your answer like: \"Olivia is a pioneer/laggard, and Lily is a pioneer/laggard\")",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [],
+  "statements": [],
+  "constraints": [],
+  "question_prompt": "请选择正确答案：",
+  "options": [
+    "Olivia is a pioneer, Lily is a pioneer",
+    "Olivia is a pioneer, Lily is a laggard",
+    "Olivia is a laggard, Lily is a laggard",
+    "Olivia is a laggard, Lily is a pioneer"
+  ],
+  "option_logic": [],
+  "answer": 3,
+  "hints": [],
+  "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+  "difficulty": 2,
+  "difficulty_score": 3.7,
+  "difficulty_level": 2,
+  "source": "reasoning gym",
+  "source_info": {
+    "type": "external",
+    "name": "Reasoning Gym",
+    "license": "Apache-2.0",
+    "dataset_id": "task=knights_knaves",
+    "original_id": "3",
+    "url": "https://github.com/open-thought/reasoning-gym"
+  },
+  "provenance": {
+    "imported_at": "2026-08-16T22:51:52",
+    "modified": true,
+    "translator": "reasoning_gym_generator_v1",
+    "review_status": "approved",
+    "logic_validated": false,
+    "difficulty_calibrated": false
+  },
+  "translations": {
+    "zh": {
+      "status": "machine",
+      "story_title": "Reasoning Gym · knights_knaves",
+      "story_text": "A very special island is 有一座小岛，岛上只有先锋和落后者。先锋总说真话，落后者总说假话。 你遇到了 2 个居民：Olivia, and Lily. \"Lily 是laggard 并且 Lily 是pioneer\" - Olivia. Lily noted, \"如果 Olivia 是pioneer then Lily 是pioneer\". So who is a pioneer？谁又是laggard？ (Format your answer like: \"Olivia 是pioneer/落后者, 并且 Lily 是pioneer/落后者\")",
+      "constraints": [],
+      "options": [
+        "Olivia 是先锋，Lily 是先锋",
+        "Olivia 是先锋，Lily 是落后者",
+        "Olivia 是落后者，Lily 是落后者",
+        "Olivia 是落后者，Lily 是先锋"
+      ],
+      "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+      "method": "machine"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "story_title": "Reasoning Gym · knights_knaves",
+      "story_text": "有一座小岛，岛上住着诚实的人（先锋）和爱说谎的人（落后者）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Olivia、Lily。他们说：\nOlivia 说：“（Lily是落后者）并且（Lily是先锋）”\nLily 说：“如果（Olivia是先锋）那么（Lily是先锋）”",
+      "constraints": [],
+      "options": [
+        "Olivia 是先锋，Lily 是先锋",
+        "Olivia 是先锋，Lily 是落后者",
+        "Olivia 是落后者，Lily 是落后者",
+        "Olivia 是落后者，Lily 是先锋"
+      ],
+      "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+      "method": "template"
+    }
+  },
+  "category": "deduction",
+  "skills": [
+    "deduction",
+    "negation"
+  ],
+  "age_range": "D",
+  "difficulty_profile": {
+    "cognitive_load": 1,
+    "reasoning_depth": 1,
+    "language_complexity": 3,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "quality": "B",
+  "child_suitability": {
+    "reading_level": 3,
+    "language_complexity": 3,
+    "abstractness": 3,
+    "reasoning_depth": 1,
+    "calculation_load": 1,
+    "cultural_dependency": 2,
+    "suitable": true
+  },
+  "metadata": {
+    "source_dataset": "knights_knaves",
+    "source_index": 3,
+    "statements": [
+      [
+        "and",
+        [
+          "lying",
+          1
+        ],
+        [
+          "telling-truth",
+          1
+        ]
+      ],
+      [
+        "->",
+        [
+          "telling-truth",
+          0
+        ],
+        [
+          "telling-truth",
+          1
+        ]
+      ]
+    ],
+    "solution": [
+      false,
+      true
+    ],
+    "names": [
+      "Olivia",
+      "Lily"
+    ],
+    "knight_knave_terms": {
+      "knight": "pioneer",
+      "knave": "laggard",
+      "a_knight": "a pioneer",
+      "a_knave": "a laggard",
+      "Knight": "Pioneer",
+      "Knave": "Laggard"
+    },
+    "difficulty": {
+      "n_people": 2,
+      "depth_constraint": 2,
+      "width_constraint": 2
+    }
+  },
+  "archetype": "truth_tellers",
+  "verified_by": "generator",
+  "created_at": "2026-08-16T22:51:52"
+}
