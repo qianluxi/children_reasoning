@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · leg_counting",
-    "text": "Your task is to count how many legs there are in total when given a list of animals.\n\nNow, how many legs are there in total if you have 3 sea slugs, 12 deers, 2 giraffes, 11 elephants?",
+    "text": "Your task is to count how many legs there are in total when given a list of animals.\n\nNow, how many legs are there in total if you have 13 shrimps, 14 tigers, 7 chickens, 9 spiders, 5 praying mantiss, 14 grasshoppers, 5 scorpions?",
     "roles": {}
   },
   "entities": [],
@@ -12,10 +12,10 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "100",
-    "98",
-    "101",
-    "103"
+    "426",
+    "424",
+    "427",
+    "429"
   ],
   "option_logic": [],
   "answer": 0,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · leg_counting",
-      "story_text": "数一数：3 只海蛞蝓、12 只deer、2 只长颈鹿、11 只大象，这些动物一共有多少条腿？",
+      "story_text": "数一数：13 只shrimp、14 只老虎、7 只鸡、9 只蜘蛛、5 只螳螂、14 只grasshopper、5 只scorpion，这些动物一共有多少条腿？",
       "constraints": [],
       "options": [
-        "100",
-        "98",
-        "101",
-        "103"
+        "426",
+        "424",
+        "427",
+        "429"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · leg_counting",
+      "story_text": "数一数下面这些动物一共有多少条腿：13 只shrimp、14 只老虎、7 只鸡、9 只蜘蛛、5 只螳螂、14 只grasshopper、5 只scorpion。",
+      "constraints": [],
+      "options": [
+        "426",
+        "424",
+        "427",
+        "429"
+      ],
+      "question_prompt": "这些动物一共有多少条腿？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -70,7 +86,7 @@
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
     "reading_level": 2,
     "language_complexity": 2,
@@ -84,13 +100,16 @@
     "source_dataset": "leg_counting",
     "source_index": 0,
     "animals": {
-      "sea slug": 3,
-      "deer": 12,
-      "giraffe": 2,
-      "elephant": 11
+      "shrimp": 13,
+      "tiger": 14,
+      "chicken": 7,
+      "spider": 9,
+      "praying mantis": 5,
+      "grasshopper": 14,
+      "scorpion": 5
     },
-    "num_animals": 4,
-    "total_legs": 100,
+    "num_animals": 7,
+    "total_legs": 426,
     "difficulty": {
       "num_animals": [
         3,
@@ -102,5 +121,7 @@
       ]
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "counting",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

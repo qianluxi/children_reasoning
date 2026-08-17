@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · time_intervals",
-    "text": "A system backup started at 2964-06-17 08:15:14 and completed at 2964-07-04 11:59:09. What was the total backup duration? Answer in D days, HH:MM.",
+    "text": "A conference call began at 03 August 2578, 14:49 +0300 and ended at 12 September 2578, 16:00 -0600. How long was the conference? Answer in D days, HH:MM.",
     "roles": {}
   },
   "entities": [],
@@ -12,10 +12,10 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "17 days, 03:44",
-    "17 days, 03:53",
-    "17 days, 03:43",
-    "17 days, 04:43"
+    "40 days, 10:12",
+    "40 days, 11:11",
+    "40 days, 10:11",
+    "40 days, 10:21"
   ],
   "option_logic": [],
   "answer": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:52:21",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · time_intervals",
-      "story_text": "A system backup started at 2964-06-17 08:15:14 and completed at 2964-07-04 11:59:09. What was the total backup duration? （答案格式见选项） days, HH:MM.",
+      "story_text": "A conference call began at 03 August 2578, 14:49 +0300 and ended at 12 September 2578, 16:00 -0600. How long was the conference? （答案格式见选项） days, HH:MM.",
       "constraints": [],
       "options": [
-        "17 days, 03:44",
-        "17 days, 03:53",
-        "17 days, 03:43",
-        "17 days, 04:43"
+        "40 days, 10:12",
+        "40 days, 11:11",
+        "40 days, 10:11",
+        "40 days, 10:21"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · time_intervals",
-      "story_text": "小闹钟从 08:15:14 走到 11:59:09，一共过了多久？",
+      "story_text": "小闹钟从 14:49:00+03:00 走到 16:00:00-06:00，一共过了多久？",
       "constraints": [],
       "options": [
-        "17 days, 03:44",
-        "17 days, 03:53",
-        "17 days, 03:43",
-        "17 days, 04:43"
+        "40 days, 10:12",
+        "40 days, 11:11",
+        "40 days, 10:11",
+        "40 days, 10:21"
       ],
       "question_prompt": "一共过了多长时间？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "math",
@@ -100,9 +100,9 @@
     "source_dataset": "time_intervals",
     "source_index": 0,
     "task_type": "datetime_tz",
-    "start_time": "2964-06-17 08:15:14",
-    "end_time": "2964-07-04 11:59:09",
-    "format": "%Y-%m-%d %H:%M:%S",
+    "start_time": "2578-08-03 14:49:00+03:00",
+    "end_time": "2578-09-12 16:00:00-06:00",
+    "format": "%d %B %Y, %H:%M %z",
     "expected_format": "D days, HH:MM",
     "difficulty": {
       "max_time_difference_seconds": 86400,
@@ -111,5 +111,5 @@
   },
   "archetype": "time_interval",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:52:21"
+  "created_at": "2026-08-17T16:28:41"
 }

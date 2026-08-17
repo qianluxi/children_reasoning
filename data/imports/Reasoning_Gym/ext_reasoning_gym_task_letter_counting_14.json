@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · letter_counting",
-    "text": "How many times does the letter \"u\" appear in the text: \"the work of Jules son Michel Verne In any event many of the\"?",
+    "text": "How many times does the letter \"i\" appear in the text: \"delightful vision gave a happier turn to Mr Smith s\"?",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
+    "0",
+    "5",
     "3",
-    "11",
-    "1",
-    "6"
+    "15"
   ],
   "option_logic": [],
-  "answer": 2,
+  "answer": 1,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 1,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · letter_counting",
-      "story_text": "字母 “u” 在下面这段文字里出现了多少次？\n“the work of Jules son Michel Verne In any event many of the”",
+      "story_text": "字母 “i” 在下面这段文字里出现了多少次？\n“delightful vision gave a happier turn to Mr Smith s”",
       "constraints": [],
       "options": [
+        "0",
+        "5",
         "3",
-        "11",
-        "1",
-        "6"
+        "15"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · letter_counting",
+      "story_text": "下面这段话里，字母 “i” 一共出现了几次？\ndelightful vision gave a happier turn to Mr Smith s",
+      "constraints": [],
+      "options": [
+        "0",
+        "5",
+        "3",
+        "15"
+      ],
+      "question_prompt": "字母 “i” 出现了几次？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -69,7 +85,7 @@
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
     "reading_level": 2,
     "language_complexity": 2,
@@ -82,22 +98,19 @@
   "metadata": {
     "source_dataset": "letter_counting",
     "source_index": 14,
-    "span_length": 13,
-    "target_letter": "u",
+    "span_length": 10,
+    "target_letter": "i",
     "span": [
-      "the",
-      "work",
-      "of",
-      "Jules",
-      "son",
-      "Michel",
-      "Verne",
-      "In",
-      "any",
-      "event",
-      "many",
-      "of",
-      "the"
+      "delightful",
+      "vision",
+      "gave",
+      "a",
+      "happier",
+      "turn",
+      "to",
+      "Mr",
+      "Smith",
+      "s"
     ],
     "difficulty": {
       "words": [
@@ -106,5 +119,7 @@
       ]
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "counting",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

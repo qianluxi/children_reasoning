@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · letter_counting",
-    "text": "How many times does the letter \"w\" appear in the text: \"it into a watering place\"?",
+    "text": "How many times does the letter \"p\" appear in the text: \"nineteenth century and again and again repeated had conceived the idea of removing an entire\"?",
     "roles": {}
   },
   "entities": [],
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,8 +44,9 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · letter_counting",
-      "story_text": "字母 “w” 在下面这段文字里出现了多少次？\n“it into a watering place”",
+      "story_text": "字母 “p” 在下面这段文字里出现了多少次？\n“nineteenth century and again and again repeated had conceived the idea of removing an entire”",
       "constraints": [],
       "options": [
         "11",
@@ -54,6 +55,21 @@
         "3"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · letter_counting",
+      "story_text": "下面这段话里，字母 “p” 一共出现了几次？\nnineteenth century and again and again repeated had conceived the idea of removing an entire",
+      "constraints": [],
+      "options": [
+        "11",
+        "2",
+        "1",
+        "3"
+      ],
+      "question_prompt": "字母 “p” 出现了几次？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -65,14 +81,14 @@
   "difficulty_profile": {
     "cognitive_load": 1,
     "reasoning_depth": 1,
-    "language_complexity": 1,
+    "language_complexity": 2,
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
-    "reading_level": 1,
-    "language_complexity": 1,
+    "reading_level": 2,
+    "language_complexity": 2,
     "abstractness": 4,
     "reasoning_depth": 1,
     "calculation_load": 1,
@@ -82,14 +98,24 @@
   "metadata": {
     "source_dataset": "letter_counting",
     "source_index": 1,
-    "span_length": 5,
-    "target_letter": "w",
+    "span_length": 15,
+    "target_letter": "p",
     "span": [
-      "it",
-      "into",
-      "a",
-      "watering",
-      "place"
+      "nineteenth",
+      "century",
+      "and",
+      "again",
+      "and",
+      "again",
+      "repeated",
+      "had",
+      "conceived",
+      "the",
+      "idea",
+      "of",
+      "removing",
+      "an",
+      "entire"
     ],
     "difficulty": {
       "words": [
@@ -98,5 +124,7 @@
       ]
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "counting",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

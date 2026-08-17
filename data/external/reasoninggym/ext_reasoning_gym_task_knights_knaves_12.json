@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · knights_knaves",
-    "text": "A very special island is inhabited only by sages and fools. Sages always tell the truth, and fools always lie. You meet 2 inhabitants: Jacob, and Emma. Jacob noted, \"Emma is a sage if and only if Emma is a fool\". \"Jacob is a sage if and only if Jacob is a fool,\" Emma claimed. So who is a sage and who is a fool? (Format your answer like: \"Jacob is a sage/fool, and Emma is a sage/fool\")",
+    "text": "A very special island is inhabited only by pioneers and laggards. Pioneers always tell the truth, and laggards always lie. You meet 2 inhabitants: Aiden, and Chloe. \"Chloe is a pioneer\" - Aiden. \"if Aiden is a pioneer then Chloe is a pioneer,\" Chloe claimed. So who is a pioneer and who is a laggard? (Format your answer like: \"Aiden is a pioneer/laggard, and Chloe is a pioneer/laggard\")",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "Jacob is a sage, Emma is a fool",
-    "Jacob is a fool, Emma is a sage",
-    "Jacob is a fool, Emma is a fool",
-    "Jacob is a sage, Emma is a sage"
+    "Aiden is a pioneer, Chloe is a laggard",
+    "Aiden is a laggard, Chloe is a pioneer",
+    "Aiden is a laggard, Chloe is a laggard",
+    "Aiden is a pioneer, Chloe is a pioneer"
   ],
   "option_logic": [],
-  "answer": 2,
+  "answer": 3,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "A very special island is 有一座小岛，岛上只有贤者和愚者。贤者总说真话，愚者总说假话。 你遇到了 2 个居民：Jacob, and Emma. Jacob noted, \"Emma 是sage 当且仅当 Emma 是fool\". \"Jacob 是sage 当且仅当 Jacob 是fool,\" Emma claimed. So who is a sage？谁又是fool？ (Format your answer like: \"Jacob 是sage/愚者, 并且 Emma 是sage/愚者\")",
+      "story_text": "A very special island is 有一座小岛，岛上只有先锋和落后者。先锋总说真话，落后者总说假话。 你遇到了 2 个居民：Aiden, and Chloe. \"Chloe 是pioneer\" - Aiden. \"如果 Aiden 是pioneer then Chloe 是pioneer,\" Chloe claimed. So who is a pioneer？谁又是laggard？ (Format your answer like: \"Aiden 是pioneer/落后者, 并且 Chloe 是pioneer/落后者\")",
       "constraints": [],
       "options": [
-        "Jacob 是贤者，Emma 是愚者",
-        "Jacob 是愚者，Emma 是贤者",
-        "Jacob 是愚者，Emma 是愚者",
-        "Jacob 是贤者，Emma 是贤者"
+        "Aiden 是先锋，Chloe 是落后者",
+        "Aiden 是落后者，Chloe 是先锋",
+        "Aiden 是落后者，Chloe 是落后者",
+        "Aiden 是先锋，Chloe 是先锋"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "有一座小岛，岛上住着诚实的人（贤者）和爱说谎的人（愚者）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Jacob、Emma。他们说：\nJacob 说：“['<=>', ['telling-truth', 1], ['lying', 1]]”\nEmma 说：“['<=>', ['telling-truth', 0], ['lying', 0]]”",
+      "story_text": "有一座小岛，岛上住着诚实的人（先锋）和爱说谎的人（落后者）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Aiden、Chloe。他们说：\nAiden 说：“不是（Chloe是落后者）”\nChloe 说：“如果（Aiden是先锋）那么（Chloe是先锋）”",
       "constraints": [],
       "options": [
-        "Jacob 是贤者，Emma 是愚者",
-        "Jacob 是愚者，Emma 是贤者",
-        "Jacob 是愚者，Emma 是愚者",
-        "Jacob 是贤者，Emma 是贤者"
+        "Aiden 是先锋，Chloe 是落后者",
+        "Aiden 是落后者，Chloe 是先锋",
+        "Aiden 是落后者，Chloe 是落后者",
+        "Aiden 是先锋，Chloe 是先锋"
       ],
       "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "deduction",
@@ -101,43 +101,39 @@
     "source_index": 12,
     "statements": [
       [
-        "<=>",
-        [
-          "telling-truth",
-          1
-        ],
+        "not",
         [
           "lying",
           1
         ]
       ],
       [
-        "<=>",
+        "->",
         [
           "telling-truth",
           0
         ],
         [
-          "lying",
-          0
+          "telling-truth",
+          1
         ]
       ]
     ],
     "solution": [
-      false,
-      false
+      true,
+      true
     ],
     "names": [
-      "Jacob",
-      "Emma"
+      "Aiden",
+      "Chloe"
     ],
     "knight_knave_terms": {
-      "knight": "sage",
-      "knave": "fool",
-      "a_knight": "a sage",
-      "a_knave": "a fool",
-      "Knight": "Sage",
-      "Knave": "Fool"
+      "knight": "pioneer",
+      "knave": "laggard",
+      "a_knight": "a pioneer",
+      "a_knave": "a laggard",
+      "Knight": "Pioneer",
+      "Knave": "Laggard"
     },
     "difficulty": {
       "n_people": 2,
@@ -147,5 +143,5 @@
   },
   "archetype": "truth_tellers",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:41"
 }

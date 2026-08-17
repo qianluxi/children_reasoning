@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · knights_knaves",
-    "text": "A very special island is inhabited only by saints and sinners. Saints always tell the truth, and sinners always lie. You meet 2 inhabitants: Alexander, and Sofia. Alexander expressed that Sofia is a saint and Sofia is a sinner. \"Alexander is a saint,\" Sofia claimed. So who is a saint and who is a sinner? (Format your answer like: \"Alexander is a saint/sinner, and Sofia is a saint/sinner\")",
+    "text": "A very special island is inhabited only by pioneers and laggards. Pioneers always tell the truth, and laggards always lie. You meet 2 inhabitants: Noah, and Aiden. Noah commented, \"if Aiden is a pioneer then Aiden is a laggard\". Aiden said that Noah is a pioneer or Noah is a laggard. So who is a pioneer and who is a laggard? (Format your answer like: \"Noah is a pioneer/laggard, and Aiden is a pioneer/laggard\")",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "Alexander is a saint, Sofia is a sinner",
-    "Alexander is a sinner, Sofia is a saint",
-    "Alexander is a saint, Sofia is a saint",
-    "Alexander is a sinner, Sofia is a sinner"
+    "Noah is a pioneer, Aiden is a laggard",
+    "Noah is a laggard, Aiden is a pioneer",
+    "Noah is a pioneer, Aiden is a pioneer",
+    "Noah is a laggard, Aiden is a laggard"
   ],
   "option_logic": [],
-  "answer": 3,
+  "answer": 1,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "A very special island is 有一座小岛，岛上只有saints和sinners。saints总说真话，sinners总说假话。 你遇到了 2 个居民：Alexander, and Sofia. Alexander expressed that Sofia is a saint and Sofia is a sinner. \"Alexander 是saint,\" Sofia claimed. So who is a saint？谁又是sinner？ (Format your answer like: \"Alexander 是saint/sinner, 并且 Sofia 是saint/sinner\")",
+      "story_text": "A very special island is 有一座小岛，岛上只有先锋和落后者。先锋总说真话，落后者总说假话。 你遇到了 2 个居民：Noah, and Aiden. Noah commented, \"如果 Aiden 是pioneer then Aiden 是laggard\". Aiden said that Noah is a pioneer or Noah is a laggard. So who is a pioneer？谁又是laggard？ (Format your answer like: \"Noah 是pioneer/落后者, 并且 Aiden 是pioneer/落后者\")",
       "constraints": [],
       "options": [
-        "Alexander 是saint，Sofia 是sinner",
-        "Alexander 是sinner，Sofia 是saint",
-        "Alexander 是saint，Sofia 是saint",
-        "Alexander 是sinner，Sofia 是sinner"
+        "Noah 是先锋，Aiden 是落后者",
+        "Noah 是落后者，Aiden 是先锋",
+        "Noah 是先锋，Aiden 是先锋",
+        "Noah 是落后者，Aiden 是落后者"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · knights_knaves",
+      "story_text": "有一座小岛，岛上住着诚实的人（先锋）和爱说谎的人（落后者）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Noah、Aiden。他们说：\nNoah 说：“如果（Aiden是先锋）那么（Aiden是落后者）”\nAiden 说：“（Noah是先锋）或者（Noah是落后者）”",
+      "constraints": [],
+      "options": [
+        "Noah 是先锋，Aiden 是落后者",
+        "Noah 是落后者，Aiden 是先锋",
+        "Noah 是先锋，Aiden 是先锋",
+        "Noah 是落后者，Aiden 是落后者"
+      ],
+      "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -70,7 +86,7 @@
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
     "reading_level": 3,
     "language_complexity": 3,
@@ -85,7 +101,7 @@
     "source_index": 6,
     "statements": [
       [
-        "and",
+        "->",
         [
           "telling-truth",
           1
@@ -96,7 +112,11 @@
         ]
       ],
       [
-        "not",
+        "or",
+        [
+          "telling-truth",
+          0
+        ],
         [
           "lying",
           0
@@ -105,19 +125,19 @@
     ],
     "solution": [
       false,
-      false
+      true
     ],
     "names": [
-      "Alexander",
-      "Sofia"
+      "Noah",
+      "Aiden"
     ],
     "knight_knave_terms": {
-      "knight": "saint",
-      "knave": "sinner",
-      "a_knight": "a saint",
-      "a_knave": "a sinner",
-      "Knight": "Saint",
-      "Knave": "Sinner"
+      "knight": "pioneer",
+      "knave": "laggard",
+      "a_knight": "a pioneer",
+      "a_knave": "a laggard",
+      "Knight": "Pioneer",
+      "Knave": "Laggard"
     },
     "difficulty": {
       "n_people": 2,
@@ -125,5 +145,7 @@
       "width_constraint": 2
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "truth_tellers",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

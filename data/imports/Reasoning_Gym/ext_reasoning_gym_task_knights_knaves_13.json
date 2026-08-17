@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · knights_knaves",
-    "text": "A very special island is inhabited only by saints and sinners. Saints always tell the truth, and sinners always lie. You meet 2 inhabitants: Aria, and Sofia. As Aria put it, \"Sofia is a saint\". \"Aria is a sinner or Aria is a saint,\" Sofia declared. So who is a saint and who is a sinner? (Format your answer like: \"Aria is a saint/sinner, and Sofia is a saint/sinner\")",
+    "text": "A very special island is inhabited only by pioneers and laggards. Pioneers always tell the truth, and laggards always lie. You meet 2 inhabitants: Chloe, and Elizabeth. According to Chloe, \"Elizabeth is a pioneer or Elizabeth is a laggard\". Elizabeth said, \"Chloe is a pioneer if and only if Chloe is a laggard.\" So who is a pioneer and who is a laggard? (Format your answer like: \"Chloe is a pioneer/laggard, and Elizabeth is a pioneer/laggard\")",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "Aria is a sinner, Sofia is a saint",
-    "Aria is a sinner, Sofia is a sinner",
-    "Aria is a saint, Sofia is a saint",
-    "Aria is a saint, Sofia is a sinner"
+    "Chloe is a laggard, Elizabeth is a pioneer",
+    "Chloe is a laggard, Elizabeth is a laggard",
+    "Chloe is a pioneer, Elizabeth is a pioneer",
+    "Chloe is a pioneer, Elizabeth is a laggard"
   ],
   "option_logic": [],
-  "answer": 2,
+  "answer": 3,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "A very special island is 有一座小岛，岛上只有saints和sinners。saints总说真话，sinners总说假话。 你遇到了 2 个居民：Aria, and Sofia. As Aria put it, \"Sofia 是saint\". \"Aria 是sinner 或者 Aria 是saint,\" Sofia declared. So who is a saint？谁又是sinner？ (Format your answer like: \"Aria 是saint/sinner, 并且 Sofia 是saint/sinner\")",
+      "story_text": "A very special island is 有一座小岛，岛上只有先锋和落后者。先锋总说真话，落后者总说假话。 你遇到了 2 个居民：Chloe, and Elizabeth. According to Chloe, \"Elizabeth 是pioneer 或者 Elizabeth 是laggard\". Elizabeth said, \"Chloe 是pioneer 当且仅当 Chloe 是laggard.\" So who is a pioneer？谁又是laggard？ (Format your answer like: \"Chloe 是pioneer/落后者, 并且 Elizabeth 是pioneer/落后者\")",
       "constraints": [],
       "options": [
-        "Aria 是sinner，Sofia 是saint",
-        "Aria 是sinner，Sofia 是sinner",
-        "Aria 是saint，Sofia 是saint",
-        "Aria 是saint，Sofia 是sinner"
+        "Chloe 是落后者，Elizabeth 是先锋",
+        "Chloe 是落后者，Elizabeth 是落后者",
+        "Chloe 是先锋，Elizabeth 是先锋",
+        "Chloe 是先锋，Elizabeth 是落后者"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · knights_knaves",
+      "story_text": "有一座小岛，岛上住着诚实的人（先锋）和爱说谎的人（落后者）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Chloe、Elizabeth。他们说：\nChloe 说：“（Elizabeth是先锋）或者（Elizabeth是落后者）”\nElizabeth 说：“('<=>', ('telling-truth', 0), ('lying', 0))”",
+      "constraints": [],
+      "options": [
+        "Chloe 是落后者，Elizabeth 是先锋",
+        "Chloe 是落后者，Elizabeth 是落后者",
+        "Chloe 是先锋，Elizabeth 是先锋",
+        "Chloe 是先锋，Elizabeth 是落后者"
+      ],
+      "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -66,14 +82,14 @@
   "difficulty_profile": {
     "cognitive_load": 1,
     "reasoning_depth": 1,
-    "language_complexity": 3,
+    "language_complexity": 4,
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
-    "reading_level": 3,
-    "language_complexity": 3,
+    "reading_level": 4,
+    "language_complexity": 4,
     "abstractness": 3,
     "reasoning_depth": 1,
     "calculation_load": 1,
@@ -85,39 +101,43 @@
     "source_index": 13,
     "statements": [
       [
-        "not",
+        "or",
+        [
+          "telling-truth",
+          1
+        ],
         [
           "lying",
           1
         ]
       ],
       [
-        "or",
+        "<=>",
         [
-          "lying",
+          "telling-truth",
           0
         ],
         [
-          "telling-truth",
+          "lying",
           0
         ]
       ]
     ],
     "solution": [
       true,
-      true
+      false
     ],
     "names": [
-      "Aria",
-      "Sofia"
+      "Chloe",
+      "Elizabeth"
     ],
     "knight_knave_terms": {
-      "knight": "saint",
-      "knave": "sinner",
-      "a_knight": "a saint",
-      "a_knave": "a sinner",
-      "Knight": "Saint",
-      "Knave": "Sinner"
+      "knight": "pioneer",
+      "knave": "laggard",
+      "a_knight": "a pioneer",
+      "a_knave": "a laggard",
+      "Knight": "Pioneer",
+      "Knave": "Laggard"
     },
     "difficulty": {
       "n_people": 2,
@@ -125,5 +145,7 @@
       "width_constraint": 2
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "truth_tellers",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

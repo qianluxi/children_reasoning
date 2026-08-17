@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · knights_knaves",
-    "text": "A very special island is inhabited only by sages and fools. Sages always tell the truth, and fools always lie. You meet 2 inhabitants: Abigail, and Lily. \"Lily is a sage,\" Abigail mentioned. As Lily put it, \"Abigail is a fool or Abigail is a sage\". So who is a sage and who is a fool? (Format your answer like: \"Abigail is a sage/fool, and Lily is a sage/fool\")",
+    "text": "A very special island is inhabited only by angels and devils. Angels always tell the truth, and devils always lie. You meet 2 inhabitants: Mason, and Lucas. \"Lucas is an angel and Lucas is a devil,\" Mason claimed. Lucas said that if Mason is a devil then Mason is an angel. So who is an angel and who is a devil? (Format your answer like: \"Mason is a angel/devil, and Lucas is a angel/devil\")",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "Abigail is a sage, Lily is a sage",
-    "Abigail is a sage, Lily is a fool",
-    "Abigail is a fool, Lily is a fool",
-    "Abigail is a fool, Lily is a sage"
+    "Mason is an angel, Lucas is an angel",
+    "Mason is an angel, Lucas is a devil",
+    "Mason is a devil, Lucas is a devil",
+    "Mason is a devil, Lucas is an angel"
   ],
   "option_logic": [],
-  "answer": 0,
+  "answer": 2,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "A very special island is 有一座小岛，岛上只有贤者和愚者。贤者总说真话，愚者总说假话。 你遇到了 2 个居民：Abigail, and Lily. \"Lily 是sage,\" Abigail mentioned. As Lily put it, \"Abigail 是fool 或者 Abigail 是sage\". So who is a sage？谁又是fool？ (Format your answer like: \"Abigail 是sage/愚者, 并且 Lily 是sage/愚者\")",
+      "story_text": "A very special island is 有一座小岛，岛上只有天使和恶魔。天使总说真话，恶魔总说假话。 你遇到了 2 个居民：Mason, and Lucas. \"Lucas 是angel 并且 Lucas 是devil,\" Mason claimed. Lucas said that if Mason is a devil then Mason is an angel. So who is an angel？谁又是devil？ (Format your answer like: \"Mason 是angel/恶魔, 并且 Lucas 是angel/恶魔\")",
       "constraints": [],
       "options": [
-        "Abigail 是贤者，Lily 是贤者",
-        "Abigail 是贤者，Lily 是愚者",
-        "Abigail 是愚者，Lily 是愚者",
-        "Abigail 是愚者，Lily 是贤者"
+        "Mason 是天使，Lucas 是天使",
+        "Mason 是天使，Lucas 是恶魔",
+        "Mason 是恶魔，Lucas 是恶魔",
+        "Mason 是恶魔，Lucas 是天使"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "有一座小岛，岛上住着诚实的人（贤者）和爱说谎的人（愚者）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Abigail、Lily。他们说：\nAbigail 说：“不是（Lily是愚者）”\nLily 说：“（Abigail是愚者）或者（Abigail是贤者）”",
+      "story_text": "有一座小岛，岛上住着诚实的人（an angel）和爱说谎的人（恶魔）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Mason、Lucas。他们说：\nMason 说：“（Lucas是an angel）并且（Lucas是恶魔）”\nLucas 说：“如果（Mason是恶魔）那么（Mason是an angel）”",
       "constraints": [],
       "options": [
-        "Abigail 是贤者，Lily 是贤者",
-        "Abigail 是贤者，Lily 是愚者",
-        "Abigail 是愚者，Lily 是愚者",
-        "Abigail 是愚者，Lily 是贤者"
+        "Mason 是天使，Lucas 是天使",
+        "Mason 是天使，Lucas 是恶魔",
+        "Mason 是恶魔，Lucas 是恶魔",
+        "Mason 是恶魔，Lucas 是天使"
       ],
       "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "deduction",
@@ -101,14 +101,18 @@
     "source_index": 9,
     "statements": [
       [
-        "not",
+        "and",
+        [
+          "telling-truth",
+          1
+        ],
         [
           "lying",
           1
         ]
       ],
       [
-        "or",
+        "->",
         [
           "lying",
           0
@@ -120,20 +124,20 @@
       ]
     ],
     "solution": [
-      true,
-      true
+      false,
+      false
     ],
     "names": [
-      "Abigail",
-      "Lily"
+      "Mason",
+      "Lucas"
     ],
     "knight_knave_terms": {
-      "knight": "sage",
-      "knave": "fool",
-      "a_knight": "a sage",
-      "a_knave": "a fool",
-      "Knight": "Sage",
-      "Knave": "Fool"
+      "knight": "angel",
+      "knave": "devil",
+      "a_knight": "an angel",
+      "a_knave": "a devil",
+      "Knight": "Angel",
+      "Knave": "Devil"
     },
     "difficulty": {
       "n_people": 2,
@@ -143,5 +147,5 @@
   },
   "archetype": "truth_tellers",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:41"
 }

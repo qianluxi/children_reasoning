@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · chain_sum",
-    "text": "State the final answer to the following arithmetic problem: 8 + 7 + 5 + 6 =",
+    "text": "State the final answer to the following arithmetic problem: 4538 - 8203 - 5856 - 9706 - 1638 =",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "27",
-    "31",
-    "26",
-    "36"
+    "-20855",
+    "-20865",
+    "-20864",
+    "-20860"
   ],
   "option_logic": [],
-  "answer": 2,
+  "answer": 1,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 1,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · chain_sum",
-      "story_text": "计算下面这个算式的结果：8 + 7 + 5 + 6 =",
+      "story_text": "计算下面这个算式的结果：4538 - 8203 - 5856 - 9706 - 1638 =",
       "constraints": [],
       "options": [
-        "27",
-        "31",
-        "26",
-        "36"
+        "-20855",
+        "-20865",
+        "-20864",
+        "-20860"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · chain_sum",
+      "story_text": "算一算：4538 - 8203 - 5856 - 9706 - 1638 = ？",
+      "constraints": [],
+      "options": [
+        "-20855",
+        "-20865",
+        "-20864",
+        "-20860"
+      ],
+      "question_prompt": "这个算式的结果是多少？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -65,14 +81,14 @@
   "difficulty_profile": {
     "cognitive_load": 1,
     "reasoning_depth": 1,
-    "language_complexity": 1,
+    "language_complexity": 2,
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
-    "reading_level": 1,
-    "language_complexity": 1,
+    "reading_level": 2,
+    "language_complexity": 2,
     "abstractness": 4,
     "reasoning_depth": 1,
     "calculation_load": 1,
@@ -82,9 +98,9 @@
   "metadata": {
     "source_dataset": "chain_sum",
     "source_index": 10,
-    "num_terms": 4,
-    "num_digits": 1,
-    "expression": "8 + 7 + 5 + 6",
+    "num_terms": 5,
+    "num_digits": 4,
+    "expression": "4538 - 8203 - 5856 - 9706 - 1638",
     "difficulty": {
       "num_terms": [
         2,
@@ -96,5 +112,7 @@
       ]
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "arithmetic",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

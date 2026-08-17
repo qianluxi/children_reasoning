@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · syllogism",
-    "text": "Consider these statements:\n1. No students are humans\n2. All humans are chefs\n\nDoes it logically follow that:\nSome chefs are humans?\n(Answer Yes or No)",
+    "text": "Consider these statements:\n1. All birds are mortals\n2. All mortals are elephants\n\nDoes it logically follow that:\nAll birds are elephants?\n(Answer Yes or No)",
     "roles": {}
   },
   "entities": [],
@@ -32,7 +32,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -42,14 +42,28 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · syllogism",
-      "story_text": "已知以下陈述：\n1. 没有 students 都是 humans\n2. 所有 humans 都是 chefs\n\n那么，下面这个结论是否必然成立：\n有些 chefs 都是 humans?\n（回答“是”或“否”）",
+      "story_text": "已知以下陈述：\n1. 所有 birds 都是 mortals\n2. 所有 mortals 都是 elephants\n\n那么，下面这个结论是否必然成立：\n所有 birds 都是 elephants?\n（回答“是”或“否”）",
       "constraints": [],
       "options": [
         "是",
         "否"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · syllogism",
+      "story_text": "小侦探推理：\n1. 所有 birds 都是 mortals\n2. 所有 mortals 都是 elephants\n\n那么，“所有 birds 都是 elephants”对不对？",
+      "constraints": [],
+      "options": [
+        "对",
+        "不对"
+      ],
+      "question_prompt": "这个结论成立吗？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -66,7 +80,7 @@
     "distractor_strength": 1,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
     "reading_level": 2,
     "language_complexity": 2,
@@ -79,12 +93,13 @@
   "metadata": {
     "source_dataset": "syllogism",
     "source_index": 0,
-    "premise1": "No students are humans",
-    "premise2": "All humans are chefs",
-    "selected_premise": 2,
-    "conclusion": "Some chefs are humans",
+    "premise1": "All birds are mortals",
+    "premise2": "All mortals are elephants",
+    "conclusion": "All birds are elephants",
     "is_valid": true,
-    "type": "inversion"
+    "type": "syllogism"
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "syllogism",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

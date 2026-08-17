@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · knights_knaves",
-    "text": "A very special island is inhabited only by heros and villains. Heros always tell the truth, and villains always lie. You meet 2 inhabitants: Benjamin, and Chloe. As Benjamin put it, \"if Chloe is a hero then Benjamin is a hero\". Chloe expressed that Benjamin is a hero and Benjamin is a villain. So who is a hero and who is a villain? (Format your answer like: \"Benjamin is a hero/villain, and Chloe is a hero/villain\")",
+    "text": "A very special island is inhabited only by heros and villains. Heros always tell the truth, and villains always lie. You meet 2 inhabitants: Zoey, and Liam. \"Liam is a villain\" - Zoey. In Liam's words: \"Zoey is a villain or Zoey is a hero\". So who is a hero and who is a villain? (Format your answer like: \"Zoey is a hero/villain, and Liam is a hero/villain\")",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "Benjamin is a villain, Chloe is a hero",
-    "Benjamin is a hero, Chloe is a hero",
-    "Benjamin is a hero, Chloe is a villain",
-    "Benjamin is a villain, Chloe is a villain"
+    "Zoey is a villain, Liam is a hero",
+    "Zoey is a hero, Liam is a hero",
+    "Zoey is a hero, Liam is a villain",
+    "Zoey is a villain, Liam is a villain"
   ],
   "option_logic": [],
-  "answer": 2,
+  "answer": 0,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "A very special island is 有一座小岛，岛上只有heros和villains。heros总说真话，villains总说假话。 你遇到了 2 个居民：Benjamin, and Chloe. As Benjamin put it, \"如果 Chloe 是hero then Benjamin 是hero\". Chloe expressed that Benjamin is a hero and Benjamin is a villain. So who is a hero？谁又是villain？ (Format your answer like: \"Benjamin 是hero/villain, 并且 Chloe 是hero/villain\")",
+      "story_text": "A very special island is 有一座小岛，岛上只有heros和villains。heros总说真话，villains总说假话。 你遇到了 2 个居民：Zoey, and Liam. \"Liam 是villain\" - Zoey. In Liam's words: \"Zoey 是villain 或者 Zoey 是hero\". So who is a hero？谁又是villain？ (Format your answer like: \"Zoey 是hero/villain, 并且 Liam 是hero/villain\")",
       "constraints": [],
       "options": [
-        "Benjamin 是villain，Chloe 是hero",
-        "Benjamin 是hero，Chloe 是hero",
-        "Benjamin 是hero，Chloe 是villain",
-        "Benjamin 是villain，Chloe 是villain"
+        "Zoey 是villain，Liam 是hero",
+        "Zoey 是hero，Liam 是hero",
+        "Zoey 是hero，Liam 是villain",
+        "Zoey 是villain，Liam 是villain"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "有一座小岛，岛上住着诚实的人（hero）和爱说谎的人（villain）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Benjamin、Chloe。他们说：\nBenjamin 说：“如果（Chloe是hero）那么（Benjamin是hero）”\nChloe 说：“（Benjamin是hero）并且（Benjamin是villain）”",
+      "story_text": "有一座小岛，岛上住着诚实的人（hero）和爱说谎的人（villain）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Zoey、Liam。他们说：\nZoey 说：“不是（Liam是hero）”\nLiam 说：“（Zoey是villain）或者（Zoey是hero）”",
       "constraints": [],
       "options": [
-        "Benjamin 是villain，Chloe 是hero",
-        "Benjamin 是hero，Chloe 是hero",
-        "Benjamin 是hero，Chloe 是villain",
-        "Benjamin 是villain，Chloe 是villain"
+        "Zoey 是villain，Liam 是hero",
+        "Zoey 是hero，Liam 是hero",
+        "Zoey 是hero，Liam 是villain",
+        "Zoey 是villain，Liam 是villain"
       ],
       "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "deduction",
@@ -101,35 +101,31 @@
     "source_index": 10,
     "statements": [
       [
-        "->",
+        "not",
         [
           "telling-truth",
           1
-        ],
-        [
-          "telling-truth",
-          0
         ]
       ],
       [
-        "and",
+        "or",
         [
-          "telling-truth",
+          "lying",
           0
         ],
         [
-          "lying",
+          "telling-truth",
           0
         ]
       ]
     ],
     "solution": [
-      true,
-      false
+      false,
+      true
     ],
     "names": [
-      "Benjamin",
-      "Chloe"
+      "Zoey",
+      "Liam"
     ],
     "knight_knave_terms": {
       "knight": "hero",
@@ -147,5 +143,5 @@
   },
   "archetype": "truth_tellers",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:41"
 }

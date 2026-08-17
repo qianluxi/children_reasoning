@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · family_relationships",
-    "text": "Owen is married to Aria. They have a child called Peter. Peter is married to Charlotte. They have a child called Zion.\n\nWhat relation is Charlotte to Zion? Answer with a single word.",
+    "text": "Andrew is married to Sophie. They have a child called Logan. Logan is married to Willow. They have children called Richard and Ava.\n\nHow is Richard related to Logan? Provide the relationship in one word.",
     "roles": {}
   },
   "entities": [],
@@ -12,9 +12,9 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "sister",
-    "mother",
+    "brother",
     "son",
+    "sister",
     "cousin"
   ],
   "option_logic": [],
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:40",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · family_relationships",
-      "story_text": "Owen 和 Aria 结婚了。 他们有个孩子叫 Peter。 Peter 和 Charlotte 结婚了。 他们有个孩子叫 Zion。\n\nCharlotte 和 Zion 是什么关系？ ",
+      "story_text": "Andrew 和 Sophie 结婚了。 他们有个孩子叫 Logan。 Logan 和 Willow 结婚了。 他们有孩子叫 Richard 和 Ava。\n\nRichard 和 Logan 是什么关系？ Provide the relationship in one word.",
       "constraints": [],
       "options": [
-        "姐姐",
-        "妈妈",
+        "哥哥",
         "儿子",
+        "姐姐",
         "表亲"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · family_relationships",
-      "story_text": "Owen 和 Aria 结婚了。 他们有个孩子叫 Peter。 Peter 和 Charlotte 结婚了。 他们有个孩子叫 Zion。\n\nCharlotte 和 Zion 是什么关系？",
+      "story_text": "Andrew 和 Sophie 结婚了。 他们有个孩子叫 Logan。 Logan 和 Willow 结婚了。 他们有孩子叫 Richard 和 Ava。\n\nRichard 和 Logan 是什么关系？ Provide the relationship in one word.",
       "constraints": [],
       "options": [
-        "姐姐",
-        "妈妈",
+        "哥哥",
         "儿子",
+        "姐姐",
         "表亲"
       ],
       "question_prompt": "他们是什么关系？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "relation",
@@ -99,10 +99,10 @@
   "metadata": {
     "source_dataset": "family_relationships",
     "source_index": 9,
-    "person1": "Charlotte",
-    "person2": "Zion",
-    "relationship": "mother",
-    "family_size": 5,
+    "person1": "Richard",
+    "person2": "Logan",
+    "relationship": "son",
+    "family_size": 6,
     "difficulty": {
       "family_size": [
         4,
@@ -112,5 +112,5 @@
   },
   "archetype": "family_relationship",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:40"
 }

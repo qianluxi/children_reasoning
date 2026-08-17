@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · knights_knaves",
-    "text": "A very special island is inhabited only by sages and fools. Sages always tell the truth, and fools always lie. You meet 2 inhabitants: Zoey, and Riley. Zoey commented, \"Riley is a fool\". In Riley's words: \"Zoey is a sage or Riley is a sage\". So who is a sage and who is a fool? (Format your answer like: \"Zoey is a sage/fool, and Riley is a sage/fool\")",
+    "text": "A very special island is inhabited only by knights and knaves. Knights always tell the truth, and knaves always lie. You meet 2 inhabitants: Grace, and Daniel. \"Grace is a knight if and only if Daniel is a knave\" - Grace. Daniel stated, \"if Grace is a knight then Grace is a knave\". So who is a knight and who is a knave? (Format your answer like: \"Grace is a knight/knave, and Daniel is a knight/knave\")",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "Zoey is a sage, Riley is a fool",
-    "Zoey is a fool, Riley is a fool",
-    "Zoey is a fool, Riley is a sage",
-    "Zoey is a sage, Riley is a sage"
+    "Grace is a knight, Daniel is a knave",
+    "Grace is a knave, Daniel is a knave",
+    "Grace is a knave, Daniel is a knight",
+    "Grace is a knight, Daniel is a knight"
   ],
   "option_logic": [],
-  "answer": 2,
+  "answer": 0,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "A very special island is 有一座小岛，岛上只有贤者和愚者。贤者总说真话，愚者总说假话。 你遇到了 2 个居民：Zoey, and Riley. Zoey commented, \"Riley 是fool\". In Riley's words: \"Zoey 是sage 或者 Riley 是sage\". So who is a sage？谁又是fool？ (Format your answer like: \"Zoey 是sage/愚者, 并且 Riley 是sage/愚者\")",
+      "story_text": "A very special island is 有一座小岛，岛上只有骑士和无赖。骑士总说真话，无赖总说假话。 你遇到了 2 个居民：Grace, and Daniel. \"Grace 是knight 当且仅当 Daniel 是knave\" - Grace. Daniel stated, \"如果 Grace 是knight then Grace 是knave\". So who is a knight？谁又是knave？ (Format your answer like: \"Grace 是knight/无赖, 并且 Daniel 是knight/无赖\")",
       "constraints": [],
       "options": [
-        "Zoey 是贤者，Riley 是愚者",
-        "Zoey 是愚者，Riley 是愚者",
-        "Zoey 是愚者，Riley 是贤者",
-        "Zoey 是贤者，Riley 是贤者"
+        "Grace 是骑士，Daniel 是无赖",
+        "Grace 是无赖，Daniel 是无赖",
+        "Grace 是无赖，Daniel 是骑士",
+        "Grace 是骑士，Daniel 是骑士"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "有一座小岛，岛上住着诚实的人（贤者）和爱说谎的人（愚者）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Zoey、Riley。他们说：\nZoey 说：“Riley是愚者”\nRiley 说：“（Zoey是贤者）或者（Riley是贤者）”",
+      "story_text": "有一座小岛，岛上住着诚实的人（骑士）和爱说谎的人（无赖）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Grace、Daniel。他们说：\nGrace 说：“('<=>', ('telling-truth', 0), ('lying', 1))”\nDaniel 说：“如果（Grace是骑士）那么（Grace是无赖）”",
       "constraints": [],
       "options": [
-        "Zoey 是贤者，Riley 是愚者",
-        "Zoey 是愚者，Riley 是愚者",
-        "Zoey 是愚者，Riley 是贤者",
-        "Zoey 是贤者，Riley 是贤者"
+        "Grace 是骑士，Daniel 是无赖",
+        "Grace 是无赖，Daniel 是无赖",
+        "Grace 是无赖，Daniel 是骑士",
+        "Grace 是骑士，Daniel 是骑士"
       ],
       "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "deduction",
@@ -101,36 +101,43 @@
     "source_index": 0,
     "statements": [
       [
-        "lying",
-        1
-      ],
-      [
-        "or",
+        "<=>",
         [
           "telling-truth",
           0
         ],
         [
-          "telling-truth",
+          "lying",
           1
+        ]
+      ],
+      [
+        "->",
+        [
+          "telling-truth",
+          0
+        ],
+        [
+          "lying",
+          0
         ]
       ]
     ],
     "solution": [
-      false,
-      true
+      true,
+      false
     ],
     "names": [
-      "Zoey",
-      "Riley"
+      "Grace",
+      "Daniel"
     ],
     "knight_knave_terms": {
-      "knight": "sage",
-      "knave": "fool",
-      "a_knight": "a sage",
-      "a_knave": "a fool",
-      "Knight": "Sage",
-      "Knave": "Fool"
+      "knight": "knight",
+      "knave": "knave",
+      "a_knight": "a knight",
+      "a_knave": "a knave",
+      "Knight": "Knight",
+      "Knave": "Knave"
     },
     "difficulty": {
       "n_people": 2,
@@ -140,5 +147,5 @@
   },
   "archetype": "truth_tellers",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:41"
 }

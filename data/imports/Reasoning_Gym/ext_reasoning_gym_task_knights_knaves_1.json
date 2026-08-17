@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · knights_knaves",
-    "text": "A very special island is inhabited only by pioneers and laggards. Pioneers always tell the truth, and laggards always lie. You meet 2 inhabitants: Riley, and Olivia. \"if Riley is a pioneer then Olivia is a laggard\" - Riley. Olivia stated, \"Olivia is a pioneer and Riley is a laggard\". So who is a pioneer and who is a laggard? (Format your answer like: \"Riley is a pioneer/laggard, and Olivia is a pioneer/laggard\")",
+    "text": "A very special island is inhabited only by altruists and egoists. Altruists always tell the truth, and egoists always lie. You meet 2 inhabitants: Sofia, and Daniel. In a statement by Sofia: \"Sofia is an altruist and Daniel is an altruist\". As Daniel put it, \"if Daniel is an altruist then Sofia is an egoist\". So who is an altruist and who is an egoist? (Format your answer like: \"Sofia is a altruist/egoist, and Daniel is a altruist/egoist\")",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "Riley is a laggard, Olivia is a pioneer",
-    "Riley is a laggard, Olivia is a laggard",
-    "Riley is a pioneer, Olivia is a pioneer",
-    "Riley is a pioneer, Olivia is a laggard"
+    "Sofia is an egoist, Daniel is an altruist",
+    "Sofia is an egoist, Daniel is an egoist",
+    "Sofia is an altruist, Daniel is an altruist",
+    "Sofia is an altruist, Daniel is an egoist"
   ],
   "option_logic": [],
-  "answer": 3,
+  "answer": 0,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "A very special island is 有一座小岛，岛上只有先锋和落后者。先锋总说真话，落后者总说假话。 你遇到了 2 个居民：Riley, and Olivia. \"如果 Riley 是pioneer then Olivia 是laggard\" - Riley. Olivia stated, \"Olivia 是pioneer 并且 Riley 是laggard\". So who is a pioneer？谁又是laggard？ (Format your answer like: \"Riley 是pioneer/落后者, 并且 Olivia 是pioneer/落后者\")",
+      "story_text": "A very special island is 有一座小岛，岛上只有利他者和利己者。利他者总说真话，利己者总说假话。 你遇到了 2 个居民：Sofia, and Daniel. In a statement by Sofia: \"Sofia 是altruist 并且 Daniel 是altruist\". As Daniel put it, \"如果 Daniel 是altruist then Sofia 是egoist\". So who is an altruist and who is an egoist？ (Format your answer like: \"Sofia 是altruist/利己者, 并且 Daniel 是altruist/利己者\")",
       "constraints": [],
       "options": [
-        "Riley 是落后者，Olivia 是先锋",
-        "Riley 是落后者，Olivia 是落后者",
-        "Riley 是先锋，Olivia 是先锋",
-        "Riley 是先锋，Olivia 是落后者"
+        "Sofia 是利己者，Daniel 是利他者",
+        "Sofia 是利己者，Daniel 是利己者",
+        "Sofia 是利他者，Daniel 是利他者",
+        "Sofia 是利他者，Daniel 是利己者"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · knights_knaves",
+      "story_text": "有一座小岛，岛上住着诚实的人（an altruist）和爱说谎的人（an egoist）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Sofia、Daniel。他们说：\nSofia 说：“（Sofia是an altruist）并且（Daniel是an altruist）”\nDaniel 说：“如果（Daniel是an altruist）那么（Sofia是an egoist）”",
+      "constraints": [],
+      "options": [
+        "Sofia 是利己者，Daniel 是利他者",
+        "Sofia 是利己者，Daniel 是利己者",
+        "Sofia 是利他者，Daniel 是利他者",
+        "Sofia 是利他者，Daniel 是利己者"
+      ],
+      "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -66,14 +82,14 @@
   "difficulty_profile": {
     "cognitive_load": 1,
     "reasoning_depth": 1,
-    "language_complexity": 3,
+    "language_complexity": 4,
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
-    "reading_level": 3,
-    "language_complexity": 3,
+    "reading_level": 4,
+    "language_complexity": 4,
     "abstractness": 3,
     "reasoning_depth": 1,
     "calculation_load": 1,
@@ -85,18 +101,18 @@
     "source_index": 1,
     "statements": [
       [
-        "->",
+        "and",
         [
           "telling-truth",
           0
         ],
         [
-          "lying",
+          "telling-truth",
           1
         ]
       ],
       [
-        "and",
+        "->",
         [
           "telling-truth",
           1
@@ -108,20 +124,20 @@
       ]
     ],
     "solution": [
-      true,
-      false
+      false,
+      true
     ],
     "names": [
-      "Riley",
-      "Olivia"
+      "Sofia",
+      "Daniel"
     ],
     "knight_knave_terms": {
-      "knight": "pioneer",
-      "knave": "laggard",
-      "a_knight": "a pioneer",
-      "a_knave": "a laggard",
-      "Knight": "Pioneer",
-      "Knave": "Laggard"
+      "knight": "altruist",
+      "knave": "egoist",
+      "a_knight": "an altruist",
+      "a_knave": "an egoist",
+      "Knight": "Altruist",
+      "Knave": "Egoist"
     },
     "difficulty": {
       "n_people": 2,
@@ -129,5 +145,7 @@
       "width_constraint": 2
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "truth_tellers",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

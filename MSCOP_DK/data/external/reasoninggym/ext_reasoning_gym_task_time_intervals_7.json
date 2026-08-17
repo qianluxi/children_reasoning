@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · time_intervals",
-    "text": "A database query started at 11:26 and ended at 13:27. How long did the query take? Answer in HH:MM.",
+    "text": "A system operation started at 23:06:48.237 and completed at 23:18:07.059. What was the operation duration? Answer in HH:MM:SS.mmm.",
     "roles": {}
   },
   "entities": [],
@@ -12,10 +12,10 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "02:11",
-    "02:02",
-    "02:06",
-    "02:01"
+    "00:12:18",
+    "00:11:28",
+    "00:11:48",
+    "00:11:18.822"
   ],
   "option_logic": [],
   "answer": 3,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:52:21",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · time_intervals",
-      "story_text": "一个任务从 11:26 开始，到 13:27 结束，一共持续了多久？",
+      "story_text": "A system operation started at 23:06:48.237 and completed at 23:18:07.059. What was the operation duration? （答案格式见选项）",
       "constraints": [],
       "options": [
-        "02:11",
-        "02:02",
-        "02:06",
-        "02:01"
+        "00:12:18",
+        "00:11:28",
+        "00:11:48",
+        "00:11:18.822"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · time_intervals",
-      "story_text": "小闹钟从 11:26:00 走到 13:27:00，一共过了多久？",
+      "story_text": "小闹钟从 23:06:48.237000 走到 23:18:07.059000，一共过了多久？",
       "constraints": [],
       "options": [
-        "02:11",
-        "02:02",
-        "02:06",
-        "02:01"
+        "00:12:18",
+        "00:11:28",
+        "00:11:48",
+        "00:11:18.822"
       ],
       "question_prompt": "一共过了多长时间？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "math",
@@ -99,11 +99,11 @@
   "metadata": {
     "source_dataset": "time_intervals",
     "source_index": 7,
-    "task_type": "time",
-    "start_time": "2026-08-16 11:26:00",
-    "end_time": "2026-08-16 13:27:00",
-    "format": "%H:%M",
-    "expected_format": "HH:MM",
+    "task_type": "time_ms",
+    "start_time": "2026-08-17 23:06:48.237000",
+    "end_time": "2026-08-17 23:18:07.059000",
+    "format": "%H:%M:%S.%f",
+    "expected_format": "HH:MM:SS.mmm",
     "difficulty": {
       "max_time_difference_seconds": 86400,
       "max_date_difference_days": 100
@@ -111,5 +111,5 @@
   },
   "archetype": "time_interval",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:52:21"
+  "created_at": "2026-08-17T16:28:41"
 }

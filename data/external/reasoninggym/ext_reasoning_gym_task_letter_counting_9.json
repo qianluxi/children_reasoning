@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · letter_counting",
-    "text": "How many times does the letter \"g\" appear in the text: \"computers including obsolete old middle aged and new\"?",
+    "text": "How many times does the letter \"d\" appear in the text: \"called to the matter This is not the first time that\"?",
     "roles": {}
   },
   "entities": [],
@@ -12,10 +12,10 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "12",
-    "7",
-    "3",
-    "2"
+    "11",
+    "6",
+    "2",
+    "1"
   ],
   "option_logic": [],
   "answer": 3,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · letter_counting",
-      "story_text": "字母 “g” 在下面这段文字里出现了多少次？\n“computers including obsolete old middle aged and new”",
+      "story_text": "字母 “d” 在下面这段文字里出现了多少次？\n“called to the matter This is not the first time that”",
       "constraints": [],
       "options": [
-        "12",
-        "7",
-        "3",
-        "2"
+        "11",
+        "6",
+        "2",
+        "1"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · letter_counting",
-      "story_text": "下面这段话里，字母 “g” 一共出现了几次？\ncomputers including obsolete old middle aged and new",
+      "story_text": "下面这段话里，字母 “d” 一共出现了几次？\ncalled to the matter This is not the first time that",
       "constraints": [],
       "options": [
-        "12",
-        "7",
-        "3",
-        "2"
+        "11",
+        "6",
+        "2",
+        "1"
       ],
-      "question_prompt": "字母 “g” 出现了几次？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "question_prompt": "字母 “d” 出现了几次？",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "math",
@@ -98,17 +98,20 @@
   "metadata": {
     "source_dataset": "letter_counting",
     "source_index": 9,
-    "span_length": 8,
-    "target_letter": "g",
+    "span_length": 11,
+    "target_letter": "d",
     "span": [
-      "computers",
-      "including",
-      "obsolete",
-      "old",
-      "middle",
-      "aged",
-      "and",
-      "new"
+      "called",
+      "to",
+      "the",
+      "matter",
+      "This",
+      "is",
+      "not",
+      "the",
+      "first",
+      "time",
+      "that"
     ],
     "difficulty": {
       "words": [
@@ -119,5 +122,5 @@
   },
   "archetype": "counting",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:41"
 }

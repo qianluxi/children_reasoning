@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · knights_knaves",
-    "text": "A very special island is inhabited only by altruists and egoists. Altruists always tell the truth, and egoists always lie. You meet 2 inhabitants: Sophia, and Oliver. Sophia said that Sophia is an altruist if and only if Oliver is an egoist. Oliver noted, \"Sophia is an egoist if and only if Oliver is an altruist\". So who is an altruist and who is an egoist? (Format your answer like: \"Sophia is a altruist/egoist, and Oliver is a altruist/egoist\")",
+    "text": "A very special island is inhabited only by altruists and egoists. Altruists always tell the truth, and egoists always lie. You meet 2 inhabitants: Logan, and Ava. In a statement by Logan: \"if Logan is an altruist then Ava is an egoist\". In a statement by Ava: \"if Logan is an altruist then Ava is an altruist\". So who is an altruist and who is an egoist? (Format your answer like: \"Logan is a altruist/egoist, and Ava is a altruist/egoist\")",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "Sophia is an egoist, Oliver is an egoist",
-    "Sophia is an altruist, Oliver is an egoist",
-    "Sophia is an altruist, Oliver is an altruist",
-    "Sophia is an egoist, Oliver is an altruist"
+    "Logan is an egoist, Ava is an egoist",
+    "Logan is an altruist, Ava is an egoist",
+    "Logan is an altruist, Ava is an altruist",
+    "Logan is an egoist, Ava is an altruist"
   ],
   "option_logic": [],
-  "answer": 0,
+  "answer": 1,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "A very special island is 有一座小岛，岛上只有利他者和利己者。利他者总说真话，利己者总说假话。 你遇到了 2 个居民：Sophia, and Oliver. Sophia said that Sophia is an altruist if and only if Oliver is an egoist. Oliver noted, \"Sophia 是egoist 当且仅当 Oliver 是altruist\". So who is an altruist and who is an egoist？ (Format your answer like: \"Sophia 是altruist/利己者, 并且 Oliver 是altruist/利己者\")",
+      "story_text": "A very special island is 有一座小岛，岛上只有利他者和利己者。利他者总说真话，利己者总说假话。 你遇到了 2 个居民：Logan, and Ava. In a statement by Logan: \"如果 Logan 是altruist then Ava 是egoist\". In a statement by Ava: \"如果 Logan 是altruist then Ava 是altruist\". So who is an altruist and who is an egoist？ (Format your answer like: \"Logan 是altruist/利己者, 并且 Ava 是altruist/利己者\")",
       "constraints": [],
       "options": [
-        "Sophia 是利己者，Oliver 是利己者",
-        "Sophia 是利他者，Oliver 是利己者",
-        "Sophia 是利他者，Oliver 是利他者",
-        "Sophia 是利己者，Oliver 是利他者"
+        "Logan 是利己者，Ava 是利己者",
+        "Logan 是利他者，Ava 是利己者",
+        "Logan 是利他者，Ava 是利他者",
+        "Logan 是利己者，Ava 是利他者"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "有一座小岛，岛上住着诚实的人（an altruist）和爱说谎的人（an egoist）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Sophia、Oliver。他们说：\nSophia 说：“['<=>', ['telling-truth', 0], ['lying', 1]]”\nOliver 说：“['<=>', ['lying', 0], ['telling-truth', 1]]”",
+      "story_text": "有一座小岛，岛上住着诚实的人（an altruist）和爱说谎的人（an egoist）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Logan、Ava。他们说：\nLogan 说：“如果（Logan是an altruist）那么（Ava是an egoist）”\nAva 说：“如果（Logan是an altruist）那么（Ava是an altruist）”",
       "constraints": [],
       "options": [
-        "Sophia 是利己者，Oliver 是利己者",
-        "Sophia 是利他者，Oliver 是利己者",
-        "Sophia 是利他者，Oliver 是利他者",
-        "Sophia 是利己者，Oliver 是利他者"
+        "Logan 是利己者，Ava 是利己者",
+        "Logan 是利他者，Ava 是利己者",
+        "Logan 是利他者，Ava 是利他者",
+        "Logan 是利己者，Ava 是利他者"
       ],
       "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "deduction",
@@ -101,7 +101,7 @@
     "source_index": 7,
     "statements": [
       [
-        "<=>",
+        "->",
         [
           "telling-truth",
           0
@@ -112,9 +112,9 @@
         ]
       ],
       [
-        "<=>",
+        "->",
         [
-          "lying",
+          "telling-truth",
           0
         ],
         [
@@ -124,12 +124,12 @@
       ]
     ],
     "solution": [
-      false,
+      true,
       false
     ],
     "names": [
-      "Sophia",
-      "Oliver"
+      "Logan",
+      "Ava"
     ],
     "knight_knave_terms": {
       "knight": "altruist",
@@ -147,5 +147,5 @@
   },
   "archetype": "truth_tellers",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:41"
 }

@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · maze",
-    "text": "Navigate from 'W' (start) to '#' (goal):\n\n```\n;;;;;;;;;\n;;rrrr;;;\n;rrrrrrW;\n;;rrrrrr;\n;rrrrr;;;\n;rr;#rrr;\n;rr;rr;;;\n;r;rr;rr;\n;;;;;;;;;\n```\nLegend: ';' = Wall, 'r' = Passage\n\nWhat is the minimum number of steps to reach the goal?\nGive only the number of steps as your final answer, no other text or formatting.",
+    "text": "Navigate from '3' (start) to 'R' (goal):\n\n```\nKKKKKK\nKwwwwK\nKwRwKK\nKwKKwK\nKww3wK\nKKKKKK\n```\nLegend: 'K' = Wall, 'w' = Passage\n\nWhat is the minimum number of steps to reach the goal?\nGive only the number of steps as your final answer, no other text or formatting.",
     "roles": {}
   },
   "entities": [],
@@ -12,18 +12,18 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "8",
-    "11",
-    "1",
-    "6"
+    "0",
+    "5",
+    "10",
+    "7"
   ],
   "option_logic": [],
-  "answer": 3,
+  "answer": 1,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-  "difficulty": 4,
-  "difficulty_score": 6.2,
-  "difficulty_level": 3,
+  "difficulty": 2,
+  "difficulty_score": 3.7,
+  "difficulty_level": 2,
   "source": "reasoning gym",
   "source_info": {
     "type": "external",
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:42",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · maze",
-      "story_text": "从 'W'（起点）走到 '#'（终点）：\n\n```\n;;;;;;;;;\n;;rrrr;;;\n;rrrrrrW;\n;;rrrrrr;\n;rrrrr;;;\n;rr;#rrr;\n;rr;rr;;;\n;r;rr;rr;\n;;;;;;;;;\n```\n说明：';' 是墙，'r' 是通道\n\n最少需要走多少步才能到达终点？\n只回答步数 as your final answer, no other text or formatting.",
+      "story_text": "从 '3'（起点）走到 'R'（终点）：\n\n```\nKKKKKK\nKwwwwK\nKwRwKK\nKwKKwK\nKww3wK\nKKKKKK\n```\n说明：'K' 是墙，'w' 是通道\n\n最少需要走多少步才能到达终点？\n只回答步数 as your final answer, no other text or formatting.",
       "constraints": [],
       "options": [
-        "8",
-        "11",
-        "1",
-        "6"
+        "0",
+        "5",
+        "10",
+        "7"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · maze",
-      "story_text": "小蚂蚁要从 'W'（起点）走到 '#'（终点），只能走通道。迷宫是这样的：\n;;;;;;;;;\n;;rrrr;;;\n;rrrrrrW;\n;;rrrrrr;\n;rrrrr;;;\n;rr;#rrr;\n;rr;rr;;;\n;r;rr;rr;\n;;;;;;;;;",
+      "story_text": "小蚂蚁要从 '3'（起点）走到 'R'（终点），只能走通道。迷宫是这样的：\nKKKKKK\nKwwwwK\nKwRwKK\nKwKKwK\nKww3wK\nKKKKKK",
       "constraints": [],
       "options": [
-        "8",
-        "11",
-        "1",
-        "6"
+        "0",
+        "5",
+        "10",
+        "7"
       ],
       "question_prompt": "最少要走多少步才能到终点？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "spatial",
@@ -99,23 +99,20 @@
   "metadata": {
     "source_dataset": "maze",
     "source_index": 11,
-    "grid_size": 9,
+    "grid_size": 6,
     "grid": [
-      ";;;;;;;;;",
-      ";;rrrr;;;",
-      ";rrrrrrW;",
-      ";;rrrrrr;",
-      ";rrrrr;;;",
-      ";rr;#rrr;",
-      ";rr;rr;;;",
-      ";r;rr;rr;",
-      ";;;;;;;;;"
+      "KKKKKK",
+      "KwwwwK",
+      "KwRwKK",
+      "KwKKwK",
+      "Kww3wK",
+      "KKKKKK"
     ],
-    "shortest_path_length": 6,
-    "start": "W",
-    "goal": "#",
-    "wall": ";",
-    "path": "r",
+    "shortest_path_length": 5,
+    "start": "3",
+    "goal": "R",
+    "wall": "K",
+    "path": "w",
     "difficulty": {
       "dist": [
         5,
@@ -129,5 +126,5 @@
   },
   "archetype": "maze",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:42"
 }

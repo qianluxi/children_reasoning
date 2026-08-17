@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · family_relationships",
-    "text": "Mason is married to Aria. They have a child called Samuel. Samuel is married to Lily. They have a child called Eleanor.\n\nWhat relation is Lily to Samuel? Answer with a single word.",
+    "text": "Finn is married to Aurora. They have a child called Logan. Logan is married to Lucy. They have a child called Harry. Atlas is married to Ava. They have a child called Lucy.\n\nWhat is Logan to Ava? Respond only with the word that describes their relationship.",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "father",
-    "wife",
-    "grandfather",
-    "husband"
+    "mother-in-law",
+    "mother",
+    "uncle",
+    "father"
   ],
   "option_logic": [],
-  "answer": 1,
+  "answer": 0,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:40",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · family_relationships",
-      "story_text": "Mason 和 Aria 结婚了。 他们有个孩子叫 Samuel。 Samuel 和 Lily 结婚了。 他们有个孩子叫 Eleanor。\n\nLily 和 Samuel 是什么关系？ ",
+      "story_text": "Finn 和 Aurora 结婚了。 他们有个孩子叫 Logan。 Logan 和 Lucy 结婚了。 他们有个孩子叫 Harry。 Atlas 和 Ava 结婚了。 他们有个孩子叫 Lucy。\n\nLogan 和 Ava 是什么关系？ ",
       "constraints": [],
       "options": [
-        "爸爸",
-        "妻子",
-        "爷爷",
-        "丈夫"
+        "mother-in-law",
+        "妈妈",
+        "叔叔",
+        "爸爸"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · family_relationships",
-      "story_text": "Mason 和 Aria 结婚了。 他们有个孩子叫 Samuel。 Samuel 和 Lily 结婚了。 他们有个孩子叫 Eleanor。\n\nLily 和 Samuel 是什么关系？",
+      "story_text": "Finn 和 Aurora 结婚了。 他们有个孩子叫 Logan。 Logan 和 Lucy 结婚了。 他们有个孩子叫 Harry。 Atlas 和 Ava 结婚了。 他们有个孩子叫 Lucy。\n\nLogan 和 Ava 是什么关系？",
       "constraints": [],
       "options": [
-        "爸爸",
-        "妻子",
-        "爷爷",
-        "丈夫"
+        "mother-in-law",
+        "妈妈",
+        "叔叔",
+        "爸爸"
       ],
       "question_prompt": "他们是什么关系？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "relation",
@@ -99,10 +99,10 @@
   "metadata": {
     "source_dataset": "family_relationships",
     "source_index": 12,
-    "person1": "Lily",
-    "person2": "Samuel",
-    "relationship": "wife",
-    "family_size": 5,
+    "person1": "Logan",
+    "person2": "Ava",
+    "relationship": "mother-in-law",
+    "family_size": 7,
     "difficulty": {
       "family_size": [
         4,
@@ -112,5 +112,5 @@
   },
   "archetype": "family_relationship",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:40"
 }

@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · knights_knaves",
-    "text": "A very special island is inhabited only by heros and villains. Heros always tell the truth, and villains always lie. You meet 2 inhabitants: Benjamin, and Oliver. Benjamin noted, \"Oliver is a villain or Benjamin is a hero\". Oliver commented, \"if Oliver is a hero then Benjamin is a villain\". So who is a hero and who is a villain? (Format your answer like: \"Benjamin is a hero/villain, and Oliver is a hero/villain\")",
+    "text": "A very special island is inhabited only by angels and devils. Angels always tell the truth, and devils always lie. You meet 2 inhabitants: Jacob, and Ava. Jacob asserted: \"Ava is an angel and Ava is a devil\". Ava commented, \"Jacob is a devil or Ava is an angel\". So who is an angel and who is a devil? (Format your answer like: \"Jacob is a angel/devil, and Ava is a angel/devil\")",
     "roles": {}
   },
   "entities": [],
@@ -12,10 +12,10 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "Benjamin is a hero, Oliver is a hero",
-    "Benjamin is a hero, Oliver is a villain",
-    "Benjamin is a villain, Oliver is a hero",
-    "Benjamin is a villain, Oliver is a villain"
+    "Jacob is an angel, Ava is an angel",
+    "Jacob is an angel, Ava is a devil",
+    "Jacob is a devil, Ava is an angel",
+    "Jacob is a devil, Ava is a devil"
   ],
   "option_logic": [],
   "answer": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "A very special island is 有一座小岛，岛上只有heros和villains。heros总说真话，villains总说假话。 你遇到了 2 个居民：Benjamin, and Oliver. Benjamin noted, \"Oliver 是villain 或者 Benjamin 是hero\". Oliver commented, \"如果 Oliver 是hero then Benjamin 是villain\". So who is a hero？谁又是villain？ (Format your answer like: \"Benjamin 是hero/villain, 并且 Oliver 是hero/villain\")",
+      "story_text": "A very special island is 有一座小岛，岛上只有天使和恶魔。天使总说真话，恶魔总说假话。 你遇到了 2 个居民：Jacob, and Ava. Jacob asserted: \"Ava 是angel 并且 Ava 是devil\". Ava commented, \"Jacob 是devil 或者 Ava 是angel\". So who is an angel？谁又是devil？ (Format your answer like: \"Jacob 是angel/恶魔, 并且 Ava 是angel/恶魔\")",
       "constraints": [],
       "options": [
-        "Benjamin 是hero，Oliver 是hero",
-        "Benjamin 是hero，Oliver 是villain",
-        "Benjamin 是villain，Oliver 是hero",
-        "Benjamin 是villain，Oliver 是villain"
+        "Jacob 是天使，Ava 是天使",
+        "Jacob 是天使，Ava 是恶魔",
+        "Jacob 是恶魔，Ava 是天使",
+        "Jacob 是恶魔，Ava 是恶魔"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "有一座小岛，岛上住着诚实的人（hero）和爱说谎的人（villain）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Benjamin、Oliver。他们说：\nBenjamin 说：“（Oliver是villain）或者（Benjamin是hero）”\nOliver 说：“如果（Oliver是hero）那么（Benjamin是villain）”",
+      "story_text": "有一座小岛，岛上住着诚实的人（an angel）和爱说谎的人（恶魔）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Jacob、Ava。他们说：\nJacob 说：“（Ava是an angel）并且（Ava是恶魔）”\nAva 说：“（Jacob是恶魔）或者（Ava是an angel）”",
       "constraints": [],
       "options": [
-        "Benjamin 是hero，Oliver 是hero",
-        "Benjamin 是hero，Oliver 是villain",
-        "Benjamin 是villain，Oliver 是hero",
-        "Benjamin 是villain，Oliver 是villain"
+        "Jacob 是天使，Ava 是天使",
+        "Jacob 是天使，Ava 是恶魔",
+        "Jacob 是恶魔，Ava 是天使",
+        "Jacob 是恶魔，Ava 是恶魔"
       ],
       "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "deduction",
@@ -101,25 +101,25 @@
     "source_index": 5,
     "statements": [
       [
-        "or",
+        "and",
         [
-          "lying",
+          "telling-truth",
           1
         ],
         [
-          "telling-truth",
-          0
+          "lying",
+          1
         ]
       ],
       [
-        "->",
-        [
-          "telling-truth",
-          1
-        ],
+        "or",
         [
           "lying",
           0
+        ],
+        [
+          "telling-truth",
+          1
         ]
       ]
     ],
@@ -128,16 +128,16 @@
       true
     ],
     "names": [
-      "Benjamin",
-      "Oliver"
+      "Jacob",
+      "Ava"
     ],
     "knight_knave_terms": {
-      "knight": "hero",
-      "knave": "villain",
-      "a_knight": "a hero",
-      "a_knave": "a villain",
-      "Knight": "Hero",
-      "Knave": "Villain"
+      "knight": "angel",
+      "knave": "devil",
+      "a_knight": "an angel",
+      "a_knave": "a devil",
+      "Knight": "Angel",
+      "Knave": "Devil"
     },
     "difficulty": {
       "n_people": 2,
@@ -147,5 +147,5 @@
   },
   "archetype": "truth_tellers",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:41"
 }

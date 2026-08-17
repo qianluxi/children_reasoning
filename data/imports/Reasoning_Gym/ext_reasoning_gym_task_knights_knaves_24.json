@@ -1,0 +1,147 @@
+{
+  "id": "ext_reasoning_gym_task_knights_knaves_24",
+  "type": "external_text",
+  "story": {
+    "title": "Reasoning Gym · knights_knaves",
+    "text": "A very special island is inhabited only by knights and knaves. Knights always tell the truth, and knaves always lie. You meet 2 inhabitants: Isabella, and Liam. Isabella was heard saying, \"Liam is a knave\". Liam remarked, \"Isabella is a knave or Isabella is a knight\". So who is a knight and who is a knave? (Format your answer like: \"Isabella is a knight/knave, and Liam is a knight/knave\")",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [],
+  "statements": [],
+  "constraints": [],
+  "question_prompt": "请选择正确答案：",
+  "options": [
+    "Isabella is a knight, Liam is a knave",
+    "Isabella is a knave, Liam is a knave",
+    "Isabella is a knight, Liam is a knight",
+    "Isabella is a knave, Liam is a knight"
+  ],
+  "option_logic": [],
+  "answer": 3,
+  "hints": [],
+  "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+  "difficulty": 2,
+  "difficulty_score": 3.7,
+  "difficulty_level": 2,
+  "source": "reasoning gym",
+  "source_info": {
+    "type": "external",
+    "name": "Reasoning Gym",
+    "license": "Apache-2.0",
+    "dataset_id": "task=knights_knaves",
+    "original_id": "24",
+    "url": "https://github.com/open-thought/reasoning-gym"
+  },
+  "provenance": {
+    "imported_at": "2026-08-17T16:28:41",
+    "modified": true,
+    "translator": "reasoning_gym_generator_v1",
+    "review_status": "approved",
+    "logic_validated": false,
+    "difficulty_calibrated": false
+  },
+  "translations": {
+    "zh": {
+      "status": "machine",
+      "method": "machine",
+      "story_title": "Reasoning Gym · knights_knaves",
+      "story_text": "A very special island is 有一座小岛，岛上只有骑士和无赖。骑士总说真话，无赖总说假话。 你遇到了 2 个居民：Isabella, and Liam. Isabella was heard saying, \"Liam 是knave\". Liam remarked, \"Isabella 是knave 或者 Isabella 是knight\". So who is a knight？谁又是knave？ (Format your answer like: \"Isabella 是knight/无赖, 并且 Liam 是knight/无赖\")",
+      "constraints": [],
+      "options": [
+        "Isabella 是骑士，Liam 是无赖",
+        "Isabella 是无赖，Liam 是无赖",
+        "Isabella 是骑士，Liam 是骑士",
+        "Isabella 是无赖，Liam 是骑士"
+      ],
+      "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · knights_knaves",
+      "story_text": "有一座小岛，岛上住着诚实的人（骑士）和爱说谎的人（无赖）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Isabella、Liam。他们说：\nIsabella 说：“不是（Liam是骑士）”\nLiam 说：“（Isabella是无赖）或者（Isabella是骑士）”",
+      "constraints": [],
+      "options": [
+        "Isabella 是骑士，Liam 是无赖",
+        "Isabella 是无赖，Liam 是无赖",
+        "Isabella 是骑士，Liam 是骑士",
+        "Isabella 是无赖，Liam 是骑士"
+      ],
+      "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    }
+  },
+  "category": "deduction",
+  "skills": [
+    "deduction",
+    "negation"
+  ],
+  "age_range": "D",
+  "difficulty_profile": {
+    "cognitive_load": 1,
+    "reasoning_depth": 1,
+    "language_complexity": 3,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "quality": "B",
+  "child_suitability": {
+    "reading_level": 3,
+    "language_complexity": 3,
+    "abstractness": 3,
+    "reasoning_depth": 1,
+    "calculation_load": 1,
+    "cultural_dependency": 2,
+    "suitable": true
+  },
+  "metadata": {
+    "source_dataset": "knights_knaves",
+    "source_index": 24,
+    "statements": [
+      [
+        "not",
+        [
+          "telling-truth",
+          1
+        ]
+      ],
+      [
+        "or",
+        [
+          "lying",
+          0
+        ],
+        [
+          "telling-truth",
+          0
+        ]
+      ]
+    ],
+    "solution": [
+      false,
+      true
+    ],
+    "names": [
+      "Isabella",
+      "Liam"
+    ],
+    "knight_knave_terms": {
+      "knight": "knight",
+      "knave": "knave",
+      "a_knight": "a knight",
+      "a_knave": "a knave",
+      "Knight": "Knight",
+      "Knave": "Knave"
+    },
+    "difficulty": {
+      "n_people": 2,
+      "depth_constraint": 2,
+      "width_constraint": 2
+    }
+  },
+  "archetype": "truth_tellers",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
+}

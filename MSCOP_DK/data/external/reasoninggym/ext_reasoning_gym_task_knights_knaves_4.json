@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · knights_knaves",
-    "text": "A very special island is inhabited only by altruists and egoists. Altruists always tell the truth, and egoists always lie. You meet 2 inhabitants: Mason, and Jack. Mason expressed that if Jack is an egoist then Mason is an altruist. In Jack's words: \"Mason is an egoist\". So who is an altruist and who is an egoist? (Format your answer like: \"Mason is a altruist/egoist, and Jack is a altruist/egoist\")",
+    "text": "A very special island is inhabited only by pioneers and laggards. Pioneers always tell the truth, and laggards always lie. You meet 2 inhabitants: Aria, and Riley. Aria said, \"Riley is a laggard or Riley is a pioneer.\" Riley noted, \"Riley is a pioneer or Aria is a pioneer\". So who is a pioneer and who is a laggard? (Format your answer like: \"Aria is a pioneer/laggard, and Riley is a pioneer/laggard\")",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "Mason is an egoist, Jack is an altruist",
-    "Mason is an egoist, Jack is an egoist",
-    "Mason is an altruist, Jack is an egoist",
-    "Mason is an altruist, Jack is an altruist"
+    "Aria is a laggard, Riley is a pioneer",
+    "Aria is a laggard, Riley is a laggard",
+    "Aria is a pioneer, Riley is a laggard",
+    "Aria is a pioneer, Riley is a pioneer"
   ],
   "option_logic": [],
-  "answer": 2,
+  "answer": 3,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "A very special island is 有一座小岛，岛上只有利他者和利己者。利他者总说真话，利己者总说假话。 你遇到了 2 个居民：Mason, and Jack. Mason expressed that if Jack is an egoist then Mason is an altruist. In Jack's words: \"Mason 是egoist\". So who is an altruist and who is an egoist？ (Format your answer like: \"Mason 是altruist/利己者, 并且 Jack 是altruist/利己者\")",
+      "story_text": "A very special island is 有一座小岛，岛上只有先锋和落后者。先锋总说真话，落后者总说假话。 你遇到了 2 个居民：Aria, and Riley. Aria said, \"Riley 是laggard 或者 Riley 是pioneer.\" Riley noted, \"Riley 是pioneer 或者 Aria 是pioneer\". So who is a pioneer？谁又是laggard？ (Format your answer like: \"Aria 是pioneer/落后者, 并且 Riley 是pioneer/落后者\")",
       "constraints": [],
       "options": [
-        "Mason 是利己者，Jack 是利他者",
-        "Mason 是利己者，Jack 是利己者",
-        "Mason 是利他者，Jack 是利己者",
-        "Mason 是利他者，Jack 是利他者"
+        "Aria 是落后者，Riley 是先锋",
+        "Aria 是落后者，Riley 是落后者",
+        "Aria 是先锋，Riley 是落后者",
+        "Aria 是先锋，Riley 是先锋"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "有一座小岛，岛上住着诚实的人（an altruist）和爱说谎的人（an egoist）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Mason、Jack。他们说：\nMason 说：“如果（Jack是an egoist）那么（Mason是an altruist）”\nJack 说：“不是（Mason是an altruist）”",
+      "story_text": "有一座小岛，岛上住着诚实的人（先锋）和爱说谎的人（落后者）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Aria、Riley。他们说：\nAria 说：“（Riley是落后者）或者（Riley是先锋）”\nRiley 说：“（Riley是先锋）或者（Aria是先锋）”",
       "constraints": [],
       "options": [
-        "Mason 是利己者，Jack 是利他者",
-        "Mason 是利己者，Jack 是利己者",
-        "Mason 是利他者，Jack 是利己者",
-        "Mason 是利他者，Jack 是利他者"
+        "Aria 是落后者，Riley 是先锋",
+        "Aria 是落后者，Riley 是落后者",
+        "Aria 是先锋，Riley 是落后者",
+        "Aria 是先锋，Riley 是先锋"
       ],
       "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "deduction",
@@ -101,18 +101,22 @@
     "source_index": 4,
     "statements": [
       [
-        "->",
+        "or",
         [
           "lying",
           1
         ],
         [
           "telling-truth",
-          0
+          1
         ]
       ],
       [
-        "not",
+        "or",
+        [
+          "telling-truth",
+          1
+        ],
         [
           "telling-truth",
           0
@@ -121,19 +125,19 @@
     ],
     "solution": [
       true,
-      false
+      true
     ],
     "names": [
-      "Mason",
-      "Jack"
+      "Aria",
+      "Riley"
     ],
     "knight_knave_terms": {
-      "knight": "altruist",
-      "knave": "egoist",
-      "a_knight": "an altruist",
-      "a_knave": "an egoist",
-      "Knight": "Altruist",
-      "Knave": "Egoist"
+      "knight": "pioneer",
+      "knave": "laggard",
+      "a_knight": "a pioneer",
+      "a_knave": "a laggard",
+      "Knight": "Pioneer",
+      "Knave": "Laggard"
     },
     "difficulty": {
       "n_people": 2,
@@ -143,5 +147,5 @@
   },
   "archetype": "truth_tellers",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:41"
 }

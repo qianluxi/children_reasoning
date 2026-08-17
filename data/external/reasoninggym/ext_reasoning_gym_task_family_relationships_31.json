@@ -1,0 +1,116 @@
+{
+  "id": "ext_reasoning_gym_task_family_relationships_31",
+  "type": "external_text",
+  "story": {
+    "title": "Reasoning Gym · family_relationships",
+    "text": "Harry is married to Zoe. They have a child called David. David is married to Grace. They have children called Patricia and Jacob.\n\nWhat relation is Zoe to Patricia? Answer with a single word.",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [],
+  "statements": [],
+  "constraints": [],
+  "question_prompt": "请选择正确答案：",
+  "options": [
+    "father",
+    "mother",
+    "wife",
+    "grandmother"
+  ],
+  "option_logic": [],
+  "answer": 3,
+  "hints": [],
+  "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
+  "difficulty": 2,
+  "difficulty_score": 3.7,
+  "difficulty_level": 2,
+  "source": "reasoning gym",
+  "source_info": {
+    "type": "external",
+    "name": "Reasoning Gym",
+    "license": "Apache-2.0",
+    "dataset_id": "task=family_relationships",
+    "original_id": "31",
+    "url": "https://github.com/open-thought/reasoning-gym"
+  },
+  "provenance": {
+    "imported_at": "2026-08-17T16:28:41",
+    "modified": true,
+    "translator": "reasoning_gym_generator_v1",
+    "review_status": "approved",
+    "logic_validated": false,
+    "difficulty_calibrated": false
+  },
+  "translations": {
+    "zh": {
+      "status": "machine",
+      "method": "machine",
+      "story_title": "Reasoning Gym · family_relationships",
+      "story_text": "Harry 和 Zoe 结婚了。 他们有个孩子叫 David。 David 和 Grace 结婚了。 他们有孩子叫 Patricia 和 Jacob。\n\nZoe 和 Patricia 是什么关系？ ",
+      "constraints": [],
+      "options": [
+        "爸爸",
+        "妈妈",
+        "妻子",
+        "奶奶"
+      ],
+      "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · family_relationships",
+      "story_text": "Harry 和 Zoe 结婚了。 他们有个孩子叫 David。 David 和 Grace 结婚了。 他们有孩子叫 Patricia 和 Jacob。\n\nZoe 和 Patricia 是什么关系？",
+      "constraints": [],
+      "options": [
+        "爸爸",
+        "妈妈",
+        "妻子",
+        "奶奶"
+      ],
+      "question_prompt": "他们是什么关系？",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    }
+  },
+  "category": "relation",
+  "skills": [
+    "relation_reasoning",
+    "multi_hop_reasoning"
+  ],
+  "age_range": "C",
+  "difficulty_profile": {
+    "cognitive_load": 1,
+    "reasoning_depth": 1,
+    "language_complexity": 2,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "quality": "B",
+  "child_suitability": {
+    "reading_level": 2,
+    "language_complexity": 2,
+    "abstractness": 2,
+    "reasoning_depth": 1,
+    "calculation_load": 1,
+    "cultural_dependency": 2,
+    "suitable": true
+  },
+  "metadata": {
+    "source_dataset": "family_relationships",
+    "source_index": 31,
+    "person1": "Zoe",
+    "person2": "Patricia",
+    "relationship": "grandmother",
+    "family_size": 6,
+    "difficulty": {
+      "family_size": [
+        4,
+        8
+      ]
+    }
+  },
+  "archetype": "family_relationship",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
+}

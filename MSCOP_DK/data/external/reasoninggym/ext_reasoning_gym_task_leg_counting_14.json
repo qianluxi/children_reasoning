@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · leg_counting",
-    "text": "Your task is to count how many legs there are in total when given a list of animals.\n\nNow, how many legs are there in total if you have 13 fireflys, 9 crabs, 15 starfishs?",
+    "text": "Your task is to count how many legs there are in total when given a list of animals.\n\nNow, how many legs are there in total if you have 12 butterflys, 12 elephants, 12 deers, 3 sheeps, 11 leechs, 6 tigers, 7 wasps, 15 lobsters, 15 grasshoppers?",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "241",
-    "246",
-    "233",
-    "243"
+    "489",
+    "486",
+    "484",
+    "476"
   ],
   "option_logic": [],
-  "answer": 3,
+  "answer": 1,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 1,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · leg_counting",
-      "story_text": "数一数：13 只firefly、9 只螃蟹、15 只starfish，这些动物一共有多少条腿？",
+      "story_text": "数一数：12 只蝴蝶、12 只大象、12 只deer、3 只羊、11 只leech、6 只老虎、7 只黄蜂、15 只龙虾、15 只grasshopper，这些动物一共有多少条腿？",
       "constraints": [],
       "options": [
-        "241",
-        "246",
-        "233",
-        "243"
+        "489",
+        "486",
+        "484",
+        "476"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · leg_counting",
-      "story_text": "数一数下面这些动物一共有多少条腿：13 只firefly、9 只螃蟹、15 只starfish。",
+      "story_text": "数一数下面这些动物一共有多少条腿：12 只蝴蝶、12 只大象、12 只deer、3 只羊、11 只leech、6 只老虎、7 只黄蜂、15 只龙虾、15 只grasshopper。",
       "constraints": [],
       "options": [
-        "241",
-        "246",
-        "233",
-        "243"
+        "489",
+        "486",
+        "484",
+        "476"
       ],
       "question_prompt": "这些动物一共有多少条腿？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "math",
@@ -100,12 +100,18 @@
     "source_dataset": "leg_counting",
     "source_index": 14,
     "animals": {
-      "firefly": 13,
-      "crab": 9,
-      "starfish": 15
+      "butterfly": 12,
+      "elephant": 12,
+      "deer": 12,
+      "sheep": 3,
+      "leech": 11,
+      "tiger": 6,
+      "wasp": 7,
+      "lobster": 15,
+      "grasshopper": 15
     },
-    "num_animals": 3,
-    "total_legs": 243,
+    "num_animals": 9,
+    "total_legs": 486,
     "difficulty": {
       "num_animals": [
         3,
@@ -119,5 +125,5 @@
   },
   "archetype": "counting",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:41"
 }

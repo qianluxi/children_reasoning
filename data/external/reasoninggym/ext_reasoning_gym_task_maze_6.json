@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · maze",
-    "text": "Navigate from 'g' (start) to '*' (goal):\n\n```\n)))))))))\n))EEEg)E)\n)EEEEEEE)\n))*)EE)E)\n)EEEEEE))\n)E)EEEEE)\n))EEE)E))\n))EE))E))\n)))))))))\n```\nLegend: ')' = Wall, 'E' = Passage\n\nWhat is the minimum number of steps to reach the goal?\nGive only the number of steps as your final answer, no other text or formatting.",
+    "text": "Navigate from 't' (start) to 'U' (goal):\n\n```\nIIIIIIII\nII7II7II\nI7I7777I\nI77I7I7I\nI77777II\nI7IUI7II\nItI7I77I\nIIIIIIII\n```\nLegend: 'I' = Wall, '7' = Passage\n\nWhat is the minimum number of steps to reach the goal?\nGive only the number of steps as your final answer, no other text or formatting.",
     "roles": {}
   },
   "entities": [],
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:42",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,8 +44,9 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · maze",
-      "story_text": "从 'g'（起点）走到 '*'（终点）：\n\n```\n)))))))))\n))EEEg)E)\n)EEEEEEE)\n))*)EE)E)\n)EEEEEE))\n)E)EEEEE)\n))EEE)E))\n))EE))E))\n)))))))))\n```\n说明：')' 是墙，'E' 是通道\n\n最少需要走多少步才能到达终点？\n只回答步数 as your final answer, no other text or formatting.",
+      "story_text": "从 't'（起点）走到 'U'（终点）：\n\n```\nIIIIIIII\nII7II7II\nI7I7777I\nI77I7I7I\nI77777II\nI7IUI7II\nItI7I77I\nIIIIIIII\n```\n说明：'I' 是墙，'7' 是通道\n\n最少需要走多少步才能到达终点？\n只回答步数 as your final answer, no other text or formatting.",
       "constraints": [],
       "options": [
         "5",
@@ -54,13 +55,13 @@
         "10"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · maze",
-      "story_text": "小蚂蚁要从 'g'（起点）走到 '*'（终点），只能走通道。迷宫是这样的：\n)))))))))\n))EEEg)E)\n)EEEEEEE)\n))*)EE)E)\n)EEEEEE))\n)E)EEEEE)\n))EEE)E))\n))EE))E))\n)))))))))",
+      "story_text": "小蚂蚁要从 't'（起点）走到 'U'（终点），只能走通道。迷宫是这样的：\nIIIIIIII\nII7II7II\nI7I7777I\nI77I7I7I\nI77777II\nI7IUI7II\nItI7I77I\nIIIIIIII",
       "constraints": [],
       "options": [
         "5",
@@ -69,8 +70,7 @@
         "10"
       ],
       "question_prompt": "最少要走多少步才能到终点？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "spatial",
@@ -99,23 +99,22 @@
   "metadata": {
     "source_dataset": "maze",
     "source_index": 6,
-    "grid_size": 9,
+    "grid_size": 8,
     "grid": [
-      ")))))))))",
-      "))EEEg)E)",
-      ")EEEEEEE)",
-      "))*)EE)E)",
-      ")EEEEEE))",
-      ")E)EEEEE)",
-      "))EEE)E))",
-      "))EE))E))",
-      ")))))))))"
+      "IIIIIIII",
+      "II7II7II",
+      "I7I7777I",
+      "I77I7I7I",
+      "I77777II",
+      "I7IUI7II",
+      "ItI7I77I",
+      "IIIIIIII"
     ],
     "shortest_path_length": 5,
-    "start": "g",
-    "goal": "*",
-    "wall": ")",
-    "path": "E",
+    "start": "t",
+    "goal": "U",
+    "wall": "I",
+    "path": "7",
     "difficulty": {
       "dist": [
         5,
@@ -129,5 +128,5 @@
   },
   "archetype": "maze",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:42"
 }

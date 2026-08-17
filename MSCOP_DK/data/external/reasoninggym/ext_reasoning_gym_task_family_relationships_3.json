@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · family_relationships",
-    "text": "Ethan is married to Hannah. They have a child called Edward. Edward is married to Barbara. They have children called Abigail and Owen.\n\nWhat is Ethan to Edward? Respond only with the word that describes their relationship.",
+    "text": "Christopher is married to Elizabeth. They have a child called Noah. Noah is married to Hannah. They have a child called Karen. Atlas is married to Sarah. They have a child called Hannah.\n\nWhat is Christopher to Elizabeth? Respond only with the word that describes their relationship.",
     "roles": {}
   },
   "entities": [],
@@ -12,10 +12,10 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "niece",
-    "brother",
-    "father",
-    "grandfather"
+    "nephew",
+    "mother",
+    "husband",
+    "daughter"
   ],
   "option_logic": [],
   "answer": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:40",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · family_relationships",
-      "story_text": "Ethan 和 Hannah 结婚了。 他们有个孩子叫 Edward。 Edward 和 Barbara 结婚了。 他们有孩子叫 Abigail 和 Owen。\n\nEthan 和 Edward 是什么关系？ ",
+      "story_text": "Christopher 和 Elizabeth 结婚了。 他们有个孩子叫 Noah。 Noah 和 Hannah 结婚了。 他们有个孩子叫 Karen。 Atlas 和 Sarah 结婚了。 他们有个孩子叫 Hannah。\n\nChristopher 和 Elizabeth 是什么关系？ ",
       "constraints": [],
       "options": [
-        "侄女",
-        "哥哥",
-        "爸爸",
-        "爷爷"
+        "侄子",
+        "妈妈",
+        "丈夫",
+        "女儿"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · family_relationships",
-      "story_text": "Ethan 和 Hannah 结婚了。 他们有个孩子叫 Edward。 Edward 和 Barbara 结婚了。 他们有孩子叫 Abigail 和 Owen。\n\nEthan 和 Edward 是什么关系？",
+      "story_text": "Christopher 和 Elizabeth 结婚了。 他们有个孩子叫 Noah。 Noah 和 Hannah 结婚了。 他们有个孩子叫 Karen。 Atlas 和 Sarah 结婚了。 他们有个孩子叫 Hannah。\n\nChristopher 和 Elizabeth 是什么关系？",
       "constraints": [],
       "options": [
-        "侄女",
-        "哥哥",
-        "爸爸",
-        "爷爷"
+        "侄子",
+        "妈妈",
+        "丈夫",
+        "女儿"
       ],
       "question_prompt": "他们是什么关系？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "relation",
@@ -99,10 +99,10 @@
   "metadata": {
     "source_dataset": "family_relationships",
     "source_index": 3,
-    "person1": "Ethan",
-    "person2": "Edward",
-    "relationship": "father",
-    "family_size": 6,
+    "person1": "Christopher",
+    "person2": "Elizabeth",
+    "relationship": "husband",
+    "family_size": 7,
     "difficulty": {
       "family_size": [
         4,
@@ -112,5 +112,5 @@
   },
   "archetype": "family_relationship",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:40"
 }

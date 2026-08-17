@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · knights_knaves",
-    "text": "A very special island is inhabited only by saints and sinners. Saints always tell the truth, and sinners always lie. You meet 2 inhabitants: Aria, and Jacob. \"Jacob is a saint\" - Aria. \"Aria is a sinner and Aria is a saint,\" Jacob declared. So who is a saint and who is a sinner? (Format your answer like: \"Aria is a saint/sinner, and Jacob is a saint/sinner\")",
+    "text": "A very special island is inhabited only by knights and knaves. Knights always tell the truth, and knaves always lie. You meet 2 inhabitants: Liam, and William. Liam told you that William is a knight or William is a knave. William stated, \"Liam is a knight if and only if Liam is a knave\". So who is a knight and who is a knave? (Format your answer like: \"Liam is a knight/knave, and William is a knight/knave\")",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "Aria is a saint, Jacob is a sinner",
-    "Aria is a saint, Jacob is a saint",
-    "Aria is a sinner, Jacob is a saint",
-    "Aria is a sinner, Jacob is a sinner"
+    "Liam is a knight, William is a knave",
+    "Liam is a knight, William is a knight",
+    "Liam is a knave, William is a knight",
+    "Liam is a knave, William is a knave"
   ],
   "option_logic": [],
-  "answer": 3,
+  "answer": 0,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "A very special island is 有一座小岛，岛上只有saints和sinners。saints总说真话，sinners总说假话。 你遇到了 2 个居民：Aria, and Jacob. \"Jacob 是saint\" - Aria. \"Aria 是sinner 并且 Aria 是saint,\" Jacob declared. So who is a saint？谁又是sinner？ (Format your answer like: \"Aria 是saint/sinner, 并且 Jacob 是saint/sinner\")",
+      "story_text": "A very special island is 有一座小岛，岛上只有骑士和无赖。骑士总说真话，无赖总说假话。 你遇到了 2 个居民：Liam, and William. Liam told you that William is a knight or William is a knave. William stated, \"Liam 是knight 当且仅当 Liam 是knave\". So who is a knight？谁又是knave？ (Format your answer like: \"Liam 是knight/无赖, 并且 William 是knight/无赖\")",
       "constraints": [],
       "options": [
-        "Aria 是saint，Jacob 是sinner",
-        "Aria 是saint，Jacob 是saint",
-        "Aria 是sinner，Jacob 是saint",
-        "Aria 是sinner，Jacob 是sinner"
+        "Liam 是骑士，William 是无赖",
+        "Liam 是骑士，William 是骑士",
+        "Liam 是无赖，William 是骑士",
+        "Liam 是无赖，William 是无赖"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · knights_knaves",
+      "story_text": "有一座小岛，岛上住着诚实的人（骑士）和爱说谎的人（无赖）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Liam、William。他们说：\nLiam 说：“（William是骑士）或者（William是无赖）”\nWilliam 说：“('<=>', ('telling-truth', 0), ('lying', 0))”",
+      "constraints": [],
+      "options": [
+        "Liam 是骑士，William 是无赖",
+        "Liam 是骑士，William 是骑士",
+        "Liam 是无赖，William 是骑士",
+        "Liam 是无赖，William 是无赖"
+      ],
+      "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -70,7 +86,7 @@
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
     "reading_level": 3,
     "language_complexity": 3,
@@ -85,36 +101,43 @@
     "source_index": 14,
     "statements": [
       [
-        "telling-truth",
-        1
-      ],
-      [
-        "and",
+        "or",
+        [
+          "telling-truth",
+          1
+        ],
         [
           "lying",
+          1
+        ]
+      ],
+      [
+        "<=>",
+        [
+          "telling-truth",
           0
         ],
         [
-          "telling-truth",
+          "lying",
           0
         ]
       ]
     ],
     "solution": [
-      false,
+      true,
       false
     ],
     "names": [
-      "Aria",
-      "Jacob"
+      "Liam",
+      "William"
     ],
     "knight_knave_terms": {
-      "knight": "saint",
-      "knave": "sinner",
-      "a_knight": "a saint",
-      "a_knave": "a sinner",
-      "Knight": "Saint",
-      "Knave": "Sinner"
+      "knight": "knight",
+      "knave": "knave",
+      "a_knight": "a knight",
+      "a_knave": "a knave",
+      "Knight": "Knight",
+      "Knave": "Knave"
     },
     "difficulty": {
       "n_people": 2,
@@ -122,5 +145,7 @@
       "width_constraint": 2
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "truth_tellers",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

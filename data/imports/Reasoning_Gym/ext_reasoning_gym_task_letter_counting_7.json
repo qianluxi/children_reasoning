@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · letter_counting",
-    "text": "How many times does the letter \"t\" appear in the text: \"said Faithburn was dead quite certainly\"?",
+    "text": "How many times does the letter \"m\" appear in the text: \"reach the hearer in due succession Furthermore the hearers are free to\"?",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "3",
     "2",
     "1",
-    "4"
+    "0",
+    "11"
   ],
   "option_logic": [],
-  "answer": 0,
+  "answer": 1,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 1,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · letter_counting",
-      "story_text": "字母 “t” 在下面这段文字里出现了多少次？\n“said Faithburn was dead quite certainly”",
+      "story_text": "字母 “m” 在下面这段文字里出现了多少次？\n“reach the hearer in due succession Furthermore the hearers are free to”",
       "constraints": [],
       "options": [
-        "3",
         "2",
         "1",
-        "4"
+        "0",
+        "11"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · letter_counting",
+      "story_text": "下面这段话里，字母 “m” 一共出现了几次？\nreach the hearer in due succession Furthermore the hearers are free to",
+      "constraints": [],
+      "options": [
+        "2",
+        "1",
+        "0",
+        "11"
+      ],
+      "question_prompt": "字母 “m” 出现了几次？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -65,14 +81,14 @@
   "difficulty_profile": {
     "cognitive_load": 1,
     "reasoning_depth": 1,
-    "language_complexity": 1,
+    "language_complexity": 2,
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
-    "reading_level": 1,
-    "language_complexity": 1,
+    "reading_level": 2,
+    "language_complexity": 2,
     "abstractness": 4,
     "reasoning_depth": 1,
     "calculation_load": 1,
@@ -82,15 +98,21 @@
   "metadata": {
     "source_dataset": "letter_counting",
     "source_index": 7,
-    "span_length": 6,
-    "target_letter": "t",
+    "span_length": 12,
+    "target_letter": "m",
     "span": [
-      "said",
-      "Faithburn",
-      "was",
-      "dead",
-      "quite",
-      "certainly"
+      "reach",
+      "the",
+      "hearer",
+      "in",
+      "due",
+      "succession",
+      "Furthermore",
+      "the",
+      "hearers",
+      "are",
+      "free",
+      "to"
     ],
     "difficulty": {
       "words": [
@@ -99,5 +121,7 @@
       ]
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "counting",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

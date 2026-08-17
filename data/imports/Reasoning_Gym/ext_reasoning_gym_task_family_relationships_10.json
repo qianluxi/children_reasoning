@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · family_relationships",
-    "text": "Michael is married to Zoe. They have a child called Theodore. Theodore is married to Amelia. They have children called Jennifer and Lucas.\n\nWhat relation is Theodore to Amelia? Answer with a single word.",
+    "text": "Phoenix is married to Charlotte. They have a child called Benjamin. Benjamin is married to Rain. They have a child called Jayden. Ethan is married to Hannah. They have a child called Rain.\n\nWhat relation is Benjamin to Ethan? Answer with a single word.",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "sister",
-    "uncle",
-    "husband",
-    "daughter"
+    "nephew",
+    "grandfather",
+    "wife",
+    "father-in-law"
   ],
   "option_logic": [],
-  "answer": 2,
+  "answer": 3,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:40",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · family_relationships",
-      "story_text": "Michael 和 Zoe 结婚了。 他们有个孩子叫 Theodore。 Theodore 和 Amelia 结婚了。 他们有孩子叫 Jennifer 和 Lucas。\n\nTheodore 和 Amelia 是什么关系？ ",
+      "story_text": "Phoenix 和 Charlotte 结婚了。 他们有个孩子叫 Benjamin。 Benjamin 和 Rain 结婚了。 他们有个孩子叫 Jayden。 Ethan 和 Hannah 结婚了。 他们有个孩子叫 Rain。\n\nBenjamin 和 Ethan 是什么关系？ ",
       "constraints": [],
       "options": [
-        "姐姐",
-        "叔叔",
-        "丈夫",
-        "女儿"
+        "侄子",
+        "爷爷",
+        "妻子",
+        "father-in-law"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · family_relationships",
+      "story_text": "Phoenix 和 Charlotte 结婚了。 他们有个孩子叫 Benjamin。 Benjamin 和 Rain 结婚了。 他们有个孩子叫 Jayden。 Ethan 和 Hannah 结婚了。 他们有个孩子叫 Rain。\n\nBenjamin 和 Ethan 是什么关系？",
+      "constraints": [],
+      "options": [
+        "侄子",
+        "爷爷",
+        "妻子",
+        "father-in-law"
+      ],
+      "question_prompt": "他们是什么关系？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -70,7 +86,7 @@
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
     "reading_level": 2,
     "language_complexity": 2,
@@ -83,10 +99,10 @@
   "metadata": {
     "source_dataset": "family_relationships",
     "source_index": 10,
-    "person1": "Theodore",
-    "person2": "Amelia",
-    "relationship": "husband",
-    "family_size": 6,
+    "person1": "Benjamin",
+    "person2": "Ethan",
+    "relationship": "father-in-law",
+    "family_size": 7,
     "difficulty": {
       "family_size": [
         4,
@@ -94,5 +110,7 @@
       ]
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "family_relationship",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:40"
 }

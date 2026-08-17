@@ -5,3 +5,9 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .zcode/
+
+# 部署副本中的数据目录（含大量题库JSON，不追踪）
+MSCOP_DK/data/
+
+# 部署副本中的逻辑目录（与 root logic_kids/ 内容相同，避免重复追踪）
+MSCOP_DK/logic_kids/

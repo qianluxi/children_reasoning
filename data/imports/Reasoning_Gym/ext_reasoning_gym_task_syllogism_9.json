@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · syllogism",
-    "text": "Consider these statements:\n1. No engineers are lions\n2. Some lions are dolphins\n\nDoes it logically follow that:\nSome dolphins are lions?\n(Answer Yes or No)",
+    "text": "Consider these statements:\n1. No parents are mammals\n2. No mammals are mortals\n\nDoes it logically follow that:\nNo mammals are parents?\n(Answer Yes or No)",
     "roles": {}
   },
   "entities": [],
@@ -32,7 +32,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -42,14 +42,28 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · syllogism",
-      "story_text": "已知以下陈述：\n1. 没有 engineers 都是 lions\n2. 有些 lions 都是 dolphins\n\n那么，下面这个结论是否必然成立：\n有些 dolphins 都是 lions?\n（回答“是”或“否”）",
+      "story_text": "已知以下陈述：\n1. 没有 parents 都是 mammals\n2. 没有 mammals 都是 mortals\n\n那么，下面这个结论是否必然成立：\n没有 mammals 都是 parents?\n（回答“是”或“否”）",
       "constraints": [],
       "options": [
         "是",
         "否"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · syllogism",
+      "story_text": "小侦探推理：\n1. 没有 parents 都是 mammals\n2. 没有 mammals 都是 mortals\n\n那么，“没有 mammals 都是 parents”对不对？",
+      "constraints": [],
+      "options": [
+        "对",
+        "不对"
+      ],
+      "question_prompt": "这个结论成立吗？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -66,7 +80,7 @@
     "distractor_strength": 1,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
     "reading_level": 2,
     "language_complexity": 2,
@@ -79,12 +93,14 @@
   "metadata": {
     "source_dataset": "syllogism",
     "source_index": 9,
-    "premise1": "No engineers are lions",
-    "premise2": "Some lions are dolphins",
-    "selected_premise": 2,
-    "conclusion": "Some dolphins are lions",
+    "premise1": "No parents are mammals",
+    "premise2": "No mammals are mortals",
+    "selected_premise": 1,
+    "conclusion": "No mammals are parents",
     "is_valid": true,
     "type": "inversion"
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "syllogism",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

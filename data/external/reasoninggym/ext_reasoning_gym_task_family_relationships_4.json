@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · family_relationships",
-    "text": "Noah is married to Jennifer. They have a child called Phoenix. Phoenix is married to Sage.\n\nWhat relation is Jennifer to Phoenix? Answer with a single word.",
+    "text": "Matthew is married to Victoria. They have a child called Ethan. Ethan is married to Abigail.\n\nWhat is Matthew to Ethan? Respond only with the word that describes their relationship.",
     "roles": {}
   },
   "entities": [],
@@ -12,7 +12,7 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "mother",
+    "father",
     "son",
     "grandfather",
     "niece"
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:40",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · family_relationships",
-      "story_text": "Noah 和 Jennifer 结婚了。 他们有个孩子叫 Phoenix。 Phoenix 和 Sage 结婚了。\n\nJennifer 和 Phoenix 是什么关系？ ",
+      "story_text": "Matthew 和 Victoria 结婚了。 他们有个孩子叫 Ethan。 Ethan 和 Abigail 结婚了。\n\nMatthew 和 Ethan 是什么关系？ ",
       "constraints": [],
       "options": [
-        "妈妈",
+        "爸爸",
         "儿子",
         "爷爷",
         "侄女"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · family_relationships",
-      "story_text": "Noah 和 Jennifer 结婚了。 他们有个孩子叫 Phoenix。 Phoenix 和 Sage 结婚了。\n\nJennifer 和 Phoenix 是什么关系？",
+      "story_text": "Matthew 和 Victoria 结婚了。 他们有个孩子叫 Ethan。 Ethan 和 Abigail 结婚了。\n\nMatthew 和 Ethan 是什么关系？",
       "constraints": [],
       "options": [
-        "妈妈",
+        "爸爸",
         "儿子",
         "爷爷",
         "侄女"
       ],
       "question_prompt": "他们是什么关系？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "relation",
@@ -99,9 +99,9 @@
   "metadata": {
     "source_dataset": "family_relationships",
     "source_index": 4,
-    "person1": "Jennifer",
-    "person2": "Phoenix",
-    "relationship": "mother",
+    "person1": "Matthew",
+    "person2": "Ethan",
+    "relationship": "father",
     "family_size": 4,
     "difficulty": {
       "family_size": [
@@ -112,5 +112,5 @@
   },
   "archetype": "family_relationship",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:40"
 }

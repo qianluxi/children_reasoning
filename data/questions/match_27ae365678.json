@@ -1,0 +1,118 @@
+{
+  "id": "match_27ae365678",
+  "type": "matching",
+  "story": {
+    "title": "谁喜欢什么？",
+    "text": "4个小伙伴，每人喜欢一种点心，而且每种点心只有一个人喜欢。根据下面的线索，想想谁喜欢什么。",
+    "roles": {
+      "A": "乐乐",
+      "B": "小白兔",
+      "C": "花花",
+      "D": "啾啾"
+    }
+  },
+  "entities": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "variables": [
+    {
+      "name": "rank_A",
+      "type": "rank"
+    },
+    {
+      "name": "rank_B",
+      "type": "rank"
+    },
+    {
+      "name": "rank_C",
+      "type": "rank"
+    },
+    {
+      "name": "rank_D",
+      "type": "rank"
+    }
+  ],
+  "statements": [],
+  "constraints": [
+    {
+      "text": "花花喜欢🥕胡萝卜",
+      "logic": "RANK(C) == 2"
+    },
+    {
+      "text": "小白兔喜欢🧀奶酪",
+      "logic": "RANK(B) == 4"
+    },
+    {
+      "text": "乐乐喜欢🍬糖果",
+      "logic": "RANK(A) == 1"
+    },
+    {
+      "text": "啾啾不喜欢🥕胡萝卜",
+      "logic": "RANK(D) != 2"
+    }
+  ],
+  "question_prompt": "花花喜欢什么？",
+  "options": [
+    "🍬糖果",
+    "🐟小鱼",
+    "🧀奶酪",
+    "🥕胡萝卜"
+  ],
+  "option_logic": [
+    "RANK(C) == 1",
+    "RANK(C) == 3",
+    "RANK(C) == 4",
+    "RANK(C) == 2"
+  ],
+  "answer": 3,
+  "hints": [
+    "先把“确定喜欢”的配对找出来。",
+    "每个小朋友只能喜欢一种，每种点心也只有一个人喜欢，用排除法试试。"
+  ],
+  "explanation": "按线索一一配对：乐乐喜欢🍬糖果；小白兔喜欢🧀奶酪；花花喜欢🥕胡萝卜；啾啾喜欢🐟小鱼。",
+  "difficulty": 2,
+  "difficulty_score": 3.03,
+  "difficulty_level": 2,
+  "source": "generated",
+  "source_info": {
+    "type": "builtin",
+    "name": "children_reasoning",
+    "license": "MIT",
+    "dataset_id": "",
+    "original_id": "",
+    "url": ""
+  },
+  "provenance": null,
+  "translations": null,
+  "category": "relation",
+  "skills": [
+    "relation_reasoning",
+    "one_to_one",
+    "exclusion"
+  ],
+  "age_range": "B",
+  "difficulty_profile": {
+    "cognitive_load": 3,
+    "reasoning_depth": 2,
+    "language_complexity": 1,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "quality": "A",
+  "child_suitability": {
+    "reading_level": 1,
+    "language_complexity": 1,
+    "abstractness": 3,
+    "reasoning_depth": 2,
+    "calculation_load": 1,
+    "cultural_dependency": 1,
+    "suitable": true
+  },
+  "metadata": {},
+  "archetype": "matching",
+  "verified_by": "solver",
+  "created_at": "2026-08-17 16:28:39"
+}

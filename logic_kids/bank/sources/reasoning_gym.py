@@ -95,12 +95,207 @@ def fetch(task: str = "knights_knaves", limit: int = None, size: int = None,
     return items
 
 
-def _numeric_options(item, rng, allow_negative=True):
-    ans = str(item.get("answer") or "").strip()
-    try:
-        correct = float(ans)
-    except ValueError:
+# ---------- 外部数值序列验证器 ----------
+
+
+def _try_find_pattern(seq: list) -> tuple | None:
+    """从数列前缀（不含答案元素）中尝试找到规律，返回下一项或 None。"""
+    n = len(seq)
+    if n < 2:
         return None
+
+    def is_all_int(vals):
+        return all(isinstance(v, (int, float)) and not isinstance(v, bool)
+                   for v in vals) and all(v == int(v) for v in vals)
+
+    seq_int = [int(v) if isinstance(v, float) and v == int(v) else v for v in seq]
+    if not is_all_int(seq_int):
+        seq_int = [float(v) for v in seq]
+
+    # Pattern 1: constant sequence
+    if len(set(seq_int)) == 1:
+        return seq_int[0], "constant"
+
+    # Pattern 2: arithmetic progression
+    diffs = [seq_int[i+1] - seq_int[i] for i in range(n-1)]
+    if len(set(diffs)) == 1:
+        return seq_int[-1] + diffs[0], "arithmetic"
+
+    # Pattern 3: geometric progression
+    if all(v != 0 for v in seq_int):
+        ratios = [seq_int[i+1] / seq_int[i] for i in range(n-1)]
+        if len(set(ratios)) == 1 and ratios[0] != 0:
+            next_val = seq_int[-1] * ratios[0]
+            if isinstance(next_val, float) and next_val == int(next_val):
+                next_val = int(next_val)
+            return next_val, f"geometric(r={ratios[0]})"
+
+    # Pattern 4: second-order arithmetic (diffs are arithmetic)
+    if n >= 4:
+        sd = [diffs[i+1] - diffs[i] for i in range(len(diffs)-1)]
+        if len(set(sd)) == 1:
+            next_diff = diffs[-1] + sd[0]
+            return seq_int[-1] + next_diff, "quadratic"
+
+    # Pattern 5: Fibonacci-style (term[i] = term[i-1] + term[i-2])
+    if n >= 4:
+        fib_ok = True
+        for i in range(2, n):
+            if seq_int[i] != seq_int[i-1] + seq_int[i-2]:
+                fib_ok = False
+                break
+        if fib_ok:
+            return seq_int[-1] + seq_int[-2], "fibonacci-like"
+
+    # Pattern 6: differences form geometric sequence
+    if n >= 4:
+        geo_ok = True
+        geo_r = None
+        for i in range(len(diffs)):
+            if diffs[i] == 0:
+                geo_ok = False
+                break
+            r = diffs[i+1]/diffs[i] if i < len(diffs)-1 else None
+            if i > 0 and r != geo_r:
+                geo_ok = False
+                break
+            geo_r = r
+        if geo_ok and geo_r and abs(geo_r - round(geo_r)) < 1e-6:
+            geo_r = round(geo_r)
+            next_diff = diffs[-1] * geo_r
+            return seq_int[-1] + next_diff, f"diff_geometric(r={geo_r})"
+
+    # Pattern 7: term[i] = a * term[i-1] + b
+    if n >= 4:
+        a_found = False
+        for a_candidate in range(-5, 6):
+            if a_candidate == 0:
+                continue
+            b_candidate = None
+            ok = True
+            for i in range(1, n):
+                target = seq_int[i] - a_candidate * seq_int[i-1]
+                if b_candidate is None:
+                    b_candidate = target
+                elif b_candidate != target:
+                    ok = False
+                    break
+            if ok and b_candidate is not None:
+                next_val = a_candidate * seq_int[-1] + b_candidate
+                if isinstance(next_val, float) and next_val == int(next_val):
+                    next_val = int(next_val)
+                return next_val, f"linear(a={a_candidate},b={b_candidate})"
+            a_found = True
+        if a_found:
+            pass  # no match found
+
+    # Pattern 8: alternating pattern (period 2)
+    if n >= 6:
+        odd_pos = [seq_int[i] for i in range(1, n, 2)]
+        even_pos = [seq_int[i] for i in range(0, n, 2)]
+        if len(set(odd_pos)) <= 2 and len(set(even_pos)) <= 2:
+            # Likely alternating; predict next based on most recent trend
+            if len(set(even_pos)) == 1:
+                # Even positions constant, predict using odd trend
+                next_is_even = n % 2 == 0
+                if next_is_even:
+                    return seq_int[0], "alternating-even-constant"
+                else:
+                    return odd_pos[-1], "alternating-odd-constant"
+            if len(set(odd_pos)) == 1:
+                next_is_even = n % 2 == 0
+                if not next_is_even:
+                    return seq_int[-1], "alternating-odd-constant"
+                else:
+                    return even_pos[0], "alternating-even-trend"
+
+    return None
+
+
+def verify_rg_answer(item) -> tuple:
+    """验证 Reasoning Gym number_sequence/chain_sum 题的答案是否正确。
+
+    返回 (ok: bool, next_predicted: any|None, pattern: str|None)。
+
+    问题：RG 的 answer 字段可能指向序列最后一个元素（而非下一个）。
+    本函数独立推断"下一个数"并与 RG answer 对比。
+    """
+    md = item.get("metadata") or {}
+    seq = md.get("sequence", []) or []
+    if not seq or len(seq) < 2:
+        return False, None, None
+
+    # RG sequence 包含答案作为最后一个元素。用前 N-1 个预测第 N 个。
+    seq_stem = seq[:-1] if len(seq) > 2 else list(seq)
+    rg_answer = str(item.get("answer") or "").strip()
+
+    predicted = _try_find_pattern(seq_stem)
+    if predicted is None:
+        return False, None, None
+
+    _, pattern = predicted
+    predicted_val = predicted[0]
+
+    try:
+        predicted_str = str(int(predicted_val)) if isinstance(predicted_val,
+                                                              (int, float)) and predicted_val == int(predicted_val) else str(predicted_val)
+    except (ValueError, TypeError):
+        predicted_str = str(predicted_val)
+
+    matches = (predicted_str == rg_answer)
+
+    # Also check: does predicted value appear anywhere in options?
+    # The normalize function creates options around RG answer with small offsets.
+    # If predicted != RG answer AND predicted is far from all options → reject.
+    return matches, predicted_val, pattern
+
+
+def _numeric_options(item, rng, allow_negative=True):
+    """生成数值选项并验证答案合理性。
+
+    对于 number_sequence/chain_sum，如果检测到规律且规律与 RG answer 不一致，
+    使用预测值替代；否则直接使用 RG answer。无法检测规律的题目也保留（不丢弃）。
+    """
+    task = item.get("_task", "")
+    ans = str(item.get("answer") or "").strip()
+
+    # For number_sequence and chain_sum, validate against independent pattern detection
+    if task in ("number_sequence", "chain_sum"):
+        md = item.get("metadata") or {}
+        seq = md.get("sequence", []) or []
+        if seq and len(seq) >= 3:
+            stem = seq[:-1] if len(seq) > 2 else list(seq)
+            predicted = _try_find_pattern(stem)
+            if predicted is not None:
+                predicted_val = predicted[0]
+                # Check if RG's answer matches our prediction
+                try:
+                    predicted_str = str(int(predicted_val)) if isinstance(predicted_val,
+                                                                          (int, float)) and predicted_val == int(predicted_val) else str(predicted_val)
+                except (ValueError, TypeError):
+                    predicted_str = str(predicted_val)
+                if predicted_str != ans:
+                    # RG answer doesn't match detected pattern → use predicted value
+                    correct = predicted_val
+                else:
+                    correct = float(ans)
+            else:
+                # No pattern detected; trust RG answer anyway
+                try:
+                    correct = float(ans)
+                except ValueError:
+                    return None
+        else:
+            try:
+                correct = float(ans)
+            except ValueError:
+                return None
+    else:
+        try:
+            correct = float(ans)
+        except ValueError:
+            return None
+
     opts = {correct}
     offsets = [-10, -5, -3, -2, -1, 1, 2, 3, 5, 10]
     rng.shuffle(offsets)
@@ -603,7 +798,10 @@ def zh_child_question(q) -> dict:
 
     if task == "number_sequence":
         seq = md.get("sequence") or []
-        story = ("小动物排队找规律：数字 " + "，".join(str(x) for x in seq)
+        # RG的answer是sequence的最后一个元素；question文本只显示前N-1个元素+?
+        # zh_child必须保持一致：用stem（不含答案）显示给孩子看
+        stem = seq[:-1] if len(seq) > 1 else list(seq)
+        story = ("小动物排队找规律：数字 " + "，".join(str(x) for x in stem)
                  + "，？")
         prompt_zh = "下一个数是多少？"
     elif task == "chain_sum":

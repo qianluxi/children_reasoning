@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · letter_counting",
-    "text": "How many times does the letter \"e\" appear in the text: \"me As in the morning the table rose out of the floor Again\"?",
+    "text": "How many times does the letter \"p\" appear in the text: \"he had discovered a cure for nasal catarrh These impracticables were dismissed\"?",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "5",
-    "11",
     "4",
+    "0",
+    "1",
     "6"
   ],
   "option_logic": [],
-  "answer": 3,
+  "answer": 2,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 1,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · letter_counting",
-      "story_text": "字母 “e” 在下面这段文字里出现了多少次？\n“me As in the morning the table rose out of the floor Again”",
+      "story_text": "字母 “p” 在下面这段文字里出现了多少次？\n“he had discovered a cure for nasal catarrh These impracticables were dismissed”",
       "constraints": [],
       "options": [
-        "5",
-        "11",
         "4",
+        "0",
+        "1",
         "6"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · letter_counting",
-      "story_text": "下面这段话里，字母 “e” 一共出现了几次？\nme As in the morning the table rose out of the floor Again",
+      "story_text": "下面这段话里，字母 “p” 一共出现了几次？\nhe had discovered a cure for nasal catarrh These impracticables were dismissed",
       "constraints": [],
       "options": [
-        "5",
-        "11",
         "4",
+        "0",
+        "1",
         "6"
       ],
-      "question_prompt": "字母 “e” 出现了几次？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "question_prompt": "字母 “p” 出现了几次？",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "math",
@@ -98,22 +98,21 @@
   "metadata": {
     "source_dataset": "letter_counting",
     "source_index": 6,
-    "span_length": 13,
-    "target_letter": "e",
+    "span_length": 12,
+    "target_letter": "p",
     "span": [
-      "me",
-      "As",
-      "in",
-      "the",
-      "morning",
-      "the",
-      "table",
-      "rose",
-      "out",
-      "of",
-      "the",
-      "floor",
-      "Again"
+      "he",
+      "had",
+      "discovered",
+      "a",
+      "cure",
+      "for",
+      "nasal",
+      "catarrh",
+      "These",
+      "impracticables",
+      "were",
+      "dismissed"
     ],
     "difficulty": {
       "words": [
@@ -124,5 +123,5 @@
   },
   "archetype": "counting",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:41"
 }

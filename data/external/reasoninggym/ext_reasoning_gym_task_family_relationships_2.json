@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · family_relationships",
-    "text": "Liam is married to Nova. They have a child called Noah. Noah is married to Charlotte. They have a child called Patricia. Joseph is married to Lisa. They have a child called Charlotte.\n\nWhat is Liam to Noah? Respond only with the word that describes their relationship.",
+    "text": "Atlas is married to Abigail. They have a child called Peter. Peter is married to Willow. They have a child called Noah.\n\nWhat relation is Noah to Willow? Answer with a single word.",
     "roles": {}
   },
   "entities": [],
@@ -15,7 +15,7 @@
     "nephew",
     "niece",
     "grandchild",
-    "father"
+    "son"
   ],
   "option_logic": [],
   "answer": 3,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:40",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · family_relationships",
-      "story_text": "Liam 和 Nova 结婚了。 他们有个孩子叫 Noah。 Noah 和 Charlotte 结婚了。 他们有个孩子叫 Patricia。 Joseph 和 Lisa 结婚了。 他们有个孩子叫 Charlotte。\n\nLiam 和 Noah 是什么关系？ ",
+      "story_text": "Atlas 和 Abigail 结婚了。 他们有个孩子叫 Peter。 Peter 和 Willow 结婚了。 他们有个孩子叫 Noah。\n\nNoah 和 Willow 是什么关系？ ",
       "constraints": [],
       "options": [
         "侄子",
         "侄女",
         "孙子/孙女",
-        "爸爸"
+        "儿子"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · family_relationships",
-      "story_text": "Liam 和 Nova 结婚了。 他们有个孩子叫 Noah。 Noah 和 Charlotte 结婚了。 他们有个孩子叫 Patricia。 Joseph 和 Lisa 结婚了。 他们有个孩子叫 Charlotte。\n\nLiam 和 Noah 是什么关系？",
+      "story_text": "Atlas 和 Abigail 结婚了。 他们有个孩子叫 Peter。 Peter 和 Willow 结婚了。 他们有个孩子叫 Noah。\n\nNoah 和 Willow 是什么关系？",
       "constraints": [],
       "options": [
         "侄子",
         "侄女",
         "孙子/孙女",
-        "爸爸"
+        "儿子"
       ],
       "question_prompt": "他们是什么关系？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "relation",
@@ -99,10 +99,10 @@
   "metadata": {
     "source_dataset": "family_relationships",
     "source_index": 2,
-    "person1": "Liam",
-    "person2": "Noah",
-    "relationship": "father",
-    "family_size": 7,
+    "person1": "Noah",
+    "person2": "Willow",
+    "relationship": "son",
+    "family_size": 5,
     "difficulty": {
       "family_size": [
         4,
@@ -112,5 +112,5 @@
   },
   "archetype": "family_relationship",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:40"
 }

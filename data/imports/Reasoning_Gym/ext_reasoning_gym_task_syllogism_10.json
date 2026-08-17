@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · syllogism",
-    "text": "Consider these statements:\n1. All chefs are adults\n2. Some adults are not lions\n\nDoes it logically follow that:\nSome chefs are not lions?\n(Answer Yes or No)",
+    "text": "Consider these statements:\n1. Some dolphins are parents\n2. Some parents are musicians\n\nDoes it logically follow that:\nSome dolphins are not musicians?\n(Answer Yes or No)",
     "roles": {}
   },
   "entities": [],
@@ -16,7 +16,7 @@
     "Yes"
   ],
   "option_logic": [],
-  "answer": 1,
+  "answer": 0,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -32,7 +32,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -42,14 +42,28 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · syllogism",
-      "story_text": "已知以下陈述：\n1. 所有 chefs 都是 adults\n2. 有些 adults 都是 not lions\n\n那么，下面这个结论是否必然成立：\n有些 chefs 都是 not lions?\n（回答“是”或“否”）",
+      "story_text": "已知以下陈述：\n1. 有些 dolphins 都是 parents\n2. 有些 parents 都是 musicians\n\n那么，下面这个结论是否必然成立：\n有些 dolphins 都是 not musicians?\n（回答“是”或“否”）",
       "constraints": [],
       "options": [
         "是",
         "否"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · syllogism",
+      "story_text": "小侦探推理：\n1. 有些 dolphins 都是 parents\n2. 有些 parents 都是 musicians\n\n那么，“有些 dolphins 都是 not musicians”对不对？",
+      "constraints": [],
+      "options": [
+        "对",
+        "不对"
+      ],
+      "question_prompt": "这个结论成立吗？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -66,7 +80,7 @@
     "distractor_strength": 1,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
     "reading_level": 2,
     "language_complexity": 2,
@@ -79,11 +93,13 @@
   "metadata": {
     "source_dataset": "syllogism",
     "source_index": 10,
-    "premise1": "All chefs are adults",
-    "premise2": "Some adults are not lions",
-    "conclusion": "Some chefs are not lions",
-    "is_valid": true,
+    "premise1": "Some dolphins are parents",
+    "premise2": "Some parents are musicians",
+    "conclusion": "Some dolphins are not musicians",
+    "is_valid": false,
     "type": "syllogism"
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "syllogism",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

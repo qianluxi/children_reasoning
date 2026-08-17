@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · leg_counting",
-    "text": "Your task is to count how many legs there are in total when given a list of animals.\n\nNow, how many legs are there in total if you have 15 scorpions, 14 shrimps, 7 cats, 9 giraffes, 8 elephants, 12 tigers?",
+    "text": "Your task is to count how many legs there are in total when given a list of animals.\n\nNow, how many legs are there in total if you have 4 dogs, 4 shrimps, 5 grasshoppers, 3 birds, 9 crickets, 10 horses, 3 tigers, 3 jellyfishs, 9 fireflys, 15 spiders?",
     "roles": {}
   },
   "entities": [],
@@ -12,10 +12,10 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "401",
-    "407",
-    "404",
-    "405"
+    "369",
+    "375",
+    "372",
+    "373"
   ],
   "option_logic": [],
   "answer": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · leg_counting",
-      "story_text": "数一数：15 只scorpion、14 只shrimp、7 只猫、9 只长颈鹿、8 只大象、12 只老虎，这些动物一共有多少条腿？",
+      "story_text": "数一数：4 只狗、4 只shrimp、5 只grasshopper、3 只鸟、9 只cricket、10 只马、3 只老虎、3 只jellyfish、9 只firefly、15 只蜘蛛，这些动物一共有多少条腿？",
       "constraints": [],
       "options": [
-        "401",
-        "407",
-        "404",
-        "405"
+        "369",
+        "375",
+        "372",
+        "373"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · leg_counting",
+      "story_text": "数一数下面这些动物一共有多少条腿：4 只狗、4 只shrimp、5 只grasshopper、3 只鸟、9 只cricket、10 只马、3 只老虎、3 只jellyfish、9 只firefly、15 只蜘蛛。",
+      "constraints": [],
+      "options": [
+        "369",
+        "375",
+        "372",
+        "373"
+      ],
+      "question_prompt": "这些动物一共有多少条腿？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -70,7 +86,7 @@
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
     "reading_level": 2,
     "language_complexity": 2,
@@ -84,15 +100,19 @@
     "source_dataset": "leg_counting",
     "source_index": 9,
     "animals": {
-      "scorpion": 15,
-      "shrimp": 14,
-      "cat": 7,
-      "giraffe": 9,
-      "elephant": 8,
-      "tiger": 12
+      "dog": 4,
+      "shrimp": 4,
+      "grasshopper": 5,
+      "bird": 3,
+      "cricket": 9,
+      "horse": 10,
+      "tiger": 3,
+      "jellyfish": 3,
+      "firefly": 9,
+      "spider": 15
     },
-    "num_animals": 6,
-    "total_legs": 404,
+    "num_animals": 10,
+    "total_legs": 372,
     "difficulty": {
       "num_animals": [
         3,
@@ -104,5 +124,7 @@
       ]
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "counting",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

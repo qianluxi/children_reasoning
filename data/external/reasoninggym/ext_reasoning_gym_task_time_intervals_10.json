@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · time_intervals",
-    "text": "A database query started at 01:56:46.495 and ended at 20:36:33.370. How long did the query take? Answer in HH:MM:SS.mmm.",
+    "text": "A meeting started at 04 March 2138, 20:57 +0100 and ended at 31 March 2138, 20:21 -1000. How long was the meeting? Answer in D days, HH:MM.",
     "roles": {}
   },
   "entities": [],
@@ -12,18 +12,18 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "18:40:46",
-    "18:39:46.875",
-    "18:40:16",
-    "18:39:56"
+    "27 days, 10:34",
+    "27 days, 11:24",
+    "27 days, 10:25",
+    "27 days, 10:24"
   ],
   "option_logic": [],
-  "answer": 1,
+  "answer": 3,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-  "difficulty": 2,
-  "difficulty_score": 3.7,
-  "difficulty_level": 2,
+  "difficulty": 4,
+  "difficulty_score": 6.2,
+  "difficulty_level": 3,
   "source": "reasoning gym",
   "source_info": {
     "type": "external",
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:52:21",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · time_intervals",
-      "story_text": "一个任务从 01:56:46.495 开始，到 20:36:33 结束，一共持续了多久？",
+      "story_text": "一个任务从 04 March 2138, 20:57 +0100 开始，到 31 March 2138, 20:21 -1000 结束，一共持续了多久？",
       "constraints": [],
       "options": [
-        "18:40:46",
-        "18:39:46.875",
-        "18:40:16",
-        "18:39:56"
+        "27 days, 10:34",
+        "27 days, 11:24",
+        "27 days, 10:25",
+        "27 days, 10:24"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · time_intervals",
-      "story_text": "小闹钟从 01:56:46.495000 走到 20:36:33.370000，一共过了多久？",
+      "story_text": "小闹钟从 20:57:00+01:00 走到 20:21:00-10:00，一共过了多久？",
       "constraints": [],
       "options": [
-        "18:40:46",
-        "18:39:46.875",
-        "18:40:16",
-        "18:39:56"
+        "27 days, 10:34",
+        "27 days, 11:24",
+        "27 days, 10:25",
+        "27 days, 10:24"
       ],
       "question_prompt": "一共过了多长时间？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "math",
@@ -99,11 +99,11 @@
   "metadata": {
     "source_dataset": "time_intervals",
     "source_index": 10,
-    "task_type": "time_ms",
-    "start_time": "2026-08-16 01:56:46.495000",
-    "end_time": "2026-08-16 20:36:33.370000",
-    "format": "%H:%M:%S.%f",
-    "expected_format": "HH:MM:SS.mmm",
+    "task_type": "datetime_tz",
+    "start_time": "2138-03-04 20:57:00+01:00",
+    "end_time": "2138-03-31 20:21:00-10:00",
+    "format": "%d %B %Y, %H:%M %z",
+    "expected_format": "D days, HH:MM",
     "difficulty": {
       "max_time_difference_seconds": 86400,
       "max_date_difference_days": 100
@@ -111,5 +111,5 @@
   },
   "archetype": "time_interval",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:52:21"
+  "created_at": "2026-08-17T16:28:41"
 }

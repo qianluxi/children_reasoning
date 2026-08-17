@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · leg_counting",
-    "text": "Your task is to count how many legs there are in total when given a list of animals.\n\nNow, how many legs are there in total if you have 9 deers, 2 beetles, 15 giraffes, 3 fireflys, 6 ants, 14 chickens, 2 woodlouses, 6 cats, 6 humans, 4 scorpions?",
+    "text": "Your task is to count how many legs there are in total when given a list of animals.\n\nNow, how many legs are there in total if you have 8 tigers, 9 shrimps, 9 giraffes, 10 birds, 11 crickets, 13 woodlouses, 2 fireflys, 13 jellyfishs, 11 deers, 5 bees?",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "286",
-    "285",
-    "276",
-    "283"
+    "511",
+    "502",
+    "509",
+    "512"
   ],
   "option_logic": [],
-  "answer": 0,
+  "answer": 3,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 1,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · leg_counting",
-      "story_text": "数一数：9 只deer、2 只beetle、15 只长颈鹿、3 只firefly、6 只蚂蚁、14 只鸡、2 只woodlouse、6 只猫、6 只人、4 只scorpion，这些动物一共有多少条腿？",
+      "story_text": "数一数：8 只老虎、9 只shrimp、9 只长颈鹿、10 只鸟、11 只cricket、13 只woodlouse、2 只firefly、13 只jellyfish、11 只deer、5 只蜜蜂，这些动物一共有多少条腿？",
       "constraints": [],
       "options": [
-        "286",
-        "285",
-        "276",
-        "283"
+        "511",
+        "502",
+        "509",
+        "512"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · leg_counting",
+      "story_text": "数一数下面这些动物一共有多少条腿：8 只老虎、9 只shrimp、9 只长颈鹿、10 只鸟、11 只cricket、13 只woodlouse、2 只firefly、13 只jellyfish、11 只deer、5 只蜜蜂。",
+      "constraints": [],
+      "options": [
+        "511",
+        "502",
+        "509",
+        "512"
+      ],
+      "question_prompt": "这些动物一共有多少条腿？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -70,7 +86,7 @@
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
     "reading_level": 2,
     "language_complexity": 2,
@@ -84,19 +100,19 @@
     "source_dataset": "leg_counting",
     "source_index": 8,
     "animals": {
-      "deer": 9,
-      "beetle": 2,
-      "giraffe": 15,
-      "firefly": 3,
-      "ant": 6,
-      "chicken": 14,
-      "woodlouse": 2,
-      "cat": 6,
-      "human": 6,
-      "scorpion": 4
+      "tiger": 8,
+      "shrimp": 9,
+      "giraffe": 9,
+      "bird": 10,
+      "cricket": 11,
+      "woodlouse": 13,
+      "firefly": 2,
+      "jellyfish": 13,
+      "deer": 11,
+      "bee": 5
     },
     "num_animals": 10,
-    "total_legs": 286,
+    "total_legs": 512,
     "difficulty": {
       "num_animals": [
         3,
@@ -108,5 +124,7 @@
       ]
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "counting",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

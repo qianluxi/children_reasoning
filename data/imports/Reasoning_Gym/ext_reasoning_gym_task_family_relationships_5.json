@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · family_relationships",
-    "text": "William is married to Lucy. They have a child called Jayden. Jayden is married to Lily. They have children called Sophia and Rain.\n\nWhat is Lily to William? Respond only with the word that describes their relationship.",
+    "text": "Jack is married to Aurora. They have a child called Alexander. Alexander is married to Nova. They have children called Ava and Lisa. Richard is married to Mary. They have a child called Nova.\n\nHow is Richard related to Ava? Provide the relationship in one word.",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "grandmother",
     "brother",
-    "father-in-law",
-    "grandfather"
+    "grandfather",
+    "mother",
+    "uncle"
   ],
   "option_logic": [],
-  "answer": 2,
+  "answer": 1,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:40",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · family_relationships",
-      "story_text": "William 和 Lucy 结婚了。 他们有个孩子叫 Jayden。 Jayden 和 Lily 结婚了。 他们有孩子叫 Sophia 和 Rain。\n\nLily 和 William 是什么关系？ ",
+      "story_text": "Jack 和 Aurora 结婚了。 他们有个孩子叫 Alexander。 Alexander 和 Nova 结婚了。 他们有孩子叫 Ava 和 Lisa。 Richard 和 Mary 结婚了。 他们有个孩子叫 Nova。\n\nRichard 和 Ava 是什么关系？ Provide the relationship in one word.",
       "constraints": [],
       "options": [
-        "奶奶",
         "哥哥",
-        "father-in-law",
-        "爷爷"
+        "爷爷",
+        "妈妈",
+        "叔叔"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · family_relationships",
+      "story_text": "Jack 和 Aurora 结婚了。 他们有个孩子叫 Alexander。 Alexander 和 Nova 结婚了。 他们有孩子叫 Ava 和 Lisa。 Richard 和 Mary 结婚了。 他们有个孩子叫 Nova。\n\nRichard 和 Ava 是什么关系？ Provide the relationship in one word.",
+      "constraints": [],
+      "options": [
+        "哥哥",
+        "爷爷",
+        "妈妈",
+        "叔叔"
+      ],
+      "question_prompt": "他们是什么关系？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -70,7 +86,7 @@
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
     "reading_level": 2,
     "language_complexity": 2,
@@ -83,10 +99,10 @@
   "metadata": {
     "source_dataset": "family_relationships",
     "source_index": 5,
-    "person1": "Lily",
-    "person2": "William",
-    "relationship": "father-in-law",
-    "family_size": 6,
+    "person1": "Richard",
+    "person2": "Ava",
+    "relationship": "grandfather",
+    "family_size": 8,
     "difficulty": {
       "family_size": [
         4,
@@ -94,5 +110,7 @@
       ]
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "family_relationship",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:40"
 }

@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · family_relationships",
-    "text": "John is married to Isabella. They have a child called Edward. Edward is married to Victoria.\n\nWhat is Isabella to Edward? Respond only with the word that describes their relationship.",
+    "text": "Logan is married to Sophie. They have a child called Daniel. Daniel is married to Grace. They have a child called Chloe.\n\nWhat relation is Daniel to Logan? Answer with a single word.",
     "roles": {}
   },
   "entities": [],
@@ -13,8 +13,8 @@
   "question_prompt": "请选择正确答案：",
   "options": [
     "cousin",
+    "son",
     "mother",
-    "brother",
     "uncle"
   ],
   "option_logic": [],
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:40",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · family_relationships",
-      "story_text": "John 和 Isabella 结婚了。 他们有个孩子叫 Edward。 Edward 和 Victoria 结婚了。\n\nIsabella 和 Edward 是什么关系？ ",
+      "story_text": "Logan 和 Sophie 结婚了。 他们有个孩子叫 Daniel。 Daniel 和 Grace 结婚了。 他们有个孩子叫 Chloe。\n\nDaniel 和 Logan 是什么关系？ ",
       "constraints": [],
       "options": [
         "表亲",
+        "儿子",
         "妈妈",
-        "哥哥",
         "叔叔"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · family_relationships",
+      "story_text": "Logan 和 Sophie 结婚了。 他们有个孩子叫 Daniel。 Daniel 和 Grace 结婚了。 他们有个孩子叫 Chloe。\n\nDaniel 和 Logan 是什么关系？",
+      "constraints": [],
+      "options": [
+        "表亲",
+        "儿子",
+        "妈妈",
+        "叔叔"
+      ],
+      "question_prompt": "他们是什么关系？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -70,7 +86,7 @@
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
     "reading_level": 2,
     "language_complexity": 2,
@@ -83,10 +99,10 @@
   "metadata": {
     "source_dataset": "family_relationships",
     "source_index": 0,
-    "person1": "Isabella",
-    "person2": "Edward",
-    "relationship": "mother",
-    "family_size": 4,
+    "person1": "Daniel",
+    "person2": "Logan",
+    "relationship": "son",
+    "family_size": 5,
     "difficulty": {
       "family_size": [
         4,
@@ -94,5 +110,7 @@
       ]
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "family_relationship",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:40"
 }

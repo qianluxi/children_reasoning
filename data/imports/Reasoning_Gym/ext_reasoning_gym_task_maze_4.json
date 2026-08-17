@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · maze",
-    "text": "Navigate from '5' (start) to '.' (goal):\n\n```\n999999999\n999PP9PP9\n9999PPP99\n9P9PPP999\n9PPPP9P59\n9PPPPPPP9\n9PPP.9P99\n9P9PPPP99\n999999999\n```\nLegend: '9' = Wall, 'P' = Passage\n\nWhat is the minimum number of steps to reach the goal?\nGive only the number of steps as your final answer, no other text or formatting.",
+    "text": "Navigate from '}' (start) to ';' (goal):\n\n```\nRRRRRRRR\nR;RddRRR\nRddddddR\nRddRRddR\nRRRddRdR\nRdddd}dR\nRdddddRR\nRRRRRRRR\n```\nLegend: 'R' = Wall, 'd' = Passage\n\nWhat is the minimum number of steps to reach the goal?\nGive only the number of steps as your final answer, no other text or formatting.",
     "roles": {}
   },
   "entities": [],
@@ -12,10 +12,10 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "3",
-    "5",
+    "0",
     "10",
-    "7"
+    "8",
+    "12"
   ],
   "option_logic": [],
   "answer": 1,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:42",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · maze",
-      "story_text": "从 '5'（起点）走到 '.'（终点）：\n\n```\n999999999\n999PP9PP9\n9999PPP99\n9P9PPP999\n9PPPP9P59\n9PPPPPPP9\n9PPP.9P99\n9P9PPPP99\n999999999\n```\n说明：'9' 是墙，'P' 是通道\n\n最少需要走多少步才能到达终点？\n只回答步数 as your final answer, no other text or formatting.",
+      "story_text": "从 '}'（起点）走到 ';'（终点）：\n\n```\nRRRRRRRR\nR;RddRRR\nRddddddR\nRddRRddR\nRRRddRdR\nRdddd}dR\nRdddddRR\nRRRRRRRR\n```\n说明：'R' 是墙，'d' 是通道\n\n最少需要走多少步才能到达终点？\n只回答步数 as your final answer, no other text or formatting.",
       "constraints": [],
       "options": [
-        "3",
-        "5",
+        "0",
         "10",
-        "7"
+        "8",
+        "12"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · maze",
+      "story_text": "小蚂蚁要从 '}'（起点）走到 ';'（终点），只能走通道。迷宫是这样的：\nRRRRRRRR\nR;RddRRR\nRddddddR\nRddRRddR\nRRRddRdR\nRdddd}dR\nRdddddRR\nRRRRRRRR",
+      "constraints": [],
+      "options": [
+        "0",
+        "10",
+        "8",
+        "12"
+      ],
+      "question_prompt": "最少要走多少步才能到终点？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -70,7 +86,7 @@
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
     "reading_level": 2,
     "language_complexity": 2,
@@ -83,23 +99,22 @@
   "metadata": {
     "source_dataset": "maze",
     "source_index": 4,
-    "grid_size": 9,
+    "grid_size": 8,
     "grid": [
-      "999999999",
-      "999PP9PP9",
-      "9999PPP99",
-      "9P9PPP999",
-      "9PPPP9P59",
-      "9PPPPPPP9",
-      "9PPP.9P99",
-      "9P9PPPP99",
-      "999999999"
+      "RRRRRRRR",
+      "R;RddRRR",
+      "RddddddR",
+      "RddRRddR",
+      "RRRddRdR",
+      "Rdddd}dR",
+      "RdddddRR",
+      "RRRRRRRR"
     ],
-    "shortest_path_length": 5,
-    "start": "5",
-    "goal": ".",
-    "wall": "9",
-    "path": "P",
+    "shortest_path_length": 10,
+    "start": "}",
+    "goal": ";",
+    "wall": "R",
+    "path": "d",
     "difficulty": {
       "dist": [
         5,
@@ -111,5 +126,7 @@
       ]
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "maze",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:42"
 }

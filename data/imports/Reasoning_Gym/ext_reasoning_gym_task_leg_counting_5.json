@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · leg_counting",
-    "text": "Your task is to count how many legs there are in total when given a list of animals.\n\nNow, how many legs are there in total if you have 1 leech, 13 crickets, 7 praying mantiss, 11 ants, 1 tiger, 2 bees, 1 horse, 5 starfishs?",
+    "text": "Your task is to count how many legs there are in total when given a list of animals.\n\nNow, how many legs are there in total if you have 14 cows, 12 praying mantiss, 10 birds?",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "221",
-    "241",
-    "234",
-    "231"
+    "158",
+    "138",
+    "148",
+    "151"
   ],
   "option_logic": [],
-  "answer": 3,
+  "answer": 2,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 1,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · leg_counting",
-      "story_text": "数一数：1 只leech、13 只cricket、7 只螳螂、11 只蚂蚁、1 只老虎、2 只蜜蜂、1 只马、5 只starfish，这些动物一共有多少条腿？",
+      "story_text": "数一数：14 只牛、12 只螳螂、10 只鸟，这些动物一共有多少条腿？",
       "constraints": [],
       "options": [
-        "221",
-        "241",
-        "234",
-        "231"
+        "158",
+        "138",
+        "148",
+        "151"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · leg_counting",
+      "story_text": "数一数下面这些动物一共有多少条腿：14 只牛、12 只螳螂、10 只鸟。",
+      "constraints": [],
+      "options": [
+        "158",
+        "138",
+        "148",
+        "151"
+      ],
+      "question_prompt": "这些动物一共有多少条腿？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -70,7 +86,7 @@
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
     "reading_level": 2,
     "language_complexity": 2,
@@ -84,17 +100,12 @@
     "source_dataset": "leg_counting",
     "source_index": 5,
     "animals": {
-      "leech": 1,
-      "cricket": 13,
-      "praying mantis": 7,
-      "ant": 11,
-      "tiger": 1,
-      "bee": 2,
-      "horse": 1,
-      "starfish": 5
+      "cow": 14,
+      "praying mantis": 12,
+      "bird": 10
     },
-    "num_animals": 8,
-    "total_legs": 231,
+    "num_animals": 3,
+    "total_legs": 148,
     "difficulty": {
       "num_animals": [
         3,
@@ -106,5 +117,7 @@
       ]
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "counting",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

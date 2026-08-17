@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · chain_sum",
-    "text": "State the final answer to the following arithmetic problem: 41 - 39 - 80 =",
+    "text": "State the final answer to the following arithmetic problem: 155 - 353 + 209 + 276 - 227 + 608 =",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "-83",
-    "-81",
-    "-73",
-    "-78"
+    "668",
+    "663",
+    "665",
+    "673"
   ],
   "option_logic": [],
-  "answer": 3,
+  "answer": 0,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 1,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · chain_sum",
-      "story_text": "计算下面这个算式的结果：41 - 39 - 80 =",
+      "story_text": "计算下面这个算式的结果：155 - 353 + 209 + 276 - 227 + 608 =",
       "constraints": [],
       "options": [
-        "-83",
-        "-81",
-        "-73",
-        "-78"
+        "668",
+        "663",
+        "665",
+        "673"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · chain_sum",
-      "story_text": "算一算：41 - 39 - 80 = ？",
+      "story_text": "算一算：155 - 353 + 209 + 276 - 227 + 608 = ？",
       "constraints": [],
       "options": [
-        "-83",
-        "-81",
-        "-73",
-        "-78"
+        "668",
+        "663",
+        "665",
+        "673"
       ],
       "question_prompt": "这个算式的结果是多少？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "math",
@@ -98,9 +98,9 @@
   "metadata": {
     "source_dataset": "chain_sum",
     "source_index": 9,
-    "num_terms": 3,
-    "num_digits": 2,
-    "expression": "41 - 39 - 80",
+    "num_terms": 6,
+    "num_digits": 3,
+    "expression": "155 - 353 + 209 + 276 - 227 + 608",
     "difficulty": {
       "num_terms": [
         2,
@@ -114,5 +114,5 @@
   },
   "archetype": "arithmetic",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:41"
 }

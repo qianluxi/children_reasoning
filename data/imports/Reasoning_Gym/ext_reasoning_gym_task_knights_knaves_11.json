@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · knights_knaves",
-    "text": "A very special island is inhabited only by sages and fools. Sages always tell the truth, and fools always lie. You meet 2 inhabitants: Ethan, and Noah. In a statement by Ethan: \"Noah is a fool and Noah is a sage\". Noah was heard saying, \"if Ethan is a sage then Ethan is a fool\". So who is a sage and who is a fool? (Format your answer like: \"Ethan is a sage/fool, and Noah is a sage/fool\")",
+    "text": "A very special island is inhabited only by altruists and egoists. Altruists always tell the truth, and egoists always lie. You meet 2 inhabitants: Riley, and Scarlett. \"if Scarlett is an egoist then Scarlett is an altruist\" - Riley. Scarlett noted, \"Riley is an egoist or Riley is an altruist\". So who is an altruist and who is an egoist? (Format your answer like: \"Riley is a altruist/egoist, and Scarlett is a altruist/egoist\")",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "Ethan is a sage, Noah is a fool",
-    "Ethan is a fool, Noah is a sage",
-    "Ethan is a sage, Noah is a sage",
-    "Ethan is a fool, Noah is a fool"
+    "Riley is an altruist, Scarlett is an egoist",
+    "Riley is an egoist, Scarlett is an altruist",
+    "Riley is an altruist, Scarlett is an altruist",
+    "Riley is an egoist, Scarlett is an egoist"
   ],
   "option_logic": [],
-  "answer": 1,
+  "answer": 2,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,16 +44,32 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "A very special island is 有一座小岛，岛上只有贤者和愚者。贤者总说真话，愚者总说假话。 你遇到了 2 个居民：Ethan, and Noah. In a statement by Ethan: \"Noah 是fool 并且 Noah 是sage\". Noah was heard saying, \"如果 Ethan 是sage then Ethan 是fool\". So who is a sage？谁又是fool？ (Format your answer like: \"Ethan 是sage/愚者, 并且 Noah 是sage/愚者\")",
+      "story_text": "A very special island is 有一座小岛，岛上只有利他者和利己者。利他者总说真话，利己者总说假话。 你遇到了 2 个居民：Riley, and Scarlett. \"如果 Scarlett 是egoist then Scarlett 是altruist\" - Riley. Scarlett noted, \"Riley 是egoist 或者 Riley 是altruist\". So who is an altruist and who is an egoist？ (Format your answer like: \"Riley 是altruist/利己者, 并且 Scarlett 是altruist/利己者\")",
       "constraints": [],
       "options": [
-        "Ethan 是贤者，Noah 是愚者",
-        "Ethan 是愚者，Noah 是贤者",
-        "Ethan 是贤者，Noah 是贤者",
-        "Ethan 是愚者，Noah 是愚者"
+        "Riley 是利他者，Scarlett 是利己者",
+        "Riley 是利己者，Scarlett 是利他者",
+        "Riley 是利他者，Scarlett 是利他者",
+        "Riley 是利己者，Scarlett 是利己者"
       ],
       "question_prompt": "请选择正确答案：",
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
+    },
+    "zh_child": {
+      "status": "child_adapted",
+      "method": "template",
+      "story_title": "Reasoning Gym · knights_knaves",
+      "story_text": "有一座小岛，岛上住着诚实的人（an altruist）和爱说谎的人（an egoist）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Riley、Scarlett。他们说：\nRiley 说：“如果（Scarlett是an egoist）那么（Scarlett是an altruist）”\nScarlett 说：“（Riley是an egoist）或者（Riley是an altruist）”",
+      "constraints": [],
+      "options": [
+        "Riley 是利他者，Scarlett 是利己者",
+        "Riley 是利己者，Scarlett 是利他者",
+        "Riley 是利他者，Scarlett 是利他者",
+        "Riley 是利己者，Scarlett 是利己者"
+      ],
+      "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
       "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
@@ -66,14 +82,14 @@
   "difficulty_profile": {
     "cognitive_load": 1,
     "reasoning_depth": 1,
-    "language_complexity": 3,
+    "language_complexity": 4,
     "distractor_strength": 2,
     "computation_load": 1
   },
-  "quality": "C",
+  "quality": "B",
   "child_suitability": {
-    "reading_level": 3,
-    "language_complexity": 3,
+    "reading_level": 4,
+    "language_complexity": 4,
     "abstractness": 3,
     "reasoning_depth": 1,
     "calculation_load": 1,
@@ -85,7 +101,7 @@
     "source_index": 11,
     "statements": [
       [
-        "and",
+        "->",
         [
           "lying",
           1
@@ -96,32 +112,32 @@
         ]
       ],
       [
-        "->",
+        "or",
         [
-          "telling-truth",
+          "lying",
           0
         ],
         [
-          "lying",
+          "telling-truth",
           0
         ]
       ]
     ],
     "solution": [
-      false,
+      true,
       true
     ],
     "names": [
-      "Ethan",
-      "Noah"
+      "Riley",
+      "Scarlett"
     ],
     "knight_knave_terms": {
-      "knight": "sage",
-      "knave": "fool",
-      "a_knight": "a sage",
-      "a_knave": "a fool",
-      "Knight": "Sage",
-      "Knave": "Fool"
+      "knight": "altruist",
+      "knave": "egoist",
+      "a_knight": "an altruist",
+      "a_knave": "an egoist",
+      "Knight": "Altruist",
+      "Knave": "Egoist"
     },
     "difficulty": {
       "n_people": 2,
@@ -129,5 +145,7 @@
       "width_constraint": 2
     }
   },
-  "created_at": "2026-08-16T22:51:52"
+  "archetype": "truth_tellers",
+  "verified_by": "generator",
+  "created_at": "2026-08-17T16:28:41"
 }

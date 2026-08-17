@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · time_intervals",
-    "text": "Calculate the time difference between 06:09 and 11:40. Express the result in HH:MM.",
+    "text": "A flight departed at 00:51:38 and arrived at 22:58:41. How long was the flight? Answer in HH:MM:SS.",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "05:41",
-    "05:32",
-    "05:31",
-    "05:36"
+    "22:08:03",
+    "22:07:33",
+    "22:07:13",
+    "22:07:03"
   ],
   "option_logic": [],
-  "answer": 2,
+  "answer": 3,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:52:21",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · time_intervals",
-      "story_text": "计算 06:09 到 11:40. 之间相差多长时间？",
+      "story_text": "A flight departed at 00:51:38 and arrived at 22:58:41. How long was the flight? （答案格式见选项）",
       "constraints": [],
       "options": [
-        "05:41",
-        "05:32",
-        "05:31",
-        "05:36"
+        "22:08:03",
+        "22:07:33",
+        "22:07:13",
+        "22:07:03"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · time_intervals",
-      "story_text": "小闹钟从 06:09:00 走到 11:40:00，一共过了多久？",
+      "story_text": "小闹钟从 00:51:38 走到 22:58:41，一共过了多久？",
       "constraints": [],
       "options": [
-        "05:41",
-        "05:32",
-        "05:31",
-        "05:36"
+        "22:08:03",
+        "22:07:33",
+        "22:07:13",
+        "22:07:03"
       ],
       "question_prompt": "一共过了多长时间？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "math",
@@ -82,14 +82,14 @@
   "difficulty_profile": {
     "cognitive_load": 1,
     "reasoning_depth": 1,
-    "language_complexity": 1,
+    "language_complexity": 2,
     "distractor_strength": 2,
     "computation_load": 1
   },
   "quality": "B",
   "child_suitability": {
-    "reading_level": 1,
-    "language_complexity": 1,
+    "reading_level": 2,
+    "language_complexity": 2,
     "abstractness": 4,
     "reasoning_depth": 1,
     "calculation_load": 1,
@@ -99,11 +99,11 @@
   "metadata": {
     "source_dataset": "time_intervals",
     "source_index": 13,
-    "task_type": "time",
-    "start_time": "2026-08-16 06:09:00",
-    "end_time": "2026-08-16 11:40:00",
-    "format": "%H:%M",
-    "expected_format": "HH:MM",
+    "task_type": "time_seconds",
+    "start_time": "2026-08-17 00:51:38",
+    "end_time": "2026-08-17 22:58:41",
+    "format": "%H:%M:%S",
+    "expected_format": "HH:MM:SS",
     "difficulty": {
       "max_time_difference_seconds": 86400,
       "max_date_difference_days": 100
@@ -111,5 +111,5 @@
   },
   "archetype": "time_interval",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:52:21"
+  "created_at": "2026-08-17T16:28:41"
 }

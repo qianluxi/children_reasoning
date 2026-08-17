@@ -3,7 +3,7 @@
   "type": "external_text",
   "story": {
     "title": "Reasoning Gym · knights_knaves",
-    "text": "A very special island is inhabited only by saints and sinners. Saints always tell the truth, and sinners always lie. You meet 2 inhabitants: Samuel, and Jacob. Samuel expressed that if Samuel is a saint then Jacob is a sinner. Jacob was heard saying, \"if Samuel is a saint then Samuel is a sinner\". So who is a saint and who is a sinner? (Format your answer like: \"Samuel is a saint/sinner, and Jacob is a saint/sinner\")",
+    "text": "A very special island is inhabited only by altruists and egoists. Altruists always tell the truth, and egoists always lie. You meet 2 inhabitants: William, and Oliver. In a statement by William: \"Oliver is an egoist\". \"if Oliver is an altruist then William is an egoist,\" Oliver declared. So who is an altruist and who is an egoist? (Format your answer like: \"William is a altruist/egoist, and Oliver is a altruist/egoist\")",
     "roles": {}
   },
   "entities": [],
@@ -12,13 +12,13 @@
   "constraints": [],
   "question_prompt": "请选择正确答案：",
   "options": [
-    "Samuel is a sinner, Jacob is a sinner",
-    "Samuel is a saint, Jacob is a saint",
-    "Samuel is a sinner, Jacob is a saint",
-    "Samuel is a saint, Jacob is a sinner"
+    "William is an egoist, Oliver is an egoist",
+    "William is an altruist, Oliver is an altruist",
+    "William is an egoist, Oliver is an altruist",
+    "William is an altruist, Oliver is an egoist"
   ],
   "option_logic": [],
-  "answer": 3,
+  "answer": 2,
   "hints": [],
   "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
   "difficulty": 2,
@@ -34,7 +34,7 @@
     "url": "https://github.com/open-thought/reasoning-gym"
   },
   "provenance": {
-    "imported_at": "2026-08-16T22:51:52",
+    "imported_at": "2026-08-17T16:28:41",
     "modified": true,
     "translator": "reasoning_gym_generator_v1",
     "review_status": "approved",
@@ -44,33 +44,33 @@
   "translations": {
     "zh": {
       "status": "machine",
+      "method": "machine",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "A very special island is 有一座小岛，岛上只有saints和sinners。saints总说真话，sinners总说假话。 你遇到了 2 个居民：Samuel, and Jacob. Samuel expressed that if Samuel is a saint then Jacob is a sinner. Jacob was heard saying, \"如果 Samuel 是saint then Samuel 是sinner\". So who is a saint？谁又是sinner？ (Format your answer like: \"Samuel 是saint/sinner, 并且 Jacob 是saint/sinner\")",
+      "story_text": "A very special island is 有一座小岛，岛上只有利他者和利己者。利他者总说真话，利己者总说假话。 你遇到了 2 个居民：William, and Oliver. In a statement by William: \"Oliver 是egoist\". \"如果 Oliver 是altruist then William 是egoist,\" Oliver declared. So who is an altruist and who is an egoist？ (Format your answer like: \"William 是altruist/利己者, 并且 Oliver 是altruist/利己者\")",
       "constraints": [],
       "options": [
-        "Samuel 是sinner，Jacob 是sinner",
-        "Samuel 是saint，Jacob 是saint",
-        "Samuel 是sinner，Jacob 是saint",
-        "Samuel 是saint，Jacob 是sinner"
+        "William 是利己者，Oliver 是利己者",
+        "William 是利他者，Oliver 是利他者",
+        "William 是利己者，Oliver 是利他者",
+        "William 是利他者，Oliver 是利己者"
       ],
       "question_prompt": "请选择正确答案：",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "machine"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     },
     "zh_child": {
       "status": "child_adapted",
+      "method": "template",
       "story_title": "Reasoning Gym · knights_knaves",
-      "story_text": "有一座小岛，岛上住着诚实的人（saint）和爱说谎的人（sinner）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：Samuel、Jacob。他们说：\nSamuel 说：“如果（Samuel是saint）那么（Jacob是sinner）”\nJacob 说：“如果（Samuel是saint）那么（Samuel是sinner）”",
+      "story_text": "有一座小岛，岛上住着诚实的人（an altruist）和爱说谎的人（an egoist）。诚实的人只说真话，爱说谎的人只说假话。你遇到了 2 个小朋友：William、Oliver。他们说：\nWilliam 说：“不是（Oliver是an altruist）”\nOliver 说：“如果（Oliver是an altruist）那么（William是an egoist）”",
       "constraints": [],
       "options": [
-        "Samuel 是sinner，Jacob 是sinner",
-        "Samuel 是saint，Jacob 是saint",
-        "Samuel 是sinner，Jacob 是saint",
-        "Samuel 是saint，Jacob 是sinner"
+        "William 是利己者，Oliver 是利己者",
+        "William 是利他者，Oliver 是利他者",
+        "William 是利己者，Oliver 是利他者",
+        "William 是利他者，Oliver 是利己者"
       ],
       "question_prompt": "谁是诚实的人，谁又是爱说谎的人？",
-      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。",
-      "method": "template"
+      "explanation": "由 reasoning-gym 生成器算法验证（Apache-2.0），未经儿童化改写，建议人工抽检后再开放。"
     }
   },
   "category": "deduction",
@@ -82,14 +82,14 @@
   "difficulty_profile": {
     "cognitive_load": 1,
     "reasoning_depth": 1,
-    "language_complexity": 3,
+    "language_complexity": 4,
     "distractor_strength": 2,
     "computation_load": 1
   },
   "quality": "B",
   "child_suitability": {
-    "reading_level": 3,
-    "language_complexity": 3,
+    "reading_level": 4,
+    "language_complexity": 4,
     "abstractness": 3,
     "reasoning_depth": 1,
     "calculation_load": 1,
@@ -101,13 +101,9 @@
     "source_index": 2,
     "statements": [
       [
-        "->",
+        "not",
         [
           "telling-truth",
-          0
-        ],
-        [
-          "lying",
           1
         ]
       ],
@@ -115,7 +111,7 @@
         "->",
         [
           "telling-truth",
-          0
+          1
         ],
         [
           "lying",
@@ -124,20 +120,20 @@
       ]
     ],
     "solution": [
-      true,
-      false
+      false,
+      true
     ],
     "names": [
-      "Samuel",
-      "Jacob"
+      "William",
+      "Oliver"
     ],
     "knight_knave_terms": {
-      "knight": "saint",
-      "knave": "sinner",
-      "a_knight": "a saint",
-      "a_knave": "a sinner",
-      "Knight": "Saint",
-      "Knave": "Sinner"
+      "knight": "altruist",
+      "knave": "egoist",
+      "a_knight": "an altruist",
+      "a_knave": "an egoist",
+      "Knight": "Altruist",
+      "Knave": "Egoist"
     },
     "difficulty": {
       "n_people": 2,
@@ -147,5 +143,5 @@
   },
   "archetype": "truth_tellers",
   "verified_by": "generator",
-  "created_at": "2026-08-16T22:51:52"
+  "created_at": "2026-08-17T16:28:41"
 }
