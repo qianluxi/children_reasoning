@@ -98,6 +98,8 @@ class Question:
     quality: str = ""                           # 质量分级 A/B/C/rejected（V2.6）
     child_suitability: dict = field(default_factory=dict)    # 儿童适配评分
     metadata: dict = field(default_factory=dict)            # 生成器/数据集元数据（可追溯）
+    archetype: str = ""                                     # 题型模板（taxonomy.ARCHETYPES）
+    verified_by: str = ""                                   # "solver"|"generator"|"dataset"|""（证明来源）
     created_at: str = ""
 
     # ---------- 序列化 ----------
@@ -127,6 +129,9 @@ class Question:
         if not q.skills:
             from . import taxonomy
             _, q.skills = taxonomy.defaults_for(q.type)
+        if not q.archetype:
+            from . import taxonomy
+            q.archetype = taxonomy.archetype_for(q)
         # 旧题库文件可能没有 difficulty_level：用评分反算，保证新旧数据一致
         if q.difficulty_level is None and q.difficulty_score:
             from .difficulty import levels
@@ -145,6 +150,9 @@ class Question:
             for lang, tr in q.translations.items():
                 if isinstance(tr, dict) and "status" not in tr:
                     tr["status"] = "machine"
+                if isinstance(tr, dict) and "method" not in tr:
+                    tr["method"] = ("template" if lang == "zh_child"
+                                    else "machine")
         return q
 
     @classmethod
@@ -183,4 +191,6 @@ def ensure_taxonomy(question: Question) -> Question:
         question.category, question.skills = taxonomy.defaults_for(question.type)
     if not question.skills:
         _, question.skills = taxonomy.defaults_for(question.type)
+    if not question.archetype:
+        question.archetype = taxonomy.archetype_for(question)
     return question

@@ -64,6 +64,52 @@ TYPE_DEFAULTS = {
     "external_text":    ("deduction", ["deduction", "language_reasoning"]),
 }
 
+# 题型模板库（专家意见第九节：Question Archetype）—— 与来源无关的题型模板
+ARCHETYPES = {
+    "truth_tellers": {"name": "真假话", "category": "deduction"},
+    "ordering": {"name": "顺序排列", "category": "ordering"},
+    "conditional": {"name": "条件推理", "category": "deduction"},
+    "set_logic": {"name": "集合关系", "category": "deduction"},
+    "exclusion": {"name": "排除推理", "category": "deduction"},
+    "matching": {"name": "一一对应配对", "category": "relation"},
+    "visual_pattern": {"name": "图形/颜色规律", "category": "pattern"},
+    "family_relationship": {"name": "亲属关系", "category": "relation"},
+    "number_sequence": {"name": "数列规律", "category": "pattern"},
+    "maze": {"name": "迷宫", "category": "spatial"},
+    "counting": {"name": "计数", "category": "math"},
+    "arithmetic": {"name": "算式计算", "category": "math"},
+    "syllogism": {"name": "三段论", "category": "deduction"},
+    "time_interval": {"name": "时间间隔", "category": "math"},
+    "reading_reasoning": {"name": "阅读推理", "category": "deduction"},
+    "generic": {"name": "综合推理", "category": "deduction"},
+}
+
+# 内置题型 -> 题型模板
+TYPE_ARCHETYPE = {
+    "truth_statements": "truth_tellers",
+    "ordering": "ordering",
+    "conditional": "conditional",
+    "set_logic": "set_logic",
+    "exclusion": "exclusion",
+    "matching": "matching",
+    "color_pattern": "visual_pattern",
+}
+
+# Reasoning Gym 任务 -> 题型模板
+TASK_ARCHETYPE = {
+    "knights_knaves": "truth_tellers",
+    "syllogism": "syllogism",
+    "family_relationships": "family_relationship",
+    "leg_counting": "counting",
+    "letter_counting": "counting",
+    "rectangle_count": "counting",
+    "chain_sum": "arithmetic",
+    "number_sequence": "number_sequence",
+    "arc_1d": "visual_pattern",
+    "maze": "maze",
+    "time_intervals": "time_interval",
+}
+
 # 难度等级 -> 建议年龄（低难度更适合低龄）
 LEVEL_AGE = {1: "A", 2: "B", 3: "C", 4: "D"}
 
@@ -83,6 +129,25 @@ def skill_label(skill: str) -> str:
 def defaults_for(qtype: str) -> tuple:
     """某题型缺省 (category, skills)；未登记时按演绎逻辑兜底。"""
     return TYPE_DEFAULTS.get(qtype, ("deduction", ["deduction"]))
+
+
+def archetype_label(archetype: str) -> str:
+    return ARCHETYPES.get(archetype, {}).get("name", archetype)
+
+
+def archetype_for(question) -> str:
+    """按题型/来源推断题型模板；已有值则保留。"""
+    if question.archetype:
+        return question.archetype
+    a = TYPE_ARCHETYPE.get(question.type)
+    if a:
+        return a
+    if question.source_info and question.source_info.type == "external":
+        task = (question.source_info.dataset_id or "").replace("task=", "")
+        if task in TASK_ARCHETYPE:
+            return TASK_ARCHETYPE[task]
+        return "reading_reasoning"
+    return "generic"
 
 
 def age_label(age: str) -> str:

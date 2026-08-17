@@ -43,6 +43,7 @@ class NormalizedQuestion:
     age_range: str = ""                                 # 年龄分级 A/B/C/D
     difficulty_level: int = 0                           # 适配器自带的难度等级（0=未定）
     metadata: dict = field(default_factory=dict)        # 生成器/数据集元数据
+    archetype: str = ""                                 # 题型模板
 
     @property
     def has_dsl(self) -> bool:
@@ -56,6 +57,8 @@ class NormalizedQuestion:
         skills = self.skills
         if not category:
             category, skills = taxonomy.defaults_for(self.qtype)
+        archetype = self.archetype or taxonomy.TYPE_ARCHETYPE.get(
+            self.qtype, "generic")
         return Question(
             id=qid,
             type=self.qtype,
@@ -79,5 +82,6 @@ class NormalizedQuestion:
             age_range=self.age_range,
             difficulty_level=self.difficulty_level or None,
             metadata=self.metadata,
+            archetype=archetype,
             created_at=self.provenance.imported_at,
         )

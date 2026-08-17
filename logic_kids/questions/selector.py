@@ -56,7 +56,7 @@ def select_question(difficulty: int = None,
     """
     rng = rng or random.Random()
     if mixed:
-        return _select_mixed(difficulty, child_id, rng, exclude_ids)
+        return _select_mixed(difficulty, child_id, rng, exclude_ids, category)
     if difficulty is not None:
         levels.validate_level(difficulty)
     if category is not None and category not in GENERATORS:
@@ -112,7 +112,8 @@ def _load(external_bank: bool, source: str, qid: str):
 
 
 def _select_mixed(difficulty: int, child_id: int, rng: random.Random,
-                  exclude_ids: set = None) -> dict | None:
+                  exclude_ids: set = None,
+                  category: str = None) -> dict | None:
     """综合训练：先按能力权重抽能力，再在该能力下从内置 + 外部选题。"""
     recent = set(exclude_ids or ())
     if child_id:
@@ -121,6 +122,8 @@ def _select_mixed(difficulty: int, child_id: int, rng: random.Random,
     pool = {}
     for lv in order:
         for ability in MIXED_WEIGHTS:
+            if category and ability != category:
+                continue
             ids = store.query(category=ability, difficulty_level=lv,
                               exclude_ids=recent)
             ids += external.query(category=ability, difficulty_level=lv,
@@ -130,7 +133,8 @@ def _select_mixed(difficulty: int, child_id: int, rng: random.Random,
         if pool:
             break  # 优先精确等级；不足时向外放宽
     if not pool:
-        ids = store.query(exclude_ids=recent) + external.query(exclude_ids=recent)
+        ids = (store.query(exclude_ids=recent, category=category)
+               + external.query(exclude_ids=recent, category=category))
         if not ids:
             return None
         qid = rng.choice(ids)

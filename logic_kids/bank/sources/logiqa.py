@@ -92,6 +92,7 @@ def normalize(item: dict) -> NormalizedQuestion | None:
         qtype="external_text",
         category="deduction",
         skills=["deduction", "language_reasoning"],
+        archetype="reading_reasoning",
         age_range="D",
         story_title=f"LogiQA · #{oid}",
         story_text=text,

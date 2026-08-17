@@ -28,31 +28,38 @@
 
   <!-- 选择题库（内置 / 外部） -->
   <section id="bankpick" class="card center hidden">
-    <h1>🧩 选择今天的挑战</h1>
-    <p class="sub">想练内置题，还是挑战外部题库？</p>
-    <div id="bankList" class="level-list">
-      <button class="level-card" onclick="pickBank('builtin')">
-        <span class="lv-emoji">🧩</span>
-        <span class="lv-name">内置题库</span>
-        <span class="lv-tag">种子题 + 自动生成</span>
-      </button>
-      <button class="level-card" onclick="pickBank('external')">
-        <span class="lv-emoji">🌐</span>
-        <span class="lv-name">外部题库</span>
-        <span class="lv-tag">开放数据集</span>
-      </button>
-      <button class="level-card" onclick="pickBank('mixed')">
-        <span class="lv-emoji">🧠</span>
-        <span class="lv-name">综合训练</span>
-        <span class="lv-tag">内置 + 外部混合</span>
-      </button>
+    <h1>🧠 选择今天的挑战</h1>
+    <p class="sub">选一个你想练的本领吧！</p>
+    <div id="challengeList" class="level-list"></div>
+    <p class="devline">
+      <button id="devLink" class="linkbtn ghost-link">🛠 开发者模式（按题库来源）</button>
+    </p>
+    <div id="devPick" class="hidden">
+      <h3>按题库来源选择</h3>
+      <div id="bankList" class="level-list">
+        <button class="level-card" onclick="pickBank('builtin')">
+          <span class="lv-emoji">🧩</span>
+          <span class="lv-name">内置题库</span>
+          <span class="lv-tag">种子题 + 自动生成</span>
+        </button>
+        <button class="level-card" onclick="pickBank('external')">
+          <span class="lv-emoji">🌐</span>
+          <span class="lv-name">外部题库</span>
+          <span class="lv-tag">开放数据集</span>
+        </button>
+        <button class="level-card" onclick="pickBank('mixed')">
+          <span class="lv-emoji">🧠</span>
+          <span class="lv-name">综合训练</span>
+          <span class="lv-tag">内置 + 外部混合</span>
+        </button>
+      </div>
+      <div id="langToggle" class="lang-toggle hidden">
+        <span class="lang-lbl">题目语言：</span>
+        <button id="langZhBtn" class="btn ghost active" onclick="pickLang('zh')">中文版</button>
+        <button id="langEnBtn" class="btn ghost" onclick="pickLang('en')">English 原文</button>
+      </div>
+      <div id="sourceList" class="level-list hidden"></div>
     </div>
-    <div id="langToggle" class="lang-toggle hidden">
-      <span class="lang-lbl">题目语言：</span>
-      <button id="langZhBtn" class="btn ghost active" onclick="pickLang('zh')">中文版</button>
-      <button id="langEnBtn" class="btn ghost" onclick="pickLang('en')">English 原文</button>
-    </div>
-    <div id="sourceList" class="level-list hidden"></div>
   </section>
 
   <!-- 选择难度 -->

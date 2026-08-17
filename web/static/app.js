@@ -10,6 +10,7 @@ let bankMode = 'builtin';
 let externalSource = null;
 let externalSources = [];
 let externalLang = 'zh';
+let selectedChallenge = null;
 let hintStep = 0;
 let answered = false;
 let earnedStars = 0;
@@ -52,6 +53,7 @@ function startAs(id, name) {
   $('quiz').classList.add('hidden');
   $('pick').classList.add('hidden');
   loadExternalSources();
+  loadChallenges();
 }
 
 // ---------- 题库选择（内置 / 外部） ----------
@@ -120,6 +122,40 @@ function showLevels() {
   loadLevels();
 }
 
+// ---------- 儿童挑战（按能力，隐藏数据源） ----------
+async function loadChallenges() {
+  const res = await fetch('/api/challenges');
+  const data = await res.json();
+  const list = $('challengeList');
+  list.innerHTML = '';
+  const mixed = document.createElement('button');
+  mixed.className = 'level-card';
+  mixed.innerHTML = `<span class="lv-emoji">🧠</span>
+    <span class="lv-name">综合挑战</span>
+    <span class="lv-tag">所有本领混合</span>`;
+  mixed.onclick = () => pickChallenge(null);
+  list.appendChild(mixed);
+  (data.challenges || []).forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'level-card';
+    b.innerHTML = `<span class="lv-emoji">${c.emoji}</span>
+      <span class="lv-name">${c.name}</span>
+      <span class="lv-tag">${c.count} 题</span>`;
+    b.onclick = () => pickChallenge(c.ability);
+    list.appendChild(b);
+  });
+}
+
+function pickChallenge(ability) {
+  bankMode = 'challenge';
+  selectedChallenge = ability;
+  showLevels();
+}
+
+function toggleDevMode() {
+  $('devPick').classList.toggle('hidden');
+}
+
 // ---------- 难度选择 ----------
 async function loadLevels() {
   const res = await fetch('/api/levels');
@@ -171,7 +207,9 @@ async function nextQuestion() {
     body: JSON.stringify({
       child_id: childId,
       level: currentLevel,
-      bank: bankMode,
+      bank: bankMode === 'challenge' ? 'mixed' : bankMode,
+      category: bankMode === 'challenge' ? (selectedChallenge || undefined)
+                                          : undefined,
       source: bankMode === 'external' ? externalSource : undefined,
       lang: bankMode === 'external' ? externalLang : 'zh',
     }),
@@ -187,7 +225,11 @@ async function nextQuestion() {
 
 function renderQuestion(q) {
   qStartedAt = Date.now();
-  if (bankMode === 'mixed') {
+  if (bankMode === 'challenge') {
+    $('qBank').textContent = selectedChallenge
+      ? '🧠 ' + challengeName(selectedChallenge)
+      : '🧠 综合挑战';
+  } else if (bankMode === 'mixed') {
     $('qBank').textContent = '🧠 综合 · ' + (q.bank === 'external' ? '外部' : '内置');
   } else {
     $('qBank').textContent = q.bank === 'external'
@@ -304,6 +346,17 @@ function changeBank() {
   $('pick').classList.add('hidden');
   $('bankpick').classList.remove('hidden');
   loadExternalSources();
+  loadChallenges();
+}
+
+function challengeName(ability) {
+  const map = {
+    deduction: '逻辑推理', ordering: '排序挑战', pattern: '找规律',
+    math: '数学思维', spatial: '空间迷宫', relation: '关系推理',
+    language: '语言推理', strategy: '策略挑战',
+    classification: '分类归纳', science: '科学探索',
+  };
+  return map[ability] || ability;
 }
 
 // ---------- 启动 ----------
@@ -313,5 +366,6 @@ $('startBtn').onclick = startChallenge;
 $('hintBtn').onclick = showHint;
 $('changeLevelBtn').onclick = changeLevel;
 $('changeBankBtn').onclick = changeBank;
+$('devLink').onclick = toggleDevMode;
 $('nextBtn').onclick = nextQuestion;
 loadChildren();

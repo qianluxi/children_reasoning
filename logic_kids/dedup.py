@@ -89,3 +89,49 @@ def register(question) -> None:
 def clear() -> None:
     _DEDUP_PATH.parent.mkdir(parents=True, exist_ok=True)
     _save({"by_text": {}, "by_logic": {}})
+
+
+def duplicate_report() -> dict:
+    """分级去重报告（专家意见第十一节）：
+    文本完全重复 / 逻辑结构重复 / 各题型模板数量。"""
+    from . import taxonomy
+    from .bank import external, store
+    from collections import Counter
+    texts = Counter()
+    sigs = Counter()
+    archs = Counter()
+    for qid in store.list_ids():
+        q = store.load_question(qid)
+        if q is None:
+            continue
+        texts[text_hash(q)] += 1
+        sig = logic_signature(q)
+        if sig:
+            sigs[sig] += 1
+        archs[q.archetype or "generic"] += 1
+    for s in external.list_sources():
+        for qid in external.list_ids(s["slug"]):
+            q = external.load_question(s["slug"], qid)
+            if q is None:
+                continue
+            texts[text_hash(q)] += 1
+            sig = logic_signature(q)
+            if sig:
+                sigs[sig] += 1
+            archs[q.archetype or "generic"] += 1
+    return {
+        "exact_text_duplicates": sum(n - 1 for n in texts.values() if n > 1),
+        "structure_duplicates": sum(n - 1 for n in sigs.values() if n > 1),
+        "by_archetype": {a: n for a, n in archs.most_common()},
+    }
+
+
+def report_text() -> str:
+    r = duplicate_report()
+    from . import taxonomy
+    lines = [f"文本完全重复（应删除）: {r['exact_text_duplicates']}",
+             f"逻辑结构重复（建议控制比例）: {r['structure_duplicates']}",
+             "按题型模板（archetype）分布:"]
+    for a, n in r["by_archetype"].items():
+        lines.append(f"  {taxonomy.archetype_label(a):14s} {n}")
+    return "\n".join(lines)

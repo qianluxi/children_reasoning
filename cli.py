@@ -19,6 +19,8 @@
     python cli.py import stats          # 批处理统计
     python cli.py bank check-license    # 许可证合规检查
     python cli.py analyze-bank          # 题库质量分析（能力空缺/难度/层级）
+    python cli.py balance-bank          # 题库配额（目标 vs 当前 + 下一批建议）
+    python cli.py dedup report          # 分级去重报告（文本/结构/题型模板）
 """
 from __future__ import annotations
 
@@ -225,6 +227,29 @@ def cmd_analyze_bank(args):
     return 0
 
 
+def cmd_balance_bank(args):
+    from logic_kids.quality.analyzer import analyze
+    from logic_kids.quality.quota import balance
+    from logic_kids import taxonomy
+    b = balance(analyze())
+    print(f"{'能力':10s} {'目标':>6s} {'当前':>7s} {'状态':>8s}")
+    print("-" * 40)
+    for r in b["rows"]:
+        print(f"{taxonomy.ability_label(r['ability']):10s} "
+              f"{r['target']:5.1f}% {r['current']:6.1f}% "
+              f"{r['status']:>6s} {r['diff']:+.1f}%")
+    print("\n下一批应该：")
+    for s in b["suggestions"]:
+        print("  " + s)
+    return 0
+
+
+def cmd_dedup(args):
+    from logic_kids import dedup
+    print(dedup.report_text())
+    return 0
+
+
 def cmd_review(args):
     from logic_kids.bank import importer, provenance
     if args.approve_all:
@@ -380,6 +405,11 @@ def main(argv=None):
 
     sub.add_parser("analyze-bank", help="题库质量分析器").set_defaults(
         func=cmd_analyze_bank)
+    sub.add_parser("balance-bank", help="题库配额与下一批建议").set_defaults(
+        func=cmd_balance_bank)
+    p_dedup = sub.add_parser("dedup", help="去重管理")
+    p_dedup.add_argument("action", choices=["report"])
+    p_dedup.set_defaults(func=cmd_dedup)
 
     p_rev = sub.add_parser("review", help="外部题待审队列管理")
     p_rev.add_argument("--approve", metavar="QID", default=None,

@@ -181,3 +181,42 @@ def test_selector_exclude_prevents_repeat():
         assert pick is not None
         assert pick["question"].id not in seen
         seen.add(pick["question"].id)
+
+
+def test_quota_balance_suggestions():
+    from logic_kids.quality import quota
+    a = {"total_active": 100,
+         "by_ability": {"deduction": 60, "spatial": 1},
+         "by_level": {4: 1}, "by_age": {"A": 1},
+         "machine_only": 10, "no_proof": 5,
+         "structure_duplicates": 3}
+    b = quota.balance(a)
+    texts = " ".join(b["suggestions"])
+    assert "暂停导入 deduction" in texts
+    assert "增加 spatial" in texts
+    assert "Level 4" in texts
+    assert "机器翻译" in texts
+    assert "proof" in texts
+
+
+def test_mixed_selector_category_filter():
+    from logic_kids.questions.selector import select_question
+    store.clear()
+    external.clear()
+    bq = Question(
+        id="mix_cat_builtin", type="matching", story=Story("t", "t", {}),
+        entities=[], variables=[], statements=[], constraints=[],
+        question_prompt="?", options=["x", "y"],
+        option_logic=["TRUE", "FALSE"], answer=0, hints=[], explanation="",
+        difficulty=1, difficulty_score=1.0, difficulty_level=1,
+        source="generated", category="relation", skills=["relation_reasoning"],
+        age_range="A", quality="A")
+    store.save_question(bq)
+    eq = _ext_q(category="deduction")
+    eq.id = "mix_cat_ext"
+    external.save_question(eq)
+    for _ in range(10):
+        pick = select_question(mixed=True, category="relation",
+                               rng=random.Random(2))
+        assert pick is not None
+        assert pick["question"].category == "relation"

@@ -133,6 +133,26 @@ def create_app() -> Flask:
         """外部题库来源清单（名称/许可证/题数），前端按来源选择。"""
         return jsonify({"sources": external.list_sources()})
 
+    @app.route("/api/challenges")
+    def challenges():
+        """儿童挑战卡片：只暴露能力，不暴露数据源（专家意见十八节）。"""
+        from logic_kids.quality.analyzer import analyze
+        a = analyze()
+        cards = []
+        for ability in ("deduction", "pattern", "math", "spatial",
+                        "relation", "ordering", "language", "strategy",
+                        "classification", "science"):
+            n = a["by_ability"].get(ability, 0)
+            if n > 0:
+                cards.append({
+                    "ability": ability,
+                    "name": taxonomy.ability_label(ability),
+                    "emoji": taxonomy.ability_emoji(ability),
+                    "count": n,
+                })
+        return jsonify({"challenges": cards,
+                        "total": a.get("total_active", 0)})
+
     @app.route("/api/next", methods=["POST"])
     def next_question():
         data = request.get_json(force=True) or {}
@@ -162,7 +182,12 @@ def create_app() -> Flask:
             except ValueError:
                 return jsonify({"error": "难度等级必须是 1~4 的整数"}), 400
         if category is not None:
-            if not isinstance(category, str) or category not in GENERATORS:
+            if not isinstance(category, str):
+                return jsonify({"error": "category 必须是字符串"}), 400
+            if bank == "mixed":
+                if category not in taxonomy.ABILITIES:
+                    return jsonify({"error": "未知能力：" + category}), 400
+            elif category not in GENERATORS:
                 return jsonify({"error": f"未知题型，可选：{', '.join(TYPE_NAMES)}"}), 400
         # 身份绑定：本次浏览器的 session 只认这个儿童
         session["child_id"] = child_id

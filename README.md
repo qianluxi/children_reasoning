@@ -53,6 +53,8 @@ python cli.py import-all config/datasets.yaml --retry --checkpoint
 python cli.py import stats          # 批处理统计（RAW/VALID/REJECT/REVIEW/READY）
 python cli.py bank check-license    # 许可证合规检查
 python cli.py analyze-bank          # 题库质量分析（能力空缺/难度/层级/许可证）
+python cli.py balance-bank          # 题库配额（目标 vs 当前 + 下一批建议）
+python cli.py dedup report          # 分级去重报告（文本/结构/题型模板）
 python cli.py import reasoning_gym --task knights_knaves --limit 15  # 程序化生成
   ```
 
@@ -224,6 +226,32 @@ BIG-bench 已于 2026-04-17 归档为只读：`sources/bigbench.py` 固定到归
 `python cli.py analyze-bank` 输出题库的能力 / 难度 / 层级 / 许可证分布，并给出
 **能力空缺警告**（如"空间推理题不足""演绎逻辑占比过高""高难度题不足"），
 告诉下一步该引入什么数据集，而不是凭感觉。
+
+`analyze-bank` 现已升级为"诊断 + 建议"：输出质量分布（A/B/C/rejected）、
+年龄分布、题型模板（archetype）分布，以及问题清单（能力空缺 / 高难度不足 /
+仅机器翻译 / 无真实 proof / 逻辑结构重复）和**建议列表**。
+
+### 题库配额系统（balance-bank）
+
+`config/quota.yaml` 定义各能力目标占比；`python cli.py balance-bank` 输出
+目标 vs 当前对照表，并给出"下一批应该做什么"（增加 spatial 数据源 /
+暂停导入 deduction / 补充 Level 4 / B 类题进入人工审核等），实现数据驱动的
+题库建设。
+
+### 题型模板库（Question Archetype）
+
+每道题带 `archetype`（与来源无关的题型模板：truth_tellers / ordering /
+family_relationship / number_sequence / maze / visual_pattern / counting /
+syllogism…），同一模板可来自多个数据源。分析时按 archetype / category 统计，
+而不是按数据集统计。`python cli.py dedup report` 输出文本完全重复、
+逻辑结构重复与各模板数量。
+
+### 儿童挑战界面（隐藏数据源）
+
+Web 首页改为**能力挑战卡片**：🧠 综合挑战 / 🧩 逻辑推理 / 🔍 找规律 /
+🔢 数学思维 / 🧭 空间迷宫 / 🪢 关系推理 等（只显示有题的能力），
+BIG-bench / LogiQA / Reasoning Gym 等数据源名收进"🛠 开发者模式"。
+`/api/challenges` 提供卡片数据；综合模式支持按能力（category）出题。
 
 三层题库（专家意见第二节）：
 

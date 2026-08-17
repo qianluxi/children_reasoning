@@ -126,6 +126,19 @@ h1 { color: var(--primary); }
   color: #fff;
 }
 
+.devline { margin-top: 20px; }
+.ghost-link {
+  background: #f1e8da;
+  color: var(--text);
+  border: none;
+  font-family: inherit;
+  font-size: .9rem;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+#devPick h3 { color: var(--muted); margin: 18px 0 10px; }
+
 /* 按钮 */
 .btn {
   border: none;

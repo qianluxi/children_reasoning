@@ -14,6 +14,7 @@ import re
 
 from ..normalizer import NormalizedQuestion
 from ..provenance import make_source, make_provenance
+from ... import taxonomy
 
 SOURCE_NAME = "Reasoning Gym"
 LICENSE = "Apache-2.0"
@@ -319,6 +320,7 @@ def normalize(item) -> NormalizedQuestion | None:
         qtype="external_text",
         category=cfg["category"],
         skills=cfg["skills"],
+        archetype=taxonomy.TASK_ARCHETYPE.get(task, "generic"),
         difficulty_level=_level_for(item, task),
         metadata=dict(item.get("metadata") or {}),
         story_title=f"Reasoning Gym · {task}",
@@ -555,6 +557,7 @@ def zh_translate_question(q) -> dict:
 
     return {
         "status": "machine",
+        "method": "machine",
         "story_title": q.story.title,
         "story_text": story,
         "constraints": [c.text for c in q.constraints],
@@ -670,6 +673,7 @@ def zh_child_question(q) -> dict:
 
     return {
         "status": "child_adapted",
+        "method": "template",
         "story_title": q.story.title,
         "story_text": story,
         "constraints": [c.text for c in q.constraints],

@@ -59,6 +59,13 @@ def save_question(q: Question) -> None:
         "title": q.story.title,
         "category": q.category,
         "quality": q.quality or "A",
+        "archetype": q.archetype or "generic",
+        "age_range": q.age_range or "B",
+        "verified_by": q.verified_by,
+        "has_translation": bool(q.translations),
+        "child_adapted": bool(q.translations
+                              and (q.translations.get("zh_child") or {})
+                              .get("status") == "child_adapted"),
     }
     _save_index(index)
 

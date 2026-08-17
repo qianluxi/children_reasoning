@@ -80,3 +80,13 @@ def test_report_text_contains_sections():
     text = analyzer.report_text()
     for marker in ("题库总数", "按能力", "按难度等级", "按层级", "按许可证", "问题"):
         assert marker in text
+    assert "建议" in text
+
+
+def test_analyzer_extended_metrics():
+    r = analyzer.analyze()
+    for key in ("by_quality", "by_age", "by_archetype",
+                "machine_only", "no_proof", "structure_duplicates",
+                "total_active"):
+        assert key in r
+    assert r["by_quality"].get("A", 0) >= 2  # 两道内置 A 题

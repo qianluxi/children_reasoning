@@ -184,6 +184,7 @@ def zh_translate_question(q) -> dict:
     names_zh = [_zh_name(q.story.roles.get(c, c)) for c in q.entities]
     return {
         "status": "machine",
+        "method": "machine",
         "story_title": q.story.title,
         "story_text": _zh_story(q.story.text, names_zh, len(q.entities)),
         "constraints": [_zh_constraint(c.text) for c in q.constraints],
@@ -438,6 +439,7 @@ def normalize(item: dict) -> NormalizedQuestion | None:
         qtype="ordering",
         category="ordering",
         skills=["ordering", "transitive_reasoning", "deduction"],
+        archetype="ordering",
         story_title=f"BIG-bench 逻辑推理 · {task}",
         story_text=intro,
         entities=codes,

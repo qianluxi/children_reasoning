@@ -163,6 +163,12 @@ def import_items(source_name: str, raw_items: list, normalize,
             continue
         q.provenance.logic_validated = any(c.logic for c in q.constraints) \
             or any(q.option_logic)
+        if q.provenance.logic_validated:
+            q.verified_by = "solver"
+        elif q.source_info and q.source_info.name == "Reasoning Gym":
+            q.verified_by = "generator"
+        else:
+            q.verified_by = "dataset"
         calibrate_difficulty(q)
         q.quality = grade_quality(q)
         if dedup_enabled:

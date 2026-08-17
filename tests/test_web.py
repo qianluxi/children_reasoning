@@ -275,6 +275,15 @@ def test_external_sources_api(client, external_bank):
     assert any(s["license"] == "Apache-2.0" for s in srcs)
 
 
+def test_challenges_api(client):
+    r = client.get("/api/challenges")
+    assert r.status_code == 200
+    data = r.get_json()
+    assert "challenges" in data and "total" in data
+    cards = {c["ability"]: c for c in data["challenges"]}
+    assert any(c["count"] > 0 for c in cards.values())
+
+
 def test_next_external_bank(client, child_id, external_bank):
     r = client.post("/api/next", json={
         "child_id": child_id, "level": 1,
