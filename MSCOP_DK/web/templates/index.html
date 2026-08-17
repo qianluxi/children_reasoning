@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小小推理家 · 儿童逻辑训练</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">🧩 小小推理家</div>
+    <div class="top-right">
+      <span id="who" class="who"></span>
+      <a href="/profile" class="linkbtn">📊 我的画像</a>
+    </div>
+  </header>
+
+  <!-- 选择/创建儿童 -->
+  <section id="login" class="card center">
+    <h1>你好呀！👋</h1>
+    <p class="sub">选一个名字开始今天的逻辑冒险吧～</p>
+    <div id="childList" class="child-list"></div>
+    <div class="newchild">
+      <input id="newName" type="text" placeholder="或者输入你的名字…" maxlength="12">
+      <button id="createBtn" class="btn primary">开始 →</button>
+    </div>
+  </section>
+
+  <!-- 选择题库（内置 / 外部） -->
+  <section id="bankpick" class="card center hidden">
+    <h1>🧠 选择今天的挑战</h1>
+    <p class="sub">选一个你想练的本领吧！</p>
+    <div id="challengeList" class="level-list"></div>
+    <p class="devline">
+      <button id="devLink" class="linkbtn ghost-link">🛠 开发者模式（按题库来源）</button>
+    </p>
+    <div id="devPick" class="hidden">
+      <h3>按题库来源选择</h3>
+      <div id="bankList" class="level-list">
+        <button class="level-card" onclick="pickBank('builtin')">
+          <span class="lv-emoji">🧩</span>
+          <span class="lv-name">内置题库</span>
+          <span class="lv-tag">种子题 + 自动生成</span>
+        </button>
+        <button class="level-card" onclick="pickBank('external')">
+          <span class="lv-emoji">🌐</span>
+          <span class="lv-name">外部题库</span>
+          <span class="lv-tag">开放数据集</span>
+        </button>
+        <button class="level-card" onclick="pickBank('mixed')">
+          <span class="lv-emoji">🧠</span>
+          <span class="lv-name">综合训练</span>
+          <span class="lv-tag">内置 + 外部混合</span>
+        </button>
+      </div>
+      <div id="langToggle" class="lang-toggle hidden">
+        <span class="lang-lbl">题目语言：</span>
+        <button id="langZhBtn" class="btn ghost active" onclick="pickLang('zh')">中文版</button>
+        <button id="langEnBtn" class="btn ghost" onclick="pickLang('en')">English 原文</button>
+      </div>
+      <div id="sourceList" class="level-list hidden"></div>
+    </div>
+  </section>
+
+  <!-- 选择难度 -->
+  <section id="pick" class="card center hidden">
+    <h1>🧩 选择今天的挑战难度</h1>
+    <p class="sub">选一个适合你的难度，开始挑战吧！</p>
+    <div id="levelList" class="level-list"></div>
+    <button id="startBtn" class="btn primary hidden">🚀 开始挑战</button>
+  </section>
+
+  <!-- 答题区 -->
+  <section id="quiz" class="card hidden">
+    <div class="q-head">
+      <span id="qBank" class="chip bank"></span>
+      <span id="qType" class="chip"></span>
+      <span id="qLevel" class="chip gold"></span>
+      <span id="qStars" class="starcount"></span>
+    </div>
+    <h2 id="qTitle"></h2>
+    <p id="qStory" class="story"></p>
+    <div id="visualBox" class="visual-box hidden"></div>
+
+    <div id="statements" class="statements"></div>
+    <div id="constraints" class="constraints"></div>
+
+    <p id="qPrompt" class="prompt"></p>
+    <div id="options" class="options"></div>
+
+    <div class="actions">
+      <button id="hintBtn" class="btn ghost">💡 提示</button>
+      <button id="changeLevelBtn" class="btn ghost">🔁 换难度</button>
+      <button id="changeBankBtn" class="btn ghost">🌐 换题库</button>
+      <button id="nextBtn" class="btn primary hidden">下一题 →</button>
+    </div>
+    <div id="hints" class="hints"></div>
+    <div id="feedback" class="feedback hidden"></div>
+  </section>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# 运行时依赖（与 Dockerfile 保持一致；核心引擎零第三方依赖）
+flask>=3.0
+pillow>=10.0
+PyYAML>=6.0

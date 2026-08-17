@@ -1,0 +1,72 @@
+{
+  "id": "ext_logiqa_split_dev_lang_zh_6813",
+  "type": "external_text",
+  "story": {
+    "title": "LogiQA · #6813",
+    "text": "在觅食过程中,成百上千只蚂蚁在蚁穴和食物所在处之间来来往往,最终都能够在相对最短时间内得到食物,却从来不会有拥堵现象出现.德国科学家赫尔冰发现,避免道路拥堵是基于蚂蚁之间的交流.在一条路有可能出现拥堵时,返回的蚂蚁就向迎面过来的同伴发出信息素,让它选择另一条路.他认为,人类可以采取相同方法减少车辆拥塞现象.",
+    "roles": {}
+  },
+  "entities": [],
+  "variables": [],
+  "statements": [],
+  "constraints": [],
+  "question_prompt": "这段文字说明的主要是:",
+  "options": [
+    "A.聪明蚂蚁启发人类解决交通拥堵",
+    "B.解决难题,从蚂蚁觅食中找思路",
+    "C.互通情况,绕道可避免遭遇拥堵",
+    "D.蚂蚁的不拥堵与人类的车辆拥塞"
+  ],
+  "option_logic": [],
+  "answer": 0,
+  "hints": [],
+  "explanation": "LogiQA 原始题（CC BY-NC-SA 4.0，非商业），未经改写与逻辑验证。",
+  "difficulty": 2,
+  "difficulty_score": 2.6,
+  "difficulty_level": 2,
+  "source": "logiqa2.0",
+  "source_info": {
+    "type": "external",
+    "name": "LogiQA2.0",
+    "license": "CC-BY-NC-SA-4.0",
+    "dataset_id": "split=dev,lang=zh",
+    "original_id": "6813",
+    "url": "https://raw.githubusercontent.com/csitfun/logiqa2.0/main/logiqa/DATA/LOGIQA/dev_zh.txt"
+  },
+  "provenance": {
+    "imported_at": "2026-08-16T16:13:19",
+    "modified": false,
+    "translator": "",
+    "review_status": "approved",
+    "logic_validated": false,
+    "difficulty_calibrated": false
+  },
+  "translations": null,
+  "category": "deduction",
+  "skills": [
+    "deduction",
+    "language_reasoning"
+  ],
+  "age_range": "D",
+  "difficulty_profile": {
+    "cognitive_load": 1,
+    "reasoning_depth": 1,
+    "language_complexity": 3,
+    "distractor_strength": 2,
+    "computation_load": 1
+  },
+  "quality": "C",
+  "child_suitability": {
+    "reading_level": 3,
+    "language_complexity": 3,
+    "abstractness": 3,
+    "reasoning_depth": 1,
+    "calculation_load": 1,
+    "cultural_dependency": 1,
+    "suitable": true
+  },
+  "metadata": {},
+  "archetype": "reading_reasoning",
+  "verified_by": "dataset",
+  "created_at": "2026-08-16T16:13:19"
+}

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.git/
+.zcode/
+tests/
+data/profiles.db
+data/questions/
+data/bank_index.json
+data/imports/
+data/dedup/
+使用手册.docx
